@@ -1,0 +1,16 @@
+.checkbox {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.unchecked {
+  color: #0a6638;
+}
+
+.checked {
+  color: darkred;
+}
+
+
