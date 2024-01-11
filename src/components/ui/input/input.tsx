@@ -13,7 +13,7 @@ export type InputProps = {
 
 export const InputControl = (props: InputProps) => {
   const { placeholder, title, variant } = props
-  const classNames = clsx(s.button, s[variant])
+  const classNames = clsx(s.input, s[variant])
 
   return (
     <div>
