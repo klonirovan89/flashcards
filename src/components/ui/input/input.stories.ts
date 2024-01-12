@@ -11,10 +11,19 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Unchecked: Story = {
+export const Default: Story = {
   args: {
     placeholder: 'Input',
     title: 'Input',
-    variant: 'input',
+    type: 'default'
+  },
+}
+
+export const Error: Story = {
+  args: {
+    placeholder: 'Input',
+    title: 'Input',
+    type: 'default',
+    errorMessage: 'Error!'
   },
 }
