@@ -1,0 +1,82 @@
+@import '@radix-ui/colors/black-alpha.css';
+@import '@radix-ui/colors/violet.css';
+
+.slider {
+  display: flex;
+  align-items: center;
+
+  width: 251px;
+  height: 36px;
+  padding: 10px;
+}
+
+.value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  border: 1px solid rgb(76 76 76 / 100%);
+  border-radius: 2px;
+}
+
+.sliderRoot {
+  touch-action: none;
+  user-select: none;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: 155px;
+  height: 16px;
+  padding: 10px;
+}
+
+.sliderTrack {
+  position: relative;
+
+  flex-grow: 1;
+
+  height: 3px;
+
+  background-color: #45307e;
+  border-radius: 9999px;
+}
+
+.sliderRange {
+  position: absolute;
+  height: 100%;
+  background-color: rgb(139 96 253);
+}
+
+.sliderThumbPoint {
+  width: 8px;
+  height: 8px;
+  background-color: #fdfdfd;
+  border-radius: 10px;
+}
+
+.sliderThumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+
+  background-color: rgb(139 96 253);
+  border-radius: 10px;
+
+  &:hover {
+    box-shadow: 0 0 0 10px rgb(139 96 253 / 40%);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 10px rgb(139 96 253 / 40%);
+  }
+}
