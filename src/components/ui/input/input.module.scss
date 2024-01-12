@@ -4,7 +4,19 @@
   width: 284px;
   height: 36px;
   background: none;
+  color: #808080
 }
+
+.input:hover {
+  background-color: #171717;
+}
+
+.input:active {
+  background: none;
+  color: #fff;
+  border-color: #fff
+}
+
 
 .error {
   border-color: #f23d61;
@@ -12,7 +24,6 @@
 }
 
 .default {
-
 }
 
 .password {

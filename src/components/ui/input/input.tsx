@@ -17,7 +17,7 @@ export const InputControl = (props: InputProps) => {
   return (
     <div>
       <Typography variant={'body2'}>{title}</Typography>
-      <input className={classNames} placeholder={placeholder} />
+      <input className={classNames} placeholder={placeholder} type={type}/>
       {errorMessage ? <Typography variant={'link2'}>{errorMessage}</Typography> : ''}
     </div>
   )

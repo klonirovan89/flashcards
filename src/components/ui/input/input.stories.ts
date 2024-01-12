@@ -19,11 +19,18 @@ export const Default: Story = {
   },
 }
 
-export const Error: Story = {
+export const Password: Story = {
   args: {
     placeholder: 'Input',
     title: 'Input',
-    type: 'default',
-    errorMessage: 'Error!'
+    type: 'password'
+  },
+}
+
+export const Search: Story = {
+  args: {
+    placeholder: 'Input',
+    title: 'Input',
+    type: 'search'
   },
 }
