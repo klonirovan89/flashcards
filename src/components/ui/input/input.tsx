@@ -1,24 +1,32 @@
-import { Typography } from '@/components/ui/typography'
-import { clsx } from 'clsx'
+import {Typography} from '@/components/ui/typography'
+import {clsx} from 'clsx'
 
 import s from './input.module.scss'
+import {useState} from "react";
 
-export type InputProps = {
-  placeholder?: string
-  title?: string
-  type?: 'default' | 'password' | 'search'
-  errorMessage?: string
+export type SuperInputProps = {
+    placeholder?: string
+    title?: string
+    type?: 'default' | 'password' | 'search'
+    errorMessage?: string
 }
 
-export const InputControl = (props: InputProps) => {
-  const { placeholder, title, type=  'default', errorMessage} = props
-  const classNames = clsx(s.input, s[type], s[errorMessage ? 'error' : ''])
+export const SuperInput = (props: SuperInputProps) => {
+    const {placeholder, title, type = 'default', errorMessage} = props
+    const [isVisiblePassword, setIsVisiblePassword] = useState<boolean>(true)
 
-  return (
-    <div>
-      <Typography variant={'body2'}>{title}</Typography>
-      <input className={classNames} placeholder={placeholder} type={type}/>
-      {errorMessage ? <Typography variant={'link2'}>{errorMessage}</Typography> : ''}
-    </div>
-  )
+    const finalInputType = isVisiblePassword ? 'default' : type
+    const inputClassName = clsx(s.input, s[errorMessage ? 'error' : ''])
+    const eyeClassName = clsx(s.eyeButton, s[isVisiblePassword ? 'opened' : 'closed'])
+
+    return (
+        <div className={s.superInput}>
+            <Typography variant={'body2'}>{title}</Typography>
+            <div className={s.textField}>
+                <input className={inputClassName} placeholder={placeholder} type={finalInputType}/>
+              {type === 'password' ? <div className={eyeClassName} onClick={() => setIsVisiblePassword(!isVisiblePassword)}></div> : ''}
+            </div>
+            {!!errorMessage && <Typography variant={'link2'}>{errorMessage}</Typography>}
+        </div>
+    )
 }
