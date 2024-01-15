@@ -1,20 +1,36 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { InputControl } from './'
+import { SuperInput } from './'
 
 const meta = {
-  component: InputControl,
+  component: SuperInput,
   tags: ['autodocs'],
-  title: 'Components/InputControl',
-} satisfies Meta<typeof InputControl>
+  title: 'Components/SuperInput',
+} satisfies Meta<typeof SuperInput>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Unchecked: Story = {
+export const Default: Story = {
   args: {
     placeholder: 'Input',
     title: 'Input',
-    variant: 'input',
+    type: 'default'
+  },
+}
+
+export const Password: Story = {
+  args: {
+    placeholder: 'Input',
+    title: 'Input',
+    type: 'password'
+  },
+}
+
+export const Search: Story = {
+  args: {
+    placeholder: 'Input',
+    title: 'Input',
+    type: 'search'
   },
 }

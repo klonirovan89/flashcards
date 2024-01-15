@@ -1,5 +1,72 @@
+.superInput {
+  width: 290px;
+}
+
+.textField {
+  position: relative;
+}
+
 .input {
-  border: 2px solid black;
+  padding: 0 5px;
+  width: 284px;
+  height: 36px;
+  background: none;
+  border: 1px solid #4C4C4C;
+  border-radius: 2px;
+  color: #808080;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.input.password {
+  padding-right: 35px;
+}
+
+.input.search {
+  padding-left: 35px;
+}
+
+
+.input:hover {
+  background-color: #171717;
+}
+
+.input:active {
+  color: #fff;
+  border-color: #fff
+}
+
+.input.error {
+  border-color: #f23d61;
+  color: #f23d61;
+}
+
+.eyeButton {
+  position: absolute;
+  z-index: 1;
+  translate: 0px -10px;
+  top: 50%;
+  right: 15px;
+  width: 18px;
+  height: 18px;
+}
+
+.magniGlass {
+  position: absolute;
+  z-index: 1;
+  translate: 0px -10px;
+  top: 50%;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  color: #FFF;
+}
+
+.input:disabled,
+.input:disabled .magniGlass,
+.input:disabled .eyeButton {
+  color: #4C4C4C;
 }
 
 
