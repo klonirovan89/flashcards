@@ -7,14 +7,14 @@ import {EyeNoneIcon, EyeOpenIcon, MagnifyingGlassIcon} from "@radix-ui/react-ico
 
 export type SuperInputProps = {
     placeholder?: string
-    title?: string
+    label?: string
     type?: 'default' | 'password' | 'search'
     errorMessage?: string
     disabled?: boolean
 }
 
 export const SuperInput = (props: SuperInputProps) => {
-    const {placeholder, title, type = 'default', errorMessage, disabled = false} = props
+    const {placeholder, label, type = 'default', errorMessage, disabled = false} = props
     const [isVisiblePassword, setIsVisiblePassword] = useState<boolean>(false)
 
     const finalInputType = isVisiblePassword ? 'default' : type
@@ -25,7 +25,7 @@ export const SuperInput = (props: SuperInputProps) => {
 
     return (
         <div className={s.superInput}>
-            <Typography variant={'body2'}>{title}</Typography>
+            <Typography variant={'body2'}>{label}</Typography>
 
             <div className={s.textField}>
 
