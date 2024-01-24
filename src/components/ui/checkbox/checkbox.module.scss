@@ -5,12 +5,54 @@
   justify-content: flex-start;
 }
 
-.unchecked {
-  color: #0a6638;
+.CheckboxRoot {
+  background-color: rgba(255, 255, 255, 0);
+  width: 25px;
+  height: 25px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #c1bfc5;
+
+&:hover{
+  border: 2px solid white;
+  background-color: white;
+}
+  &:hover::before {
+    content: "";
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background-color: rgba(51, 51, 51, 0.46);
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+
+  &:focus::before {
+    content: "";
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background-color: rgba(127, 127, 127, 0.66);
+    border-radius: 50%;
+    box-sizing: border-box;
+
+  }
+
+  &:focus{
+    background-color: white;
+    border: 2px solid white;
+  }
+
+  &:active {
+    background-color: white;
+    border: 2px solid white;
+  }
+
 }
 
-.checked {
-  color: darkred;
+
+.CheckboxIndicator {
+  color: black;
 }
-
-

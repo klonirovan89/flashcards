@@ -13,12 +13,11 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Unchecked: Story = {
+export const OnlyCheckbox: Story = {
   args: {
     checked: false,
     disabled: false,
-    label: 'Click me',
-    variant: 'unchecked',
+    variant: 'Checked',
   },
   render: args => {
     const [checked, setChecked] = useState<boolean>(args.checked)
@@ -34,7 +33,7 @@ export const Checked: Story = {
     checked: true,
     disabled: false,
     label: 'Click me',
-    variant: 'checked',
+    variant: 'Checked',
   },
   render: args => {
     const [checked, setChecked] = useState<boolean>(args.checked)
@@ -47,7 +46,7 @@ export const Checked: Story = {
 
 export const Disabled: Story = {
   args: {
-    checked: true,
+    checked: false,
     disabled: true,
     label: 'Click me',
     variant: 'Disabled',
