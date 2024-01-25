@@ -15,29 +15,29 @@ export const SliderControl = (props: SliderProps) => {
   const { max, min, onChange, step, value } = props
 
   return (
-    <div className={s['slider']}>
-      <div className={s['value']}>
+    <div className={s.slider}>
+      <div className={s.value}>
         <Typography variant={'body1'}>{value[0]}</Typography>
       </div>
       <Slider.Root
-        className={s['sliderRoot']}
+        className={s.sliderRoot}
         defaultValue={value}
         max={max}
         min={min}
         onValueChange={onChange}
         step={step}
       >
-        <Slider.Track className={s['sliderTrack']}>
-          <Slider.Range className={s['sliderRange']} />
+        <Slider.Track className={s.sliderTrack}>
+          <Slider.Range className={s.sliderRange} />
         </Slider.Track>
-        <Slider.Thumb className={s['sliderThumb']}>
-          <div className={s['sliderThumbPoint']}></div>
+        <Slider.Thumb className={s.sliderThumb}>
+          <div className={s.sliderThumbPoint}></div>
         </Slider.Thumb>
-        <Slider.Thumb className={s['sliderThumb']}>
-          <div className={s['sliderThumbPoint']}></div>
+        <Slider.Thumb className={s.sliderThumb}>
+          <div className={s.sliderThumbPoint}></div>
         </Slider.Thumb>
       </Slider.Root>
-      <div className={s['value']}>
+      <div className={s.value}>
         <Typography variant={'body1'}>{value[1]}</Typography>
       </div>
     </div>
