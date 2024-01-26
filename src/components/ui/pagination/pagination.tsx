@@ -53,7 +53,7 @@ export const PaginationControl = (props: PropsType) => {
     <div>
       <div>
         {valuesPage.map((el, index) => (
-          <div key={index}>{el.name}</div>
+          <Typography variant={"body2"} key={index}>{el.name}</Typography>
         ))}
       </div>
       <div className={s.pagination}>
