@@ -1,0 +1,68 @@
+button {
+  outline: none;
+}
+
+.select {
+  color: white;
+  cursor: pointer;
+}
+
+.trigger {
+  width: 500px;
+  display: flex;
+  text-align: justify;
+  cursor: pointer;
+  background-color: #171717;
+  border: 1px solid #4b4b4b;
+  border-radius: 2px;
+
+  &:hover:not([data-disabled]) {
+    background-color: #333333;
+    border: 1px solid #7f7f7f;
+  }
+
+  &[data-state='open'] {
+    border-radius: 2px 2px 0 0;
+    border: 1px solid #7f7f7f;
+  }
+
+  &:focus {
+    border-color: #2f67ca;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    border-color: #4b4b4b;
+  }
+}
+
+.trigger::placeholder {
+  white-space: normal;
+}
+
+.viewport {
+  cursor: pointer;
+  background-color: #171717;
+  border: 1px solid #7f7f7f;
+  border-radius: 0 0 2px 2px;
+}
+
+.typographyStyle {
+  color: white;
+}
+
+.typographyStyleDisabled {
+  color: #4b4b4b;
+}
+
+.item {
+  outline: none;
+
+  &:hover{
+      background-color: #8c61ff;
+
+    .typographyStyle {
+      color: #a17efd;
+    }
+  }
+}
