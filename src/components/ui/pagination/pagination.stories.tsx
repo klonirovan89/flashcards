@@ -73,6 +73,7 @@ const listNumberValues = [
 
 export const Default: Story = {
   args: {
+    label: "Pagination whit Select-box",
     values: values,
     listNumberValues: listNumberValues,
   }

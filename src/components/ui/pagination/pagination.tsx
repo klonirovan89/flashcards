@@ -12,6 +12,7 @@ type ListNumberValuesType = {
 export type PropsType = {
   values: ValuesType[]
   listNumberValues: ListNumberValuesType[]
+  label: string
 }
 
 export type ValuesType = {
@@ -19,7 +20,7 @@ export type ValuesType = {
 }
 
 export const PaginationControl = (props: PropsType) => {
-  const { values, listNumberValues } = props;
+  const { values, listNumberValues , label} = props;
 
   const [selectedPage, setSelectedPage] = useState<number>(1);
   const [selectedValue, setSelectedValue] = useState<string>(listNumberValues[0].label);
@@ -54,6 +55,7 @@ export const PaginationControl = (props: PropsType) => {
 
   return (
     <div>
+      {label && <Typography variant={"body2"}>{label}</Typography>}
       <div>
         {valuesPage.map((el, index) => (
           <Typography variant={"body2"} key={index}>{el.name}</Typography>
