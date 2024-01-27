@@ -21,8 +21,8 @@ const listValues = [
 
 export const Default: Story = {
   args: {
+    label: "Select-box",
     listValues: listValues,
-    selectedValue: '1',
     disabled: false,
   },
   render: args => {
@@ -30,14 +30,14 @@ export const Default: Story = {
     const handleSelectChange = (value: string) => {
       setSelectedValue(value);
     };
-    return  <SelectControl selectedValue={selectedValue} disabled={args.disabled} handleSelectChange={handleSelectChange} listValues={args.listValues}/>
+    return  <SelectControl selectedValue={selectedValue} disabled={args.disabled} handleSelectChange={handleSelectChange} listValues={args.listValues} label={args.label}/>
   },
 }
 
 export const Disabled: Story = {
   args: {
+    label: "Select-box",
     listValues: listValues,
-    selectedValue: '1',
     disabled: true,
   },
   render: args => {
@@ -45,7 +45,7 @@ export const Disabled: Story = {
     const handleSelectChange = (value: string) => {
       setSelectedValue(value);
     };
-    return  <SelectControl selectedValue={selectedValue} disabled={args.disabled} handleSelectChange={handleSelectChange} listValues={args.listValues}/>
+    return  <SelectControl selectedValue={selectedValue} disabled={args.disabled} handleSelectChange={handleSelectChange} listValues={args.listValues} label={args.label}/>
   },
 }
 

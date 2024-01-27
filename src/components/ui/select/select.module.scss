@@ -8,13 +8,17 @@ button {
 }
 
 .trigger {
-  width: 500px;
+  width: 210px;
+  height: 36px;
   display: flex;
   text-align: justify;
+  justify-content: space-between;
+  align-items: center;
   cursor: pointer;
   background-color: #171717;
   border: 1px solid #4b4b4b;
   border-radius: 2px;
+  padding: 5px 12px 5px 12px;
 
   &:hover:not([data-disabled]) {
     background-color: #333333;
@@ -24,6 +28,10 @@ button {
   &[data-state='open'] {
     border-radius: 2px 2px 0 0;
     border: 1px solid #7f7f7f;
+
+    .img {
+      transform: rotate(180deg);
+    }
   }
 
   &:focus {
@@ -36,11 +44,13 @@ button {
   }
 }
 
-.trigger::placeholder {
-  white-space: normal;
+.img {
+  width: 16px;
+  height: 16px;
 }
 
 .viewport {
+  width: 210px;;
   cursor: pointer;
   background-color: #171717;
   border: 1px solid #7f7f7f;
@@ -57,9 +67,10 @@ button {
 
 .item {
   outline: none;
+  padding: 5px 12px 5px 12px;
 
-  &:hover{
-      background-color: #8c61ff;
+  &:hover {
+    background-color: #8c61ff;
 
     .typographyStyle {
       color: #a17efd;

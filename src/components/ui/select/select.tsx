@@ -9,21 +9,23 @@ type ListValuesType = {
 }
 
 export type PropsType = {
-  selectedValue: string
+  selectedValue?: string
   handleSelectChange: (value: string) => void
   listValues: ListValuesType[]
-  disabled: boolean
+  disabled?: boolean
+  label?: string
 }
 
 export const SelectControl = (props: PropsType) => {
-const {selectedValue, handleSelectChange, listValues, disabled} = props;
+const {selectedValue, handleSelectChange, listValues, disabled, label} = props;
 
   return (
       <div className={s.select}>
+        {label && <Typography variant={"body2"}>{label}</Typography>}
         <Select.Root defaultValue={selectedValue} onValueChange={(value) => handleSelectChange(value)} >
           <Select.Trigger disabled={disabled} className={s.trigger}>
-            <Select.Value placeholder={selectedValue} className={s.value}/>
-              <img src={LayerDown} alt="Layer Down" />
+            <Select.Value placeholder={selectedValue}/>
+              <img className={s.img} src={LayerDown} alt="Layer Down" />
           </Select.Trigger>
           <Select.Portal className={s.portal}>
             <Select.Content position="popper" sideOffset={-1}>
