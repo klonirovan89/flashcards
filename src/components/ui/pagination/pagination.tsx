@@ -1,14 +1,17 @@
 import Pagination from "@mui/material/Pagination";
-import * as Select from "@radix-ui/react-select";
 import { useEffect, useState } from "react";
 import s from "../pagination/pagination.module.scss";
 import { Typography } from "@/components/ui/typography";
-import LayerDown from "./icons/selectIcons/LayerDown.svg";
+import { SelectControl } from "@/components/ui/select";
 
+type ListNumberValuesType = {
+  value: string
+  label: string
+}
 
 export type PropsType = {
   values: ValuesType[]
-  listNumberValues: string[]
+  listNumberValues: ListNumberValuesType[]
 }
 
 export type ValuesType = {
@@ -19,7 +22,7 @@ export const PaginationControl = (props: PropsType) => {
   const { values, listNumberValues } = props;
 
   const [selectedPage, setSelectedPage] = useState<number>(1);
-  const [selectedValue, setSelectedValue] = useState<string>(listNumberValues[0]);
+  const [selectedValue, setSelectedValue] = useState<string>(listNumberValues[0].label);
   const [valuesPage, setValuesPage] = useState<ValuesType[]>(values);
   const [countPage, setCountPage] = useState<number>(20);
 
@@ -58,27 +61,7 @@ export const PaginationControl = (props: PropsType) => {
       </div>
       <div className={s.pagination}>
         <Pagination count={countPage} page={selectedPage} onChange={handleChange} />
-        <Select.Root defaultValue={selectedValue} onValueChange={(value) => handleSelectChange(value)}>
-          <Select.Trigger className={s.trigger}>
-            <Select.Value className={s.selectValue}>
-              {selectedValue}
-              <img src={LayerDown} alt="Custom Arrow" />
-            </Select.Value>
-          </Select.Trigger>
-          <Select.Portal>
-            <Select.Content position="popper" sideOffset={0}>
-              <Select.Viewport className={s.viewport}>
-                {listNumberValues.map((el, index) => (
-                  <Select.Item key={index} value={el}>
-                    <Select.ItemText className={s.itemText}>
-                      <Typography className={s.typographyStyle} variant={"body2"}>{el}</Typography>
-                    </Select.ItemText>
-                  </Select.Item>
-                ))}
-              </Select.Viewport>
-            </Select.Content>
-          </Select.Portal>
-        </Select.Root>
+        <SelectControl selectedValue={selectedValue} handleSelectChange={handleSelectChange} listValues={listNumberValues}/>
         <Typography variant={"body2"}>
           Current page: {selectedPage}
         </Typography>

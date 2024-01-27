@@ -11,9 +11,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
-  args: {
-    values: [
+const values = [
   { name: "1" },
   { name: "2" },
   { name: "3" },
@@ -64,7 +62,18 @@ export const Default: Story = {
   { name: "48" },
   { name: "49" },
   { name: "50" },
-],
-    listNumberValues: ["5", "10", "15", "20", "100"],
-  },
+]
+
+const listNumberValues = [
+  { value: "1", label: "5" },
+  { value: '2', label: '15' },
+  { value: '3', label: '20' },
+  { value: '4', label: '100' },
+]
+
+export const Default: Story = {
+  args: {
+    values: values,
+    listNumberValues: listNumberValues,
+  }
 }

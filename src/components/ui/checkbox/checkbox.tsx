@@ -6,7 +6,7 @@ import { ComponentPropsWithoutRef, forwardRef } from "react";
 
 export type CheckboxProps = {
     onChange?: () => void
-    checked?: boolean
+    checked: boolean
     disabled?: boolean
     label?: string
     name: string
