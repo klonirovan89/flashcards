@@ -1,8 +1,9 @@
-import Pagination from "@mui/material/Pagination";
 import { useEffect, useState } from "react";
-import s from "../pagination/pagination.module.scss";
 import { Typography } from "@/components/ui/typography";
 import { SelectControl } from "@/components/ui/select";
+import s from "../pagination/pagination.module.scss";
+import { ButtonBlock } from "@/components/ui/pagination/buttonBlock/buttonBlock";
+
 
 type ListNumberValuesType = {
   value: string
@@ -20,12 +21,12 @@ export type ValuesType = {
 }
 
 export const PaginationControl = (props: PropsType) => {
-  const { values, listNumberValues , label} = props;
+  const { values, listNumberValues, label } = props;
 
   const [selectedPage, setSelectedPage] = useState<number>(1);
   const [selectedValue, setSelectedValue] = useState<string>(listNumberValues[0].label);
   const [valuesPage, setValuesPage] = useState<ValuesType[]>(values);
-  const [countPage, setCountPage] = useState<number>(20);
+  const [countPage, setCountPage] = useState<number>(1);
 
   useEffect(() => {
     const startIndex = (selectedPage - 1) * +selectedValue;
@@ -45,13 +46,22 @@ export const PaginationControl = (props: PropsType) => {
     setValuesPage(values.slice(0, +selectedValue));
   }, [selectedValue, values]);
 
-  const handleChange = (_: unknown, value: number) => {
+  const handleChange = (value: number) => {
     setSelectedPage(value);
   };
 
   const handleSelectChange = (value: string) => {
     setSelectedValue(value);
   };
+
+  const handleChangeArrow = (step: number) => {
+    setSelectedPage((prevPage) => Math.max(1, Math.min(prevPage + step, countPage)));
+  };
+
+  const numbers: number[] = [];
+  for (let i = 1; i <= countPage; i++) {
+    numbers.push(i);
+  }
 
   return (
     <div>
@@ -61,13 +71,32 @@ export const PaginationControl = (props: PropsType) => {
           <Typography variant={"body2"} key={index}>{el.name}</Typography>
         ))}
       </div>
-      <div className={s.pagination}>
-        <Pagination count={countPage} page={selectedPage} onChange={handleChange} />
-        <SelectControl selectedValue={selectedValue} handleSelectChange={handleSelectChange} listValues={listNumberValues}/>
-        <Typography variant={"body2"}>
+      <div className={s.div}>
+          <ButtonBlock
+            selectedPage={selectedPage}
+            handleChangeArrow={handleChangeArrow}
+            handleChange={handleChange}
+            numbers={numbers}
+            countPage={countPage}
+          />
+          <div className={s.select}>
+            <Typography className={s.typographyStyle} variant={"body2"}>
+              Show
+            </Typography>
+            <SelectControl
+              selectedValue={selectedValue}
+              handleSelectChange={handleSelectChange}
+              listValues={listNumberValues}
+              classForPaginetion={true}
+            />
+            <Typography className={s.typographyStyle} variant={"body2"}>
+              on the page
+            </Typography>
+          </div>
+        <Typography className={s.typographyStyle} variant={"body2"}>
           Current page: {selectedPage}
         </Typography>
-        <Typography variant={"body2"}>
+        <Typography className={s.typographyStyle} variant={"body2"}>
           Сurrent number values on the page: {selectedValue}
         </Typography>
       </div>
