@@ -2,7 +2,7 @@ import {Typography} from '@/components/ui/typography'
 import {clsx} from 'clsx'
 
 import s from './input.module.scss'
-import {useState} from "react";
+import {ComponentPropsWithoutRef, forwardRef, useState} from "react";
 import {EyeNoneIcon, EyeOpenIcon, MagnifyingGlassIcon} from "@radix-ui/react-icons";
 
 export type SuperInputProps = {
@@ -11,38 +11,45 @@ export type SuperInputProps = {
     type?: 'default' | 'password' | 'search'
     errorMessage?: string
     disabled?: boolean
-}
+} & ComponentPropsWithoutRef<'input'>
 
-export const SuperInput = (props: SuperInputProps) => {
-    const {placeholder, label, type = 'default', errorMessage, disabled = false} = props
-    const [isVisiblePassword, setIsVisiblePassword] = useState<boolean>(false)
 
-    const finalInputType = isVisiblePassword ? 'default' : type
-    const inputClassName = clsx(s.input, s[errorMessage ? 'error' : ''], s[type])
+type PropsType = SuperInputProps & Omit<ComponentPropsWithoutRef<'input'>, keyof SuperInputProps>
 
-    const eyeClassName = clsx(s.eyeButton, s[isVisiblePassword ? 'opened' : 'closed'])
-    const eyeOnClick = () => setIsVisiblePassword(!isVisiblePassword)
 
-    return (
-        <div className={s.superInput}>
-            <Typography variant={'body2'}>{label}</Typography>
+export const SuperInput = forwardRef<HTMLInputElement, PropsType>(
+    ({placeholder, label, type = 'default', errorMessage, disabled = false, ...rest}, ref) => {
+      
+        const [isVisiblePassword, setIsVisiblePassword] = useState<boolean>(false)
 
-            <div className={s.textField}>
+        const finalInputType = isVisiblePassword ? 'default' : type
+        const inputClassName = clsx(s.input, s[errorMessage ? 'error' : ''], s[type])
 
-                <input className={inputClassName} placeholder={placeholder} type={finalInputType} disabled={disabled}/>
+        const eyeClassName = clsx(s.eyeButton, s[isVisiblePassword ? 'opened' : 'closed'])
+        const eyeOnClick = () => setIsVisiblePassword(!isVisiblePassword)
 
-                {type === 'password' ?
-                    isVisiblePassword ? <EyeNoneIcon className={eyeClassName} onClick={eyeOnClick}/>
-                        : <EyeOpenIcon className={eyeClassName} onClick={eyeOnClick}/>
-                    : ''}
 
-                {type === 'search' ?
-                    <MagnifyingGlassIcon className={s.magniGlass}/> : ''}
+        return (
+            <div className={s.superInput}>
+                <Typography variant={'body2'}>{label}</Typography>
+
+                <div className={s.textField}>
+
+                    <input className={inputClassName} placeholder={placeholder} type={finalInputType} disabled={disabled} ref={ref} {...rest}/>
+
+                    {type === 'password' ?
+                        isVisiblePassword ? <EyeNoneIcon className={eyeClassName} onClick={eyeOnClick}/>
+                            : <EyeOpenIcon className={eyeClassName} onClick={eyeOnClick}/>
+                        : ''}
+
+                    {type === 'search' ?
+                        <MagnifyingGlassIcon className={s.magniGlass}/> : ''}
+
+                </div>
+
+                {!!errorMessage && <Typography variant={'link2'}>{errorMessage}</Typography>}
 
             </div>
-
-            {!!errorMessage && <Typography variant={'link2'}>{errorMessage}</Typography>}
-
-        </div>
-    )
-}
+        )
+    }
+)

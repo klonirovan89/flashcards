@@ -14,7 +14,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     placeholder: 'Input',
-    title: 'Input',
+    label: 'Input',
     type: 'default'
   },
 }
@@ -22,7 +22,7 @@ export const Default: Story = {
 export const Password: Story = {
   args: {
     placeholder: 'Input',
-    title: 'Input',
+    label: 'Input',
     type: 'password'
   },
 }
@@ -30,7 +30,7 @@ export const Password: Story = {
 export const Search: Story = {
   args: {
     placeholder: 'Input',
-    title: 'Input',
+    label: 'Input',
     type: 'search'
   },
 }
