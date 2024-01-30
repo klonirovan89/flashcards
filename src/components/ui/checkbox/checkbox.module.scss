@@ -1,16 +1,92 @@
+.div {
+  display: flex;
+  justify-content: flex-start;
+  width: max-content;
+  height: max-content;
+  align-items: center;
+}
+
 .checkbox {
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  position: relative;
+  width: 30px;
+  height: 30px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    background-color: #333334;
+    border-radius: 50%;
+  }
+
+  &:hover::before {
+    width: 36px;
+    height: 36px;
+  }
+
+  &:active::before {
+    background-color: #7f7f80;
+    width: 36px;
+    height: 36px;
+  }
 }
 
-.unchecked {
-  color: #0a6638;
+.сheckboxRoot {
+  background-color: rgba(255, 255, 255, 0);
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  display: flex;
+  border: 2px solid #c1bfc6;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+
+  &:active {
+    border-color: #c1bfc6;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
-.checked {
-  color: darkred;
+.сheckboxIndicator {
+  background-color: white;
+  width: 18px;
+  height: 18px;
+  color: black;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
 }
 
+.disabled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
 
+.сheckboxIndicatorDisabled {
+  background-color: #7f7f7f;
+  width: 18px;
+  height: 18px;
+  color: #d9d8de;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+
+.typographyDisabled {
+  opacity: 0.5;
+}

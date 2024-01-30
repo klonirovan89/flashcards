@@ -13,11 +13,13 @@ export type SuperInputProps = {
     disabled?: boolean
 } & ComponentPropsWithoutRef<'input'>
 
+
 type PropsType = SuperInputProps & Omit<ComponentPropsWithoutRef<'input'>, keyof SuperInputProps>
+
 
 export const SuperInput = forwardRef<HTMLInputElement, PropsType>(
     ({placeholder, label, type = 'default', errorMessage, disabled = false, ...rest}, ref) => {
-        //const {placeholder, label, type = 'default', errorMessage, disabled = false, ...rest} = props
+      
         const [isVisiblePassword, setIsVisiblePassword] = useState<boolean>(false)
 
         const finalInputType = isVisiblePassword ? 'default' : type
@@ -25,6 +27,7 @@ export const SuperInput = forwardRef<HTMLInputElement, PropsType>(
 
         const eyeClassName = clsx(s.eyeButton, s[isVisiblePassword ? 'opened' : 'closed'])
         const eyeOnClick = () => setIsVisiblePassword(!isVisiblePassword)
+
 
         return (
             <div className={s.superInput}>
