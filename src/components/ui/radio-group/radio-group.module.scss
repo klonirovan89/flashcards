@@ -1,0 +1,75 @@
+button {
+  all: unset;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+
+}
+
+.div {
+  display: flex;
+  align-items: center;
+  column-gap: 12px
+}
+
+.item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #8c61ff;
+  border-radius: 50%;
+
+  &:disabled {
+    cursor: auto;
+    opacity: 0.5;
+  }
+
+  &:hover:not([data-disabled]) .frame {
+    width: 36px;
+    height: 36px;
+    background-color: #333333;
+    transition: 0.3s;
+  }
+
+  &:focus:not([data-disabled]) .frame {
+    width: 36px;
+    height: 36px;
+    background-color: #171717;
+    transition: 0.3s;
+  }
+
+  &:active:not([data-disabled]) .frame {
+    width: 36px;
+    height: 36px;
+    background-color: #382766;
+    transition: 0.3s;
+  }
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  background-color: #8c61ff;
+  border-radius: 50%;
+}
+
+.frame {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  background-color: #333333FF;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.error {
+  color: red;
+}
