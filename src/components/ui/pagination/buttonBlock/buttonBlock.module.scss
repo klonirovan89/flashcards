@@ -19,6 +19,7 @@
 }
 
 .arrowActive {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,6 +45,7 @@
 }
 
 .btn {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,6 +80,7 @@
 }
 
 .btnActive {
+  cursor: pointer;
   width: 24px;
   height: 24px;
   border: none;
