@@ -4,12 +4,15 @@ button {
 
 .root {
   width: 100%;
+  border-collapse: collapse;
+  border-bottom: 1px solid #333333;
 }
 
 .head {
   width: 100%;
   height: 36px;
   background-color: #333333;
+
 }
 
 .headCell {
@@ -26,7 +29,6 @@ button {
 
 .body {
 
-
 }
 
 .row {
@@ -41,16 +43,38 @@ button {
   min-width: 214px;
 }
 
-.divName {
+.divNameBody {
+  min-width: 214px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
+  margin: 10px 2px;
+
 }
 
 .divControl {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
+
+.typographyStyleHead {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.typographyStyleHead {
+
+}
+
+.typographyStyleBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+

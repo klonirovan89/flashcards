@@ -5,6 +5,8 @@ import remove from './icons/remove.svg'
 import edit from './icons/edit.svg'
 import s from './table.module.scss'
 import { Typography } from "@/components/ui/typography";
+import { RatingControl } from "@/components/ui/rating";
+
 
 const meta = {
   component: Table.Root,
@@ -54,46 +56,46 @@ export const Default: Story = {
       <Table.Root {...args}>
         <Table.Head>
           <Table.Row>
-            <Table.HeadCell>
-              <Typography variant={'subtitle2'}>Name</Typography>
+            <Table.HeadCell >
+              <Typography className={s.typographyStyleHead} variant={'subtitle2'}>Name</Typography>
             </Table.HeadCell>
             <Table.HeadCell>
-              <Typography variant={'subtitle2'}>Category</Typography>
+              <Typography className={s.typographyStyleHead} variant={'subtitle2'}>Category</Typography>
             </Table.HeadCell>
             <Table.HeadCell>
-              <Typography variant={'subtitle2'}>Author</Typography>
+              <Typography className={s.typographyStyleHead} variant={'subtitle2'}>Author</Typography>
             </Table.HeadCell>
             <Table.HeadCell>
-              <Typography variant={'subtitle2'}>Date</Typography>
+              <Typography className={s.typographyStyleHead} variant={'subtitle2'}>Date</Typography>
             </Table.HeadCell>
             <Table.HeadCell className={s.headCellRating}>
-              <Typography variant={'subtitle2'}>Rating</Typography>
+              <Typography className={s.typographyStyleHead} variant={'subtitle2'}>Rating</Typography>
             </Table.HeadCell>
             <Table.HeadCell className={s.headCellControl}>
-              <Typography variant={'subtitle2'}>Control</Typography>
+              <Typography className={s.typographyStyleHead} variant={'subtitle2'}>Control</Typography>
             </Table.HeadCell>
           </Table.Row>
         </Table.Head>
         <Table.Body>
           {data.map(el => (
             <Table.Row key={el.id}>
-                <Table.Cell className={s.headCellName}>
-                  <div className={s.divName}>
+                <Table.Cell>
+                  <div className={s.divNameBody}>
                   <img src={el.imgPath} width={118} alt="fddf"/>
-                    <Typography variant={'body2'}>{el.name}</Typography>
+                    <Typography className={s.typographyStyleBody} variant={'body2'}>{el.name}</Typography>
                   </div>
                 </Table.Cell>
               <Table.Cell>
-                <Typography variant={'body2'}>{el.category}</Typography>
+                <Typography className={s.typographyStyleBody} variant={'body2'}>{el.category}</Typography>
               </Table.Cell>
               <Table.Cell>
-                <Typography variant={'body2'}>{el.author}</Typography>
+                <Typography className={s.typographyStyleBody} variant={'body2'}>{el.author}</Typography>
               </Table.Cell>
               <Table.Cell>
-                <Typography variant={'body2'}>{el.date}</Typography>
+                <Typography className={s.typographyStyleBody} variant={'body2'}>{el.date}</Typography>
               </Table.Cell>
               <Table.Cell>
-                <Typography variant={'body2'}>{el.rating}</Typography>
+                  <RatingControl defaultValue={el.rating}></RatingControl>
               </Table.Cell>
               <Table.Cell>
                 <div className={s.divControl}>
