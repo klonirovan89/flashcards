@@ -1,27 +1,56 @@
-.root {
-  background-color: blue;
+button {
+  all: unset;
+}
 
+.root {
+  width: 100%;
 }
 
 .head {
   width: 100%;
   height: 36px;
-  background-color: red;
+  background-color: #333333;
 }
 
 .headCell {
-  width: 10%;
+
+}
+
+.headCellRating {
+  min-width: 168px;
+}
+
+.headCellControl {
+  min-width: 116px;
 }
 
 .body {
-  background-color: #8c61ff;
+
+
 }
 
 .row {
+
 }
 
 .cell {
+
 }
 
-.empty {
+.cellName {
+  min-width: 214px;
+}
+
+.divName {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.divControl {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

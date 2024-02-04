@@ -49,4 +49,5 @@ const Empty = ({...rest}) => {
   );
 };
 
+
 export const Table = { Root, Head, HeadCell, Body, Row, Cell, Empty }
