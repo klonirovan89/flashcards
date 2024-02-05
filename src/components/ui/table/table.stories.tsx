@@ -1,7 +1,7 @@
 import type {Meta, StoryObj} from "@storybook/react";
 import {Table} from "./";
 import play from './icons/play.svg'
-// import remove from './icons/remove.svg'
+import remove from './icons/remove.svg'
 import edit from './icons/edit.svg'
 import arrow from './icons/arrow.svg'
 import s from './table.module.scss'
@@ -72,9 +72,9 @@ export const Default: Story = {
         const handleChangeArrow = (id: string) => {
             setIdArrow(id)
             if (showArrow === null) {
-                setShowArrow('вверх')
-            } else if (showArrow === 'вверх') {
-                setShowArrow('вниз')
+                setShowArrow('up')
+            } else if (showArrow === 'up') {
+                setShowArrow('down')
             } else {
                 setShowArrow(null)
             }
@@ -85,15 +85,13 @@ export const Default: Story = {
             if (showArrow === null) {
                 const newData = listData.sort((a, b) => a[id as keyof typeof a] > b[id as keyof typeof a] ? 1 : -1)
                 setListData(newData)
-            } else if (showArrow === 'вверх') {
+            } else if (showArrow === 'up') {
                 const newData = listData.sort((a, b) => b[id as keyof typeof a] > a[id as keyof typeof a] ? 1 : -1)
                 setListData(newData)
             } else {
                 setListData(data)
             }
         }
-
-        console.log(data)
 
         return (
             <Table.Root {...args}>
@@ -106,19 +104,47 @@ export const Default: Story = {
                                 <Typography className={s.typographyStyleHead} variant={'subtitle2'}>Name</Typography>
                                 <button className={s.button}>
                                     {showArrow !== null && idArrow === 'name' &&
-                                        <img className={showArrow === 'вниз' ? s.arrow : ''} src={arrow} alt="arrow"
+                                        <img className={showArrow === 'down' ? s.arrow : ''} src={arrow} alt="arrow"
                                              width={14} height={7}/>}
                                 </button>
                             </div>
                         </Table.HeadCell>
                         <Table.HeadCell>
-                            <Typography className={s.typographyStyleHead} variant={'subtitle2'}>Category</Typography>
+                            <div className={s.divHeadCell} onClick={() => {
+                                handleChangeArrow('category')
+                            }}>
+                                <Typography className={s.typographyStyleHead}
+                                            variant={'subtitle2'}>Category</Typography>
+                                <button className={s.button}>
+                                    {showArrow !== null && idArrow === 'category' &&
+                                        <img className={showArrow === 'down' ? s.arrow : ''} src={arrow} alt="arrow"
+                                             width={14} height={7}/>}
+                                </button>
+                            </div>
                         </Table.HeadCell>
                         <Table.HeadCell>
-                            <Typography className={s.typographyStyleHead} variant={'subtitle2'}>Author</Typography>
+                            <div className={s.divHeadCell} onClick={() => {
+                                handleChangeArrow('author')
+                            }}>
+                                <Typography className={s.typographyStyleHead} variant={'subtitle2'}>Author</Typography>
+                                <button className={s.button}>
+                                    {showArrow !== null && idArrow === 'author' &&
+                                        <img className={showArrow === 'down' ? s.arrow : ''} src={arrow} alt="arrow"
+                                             width={14} height={7}/>}
+                                </button>
+                            </div>
                         </Table.HeadCell>
                         <Table.HeadCell>
-                            <Typography className={s.typographyStyleHead} variant={'subtitle2'}>Date</Typography>
+                            <div className={s.divHeadCell} onClick={() => {
+                                handleChangeArrow('date')
+                            }}>
+                                <Typography className={s.typographyStyleHead} variant={'subtitle2'}>Date</Typography>
+                                <button className={s.button}>
+                                    {showArrow !== null && idArrow === 'date' &&
+                                        <img className={showArrow === 'down' ? s.arrow : ''} src={arrow} alt="arrow"
+                                             width={14} height={7}/>}
+                                </button>
+                            </div>
                         </Table.HeadCell>
                         <Table.HeadCell className={s.headCellRating}>
                             <div className={s.divHeadCell} onClick={() => {
@@ -127,7 +153,7 @@ export const Default: Story = {
                                 <Typography className={s.typographyStyleHead} variant={'subtitle2'}>Rating</Typography>
                                 <button className={s.button}>
                                     {showArrow !== null && idArrow === 'rating' &&
-                                        <img className={showArrow === 'вниз' ? s.arrow : ''} src={arrow} alt="arrow"
+                                        <img className={showArrow === 'down' ? s.arrow : ''} src={arrow} alt="arrow"
                                              width={14} height={7}/>}
                                 </button>
                             </div>
@@ -142,7 +168,7 @@ export const Default: Story = {
                         <Table.Row key={el.id}>
                             <Table.Cell>
                                 <div className={s.divNameBody}>
-                                    <img src={el.imgPath} width={118} alt="fddf"/>
+                                    <img src={el.imgPath} width={118} height={60} alt="img"/>
                                     <Typography className={s.typographyStyleBody}
                                                 variant={'body2'}>{el.name}</Typography>
                                 </div>
@@ -166,7 +192,7 @@ export const Default: Story = {
                                 <div className={s.divControl}>
                                     <button className={s.button}><img src={play} alt="play"/></button>
                                     <button className={s.button}><img src={edit} alt="edit"/></button>
-                                    {/*<button className={s.button}><img src={remove} alt="remove" /></button>*/}
+                                    <button className={s.button}><img src={remove} alt="remove"/></button>
                                 </div>
                             </Table.Cell>
                         </Table.Row>
