@@ -14,23 +14,23 @@ export type PropsType = {
   listValues: ListValuesType[]
   disabled?: boolean
   label?: string
-  classForPaginetion?: boolean
+  classForPagination?: boolean
 }
 
 export const SelectControl = (props: PropsType) => {
-const {selectedValue, handleSelectChange, listValues, disabled, label, classForPaginetion} = props;
+const {selectedValue, handleSelectChange, listValues, disabled, label, classForPagination} = props;
 
   return (
       <div className={s.select}>
         {label && <Typography variant={"body2"}>{label}</Typography>}
         <Select.Root defaultValue={selectedValue} onValueChange={(value) => handleSelectChange(value)} >
-          <Select.Trigger disabled={disabled} className={classForPaginetion ? `${s.triggerPagination} ${s.trigger}` : s.trigger}>
+          <Select.Trigger disabled={disabled} className={classForPagination ? `${s.triggerPagination} ${s.trigger}` : s.trigger}>
             <Select.Value placeholder={selectedValue}/>
               <img className={s.img} src={LayerDown} alt="Layer Down" />
           </Select.Trigger>
-          <Select.Portal className={s.portal}>
+          <Select.Portal>
             <Select.Content position="popper" sideOffset={-1}>
-              <Select.Viewport className={classForPaginetion ? `${s.viewportPagination} ${s.viewport}` :s.viewport}>
+              <Select.Viewport className={classForPagination ? `${s.viewportPagination} ${s.viewport}` :s.viewport}>
                 {listValues.map((el, index) => (
                   <Select.Item key={index} value={el.label} className={s.item}>
                     <Select.ItemText>
