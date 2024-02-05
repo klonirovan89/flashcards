@@ -17,14 +17,33 @@ button {
 
 .headCell {
 
+  &:hover {
+    background-color: #3f3f3f;
+  }
 }
 
 .headCellRating {
   min-width: 168px;
+
+  &:hover {
+    background-color: #3f3f3f;
+  }
 }
 
 .headCellControl {
   min-width: 116px;
+
+  &:hover {
+    background-color: #3f3f3f;
+  }
+}
+
+.divHeadCell {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .body {
@@ -78,3 +97,21 @@ button {
   flex-wrap: wrap;
 }
 
+.rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.arrow {
+  rotate: 180deg;
+  transition: 0.3s;
+}
