@@ -1,19 +1,28 @@
 import { useForm, useController } from 'react-hook-form'
-
 import { Button } from '../../ui/button/button'
 import { SuperInput } from "../../ui/input/input";
-import { Input } from "@mui/material";
-import { CheckboxControl } from "../../ui/checkbox/checkbox";
-import React from "react";
-
-type FormValues = {
-  email: string
-  password: string
-  rememberMe?: boolean
-}
+import { CheckboxControl } from "@/components/ui/checkbox";
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
 
 export const LoginForm = () => {
-  const { register, handleSubmit , control} = useForm<FormValues>()
+
+  const loginSchema = z.object({
+    email: z.string().email(),
+    password: z.string().min(3),
+    rememberMe: z.boolean().default(false),
+  })
+
+  const {
+    control,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>({
+    resolver: zodResolver(loginSchema),
+  })
+
+  type FormValues = z.infer<typeof loginSchema>
 
   const onSubmit = (data: FormValues) => {
     console.log(data)
@@ -28,11 +37,11 @@ export const LoginForm = () => {
   })
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Input {...register('email')} name={'email'} />
-      <Input {...register('password')} name={'password'} />
-      <CheckboxControl checked={value} onValueChange={onChange} label={'remember me'} />
-      <Button type="submit">Submit</Button>
-    </form>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <SuperInput {...register('email')} label={'email'} errorMessage={errors.email?.message}/>
+        <SuperInput {...register('password')} label={'password'} errorMessage={errors.password?.message}/>
+        <CheckboxControl name={'rememberMe'} onChange={onChange} checked={value} label={'remember me'}/>
+        <Button type="submit">Submit</Button>
+      </form>
   )
 }
