@@ -87,7 +87,7 @@ export const PaginationControl = (props: PropsType) => {
               selectedValue={selectedValue}
               handleSelectChange={handleSelectChange}
               listValues={listNumberValues}
-              classForPaginetion={true}
+              classForPagination={true}
             />
             <Typography className={s.typographyStyle} variant={"body2"}>
               on the page
