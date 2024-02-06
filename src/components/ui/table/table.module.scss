@@ -63,9 +63,6 @@ th {
 }
 
 .typographyStyleHead {
-  //display: flex;
-  //justify-content: center;
-  //align-items: center;
   position: relative;
   width: 100%;
   cursor: pointer;
@@ -103,18 +100,14 @@ th {
 
 .divArrow {
   width: 14px;
-  margin-left: 5px;
+  margin: 0 5px;
 }
 
-.arrowASC {
+.arrow {
   transform-origin: center;
   transition: 0.3s;
-  margin-left: 5px;
+  margin: 0 5px;
 }
-
 .arrowDESC {
-  transform-origin: center;
   rotate: 180deg;
-  transition: 0.3s;
-  margin-left: 5px;
 }
