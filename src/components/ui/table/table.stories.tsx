@@ -69,9 +69,9 @@ export const Default: Story = {
         const handleChangeArrow = (id: string) => {
             setIdArrow(id)
             if (showArrow === null) {
-                setShowArrow('up')
-            } else if (showArrow === 'up') {
-                setShowArrow('down')
+                setShowArrow('asc')
+            } else if (showArrow === 'asc') {
+                setShowArrow('desc')
             } else {
                 setShowArrow(null)
             }
@@ -82,7 +82,7 @@ export const Default: Story = {
             if (showArrow === null) {
                 const newData = [...listData].sort((a, b) => a[id as keyof typeof a] > b[id as keyof typeof a] ? 1 : -1)
                 setListData(newData)
-            } else if (showArrow === 'up') {
+            } else if (showArrow === 'asc') {
                 const newData = [...listData].sort((a, b) => b[id as keyof typeof a] > a[id as keyof typeof a] ? 1 : -1)
                 setListData(newData)
             } else {
@@ -95,17 +95,20 @@ export const Default: Story = {
                 <Table.Head>
                     <Table.Row>
                         {columns.map(el => (
-                            <Table.HeadCell key={el.id}>
-                                <div className={s.divHeadCell} onClick={() => {
-                                    handleChangeArrow(el.id)
-                                }}>
+                            <Table.HeadCell key={el.id} onClick={() => {
+                                handleChangeArrow(el.id)
+                            }}>
+                                <div className={s.divHeadCell}>
                                     <Typography className={s.typographyStyleHead}
                                                 variant={'subtitle2'}>{el.label}</Typography>
-                                    <button className={s.button}>
-                                        {showArrow !== null && idArrow === el.id &&
-                                            <img className={showArrow === 'down' ? s.arrow : ''} src={arrow} alt="arrow"
-                                                 width={14} height={7}/>}
-                                    </button>
+                                    {showArrow !== null && idArrow === el.id ?
+                                        <img
+                                            className={showArrow === 'desc' ? s.arrowDESC : s.arrowASC}
+                                            src={arrow}
+                                            alt="arrow"
+                                            width={14} height={7}/> :
+                                        <div className={s.divArrow}></div>
+                                    }
                                 </div>
                             </Table.HeadCell>))}
                         <Table.HeadCell className={s.headCellControl}>
@@ -140,9 +143,15 @@ export const Default: Story = {
                             </Table.Cell>
                             <Table.Cell>
                                 <div className={s.divControl}>
-                                    <button className={s.button}><img src={play} alt="play"/></button>
-                                    <button className={s.button}><img src={edit} alt="edit"/></button>
-                                    <button className={s.button}><img src={remove} alt="remove"/></button>
+                                    <button className={s.button} onClick={() => alert("play")}><img src={play}
+                                                                                                    alt="play"/>
+                                    </button>
+                                    <button className={s.button} onClick={() => alert("edit")}><img src={edit}
+                                                                                                    alt="edit"/>
+                                    </button>
+                                    <button className={s.button} onClick={() => alert("remove")}><img src={remove}
+                                                                                                      alt="remove"/>
+                                    </button>
                                 </div>
                             </Table.Cell>
                         </Table.Row>
