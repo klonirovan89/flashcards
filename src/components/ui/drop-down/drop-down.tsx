@@ -6,11 +6,11 @@ import play from './../table/icons/play.svg'
 
 export const DropDown = () => {
 
-const item = ['Learn', 'Edit', 'Delete']
+    const item = ['Learn', 'Edit', 'Delete']
 
     return (
         <div className={s.container}>
-            <div>ffffffffffffffffffffffff</div>
+            <div>ffffffffffffffffffffffff:</div>
             <DropdownMenu.Root>
                 <DropdownMenu.Trigger>
                     <button className={s.button}>
@@ -18,9 +18,9 @@ const item = ['Learn', 'Edit', 'Delete']
                     </button>
                 </DropdownMenu.Trigger>
                 <DropdownMenu.Portal>
-                    <DropdownMenu.Content className={s.content} sideOffset={5}>
+                    <DropdownMenu.Content className={s.content} sideOffset={0} align={"end"}>
                         {item.map(el => (
-                            <DropdownMenu.Item>
+                            <DropdownMenu.Item className={s.menuitem}>
                                 <button className={s.item} onClick={() => alert("play")}>
                                     <div className={s.img}>
                                         <img src={play} alt="play"/>
@@ -28,8 +28,8 @@ const item = ['Learn', 'Edit', 'Delete']
                                     <Typography className={s.typographyStyle} variant={"caption"}>{el}</Typography>
                                 </button>
                             </DropdownMenu.Item>
-                            ))}
-                        <DropdownMenu.Arrow/>
+                        ))}
+                        <span className={s.divArrow}></span>
                     </DropdownMenu.Content>
                 </DropdownMenu.Portal>
             </DropdownMenu.Root>

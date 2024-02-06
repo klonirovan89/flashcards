@@ -24,7 +24,7 @@ export const RadioGroupControl = (props: PropsType) => {
       {options.map(el => (
         <div className={s.div} key={el.value}>
           <RadioGroup.Item className={s.item} value={el.value} checked={el.value === selectedValue}>
-            <div className={s.frame}></div>
+            <div className={s.frame}/>
             <RadioGroup.Indicator className={s.indicator} />
           </RadioGroup.Item>
           <Typography variant={"body2"}>
