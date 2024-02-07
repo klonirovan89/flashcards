@@ -2,9 +2,9 @@ import activeStar from "./icons/ActiveStar.svg";
 import star from "./icons/Star.svg";
 
 export const Rating = (props: PropsType) => {
+    const {defaultValue} = props;
 
-    const {defaultValue, starsList} = props;
-
+    const starsList = [1, 2, 3, 4, 5];
 
     return (
         <div>
@@ -20,5 +20,4 @@ export const Rating = (props: PropsType) => {
 
 type PropsType = {
     defaultValue: number
-    starsList: number[]
 }
