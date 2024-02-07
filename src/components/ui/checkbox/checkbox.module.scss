@@ -1,4 +1,8 @@
-.div {
+svg {
+  all: unset;
+}
+
+.container {
   display: flex;
   justify-content: flex-start;
   width: max-content;
@@ -36,7 +40,7 @@
   }
 }
 
-.сheckboxRoot {
+.root {
   background-color: rgba(255, 255, 255, 0);
   width: 18px;
   height: 18px;
@@ -56,12 +60,13 @@
   }
 }
 
-.сheckboxIndicator {
+.indicator {
+  display: flex;
   background-color: white;
   width: 18px;
   height: 18px;
   color: black;
-  border-radius: 4px;
+  border-radius: 2px;
   align-items: center;
   justify-content: center;
   position: absolute;
@@ -76,7 +81,7 @@
   height: 30px;
 }
 
-.сheckboxIndicatorDisabled {
+.indicatorDisabled {
   background-color: #7f7f7f;
   width: 18px;
   height: 18px;

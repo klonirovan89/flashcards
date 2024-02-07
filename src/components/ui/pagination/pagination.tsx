@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Typography } from "@/components/ui/typography";
-import { SelectControl } from "@/components/ui/select";
+import { Select } from "@/components/ui/select";
 import s from "../pagination/pagination.module.scss";
 import { ButtonBlock } from "@/components/ui/pagination/buttonBlock/buttonBlock";
 
@@ -83,7 +83,7 @@ export const PaginationControl = (props: PropsType) => {
             <Typography className={s.typographyStyle} variant={"body2"}>
               Show
             </Typography>
-            <SelectControl
+            <Select
               selectedValue={selectedValue}
               handleSelectChange={handleSelectChange}
               listValues={listNumberValues}

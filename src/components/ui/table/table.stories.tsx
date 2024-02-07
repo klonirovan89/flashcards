@@ -5,7 +5,7 @@ import remove from './icons/remove.svg'
 import edit from './icons/edit.svg'
 import s from './table.module.scss'
 import {Typography} from "@/components/ui/typography";
-import {RatingControl} from "@/components/ui/rating";
+import {Rating} from "@/components/ui/rating";
 import {useState} from "react";
 import arrow from "@/components/ui/table/icons/arrow.svg";
 
@@ -152,7 +152,7 @@ export const Default: Story = {
                             </Table.Cell>
                             <Table.Cell>
                                 <div className={s.rating}>
-                                    <RatingControl defaultValue={el.rating}></RatingControl>
+                                    <Rating defaultValue={el.rating}></Rating>
                                 </div>
                             </Table.Cell>
                             <Table.Cell>

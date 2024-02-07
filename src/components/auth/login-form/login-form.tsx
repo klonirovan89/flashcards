@@ -1,7 +1,7 @@
 import { useForm, useController } from 'react-hook-form'
 import { Button } from '../../ui/button/button'
 import { SuperInput } from "../../ui/input/input";
-import { CheckboxControl } from "@/components/ui/checkbox";
+import { Checkbox } from "@/components/ui/checkbox";
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -40,7 +40,7 @@ export const LoginForm = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <SuperInput {...register('email')} label={'email'} errorMessage={errors.email?.message}/>
         <SuperInput {...register('password')} label={'password'} errorMessage={errors.password?.message}/>
-        <CheckboxControl name={'rememberMe'} onChange={onChange} checked={value} label={'remember me'}/>
+        <Checkbox name={'rememberMe'} onChange={onChange} checked={value} label={'remember me'}/>
         <Button type="submit">Submit</Button>
       </form>
   )

@@ -1,7 +1,4 @@
-@import '@radix-ui/colors/black-alpha.css';
-@import '@radix-ui/colors/violet.css';
-
-.slider {
+.container {
   display: flex;
   align-items: center;
 
@@ -22,7 +19,7 @@
   border-radius: 2px;
 }
 
-.sliderRoot {
+.root {
   touch-action: none;
   user-select: none;
 
@@ -36,7 +33,7 @@
   padding: 10px;
 }
 
-.sliderTrack {
+.track {
   position: relative;
 
   flex-grow: 1;
@@ -47,20 +44,23 @@
   border-radius: 9999px;
 }
 
-.sliderRange {
+.range {
   position: absolute;
+
   height: 100%;
+
   background-color: rgb(139 96 253);
 }
 
-.sliderThumbPoint {
+.thumbPoint {
   width: 8px;
   height: 8px;
+
   background-color: #fdfdfd;
   border-radius: 10px;
 }
 
-.sliderThumb {
+.thumb {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,12 +71,15 @@
   background-color: rgb(139 96 253);
   border-radius: 10px;
 
+
   &:hover {
     box-shadow: 0 0 0 10px rgb(139 96 253 / 40%);
+    transition: 0.3s;
   }
 
   &:focus {
     outline: none;
     box-shadow: 0 0 0 10px rgb(139 96 253 / 40%);
+    transition: 0.3s;
   }
 }

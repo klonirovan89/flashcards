@@ -1,4 +1,4 @@
-import { CheckboxControl, CheckboxProps } from "../checkbox/checkbox";
+import { Checkbox, CheckboxProps } from "../checkbox/checkbox";
 import React from "react";
 import { useController } from "react-hook-form";
 import { UseControllerProps } from "react-hook-form/dist/types";
@@ -15,6 +15,6 @@ export const ControlledCheckbox = ({ name, control, shouldUnregister, ...rest }:
   });
 
 
-  return <CheckboxControl {...rest} checked={value} onValueChange={onChange} />;
+  return <Checkbox {...rest} checked={value} onValueChange={onChange} />;
 };
 

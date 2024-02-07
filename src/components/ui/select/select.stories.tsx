@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { SelectControl } from "@/components/ui/select/select";
+import { Select } from "@/components/ui/select/select";
 import { useState } from "react";
 
 const meta = {
-  component: SelectControl,
+  component: Select,
   tags: ['autodocs'],
-  title: 'Components/SelectControl',
-} satisfies Meta<typeof SelectControl>
+  title: 'Components/Select',
+} satisfies Meta<typeof Select>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-const listValues = [
+const valuesList = [
   { value: '1', label: 'Science' },
   { value: '2', label: 'Sports' },
   { value: '3', label: 'Movie' },
@@ -22,30 +22,30 @@ const listValues = [
 export const Default: Story = {
   args: {
     label: "Select-box",
-    listValues: listValues,
+    valuesList,
     disabled: false,
   },
   render: args => {
-    const [selectedValue, setSelectedValue] = useState<string>(args.listValues[0].label);
+    const [selectedValue, setSelectedValue] = useState<string>(args.valuesList[0].label);
     const handleSelectChange = (value: string) => {
       setSelectedValue(value);
     };
-    return  <SelectControl selectedValue={selectedValue} disabled={args.disabled} handleSelectChange={handleSelectChange} listValues={args.listValues} label={args.label}/>
+    return  <Select {...args} selectedValue={selectedValue} handleSelectChange={handleSelectChange}/>
   },
 }
 
 export const Disabled: Story = {
   args: {
     label: "Select-box",
-    listValues: listValues,
+    valuesList,
     disabled: true,
   },
   render: args => {
-    const [selectedValue, setSelectedValue] = useState<string>(args.listValues[0].label);
+    const [selectedValue, setSelectedValue] = useState<string>(args.valuesList[0].label);
     const handleSelectChange = (value: string) => {
       setSelectedValue(value);
     };
-    return  <SelectControl selectedValue={selectedValue} disabled={args.disabled} handleSelectChange={handleSelectChange} listValues={args.listValues} label={args.label}/>
+    return  <Select {...args} selectedValue={selectedValue} handleSelectChange={handleSelectChange}/>
   },
 }
 

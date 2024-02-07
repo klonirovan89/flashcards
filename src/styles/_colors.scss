@@ -31,7 +31,7 @@
   --color-info-100: #73a5ff;
   --color-info-300: #4c8dff;
   --color-info-500: #397df6;
-  --color-info-700: #2f68cc;
+  --color-info-700: rgb(47, 104, 204);
   --color-info-900: #234e99;
 
   // light
@@ -42,9 +42,11 @@
   --color-light-900: #c3c1c7;
 
   // dark
-  --color-dark-100: #ef0808;
-  --color-dark-300: #4b4b4b;
-  --color-dark-500: #f60202;
+  --color-dark-100: #808080;
+  --color-dark-300: #4c4c4c;
+  --color-dark-400: #3f3f3f;
+  --color-dark-500: #333;
   --color-dark-700: #171717;
+  --color-dark-800: #111;
   --color-dark-900: #000;
 }

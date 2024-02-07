@@ -1,23 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/react'
-
-
-import { RatingControl } from "./";
+import { Rating } from "./";
 
 const meta = {
-  component: RatingControl,
+  component: Rating,
   tags: ['autodocs'],
-  title: 'Components/RatingControl',
-} satisfies Meta<typeof RatingControl>
+  title: 'Components/Rating',
+} satisfies Meta<typeof Rating>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
+const defaultValue = 3;
+const starsList = [1, 2, 3, 4, 5];
+
 export const Default: Story = {
   args: {
-    defaultValue: 3,
+    defaultValue,
+    starsList,
   },
   render: args => {
 
-    return <RatingControl {...args} defaultValue={args.defaultValue}/>
+    return <Rating {...args}/>
   },
 }
