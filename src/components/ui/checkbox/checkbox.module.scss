@@ -6,6 +6,7 @@ button {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  column-gap: 6px;
 }
 
 .root {
@@ -19,6 +20,9 @@ button {
   justify-content: center;
   position: relative;
 
+  &[data-state = "checked"]{
+    border: 2px solid transparent;
+  }
 
   &:not([data-disabled])::before {
     position: absolute;
