@@ -1,97 +1,68 @@
-svg {
+button {
   all: unset;
 }
 
 .container {
   display: flex;
   justify-content: flex-start;
-  width: max-content;
-  height: max-content;
   align-items: center;
 }
 
-.checkbox {
-  cursor: pointer;
+.root {
+  background-color: rgba(255, 255, 255, 0);
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
   display: flex;
+  border: 2px solid var(--color-light-900);
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 30px;
-  height: 30px;
 
-  &::before {
-    content: "";
+
+  &:not([data-disabled])::before {
     position: absolute;
+    z-index: -1;
+    content: '';
     width: 0;
     height: 0;
-    background-color: #333334;
     border-radius: 50%;
+    transition: 0.3s;
   }
 
   &:hover::before {
     width: 36px;
     height: 36px;
+    background-color: var(--color-dark-500);
   }
 
   &:active::before {
-    background-color: #7f7f80;
     width: 36px;
     height: 36px;
-  }
-}
-
-.root {
-  background-color: rgba(255, 255, 255, 0);
-  width: 18px;
-  height: 18px;
-  border-radius: 4px;
-  display: flex;
-  border: 2px solid #c1bfc6;
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-
-  &:active {
-    border-color: #c1bfc6;
+    background-color: var(--color-dark-100);
   }
 
   &:disabled {
     cursor: not-allowed;
+    border: 2px solid var(--color-dark-100);
   }
 }
 
 .indicator {
-  display: flex;
-  background-color: white;
-  width: 18px;
-  height: 18px;
-  color: black;
-  border-radius: 2px;
-  align-items: center;
-  justify-content: center;
   position: absolute;
-}
-
-.disabled {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  width: 30px;
-  height: 30px;
-}
 
-.indicatorDisabled {
-  background-color: #7f7f7f;
-  width: 18px;
-  height: 18px;
-  color: #d9d8de;
+  width: 20px;
+  height: 20px;
+  color: var(--color-light-700);
   border-radius: 4px;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
+  background-color: var(--color-dark-100);
+
+  &:not([data-disabled]) {
+    color: black;
+    background-color: var(--color-light-100);
+  }
 }
 
-.typographyDisabled {
-  opacity: 0.5;
-}

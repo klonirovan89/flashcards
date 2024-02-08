@@ -5,19 +5,17 @@ import {Typography} from "@/components/ui/typography";
 import {ComponentPropsWithoutRef, forwardRef} from "react";
 
 export const Checkbox = forwardRef<HTMLButtonElement, PropsType>((props, ref) => {
-        const {checked, disabled, label, onChange, name} = props;
+        const {checked, disabled, label, onChange, id} = props;
         return (
             <div className={s.container}>
-                <div className={disabled ? s.disabled : s.checkbox}>
-                    <RadixCheckbox.Root name={name} className={s.root} defaultChecked id="c1" checked={checked}
+                    <RadixCheckbox.Root className={s.root} defaultChecked id={id} checked={checked}
                                         disabled={disabled}
                                         onCheckedChange={onChange} ref={ref}>
-                        <RadixCheckbox.Indicator className={disabled ? s.indicatorDisabled : s.indicator}>
+                        <RadixCheckbox.Indicator className={s.indicator}>
                             <CheckIcon/>
                         </RadixCheckbox.Indicator>
                     </RadixCheckbox.Root>
-                </div>
-                <div className={disabled ? s.typographyDisabled : ''}>
+                <div className={s.typographyDisabled}>
                     {label && <Typography variant={'body2'}>{label}</Typography>}
                 </div>
             </div>
@@ -30,5 +28,5 @@ export type PropsType = {
     checked: boolean
     disabled?: boolean
     label?: string
-    name: string
+    id?: string
 } & ComponentPropsWithoutRef<'button'>

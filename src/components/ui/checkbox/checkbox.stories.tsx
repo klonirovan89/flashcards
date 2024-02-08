@@ -15,7 +15,6 @@ export const OnlyCheckbox: Story = {
     args: {
         checked: false,
         disabled: false,
-        name: 'OnlyCheckbox'
     },
     render: args => {
         const [checked, setChecked] = useState<boolean>(args.checked)
@@ -31,7 +30,7 @@ export const Checked: Story = {
         checked: true,
         disabled: false,
         label: 'Click me',
-        name: 'Checked'
+        id: 'Checked'
     },
     render: args => {
         const [checked, setChecked] = useState<boolean>(args.checked)
@@ -47,7 +46,7 @@ export const UnChecked: Story = {
         checked: false,
         disabled: false,
         label: 'Click me',
-        name: 'UnChecked'
+        id: 'UnChecked'
     },
     render: args => {
         const [checked, setChecked] = useState<boolean>(args.checked)
@@ -63,7 +62,7 @@ export const DisabledChecked: Story = {
         checked: true,
         disabled: true,
         label: 'Click me',
-        name: 'DisabledChecked'
+        id: 'DisabledChecked'
     },
 }
 
@@ -72,6 +71,6 @@ export const DisabledUnChecked: Story = {
         checked: false,
         disabled: true,
         label: 'Click me',
-        name: 'DisabledUnChecked'
+        id: 'DisabledUnChecked'
     },
 }
