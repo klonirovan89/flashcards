@@ -2,7 +2,7 @@ import * as RadixDropdownMenu from '@radix-ui/react-dropdown-menu';
 import verticalOutline from './icons/verticalOutline.svg'
 import s from './drop-down.module.scss'
 import {Typography} from "@/components/ui/typography";
-import play from './../table/icons/play.svg'
+import {Icon} from "@/components/ui/Icon/Icon";
 
 export const DropdownMenu = (props: PropsType) => {
     const {value} = props;
@@ -22,7 +22,7 @@ export const DropdownMenu = (props: PropsType) => {
                             <RadixDropdownMenu.Item className={s.menuItem}>
                                 <button className={s.item} onClick={() => alert("play")}>
                                     <div className={s.img}>
-                                        <img src={play} alt="play"/>
+                                        <Icon iconId={"linkedin"} height={"21px"} width={"21px"} viewBox={"0 0 21px 21px"}/>
                                     </div>
                                     <Typography className={s.typographyStyle} variant={"caption"}>{el}</Typography>
                                 </button>
