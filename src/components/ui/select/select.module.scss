@@ -3,7 +3,6 @@ button {
 }
 
 .container {
-  color: white;
   cursor: pointer;
 }
 
@@ -15,32 +14,40 @@ button {
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  background-color: #171717;
-  border: 1px solid #4b4b4b;
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-300);
   border-radius: 2px;
   padding: 5px 12px 5px 12px;
 
   &:hover:not([data-disabled]) {
-    background-color: #333333;
-    border: 1px solid #7f7f7f;
+    background-color: var(--color-dark-500);
+    border: 1px solid var(--color-dark-100);
   }
 
   &[data-state='open'] {
     border-radius: 2px 2px 0 0;
-    border: 1px solid #7f7f7f;
+    border: 1px solid var(--color-dark-100);
 
     .img {
       transform: rotate(180deg);
     }
   }
 
-  &:focus {
-    border-color: #2f67ca;
+  &:focus-visible {
+    border-color: var(--color-info-700);
   }
 
   &:disabled {
     cursor: not-allowed;
-    border-color: #4b4b4b;
+    border-color: var(--color-dark-300);
+
+    .typographyStyle {
+      opacity: 0.5;
+    }
+
+    .img {
+      opacity: 0.5;
+    }
   }
 }
 
@@ -52,28 +59,28 @@ button {
 .viewport {
   width: 210px;
   cursor: pointer;
-  background-color: #171717;
-  border: 1px solid #7f7f7f;
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-100);
   border-radius: 0 0 2px 2px;
-}
-
-.typographyStyle {
-  color: white;
-}
-
-.typographyStyleDisabled {
-  color: #4b4b4b;
 }
 
 .item {
   outline: none;
   padding: 5px 12px 5px 12px;
 
-  &:hover {
-    background-color: #8c61ff;
+  &[data-highlighted] {
+    background-color: var(--color-accent-900);
 
     .typographyStyle {
-      color: #a17efd;
+      color: var(--color-accent-300);
+    }
+  }
+
+  &:hover {
+    background-color: var(--color-accent-900);
+
+    .typographyStyle {
+      color: var(--color-accent-300);
     }
   }
 }
