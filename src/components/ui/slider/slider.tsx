@@ -7,9 +7,7 @@ export const Slider = (props: PropsType) => {
 
     return (
         <div className={s.container}>
-            <div className={s.value}>
-                <Typography variant={'body1'}>{value[0]}</Typography>
-            </div>
+            <Typography className={s.typographyStyle} variant={'body1'}>{value[0]}</Typography>
             <RadixSlider.Root
                 className={s.root}
                 defaultValue={value}
@@ -22,15 +20,11 @@ export const Slider = (props: PropsType) => {
                     <RadixSlider.Range className={s.range}/>
                 </RadixSlider.Track>
                 <RadixSlider.Thumb className={s.thumb}>
-                    <div className={s.thumbPoint}></div>
                 </RadixSlider.Thumb>
                 <RadixSlider.Thumb className={s.thumb}>
-                    <div className={s.thumbPoint}></div>
                 </RadixSlider.Thumb>
             </RadixSlider.Root>
-            <div className={s.value}>
-                <Typography variant={'body1'}>{value[1]}</Typography>
-            </div>
+            <Typography className={s.typographyStyle} variant={'body1'}>{value[1]}</Typography>
         </div>
     );
 };
