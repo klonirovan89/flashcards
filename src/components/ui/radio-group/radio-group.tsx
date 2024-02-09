@@ -13,7 +13,7 @@ export const RadioGroup = (props: PropsType) => {
                         <div className={s.frame}/>
                         <RadixRadioGroup.Indicator className={s.indicator}/>
                     </RadixRadioGroup.Item>
-                    <Typography variant={"body2"}>{el.label}</Typography>
+                    <Typography className={disabled ? s.typographyDisabled : ''} variant={"body2"}>{el.label}</Typography>
                 </div>
             ))}
             {errorMessage && (

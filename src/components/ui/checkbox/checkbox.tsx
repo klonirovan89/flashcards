@@ -15,7 +15,7 @@ export const Checkbox = forwardRef<HTMLButtonElement, PropsType>((props, ref) =>
                             <CheckIcon/>
                         </RadixCheckbox.Indicator>
                     </RadixCheckbox.Root>
-                <div className={s.typographyDisabled}>
+                <div className={disabled ? s.typographyDisabled : ''}>
                     {label && <Typography variant={'body2'}>{label}</Typography>}
                 </div>
             </div>
