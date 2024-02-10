@@ -6,6 +6,10 @@ th {
   padding: 0;
 }
 
+svg {
+  fill: var(--color-light-100);
+}
+
 .root {
   width: 100%;
   border-collapse: collapse;
@@ -55,7 +59,7 @@ th {
   margin: 10px 2px;
 }
 
-.divControl {
+.control {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -119,6 +123,7 @@ th {
   transition: 0.3s;
   margin: 0 5px;
 }
+
 .arrowDESC {
   rotate: 180deg;
 }

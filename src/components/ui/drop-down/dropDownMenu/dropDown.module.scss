@@ -6,6 +6,10 @@ div {
   outline: none;
 }
 
+.icon svg {
+  fill: var(--color-light-100);
+}
+
 .button {
   position: relative;
   z-index: 0;
@@ -19,7 +23,7 @@ div {
     transform: translate(-50%, -50%);
     width: 26px;
     height: 26px;
-    background-color: #333333;
+    background-color: var(--color-dark-500);
     transition: 0.3s;
     border-radius: 50px;
   }
@@ -27,13 +31,14 @@ div {
 
 .content {
   width: 90px;
-  background-color: #171717;
-  border: 1px solid #333333;
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-500);
   border-radius: 4px;
   box-shadow: none;
 }
 
 .item {
+  cursor: pointer;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -42,7 +47,17 @@ div {
   padding: 20px 0;
   margin-left: 10px;
   column-gap: 6px;
-  border-bottom: 1px solid #333333;
+  border-bottom: 1px solid var(--color-dark-500);
+
+  &:hover {
+    .icon svg {
+      fill: var(--color-accent-300);
+    }
+
+    .typographyStyle {
+        color: var(--color-accent-300);
+    }
+  }
 }
 
 .menuItem:last-of-type .item {
@@ -53,25 +68,20 @@ div {
   display: flex;
 }
 
-.img {
+.icon {
   cursor: pointer;
   display: flex;
-  align-items: center;
-}
-
-.typographyStyle {
-  cursor: pointer;
 }
 
 .arrow {
   position: absolute;
   width: 10px;
   height: 10px;
-  background-color: #171717;
-  border: 1px solid #333333;
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-500);
   border-right: none;
   border-bottom: none;
-  top: -4%;
-  left: 81%;
+  top: -3.8%;
+  left: 82%;
   rotate: 45deg;
 }

@@ -1,10 +1,9 @@
 import * as RadixDropdownMenu from '@radix-ui/react-dropdown-menu';
-import verticalOutline from './icons/verticalOutline.svg'
-import s from './drop-down.module.scss'
+import s from './dropDown.module.scss'
 import {Typography} from "@/components/ui/typography";
-import {Icon} from "@/components/ui/Icon/Icon";
+import {Icon} from "@/components/ui/icon/Icon";
 
-export const DropdownMenu = (props: PropsType) => {
+export const DropDownMenu = (props: PropsType) => {
     const {value} = props;
 
     return (
@@ -13,18 +12,18 @@ export const DropdownMenu = (props: PropsType) => {
             <RadixDropdownMenu.Root>
                 <RadixDropdownMenu.Trigger>
                     <button className={s.button}>
-                        <img src={verticalOutline} alt="fdddfd"/>
+                        <Icon iconId={"verticalOutline"} height={"24px"} width={"24px"}/>
                     </button>
                 </RadixDropdownMenu.Trigger>
                 <RadixDropdownMenu.Portal>
-                    <RadixDropdownMenu.Content className={s.content} sideOffset={0} align={"end"}>
+                    <RadixDropdownMenu.Content className={s.content} sideOffset={2} align={"end"}>
                         {value.map(el => (
                             <RadixDropdownMenu.Item className={s.menuItem}>
                                 <button className={s.item} onClick={() => alert("play")}>
-                                    <div className={s.img}>
-                                        <Icon iconId={"linkedin"} height={"21px"} width={"21px"} viewBox={"0 0 21px 21px"}/>
+                                    <div className={s.icon}>
+                                        <Icon iconId={el.id} height={"16px"} width={"16px"}/>
                                     </div>
-                                    <Typography className={s.typographyStyle} variant={"caption"}>{el}</Typography>
+                                    <Typography className={s.typographyStyle} variant={"caption"}>{el.label}</Typography>
                                 </button>
                             </RadixDropdownMenu.Item>
                         ))}
@@ -37,6 +36,13 @@ export const DropdownMenu = (props: PropsType) => {
     )
 }
 
+
 type PropsType = {
-    value: string[]
+    value: ValuesType[]
 }
+
+type ValuesType = {
+    id: string
+    label: string
+}
+

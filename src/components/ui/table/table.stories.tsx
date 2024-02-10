@@ -4,7 +4,7 @@ import s from './table.module.scss'
 import {Typography} from "@/components/ui/typography";
 import {Rating} from "@/components/ui/rating";
 import {useState} from "react";
-import {Icon} from "@/components/ui/Icon/Icon";
+import {Icon} from "@/components/ui/icon/Icon";
 
 
 const meta = {
@@ -152,7 +152,7 @@ export const Default: Story = {
                                 </div>
                             </Table.Cell>
                             <Table.Cell>
-                                <div className={s.divControl}>
+                                <div className={s.control}>
                                     <button className={s.button} onClick={() => alert("play")}>
                                         <Icon iconId={"Learn"} width={"16px"} height={"16px"}/>
                                     </button>
