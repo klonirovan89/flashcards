@@ -1,13 +1,10 @@
 import type {Meta, StoryObj} from "@storybook/react";
 import {Table} from "./";
-import play from './icons/play.svg'
-import remove from './icons/remove.svg'
-import edit from './icons/edit.svg'
 import s from './table.module.scss'
 import {Typography} from "@/components/ui/typography";
 import {Rating} from "@/components/ui/rating";
 import {useState} from "react";
-import arrow from "@/components/ui/table/icons/arrow.svg";
+import {Icon} from "@/components/ui/Icon/Icon";
 
 
 const meta = {
@@ -114,18 +111,17 @@ export const Default: Story = {
                                     <Typography className={s.typographyStyleHead}
                                                 variant={'subtitle2'}>{el.label}</Typography>
                                     {currentSortDirection !== null && currentColumnId === el.id ?
-                                        <img
-                                            className={`${s.arrow} ${currentSortDirection === 'desc' ? s.arrowDESC : s.arrowASC}`}
-                                            src={arrow}
-                                            alt="arrow"
-                                            width={14} height={7}/> :
+                                        <div className={`${s.arrow} ${currentSortDirection === 'desc' ? s.arrowDESC : ''}`}>
+                                            <Icon iconId={"Arrow"} width={"24px"} height={"24px"}/>
+                                        </div>
+                                         :
                                         <div className={s.divArrow}></div>
                                     }
                                 </div>
                             </Table.HeadCell>))}
                         <Table.HeadCell className={s.headCellControl}>
-                            <div className={s.divHeadCell}>
-                                <Typography className={s.typographyStyleHead} variant={'subtitle2'}>Control</Typography>
+                            <div className={s.divHeadCellControl}>
+                                <Typography className={s.typographyStyleHeadControl} variant={'subtitle2'}>Control</Typography>
                             </div>
                         </Table.HeadCell>
                     </Table.Row>
@@ -157,14 +153,14 @@ export const Default: Story = {
                             </Table.Cell>
                             <Table.Cell>
                                 <div className={s.divControl}>
-                                    <button className={s.button} onClick={() => alert("play")}><img src={play}
-                                                                                                    alt="play"/>
+                                    <button className={s.button} onClick={() => alert("play")}>
+                                        <Icon iconId={"Learn"} width={"16px"} height={"16px"}/>
                                     </button>
-                                    <button className={s.button} onClick={() => alert("edit")}><img src={edit}
-                                                                                                    alt="edit"/>
+                                    <button className={s.button} onClick={() => alert("play")}>
+                                        <Icon iconId={"Edit"} width={"16px"} height={"16px"}/>
                                     </button>
-                                    <button className={s.button} onClick={() => alert("remove")}><img src={remove}
-                                                                                                      alt="remove"/>
+                                    <button className={s.button} onClick={() => alert("play")}>
+                                        <Icon iconId={"Delete"} width={"16px"} height={"16px"}/>
                                     </button>
                                 </div>
                             </Table.Cell>

@@ -64,11 +64,16 @@ th {
 
 .typographyStyleHead {
   position: relative;
-  width: 100%;
   cursor: pointer;
   min-width: 95px;
+  margin-left: 12px;
   z-index: 0;
+
+  .typographyStyleHeadControl{
+    margin-left: 0;
+  }
 }
+
 
 .typographyStyleBody {
   display: flex;
@@ -96,14 +101,20 @@ th {
   justify-content: center;
   align-items: center;
   margin-left: 14px;
+
+  .divHeadCellControl {
+    margin-left: 0;
+}
 }
 
 .divArrow {
-  width: 14px;
+  width: 24px;
   margin: 0 5px;
 }
 
 .arrow {
+  display: flex;
+  align-items: center;
   transform-origin: center;
   transition: 0.3s;
   margin: 0 5px;
