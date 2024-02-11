@@ -11,11 +11,25 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
+export const AvatarStory : Story = {
     args: {
         value: {
             id: 'Sem',
             image: 'src/components/ui/avatar/image/Sem.jpg',
+        },
+    },
+    render: args => {
+
+        return <Avatar {...args} value={args.value}/>
+
+    },
+}
+
+export const AvatarFallback : Story = {
+    args: {
+        value: {
+            id: 'Sem',
+            image: '',
         },
     },
     render: args => {
