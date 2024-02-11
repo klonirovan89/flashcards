@@ -66,12 +66,12 @@ export const PaginationControl = (props: PropsType) => {
   return (
     <div>
       {label && <Typography variant={"body2"}>{label}</Typography>}
-      <div>
+      <div className={s.pagination}>
         {valuesPage.map((el, index) => (
           <Typography variant={"body2"} key={index}>{el.name}</Typography>
         ))}
       </div>
-      <div className={s.div}>
+      <div className={s.pagination}>
           <ButtonBlock
             selectedPage={selectedPage}
             handleChangeArrow={handleChangeArrow}
