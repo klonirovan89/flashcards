@@ -19,7 +19,7 @@ export const DropDownMenu = (props: PropsType) => {
                     <RadixDropdownMenu.Content className={s.content} sideOffset={2} align={"end"}>
                         {value.map(el => (
                             <RadixDropdownMenu.Item className={s.menuItem}>
-                                <button className={s.item} onClick={() => alert("play")}>
+                                <button className={s.item} onClick={() => alert(el.id)}>
                                     <div className={s.icon}>
                                         <Icon iconId={el.id} height={"16px"} width={"16px"}/>
                                     </div>

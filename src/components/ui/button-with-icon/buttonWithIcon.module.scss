@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  svg {
+    fill: var(--color-light-100);
+  }
+}
+
+.disabled svg {
+  fill: var(--color-light-900);
+}
+
+
+
