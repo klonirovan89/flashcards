@@ -28,8 +28,8 @@ button {
     border-radius: 2px 2px 0 0;
     border: 1px solid var(--color-dark-100);
 
-    .img {
-      transform: rotate(180deg);
+    .arrow {
+      transform: rotate(-180deg);
     }
   }
 
@@ -38,22 +38,26 @@ button {
   }
 
   &:disabled {
-    cursor: not-allowed;
+    cursor: initial;
     border-color: var(--color-dark-300);
 
     .typographyStyle {
       opacity: 0.5;
     }
 
-    .img {
+    .arrow {
       opacity: 0.5;
     }
   }
 }
 
-.img {
-  width: 16px;
-  height: 16px;
+.arrow {
+  fill: var(--color-light-100);
+  display: flex;
+  align-items: center;
+  transform-origin: center;
+  transition: 0.3s;
+  rotate: 180deg;
 }
 
 .viewport {
