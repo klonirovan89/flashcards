@@ -25,3 +25,12 @@ export const Primary: Story = {
     iconId: 'Logout',
   },
 }
+
+export const Secondary: Story = {
+  args: {
+    text: 'Button secondary',
+    disabled: false,
+    variant: 'secondary',
+    iconId: 'Logout',
+  },
+}
