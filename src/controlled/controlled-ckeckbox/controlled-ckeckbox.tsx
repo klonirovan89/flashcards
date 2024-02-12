@@ -1,9 +1,9 @@
-import { Checkbox, CheckboxProps } from "../checkbox/checkbox";
+import { Checkbox, PropsType } from "../../components/ui/checkbox";
 import React from "react";
 import { useController } from "react-hook-form";
 import { UseControllerProps } from "react-hook-form/dist/types";
 
-type Props = Omit<UseControllerProps<any>, "disabled" | "rules" | "defaultValue"> & Omit<CheckboxProps, 'checked' | 'onValueChange'>
+type Props = Omit<UseControllerProps<any>, "disabled" | "rules" | "defaultValue"> & Omit<PropsType, 'checked' | 'onValueChange'>
 export const ControlledCheckbox = ({ name, control, shouldUnregister, ...rest }: Props) => {
   const {
     field: { value, onChange, onBlur}
@@ -15,6 +15,6 @@ export const ControlledCheckbox = ({ name, control, shouldUnregister, ...rest }:
   });
 
 
-  return <Checkbox {...rest} checked={value} onValueChange={onChange} />;
+  return <Checkbox {...rest} checked={value} onChange={onChange} />;
 };
 
