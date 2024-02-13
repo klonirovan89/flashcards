@@ -11,7 +11,7 @@ export const ButtonWithIcon = (props: PropsType) => {
         <Button variant={variant} disabled={disabled} {...rest}>
           <div className={`${s.container} ${disabled ? s.disabled : ''}`} >
             {iconId && <Icon disabled={disabled} iconId={iconId} width={'16px'} height={'16px'}/>}
-            {text}
+            {text ? text : ''}
           </div>
         </Button>
     )

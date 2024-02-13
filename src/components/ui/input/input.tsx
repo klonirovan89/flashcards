@@ -8,7 +8,7 @@ import {EyeNoneIcon, EyeOpenIcon, MagnifyingGlassIcon} from "@radix-ui/react-ico
 export type SuperInputProps = {
     placeholder?: string
     label?: string
-    type?: 'default' | 'password' | 'search'
+    type?: 'default' | 'password' | 'search' | 'file'
     errorMessage?: string
     disabled?: boolean
 } & ComponentPropsWithoutRef<'input'>
@@ -27,7 +27,6 @@ export const SuperInput = forwardRef<HTMLInputElement, PropsType>(
 
         const eyeClassName = clsx(s.eyeButton, s[isVisiblePassword ? 'opened' : 'closed'])
         const eyeOnClick = () => setIsVisiblePassword(!isVisiblePassword)
-
 
         return (
             <div className={s.superInput}>
