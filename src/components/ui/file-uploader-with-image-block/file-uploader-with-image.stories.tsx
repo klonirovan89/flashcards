@@ -4,7 +4,7 @@ import {FileUploaderWithImage} from './file-uploader-with-image';
 const meta = {
     component: FileUploaderWithImage,
     tags: ["autodocs"],
-    title: "Components/File Uploader"
+    title: "Components/File Uploader with Image"
 } satisfies Meta<typeof FileUploaderWithImage>;
 
 export default meta;
