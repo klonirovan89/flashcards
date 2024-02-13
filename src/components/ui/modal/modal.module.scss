@@ -1,0 +1,64 @@
+.root {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 542px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 18px 24px;
+
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-500);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.content {
+  padding: 24px;
+  background-color: var(--color-dark-700);
+  border-right: 1px solid var(--color-dark-500);
+  border-left: 1px solid var(--color-dark-500);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 12px 24px 36px;
+
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-500);
+  border-top: none;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0 0 0 / 50%);
+}
+
+.title {
+  margin: 0;
+}
+
+.close {
+  all: unset;
+}
+
+.trigger {
+  all: unset;
+}
