@@ -10,6 +10,7 @@ import { Typography } from '../typography'
 
 type SuperModalProps = {
   children: ReactNode
+  modalFormClickCb: (args: any) => void
   open: boolean
   setOpen: (value: boolean) => void
   title: string
@@ -19,6 +20,7 @@ type SuperModalProps = {
 
 export const SuperModal = ({
   children,
+  modalFormClickCb,
   open,
   setOpen,
   title,
@@ -44,7 +46,7 @@ export const SuperModal = ({
               <Typography variant={'h3'}>{title}</Typography>
             </Dialog.Title>
             <Dialog.Close className={c.close}>
-              <Icon iconId={'Cross'} />
+              <Icon height={'12px'} iconId={'Cross'} width={'12px'} />
             </Dialog.Close>
           </div>
           <div className={c.content}>{children}</div>
@@ -54,13 +56,17 @@ export const SuperModal = ({
                 <Typography variant={'subtitle2'}>Cancel</Typography>
               </Button>
               <Button variant={'primary'}>
-                <Typography variant={'subtitle2'}>{title}</Typography>
+                <Typography onClick={modalFormClickCb} variant={'subtitle2'}>
+                  {title}
+                </Typography>
               </Button>
             </div>
           ) : (
-            <div className={c.footer}>
+            <div className={c.footer + ' ' + c.only_primary}>
               <Button variant={'primary'}>
-                <Typography variant={'subtitle2'}>{title}</Typography>
+                <Typography onClick={modalFormClickCb} variant={'subtitle2'}>
+                  {title}
+                </Typography>
               </Button>
             </div>
           )}

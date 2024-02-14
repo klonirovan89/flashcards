@@ -20,7 +20,7 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    children: <Button variant={'primary'}>sdhfjkshdgfsd</Button>,
+    children: <Button variant={'primary'}>sdfsdf</Button>,
     open: false,
     title: 'ModalTitle',
     withSecondary: true,
