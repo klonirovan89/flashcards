@@ -1,0 +1,23 @@
+.container {
+  width: 500px;
+}
+
+.img {
+  width: 100%;
+  aspect-ratio: auto;
+}
+
+.buttonBlock {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  button {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
