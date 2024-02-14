@@ -23,7 +23,6 @@ svg {
 }
 
 .headCell {
-
   &:hover {
     background-color: #3f3f3f;
   }
@@ -73,11 +72,10 @@ svg {
   margin-left: 12px;
   z-index: 0;
 
-  .typographyStyleHeadControl{
+  .typographyStyleHeadControl {
     margin-left: 0;
   }
 }
-
 
 .typographyStyleBody {
   display: flex;
@@ -108,7 +106,7 @@ svg {
 
   .divHeadCellControl {
     margin-left: 0;
-}
+  }
 }
 
 .divArrow {
