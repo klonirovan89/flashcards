@@ -27,3 +27,13 @@ export const Primary: Story = {
     withTrigger: true,
   },
 }
+
+export const WithForm: Story = {
+  args: {
+    children: 'modalContent',
+    open: false,
+    title: 'ModalTitle',
+    withSecondary: true,
+    withTrigger: true,
+  },
+}

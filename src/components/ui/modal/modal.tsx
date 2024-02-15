@@ -9,20 +9,18 @@ import { Icon } from '../icon/Icon'
 import { Typography } from '../typography'
 
 type SuperModalProps = {
+  callback?: () => void
   children: ReactNode
-  modalFormClickCb: (args: any) => void
   open: boolean
-  setOpen: (value: boolean) => void
   title: string
   withSecondary: boolean
   withTrigger: boolean
 }
 
 export const SuperModal = ({
+  callback,
   children,
-  modalFormClickCb,
   open,
-  setOpen,
   title,
   withSecondary,
   withTrigger,
@@ -56,7 +54,7 @@ export const SuperModal = ({
                 <Typography variant={'subtitle2'}>Cancel</Typography>
               </Button>
               <Button variant={'primary'}>
-                <Typography onClick={modalFormClickCb} variant={'subtitle2'}>
+                <Typography onClick={callback} variant={'subtitle2'}>
                   {title}
                 </Typography>
               </Button>
@@ -64,7 +62,7 @@ export const SuperModal = ({
           ) : (
             <div className={c.footer + ' ' + c.only_primary}>
               <Button variant={'primary'}>
-                <Typography onClick={modalFormClickCb} variant={'subtitle2'}>
+                <Typography onClick={callback} variant={'subtitle2'}>
                   {title}
                 </Typography>
               </Button>
