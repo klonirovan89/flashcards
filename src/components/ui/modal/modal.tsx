@@ -9,18 +9,18 @@ import { Icon } from '../icon/Icon'
 import { Typography } from '../typography'
 
 type SuperModalProps = {
+  callback?: () => void
   children: ReactNode
   open: boolean
-  setOpen: (value: boolean) => void
   title: string
   withSecondary: boolean
   withTrigger: boolean
 }
 
 export const SuperModal = ({
+  callback,
   children,
   open,
-  setOpen,
   title,
   withSecondary,
   withTrigger,
@@ -44,7 +44,7 @@ export const SuperModal = ({
               <Typography variant={'h3'}>{title}</Typography>
             </Dialog.Title>
             <Dialog.Close className={c.close}>
-              <Icon iconId={'Cross'} />
+              <Icon height={'12px'} iconId={'Cross'} width={'12px'} />
             </Dialog.Close>
           </div>
           <div className={c.content}>{children}</div>
@@ -54,13 +54,17 @@ export const SuperModal = ({
                 <Typography variant={'subtitle2'}>Cancel</Typography>
               </Button>
               <Button variant={'primary'}>
-                <Typography variant={'subtitle2'}>{title}</Typography>
+                <Typography onClick={callback} variant={'subtitle2'}>
+                  {title}
+                </Typography>
               </Button>
             </div>
           ) : (
-            <div className={c.footer}>
+            <div className={c.footer + ' ' + c.only_primary}>
               <Button variant={'primary'}>
-                <Typography variant={'subtitle2'}>{title}</Typography>
+                <Typography onClick={callback} variant={'subtitle2'}>
+                  {title}
+                </Typography>
               </Button>
             </div>
           )}
