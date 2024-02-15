@@ -9,7 +9,7 @@ export const DropDownMenuWithProfile = (props: PropsType) => {
 
     return (
         <div className={s.container}>
-            <div>There is the avatar is button for menu:</div>
+            {/*<div>There is the avatar is button for menu:</div>*/}
             <RadixDropdownMenu.Root>
                 <RadixDropdownMenu.Trigger>
                     <button className={s.button}>
