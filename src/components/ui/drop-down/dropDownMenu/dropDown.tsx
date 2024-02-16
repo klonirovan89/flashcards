@@ -11,10 +11,8 @@ export const DropDownMenu = (props: PropsType) => {
     <div className={s.container}>
       <div>Click me:</div>
       <RadixDropdownMenu.Root>
-        <RadixDropdownMenu.Trigger>
-          <button className={s.button}>
-            <Icon height={'24px'} iconId={'verticalOutline'} width={'24px'} />
-          </button>
+        <RadixDropdownMenu.Trigger className={s.trigger}>
+          <Icon height={'24px'} iconId={'verticalOutline'} width={'24px'} />
         </RadixDropdownMenu.Trigger>
         <RadixDropdownMenu.Portal>
           <RadixDropdownMenu.Content align={'end'} className={s.content} sideOffset={2}>
