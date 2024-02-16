@@ -12,7 +12,7 @@ export const Header = (props: PropsType) => {
             <div className={s.container}>
                 <Button className={s.buttonLogo} variant={'link'} as={'a'}
                         onClick={() => alert('Здесь дожлен быть роут')}>
-                    <Icon iconId={'Logo'} width={'70px'} height={'70px'}/>
+                    <Icon iconId={'Logo'} width={'60px'} height={'60px'}/>
                     <Typography variant={'h2'}>CARDS</Typography>
                 </Button>
                 {isLogin ?

@@ -10,16 +10,11 @@ button {
 
   &:hover {
     span {
-      transition: 0.3ms;
-      color: var(--color-accent-300);
+      filter: drop-shadow(0 0 6px var(--color-accent-500));
     }
 
-    svg::before {
-      position: absolute;
-      content: '';
-      width: 900px;
-      height: 900px;
-      background-color: #f8f6f6;
+    svg {
+      filter: drop-shadow(0 0 6px var(--color-accent-500));
     }
   }
 }

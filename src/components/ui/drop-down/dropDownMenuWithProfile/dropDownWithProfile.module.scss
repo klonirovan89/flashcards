@@ -44,6 +44,11 @@ div {
   display: flex;
   align-items: center;
   z-index: 0;
+
+  &:hover {
+    filter: drop-shadow(0 0 6px var(--color-accent-500));
+  }
+
 }
 
 .content {
