@@ -45,6 +45,7 @@ button {
   align-items: center;
   gap: 12px;
 
+
   a {
     cursor: pointer;
     text-decoration-line: underline;
@@ -52,6 +53,7 @@ button {
     text-decoration-thickness: 1px;
     text-underline-offset: 5px;
     text-decoration-color: var(--color-light-100);
+
 
     &:hover {
       transition: 0.3ms;
