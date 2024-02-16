@@ -20,7 +20,7 @@ button {
   justify-content: center;
   position: relative;
 
-  &[data-state = "checked"]{
+  &[data-state='checked'] {
     border: 2px solid transparent;
   }
 

@@ -1,7 +1,6 @@
 .root {
   width: max-content;
 
-
   &:has(:focus-visible) {
     border-radius: 2px;
     outline: 2px solid var(--color-info-700);

@@ -11,7 +11,7 @@
   width: 284px;
   height: 36px;
   background: none;
-  border: 1px solid #4C4C4C;
+  border: 1px solid #4c4c4c;
   border-radius: 2px;
   color: #808080;
   font-size: 16px;
@@ -27,14 +27,13 @@
   padding-left: 35px;
 }
 
-
 .input:hover {
   background-color: #171717;
 }
 
 .input:active {
   color: #fff;
-  border-color: #fff
+  border-color: #fff;
 }
 
 .input.error {
@@ -60,13 +59,11 @@
   left: 10px;
   width: 20px;
   height: 20px;
-  color: #FFF;
+  color: #fff;
 }
 
 .input:disabled,
 .input:disabled .magniGlass,
 .input:disabled .eyeButton {
-  color: #4C4C4C;
+  color: #4c4c4c;
 }
-
-

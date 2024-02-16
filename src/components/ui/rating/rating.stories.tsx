@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Rating } from "./";
+
+import { Rating } from './'
 
 const meta = {
   component: Rating,
@@ -10,14 +11,13 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const defaultValue = 3;
+const defaultValue = 3
 
 export const Default: Story = {
   args: {
     defaultValue,
   },
   render: args => {
-
-    return <Rating {...args}/>
+    return <Rating {...args} />
   },
 }
