@@ -38,11 +38,16 @@ div {
   justify-content: center;
 }
 
-.button {
+.trigger {
+  position: relative;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  position: relative;
   z-index: 0;
+
+  &:hover {
+    filter: drop-shadow(0 0 6px var(--color-accent-500));
+  }
 }
 
 .content {
