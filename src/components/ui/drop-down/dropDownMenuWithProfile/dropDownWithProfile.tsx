@@ -30,8 +30,8 @@ export const DropDownMenuWithProfile = (props: PropsType) => {
                 </Typography>
               </div>
             </div>
-            {value.map(el => (
-              <RadixDropdownMenu.Item className={s.menuItem}>
+            {value.map((el, index) => (
+              <RadixDropdownMenu.Item className={s.menuItem} key={index}>
                 <button className={s.item} onClick={() => alert('play')}>
                   <div className={s.icon}>
                     <Icon height={'16px'} iconId={el.id} width={'16px'} />

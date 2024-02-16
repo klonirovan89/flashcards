@@ -9,8 +9,6 @@ export const FileUploader = (props: PropsType) => {
   const [selectedFile, setSelectedFile] = useState(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  console.log(selectedFile)
-
   const handleFileInputChange = (event: any) => {
     const file = event.target.files && event.target.files[0]
 

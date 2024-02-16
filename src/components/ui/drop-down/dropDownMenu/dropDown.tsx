@@ -18,8 +18,8 @@ export const DropDownMenu = (props: PropsType) => {
         </RadixDropdownMenu.Trigger>
         <RadixDropdownMenu.Portal>
           <RadixDropdownMenu.Content align={'end'} className={s.content} sideOffset={2}>
-            {value.map(el => (
-              <RadixDropdownMenu.Item className={s.menuItem}>
+            {value.map((el, index) => (
+              <RadixDropdownMenu.Item className={s.menuItem} key={index}>
                 <button className={s.item} onClick={() => alert('play')}>
                   <div className={s.icon}>
                     <Icon height={'16px'} iconId={el.id} width={'16px'} />
