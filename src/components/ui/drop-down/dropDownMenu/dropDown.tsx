@@ -11,21 +11,23 @@ export const DropDownMenu = (props: PropsType) => {
     <div className={s.container}>
       <div>Click me:</div>
       <RadixDropdownMenu.Root>
-        <RadixDropdownMenu.Trigger className={s.trigger}>
-          <Icon height={'24px'} iconId={'verticalOutline'} width={'24px'} />
+        <RadixDropdownMenu.Trigger>
+          <button className={s.button}>
+            <Icon height={'24px'} iconId={'verticalOutline'} width={'24px'} />
+          </button>
         </RadixDropdownMenu.Trigger>
         <RadixDropdownMenu.Portal>
           <RadixDropdownMenu.Content align={'end'} className={s.content} sideOffset={2}>
-            {value.map((el, index) => (
-              <RadixDropdownMenu.Item className={s.menuItem} key={index}>
-                <div className={s.item} onClick={() => alert(el.id)}>
+            {value.map(el => (
+              <RadixDropdownMenu.Item className={s.menuItem}>
+                <button className={s.item} onClick={() => alert('play')}>
                   <div className={s.icon}>
                     <Icon height={'16px'} iconId={el.id} width={'16px'} />
                   </div>
                   <Typography className={s.typographyStyle} variant={'caption'}>
                     {el.label}
                   </Typography>
-                </div>
+                </button>
               </RadixDropdownMenu.Item>
             ))}
             <span className={s.arrow}></span>

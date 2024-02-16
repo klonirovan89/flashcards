@@ -36,11 +36,11 @@ type PropsType = {
   disabled: boolean
   errorMessage?: string
   onValueChange?: (value: string) => void
-  options: OptionsType[]
+  options: Options[]
   selectedValue?: string
 }
 
-type OptionsType = {
+export type Options = {
   label: string
   value: string
 }

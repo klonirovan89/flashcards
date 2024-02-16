@@ -1,19 +1,21 @@
 import { Icon } from '@/components/ui/icon/Icon'
+import { Options } from '@/components/ui/radio-group'
 import { Typography } from '@/components/ui/typography'
 import * as RadixSelect from '@radix-ui/react-select'
 
 import s from '../select/select.module.scss'
 
 export const Select = (props: PropsType) => {
-  const { classForPagination, disabled, handleSelectChange, label, selectedValue, valuesList } =
+  const { classForPagination, disabled, handleSelectChange, label, options, selectedValue, value } =
     props
 
   return (
     <div className={s.container}>
       {label && <Typography variant={'body2'}>{label}</Typography>}
       <RadixSelect.Root
-        defaultValue={selectedValue}
+        defaultValue={value}
         onValueChange={value => handleSelectChange(value)}
+        value={value}
       >
         <RadixSelect.Trigger
           className={classForPagination ? `${s.triggerPagination} ${s.trigger}` : s.trigger}
@@ -29,7 +31,7 @@ export const Select = (props: PropsType) => {
             <RadixSelect.Viewport
               className={classForPagination ? `${s.viewportPagination} ${s.viewport}` : s.viewport}
             >
-              {valuesList.map((el, index) => (
+              {options.map((el, index) => (
                 <RadixSelect.Item className={s.item} key={index} value={el.label}>
                   <RadixSelect.ItemText>
                     <Typography className={s.typographyStyle} variant={'body2'}>
@@ -46,16 +48,12 @@ export const Select = (props: PropsType) => {
   )
 }
 
-type valuesListType = {
-  label: string
-  value: string
-}
-
 export type PropsType = {
   classForPagination?: boolean
   disabled?: boolean
   handleSelectChange: (value: string) => void
   label?: string
+  options: Options[]
   selectedValue?: string
-  valuesList: valuesListType[]
+  value?: string
 }

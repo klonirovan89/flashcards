@@ -13,7 +13,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const valuesList = [
+const options = [
   { label: 'Science', value: '1' },
   { label: 'Sports', value: '2' },
   { label: 'Movie', value: '3' },
@@ -25,10 +25,10 @@ export const Default: Story = {
   args: {
     disabled: false,
     label: 'Select-box',
-    valuesList,
+    options,
   },
   render: args => {
-    const [selectedValue, setSelectedValue] = useState<string>(args.valuesList[0].label)
+    const [selectedValue, setSelectedValue] = useState<string>(args.options[0].label)
     const handleSelectChange = (value: string) => {
       setSelectedValue(value)
     }
@@ -43,10 +43,10 @@ export const Disabled: Story = {
   args: {
     disabled: true,
     label: 'Select-box',
-    valuesList,
+    options,
   },
   render: args => {
-    const [selectedValue, setSelectedValue] = useState<string>(args.valuesList[0].label)
+    const [selectedValue, setSelectedValue] = useState<string>(args.options[0].label)
     const handleSelectChange = (value: string) => {
       setSelectedValue(value)
     }

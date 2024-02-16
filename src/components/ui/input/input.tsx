@@ -11,7 +11,7 @@ export type SuperInputProps = {
   errorMessage?: string
   label?: string
   placeholder?: string
-  type?: 'default' | 'file' | 'password' | 'search'
+  type?: 'default' | 'password' | 'search'
 } & ComponentPropsWithoutRef<'input'>
 
 type PropsType = SuperInputProps & Omit<ComponentPropsWithoutRef<'input'>, keyof SuperInputProps>

@@ -10,10 +10,12 @@ export const DropDownMenuWithProfile = (props: PropsType) => {
 
   return (
     <div className={s.container}>
-      {/*<div>There is the avatar is button for menu:</div>*/}
+      <div>There is the avatar is button for menu:</div>
       <RadixDropdownMenu.Root>
-        <RadixDropdownMenu.Trigger className={s.trigger}>
-          <Avatar value={userData.avatar} />
+        <RadixDropdownMenu.Trigger>
+          <button className={s.button}>
+            <Avatar value={userData.avatar} />
+          </button>
         </RadixDropdownMenu.Trigger>
         <RadixDropdownMenu.Portal>
           <RadixDropdownMenu.Content align={'end'} className={s.content} sideOffset={8}>
@@ -28,16 +30,16 @@ export const DropDownMenuWithProfile = (props: PropsType) => {
                 </Typography>
               </div>
             </div>
-            {value.map((el, index) => (
-              <RadixDropdownMenu.Item className={s.menuItem} key={index}>
-                <div className={s.item} onClick={() => alert('play')}>
+            {value.map(el => (
+              <RadixDropdownMenu.Item className={s.menuItem}>
+                <button className={s.item} onClick={() => alert('play')}>
                   <div className={s.icon}>
                     <Icon height={'16px'} iconId={el.id} width={'16px'} />
                   </div>
                   <Typography className={s.typographyStyle} variant={'caption'}>
                     {el.label}
                   </Typography>
-                </div>
+                </button>
               </RadixDropdownMenu.Item>
             ))}
             <span className={s.arrow}></span>
