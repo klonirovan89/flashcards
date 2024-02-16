@@ -29,7 +29,7 @@ export const FileUploader = (props: PropsType) => {
                 style={{display: 'none'}}
                 onChange={handleFileInputChange}
             />
-            <ButtonWithIcon onClick={handleButtonClick} iconId={iconId} text={text}/>
+            <ButtonWithIcon onClick={handleButtonClick} iconId={iconId} text={text} variant={'secondary'}/>
         </>
     );
 }

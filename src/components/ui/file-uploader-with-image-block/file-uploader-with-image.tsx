@@ -67,11 +67,11 @@ export const FileUploaderWithImage = (props: PropsType) => {
             />
                 {imageSrc ?
                     <div className={s.buttonBlock}>
-                        <ButtonWithIcon onClick={handleButtonClick} iconId={iconId} text={text}/>
-                        <ButtonWithIcon onClick={deleteImageSrc} iconId={"Delete"} text={"Delete file"}/>
+                        <ButtonWithIcon onClick={handleButtonClick} iconId={iconId} text={text} variant={'secondary'}/>
+                        <ButtonWithIcon onClick={deleteImageSrc} iconId={"Delete"} text={"Delete file"} variant={'secondary'}/>
                     </div>
                     :
-                    <ButtonWithIcon className={s.buttonBlock} onClick={handleButtonClick} iconId={iconId} text={text} fullWidth={true}/>
+                    <ButtonWithIcon className={s.buttonBlock} onClick={handleButtonClick} iconId={iconId} text={text} fullWidth={true} variant={'secondary'}/>
                 }
         </div>
     );

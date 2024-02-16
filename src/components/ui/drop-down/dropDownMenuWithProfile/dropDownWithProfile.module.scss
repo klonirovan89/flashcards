@@ -39,9 +39,10 @@ div {
 }
 
 .button {
+  position: relative;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  position: relative;
   z-index: 0;
 }
 
