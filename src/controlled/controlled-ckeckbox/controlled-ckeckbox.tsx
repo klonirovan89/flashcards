@@ -1,9 +1,7 @@
-import React from 'react'
 import { useController } from 'react-hook-form'
+import { UseControllerProps } from 'react-hook-form'
 
-import { UseControllerProps } from 'react-hook-form/dist/types'
-
-import { Checkbox, PropsType } from '../checkbox/checkbox'
+import { Checkbox, PropsType } from '@/components/ui/checkbox'
 
 type Props = Omit<UseControllerProps<any>, 'defaultValue' | 'disabled' | 'rules'> &
   Omit<PropsType, 'checked' | 'onValueChange'>

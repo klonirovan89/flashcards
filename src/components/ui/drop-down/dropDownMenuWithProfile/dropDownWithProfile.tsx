@@ -10,12 +10,9 @@ export const DropDownMenuWithProfile = (props: PropsType) => {
 
   return (
     <div className={s.container}>
-      <div>There is the avatar is button for menu:</div>
       <RadixDropdownMenu.Root>
-        <RadixDropdownMenu.Trigger>
-          <button className={s.button}>
-            <Avatar value={userData.avatar} />
-          </button>
+        <RadixDropdownMenu.Trigger className={s.trigger}>
+          <Avatar value={userData.avatar} />
         </RadixDropdownMenu.Trigger>
         <RadixDropdownMenu.Portal>
           <RadixDropdownMenu.Content align={'end'} className={s.content} sideOffset={8}>
@@ -30,8 +27,8 @@ export const DropDownMenuWithProfile = (props: PropsType) => {
                 </Typography>
               </div>
             </div>
-            {value.map(el => (
-              <RadixDropdownMenu.Item className={s.menuItem}>
+            {value.map((el, index) => (
+              <RadixDropdownMenu.Item className={s.menuItem} key={index}>
                 <button className={s.item} onClick={() => alert('play')}>
                   <div className={s.icon}>
                     <Icon height={'16px'} iconId={el.id} width={'16px'} />

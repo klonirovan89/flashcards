@@ -11,7 +11,7 @@ export type SuperInputProps = {
   errorMessage?: string
   label?: string
   placeholder?: string
-  type?: 'default' | 'password' | 'search'
+  type?: 'default' | 'file' | 'password' | 'search'
 } & ComponentPropsWithoutRef<'input'>
 
 type PropsType = SuperInputProps & Omit<ComponentPropsWithoutRef<'input'>, keyof SuperInputProps>
@@ -26,6 +26,22 @@ export const SuperInput = forwardRef<HTMLInputElement, PropsType>(
     const eyeClassName = clsx(s.eyeButton, s[isVisiblePassword ? 'opened' : 'closed'])
     const eyeOnClick = () => setIsVisiblePassword(!isVisiblePassword)
 
+    let passwordIcon = null
+
+    if (type === 'password') {
+      if (isVisiblePassword) {
+        passwordIcon = <EyeNoneIcon className={eyeClassName} onClick={eyeOnClick} />
+      } else {
+        passwordIcon = <EyeOpenIcon className={eyeClassName} onClick={eyeOnClick} />
+      }
+    }
+
+    let searchIcon = null
+
+    if (type === 'search') {
+      searchIcon = <MagnifyingGlassIcon className={s.magniGlass} />
+    }
+
     return (
       <div className={s.superInput}>
         <Typography variant={'body2'}>{label}</Typography>
@@ -39,18 +55,8 @@ export const SuperInput = forwardRef<HTMLInputElement, PropsType>(
             type={finalInputType}
             {...rest}
           />
-
-          {type === 'password' ? (
-            isVisiblePassword ? (
-              <EyeNoneIcon className={eyeClassName} onClick={eyeOnClick} />
-            ) : (
-              <EyeOpenIcon className={eyeClassName} onClick={eyeOnClick} />
-            )
-          ) : (
-            ''
-          )}
-
-          {type === 'search' ? <MagnifyingGlassIcon className={s.magniGlass} /> : ''}
+          {passwordIcon}
+          {searchIcon}
         </div>
 
         {!!errorMessage && <Typography variant={'link2'}>{errorMessage}</Typography>}

@@ -25,9 +25,7 @@ export const LoginForm = () => {
 
   type FormValues = z.infer<typeof loginSchema>
 
-  const onSubmit = (data: FormValues) => {
-    console.log(data)
-  }
+  const onSubmit = (data: FormValues) => {}
 
   const {
     field: { onChange, value },
