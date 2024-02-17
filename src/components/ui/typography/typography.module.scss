@@ -5,7 +5,6 @@
   color: var(--color-light-100);
 }
 
-
 .h1 {
   @include typography(var(--font-weight-bold), var(--font-size-xxl), var(--line-height-l));
 }

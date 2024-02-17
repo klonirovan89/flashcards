@@ -1,12 +1,13 @@
-import { useForm, useController } from 'react-hook-form'
-import { Button } from '../../ui/button/button'
-import { SuperInput } from "../../ui/input/input";
-import { Checkbox } from "@/components/ui/checkbox";
+import { useController, useForm } from 'react-hook-form'
+
+import { Checkbox } from '@/components/ui/checkbox'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-export const LoginForm = () => {
+import { Button } from '../../ui/button/button'
+import { SuperInput } from '../../ui/input/input'
 
+export const LoginForm = () => {
   const loginSchema = z.object({
     email: z.string().email(),
     password: z.string().min(3),
@@ -15,9 +16,9 @@ export const LoginForm = () => {
 
   const {
     control,
-    register,
-    handleSubmit,
     formState: { errors },
+    handleSubmit,
+    register,
   } = useForm<FormValues>({
     resolver: zodResolver(loginSchema),
   })
@@ -29,19 +30,23 @@ export const LoginForm = () => {
   }
 
   const {
-    field: { value, onChange },
+    field: { onChange, value },
   } = useController({
-    name: 'rememberMe',
     control,
     defaultValue: false,
+    name: 'rememberMe',
   })
 
   return (
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <SuperInput {...register('email')} label={'email'} errorMessage={errors.email?.message}/>
-        <SuperInput {...register('password')} label={'password'} errorMessage={errors.password?.message}/>
-        <Checkbox name={'rememberMe'} onChange={onChange} checked={value} label={'remember me'}/>
-        <Button type="submit">Submit</Button>
-      </form>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <SuperInput {...register('email')} errorMessage={errors.email?.message} label={'email'} />
+      <SuperInput
+        {...register('password')}
+        errorMessage={errors.password?.message}
+        label={'password'}
+      />
+      <Checkbox checked={value} label={'remember me'} name={'rememberMe'} onChange={onChange} />
+      <Button type={'submit'}>Submit</Button>
+    </form>
   )
 }

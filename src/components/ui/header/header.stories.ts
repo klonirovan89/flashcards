@@ -13,33 +13,33 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const userData = {
-  name: 'Pavel',
-  email: 'frontend-dev@gmail.com',
   avatar: {
     id: 'Pavel',
-    image: 'src/components/ui/avatar/image/Sem.jpg'
+    image: 'src/components/ui/avatar/image/Sem.jpg',
   },
+  email: 'frontend-dev@gmail.com',
+  name: 'Pavel',
 }
 
 const value = [
-  {id: 'User', label: 'My Profile'},
-  {id: 'Logout', label: 'Sign Out'},
+  { id: 'User', label: 'My Profile' },
+  { id: 'Logout', label: 'Sign Out' },
 ]
 
 export const UserIsAuthorized: Story = {
   args: {
+    isLogin: true,
+    title: 'Sign In',
     userData,
     value,
-    isLogin: true,
-    title: 'Sign In'
   },
 }
 
 export const UserIsNotAuthorized: Story = {
   args: {
+    isLogin: false,
+    title: 'Sign In',
     userData,
     value,
-    isLogin: false,
-    title: 'Sign In'
   },
 }

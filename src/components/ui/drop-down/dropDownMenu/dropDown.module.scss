@@ -10,7 +10,7 @@ div {
   fill: var(--color-light-100);
 }
 
-.button {
+.trigger {
   position: relative;
   z-index: 0;
 
@@ -55,7 +55,7 @@ div {
     }
 
     .typographyStyle {
-        color: var(--color-accent-300);
+      color: var(--color-accent-300);
     }
   }
 }

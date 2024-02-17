@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+
 import { ButtonWithIcon } from './'
 
 const meta = {
@@ -18,18 +19,18 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    text: 'Button primary',
     disabled: false,
-    variant: 'primary',
     iconId: 'Logout',
+    text: 'Button primary',
+    variant: 'primary',
   },
 }
 
 export const Secondary: Story = {
   args: {
-    text: 'Button secondary',
     disabled: false,
-    variant: 'secondary',
     iconId: 'Logout',
+    text: 'Button secondary',
+    variant: 'secondary',
   },
 }

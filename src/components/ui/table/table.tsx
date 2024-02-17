@@ -1,53 +1,31 @@
 import s from './table.module.scss'
 
-const Root = ({...rest}) => {
+const Root = ({ ...rest }) => {
+  return <table className={s.root} {...rest} />
+}
 
-  return (
-    <table className={s.root} {...rest}/>
-  );
-};
+const Head = ({ ...rest }) => {
+  return <thead className={s.head} {...rest} />
+}
 
-const Head = ({...rest}) => {
+const HeadCell = ({ ...rest }) => {
+  return <th className={s.headCell} {...rest} />
+}
 
-  return (
-    <thead className={s.head} {...rest}/>
-  );
-};
+const Body = ({ ...rest }) => {
+  return <tbody className={s.body} {...rest} />
+}
 
-const HeadCell = ({...rest}) => {
+const Row = ({ ...rest }) => {
+  return <tr className={s.row} {...rest} />
+}
 
-  return (
-    <th className={s.headCell} {...rest}/>
-  );
-};
+const Cell = ({ ...rest }) => {
+  return <td className={s.cell} {...rest} />
+}
 
-const Body = ({...rest}) => {
+const Empty = ({ ...rest }) => {
+  return <div className={s.empty} {...rest} />
+}
 
-  return (
-    <tbody className={s.body} {...rest}/>
-  );
-};
-
-const Row = ({...rest}) => {
-
-  return (
-    <tr className={s.row} {...rest}/>
-  );
-};
-
-const Cell = ({...rest}) => {
-
-  return (
-    <td className={s.cell} {...rest}/>
-  );
-};
-
-const Empty = ({...rest}) => {
-
-  return (
-    <div className={s.empty} {...rest}/>
-  );
-};
-
-
-export const Table = { Root, Head, HeadCell, Body, Row, Cell, Empty }
+export const Table = { Body, Cell, Empty, Head, HeadCell, Root, Row }
