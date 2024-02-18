@@ -1,7 +1,4 @@
-import React from 'react'
-import { useController } from 'react-hook-form'
-
-import { UseControllerProps } from 'react-hook-form/dist/types'
+import { UseControllerProps, useController } from 'react-hook-form'
 
 import { Checkbox, PropsType } from '../checkbox/checkbox'
 
@@ -13,9 +10,9 @@ export const ControlledCheckbox = ({ control, name, shouldUnregister, ...rest }:
   } = useController({
     control,
     disabled: rest.disabled,
-    name: rest.label,
+    name: name,
     shouldUnregister,
   })
 
-  return <Checkbox {...rest} checked={value} onChange={onChange} />
+  return <Checkbox {...rest} checked={value} onBlur={onBlur} onChange={onChange} />
 }
