@@ -1,5 +1,11 @@
-.wrapper {
+.formWrapper {
   display: flex;
   flex-direction: column;
   gap: 24px 0;
+  padding: 24px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
 }
