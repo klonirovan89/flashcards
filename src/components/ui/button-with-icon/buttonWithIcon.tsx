@@ -11,7 +11,7 @@ export const ButtonWithIcon = (props: PropsType) => {
   return (
     <Button disabled={disabled} fullWidth={fullWidth} variant={variant} {...rest}>
       <div className={`${s.container} ${disabled ? s.disabled : ''}`}>
-        {iconId && <Icon disabled={disabled} height={'16px'} iconId={iconId} width={'16px'} />}
+        {iconId && <Icon height={'16px'} iconId={iconId} width={'16px'} />}
         {text ? text : ''}
       </div>
     </Button>

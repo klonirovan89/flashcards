@@ -1,8 +1,9 @@
 import { useRef, useState } from 'react'
 
+import { ButtonWithIcon } from '@/components/ui/button-with-icon'
+
 import s from './file-uploader-with-image.module.scss'
 
-import { ButtonWithIcon } from '../button-with-icon/buttonWithIcon'
 import { SuperInput } from '../input/input'
 
 export const FileUploaderWithImage = (props: PropsType) => {
@@ -99,6 +100,7 @@ export const FileUploaderWithImage = (props: PropsType) => {
           variant={'secondary'}
         />
       )}
+      {selectedFile}
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 
-import { ButtonWithIcon } from '../button-with-icon/buttonWithIcon'
+import { ButtonWithIcon } from '@/components/ui/button-with-icon'
+
 import { SuperInput } from '../input/input'
 
 export const FileUploader = (props: PropsType) => {
@@ -35,6 +36,7 @@ export const FileUploader = (props: PropsType) => {
         text={text}
         variant={'secondary'}
       />
+      {selectedFile}
     </>
   )
 }
