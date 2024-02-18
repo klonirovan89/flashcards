@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 
 import { ButtonWithIcon } from '@/components/ui/button-with-icon'
-import { TextField } from '@/components/ui/text-field/input'
+import { TextField } from '@/components/ui/text-field/text-field'
 
 export const FileUploader = (props: PropsType) => {
   const { iconId, text } = props
