@@ -1,8 +1,7 @@
 import { useRef, useState } from 'react'
 
 import { ButtonWithIcon } from '@/components/ui/button-with-icon'
-
-import { SuperInput } from '../input/input'
+import { TextField } from '@/components/ui/text-field/input'
 
 export const FileUploader = (props: PropsType) => {
   const { iconId, text } = props
@@ -24,7 +23,7 @@ export const FileUploader = (props: PropsType) => {
 
   return (
     <>
-      <SuperInput
+      <TextField
         onChange={handleFileInputChange}
         ref={fileInputRef}
         style={{ display: 'none' }}
