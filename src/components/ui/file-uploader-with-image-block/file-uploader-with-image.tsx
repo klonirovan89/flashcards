@@ -1,10 +1,9 @@
 import { useRef, useState } from 'react'
 
 import { ButtonWithIcon } from '@/components/ui/button-with-icon'
+import { TextField } from '@/components/ui/text-field/input'
 
 import s from './file-uploader-with-image.module.scss'
-
-import { SuperInput } from '../input/input'
 
 export const FileUploaderWithImage = (props: PropsType) => {
   const { iconId, text } = props
@@ -69,7 +68,7 @@ export const FileUploaderWithImage = (props: PropsType) => {
             : 'https://img.freepik.com/free-photo/red-prohibited-sign-no-icon-warning-or-stop-symbol-safety-danger-3d-illustration_56104-1991.jpg'
         }
       />
-      <SuperInput
+      <TextField
         onChange={handleFileInputChange}
         ref={fileInputRef}
         style={{ display: 'none' }}
