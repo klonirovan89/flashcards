@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { Typography } from '@/components/ui/typography'
 import * as RadixCheckbox from '@radix-ui/react-checkbox'
@@ -6,7 +6,7 @@ import { CheckIcon } from '@radix-ui/react-icons'
 
 import s from './checkbox.module.scss'
 
-export const Checkbox = forwardRef<HTMLButtonElement, PropsType>((props, ref) => {
+export const Checkbox = forwardRef<ElementRef<'button'>, PropsType>((props, ref) => {
   const { checked, disabled, id, label, onChange } = props
 
   return (

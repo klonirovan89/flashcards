@@ -44,6 +44,7 @@ export const LoginForm = () => {
         {...register('password')}
         errorMessage={errors.password?.message}
         label={'password'}
+        type={'password'}
       />
       <Checkbox checked={value} label={'remember me'} name={'rememberMe'} onChange={onChange} />
       <Button type={'submit'}>Submit</Button>
