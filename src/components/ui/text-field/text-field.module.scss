@@ -1,4 +1,4 @@
-.superInput {
+.container {
   width: 290px;
 }
 
@@ -7,16 +7,18 @@
 }
 
 .input {
-  padding: 0 5px;
   width: 284px;
   height: 36px;
-  background: none;
-  border: 1px solid #4c4c4c;
-  border-radius: 2px;
-  color: #808080;
+  padding: 0 5px;
+
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
+  color: #808080;
+
+  background: none;
+  border: 1px solid #4c4c4c;
+  border-radius: 2px;
 }
 
 .input.password {
@@ -37,16 +39,17 @@
 }
 
 .input.error {
-  border-color: #f23d61;
-  color: #f23d61;
+  color: var(--color-danger-300);
+  border-color: var(--color-danger-300);
 }
 
 .eyeButton {
   position: absolute;
   z-index: 1;
-  translate: 0px -10px;
   top: 50%;
   right: 15px;
+  translate: 0 -10px;
+
   width: 18px;
   height: 18px;
 }
@@ -54,11 +57,13 @@
 .magniGlass {
   position: absolute;
   z-index: 1;
-  translate: 0px -10px;
   top: 50%;
   left: 10px;
+  translate: 0 -10px;
+
   width: 20px;
   height: 20px;
+
   color: #fff;
 }
 
@@ -66,4 +71,8 @@
 .input:disabled .magniGlass,
 .input:disabled .eyeButton {
   color: #4c4c4c;
+}
+
+.typographyStyle {
+  color: var(--color-danger-300);
 }

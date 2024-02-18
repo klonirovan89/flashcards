@@ -4,9 +4,9 @@ import { Typography } from '@/components/ui/typography'
 import { EyeNoneIcon, EyeOpenIcon, MagnifyingGlassIcon } from '@radix-ui/react-icons'
 import { clsx } from 'clsx'
 
-import s from './input.module.scss'
+import s from './text-field.module.scss'
 
-export type SuperInputProps = {
+export type TextFiledProps = {
   disabled?: boolean
   errorMessage?: string
   label?: string
@@ -14,15 +14,15 @@ export type SuperInputProps = {
   type?: 'default' | 'file' | 'password' | 'search'
 } & ComponentPropsWithoutRef<'input'>
 
-type PropsType = SuperInputProps & Omit<ComponentPropsWithoutRef<'input'>, keyof SuperInputProps>
+type PropsType = TextFiledProps & Omit<ComponentPropsWithoutRef<'input'>, keyof TextFiledProps>
 
-export const SuperInput = forwardRef<HTMLInputElement, PropsType>(
+export const TextField = forwardRef<HTMLInputElement, PropsType>(
   ({ disabled = false, errorMessage, label, placeholder, type = 'default', ...rest }, ref) => {
     const [isVisiblePassword, setIsVisiblePassword] = useState<boolean>(false)
 
     const finalInputType = isVisiblePassword ? 'default' : type
-    const inputClassName = clsx(s.input, s[errorMessage ? 'error' : ''], s[type])
 
+    const inputClassName = clsx(s.input, s[errorMessage ? 'error' : ''], s[type])
     const eyeClassName = clsx(s.eyeButton, s[isVisiblePassword ? 'opened' : 'closed'])
     const eyeOnClick = () => setIsVisiblePassword(!isVisiblePassword)
 
@@ -43,7 +43,7 @@ export const SuperInput = forwardRef<HTMLInputElement, PropsType>(
     }
 
     return (
-      <div className={s.superInput}>
+      <div className={s.container}>
         <Typography variant={'body2'}>{label}</Typography>
 
         <div className={s.textField}>
@@ -59,7 +59,11 @@ export const SuperInput = forwardRef<HTMLInputElement, PropsType>(
           {searchIcon}
         </div>
 
-        {!!errorMessage && <Typography variant={'link2'}>{errorMessage}</Typography>}
+        {!!errorMessage && (
+          <Typography className={s.typographyStyle} variant={'caption'}>
+            {errorMessage}
+          </Typography>
+        )}
       </div>
     )
   }

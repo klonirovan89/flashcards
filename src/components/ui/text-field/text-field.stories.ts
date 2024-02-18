@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { SuperInput } from './'
+import { TextField } from '@/components/ui/text-field/text-field'
 
 const meta = {
-  component: SuperInput,
+  component: TextField,
   tags: ['autodocs'],
-  title: 'Components/SuperInput',
-} satisfies Meta<typeof SuperInput>
+  title: 'Components/TextField',
+} satisfies Meta<typeof TextField>
 
 export default meta
 type Story = StoryObj<typeof meta>
