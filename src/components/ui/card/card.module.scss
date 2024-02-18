@@ -1,14 +1,14 @@
 .card {
   cursor: pointer;
 
-  width: 420px;
-  height: 552px;
+  min-width: 420px;
+  min-height: 552px;
 
-  color: white;
-  text-align: start;
-
-  background-color: rgb(23 23 23 / 100%);
-  outline: 1px solid rgb(49 49 49 / 100%);
-  box-shadow: 0 0 18px rgb(49 49 49 / 100%);
+  background-color: var(--color-dark-700);
+  border: 1px solid #313131;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.1);
 }
 
+.typographyStyle {
+  margin: 0px 12px;
+}

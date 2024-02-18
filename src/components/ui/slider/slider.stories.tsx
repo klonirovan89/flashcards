@@ -2,13 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useState } from 'react'
 
-import { SliderControl } from './'
+import { Slider } from './'
 
 const meta = {
-  component: SliderControl,
+  component: Slider,
   tags: ['autodocs'],
-  title: 'Components/SliderControl',
-} satisfies Meta<typeof SliderControl>
+  title: 'Components/Slider',
+} satisfies Meta<typeof Slider>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -23,10 +23,10 @@ export const Default: Story = {
   render: args => {
     const [sliderValue, setSliderValue] = useState<number[]>(args.value)
 
-    const onChangeSliderValue = (value: number[]) => {
+    const onValueChange = (value: number[]) => {
       setSliderValue(value)
     }
 
-    return <SliderControl {...args} onChange={onChangeSliderValue} value={sliderValue} />
+    return <Slider {...args} onValueChange={onValueChange} value={sliderValue} />
   },
 }

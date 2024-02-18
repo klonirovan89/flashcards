@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #FDFDFD00;
+  background-color: #fdfdfd00;
   width: 24px;
   height: 24px;
   border: none;
@@ -19,35 +19,37 @@
 }
 
 .arrowActive {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #FDFDFD00;
+  background-color: #fdfdfd00;
   width: 24px;
   height: 24px;
   border: none;
   border-radius: 2px;
-  color: #FFFFFFFF;
+  color: #ffffffff;
   padding: 0;
 
   &:hover {
-    color: #FFFFFFFF;
+    color: #ffffffff;
     background-color: #333333;
     transition: 0.3s;
   }
 
   &:active {
-    color: #000000FF;
-    background-color: #FDFDFDFF;
+    color: #000000ff;
+    background-color: #fdfdfdff;
     transition: 0.3s;
   }
 }
 
 .btn {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #FDFDFD00;
+  background-color: #fdfdfd00;
   width: 24px;
   height: 24px;
   border: none;
@@ -55,46 +57,51 @@
   padding: 0;
 
   &:focus {
-    color: #000000FF;
-    background-color: #FDFDFDFF;
+    color: #000000ff;
+    background-color: #fdfdfdff;
     transition: 0.3s;
   }
 
   &:hover {
-    color: #FFFFFFFF;
+    color: #ffffffff;
     background-color: #333333;
     transition: 0.3s;
   }
 
   &:active {
-    color: #000000FF;
-    background-color: #FDFDFDFF;
+    color: #000000ff;
+    background-color: #fdfdfdff;
     transition: 0.3s;
 
     .typographyStyle {
-      color: #000000FF;
+      color: #000000ff;
     }
   }
 }
 
 .btnActive {
+  cursor: pointer;
   width: 24px;
   height: 24px;
   border: none;
   border-radius: 2px;
-  color: #000000FF;
-  background-color: #FDFDFDFF;
+  color: #000000ff;
+  background-color: #fdfdfdff;
 }
 
 .span {
-  color: #FFFFFFFF;
+  color: #ffffffff;
   padding-top: 2px;
 }
 
 .typographyStyle {
-  color: #FDFDFDFF;
+  color: #fdfdfdff;
+  display: flex;
+  justify-content: center;
 }
 
 .typographyStyleActive {
-  color: #000000FF;
+  color: #000000ff;
+  display: flex;
+  justify-content: center;
 }

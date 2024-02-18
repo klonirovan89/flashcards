@@ -7,10 +7,10 @@ const meta = {
     variant: {
       control: { type: 'radio' },
       options: [
-        'large',
         'h1',
         'h2',
         'h3',
+        'h4',
         'body1',
         'subtitle1',
         'body2',
@@ -30,13 +30,6 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Large: Story = {
-  args: {
-    children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
-    variant: 'large',
-  },
-}
-
 export const H1: Story = {
   args: {
     children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
@@ -55,6 +48,13 @@ export const H3: Story = {
   args: {
     children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
     variant: 'h3',
+  },
+}
+
+export const H4: Story = {
+  args: {
+    children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
+    variant: 'h4',
   },
 }
 

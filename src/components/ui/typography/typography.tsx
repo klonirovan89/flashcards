@@ -13,7 +13,7 @@ export type TypographyProps<T extends ElementType = 'span'> = {
     | 'h1'
     | 'h2'
     | 'h3'
-    | 'large'
+    | 'h4'
     | 'link1'
     | 'link2'
     | 'overline'
@@ -26,9 +26,5 @@ export const Typography = <T extends ElementType = 'span'>(
 ) => {
   const { as: Component = 'span', variant, ...rest } = props
 
-  return (
-    <div className={s.typography}>
-      <Component className={s[variant]} {...rest} />
-    </div>
-  )
+  return <Component className={s[variant]} {...rest} />
 }

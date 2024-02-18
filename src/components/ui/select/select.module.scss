@@ -2,78 +2,100 @@ button {
   outline: none;
 }
 
-.select {
-  color: white;
+.container {
   cursor: pointer;
+}
+
+.arrow {
+  transform-origin: center;
+  rotate: 180deg;
+
+  display: flex;
+  align-items: center;
+
+  margin-left: 2px;
+
+  fill: var(--color-light-100);
+
+  transition: 0.3s;
 }
 
 .trigger {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   width: 210px;
   height: 36px;
-  display: flex;
+  padding: 3px 1px 3px 5px;
+
   text-align: justify;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  background-color: #171717;
-  border: 1px solid #4b4b4b;
+
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-300);
   border-radius: 2px;
-  padding: 5px 12px 5px 12px;
 
-  &:hover:not([data-disabled]) {
-    background-color: #333333;
-    border: 1px solid #7f7f7f;
-  }
+  &:disabled {
+    cursor: initial;
+    border-color: var(--color-dark-300);
 
-  &[data-state='open'] {
-    border-radius: 2px 2px 0 0;
-    border: 1px solid #7f7f7f;
+    .typographyStyle {
+      opacity: 0.5;
+    }
 
-    .img {
-      transform: rotate(180deg);
+    .arrow {
+      opacity: 0.5;
     }
   }
 
-  &:focus {
-    border-color: #2f67ca;
+  &:focus-visible {
+    border-color: var(--color-info-700);
   }
 
-  &:disabled {
-    cursor: not-allowed;
-    border-color: #4b4b4b;
+  &:hover:not([data-disabled]) {
+    background-color: var(--color-dark-500);
+    border: 1px solid var(--color-dark-100);
   }
-}
 
-.img {
-  width: 16px;
-  height: 16px;
+  &[data-state='open'] {
+    border: 1px solid var(--color-dark-100);
+    border-radius: 2px 2px 0 0;
+
+    .arrow {
+      transform: rotate(-180deg);
+    }
+  }
 }
 
 .viewport {
-  width: 210px;;
   cursor: pointer;
-  background-color: #171717;
-  border: 1px solid #7f7f7f;
+
+  width: 210px;
+
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-100);
   border-radius: 0 0 2px 2px;
 }
 
-.typographyStyle {
-  color: white;
-}
-
-.typographyStyleDisabled {
-  color: #4b4b4b;
-}
-
 .item {
+  padding: 5px 12px;
   outline: none;
-  padding: 5px 12px 5px 12px;
 
-  &:hover {
-    background-color: #8c61ff;
+  &[data-highlighted] {
+    background-color: var(--color-accent-900);
 
     .typographyStyle {
-      color: #a17efd;
+      color: var(--color-accent-300);
+    }
+  }
+
+  &:hover {
+    background-color: var(--color-accent-900);
+
+    .typographyStyle {
+      color: var(--color-accent-300);
     }
   }
 }

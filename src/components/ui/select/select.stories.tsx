@@ -1,51 +1,58 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { SelectControl } from "@/components/ui/select/select";
-import { useState } from "react";
+
+import { useState } from 'react'
+
+import { Select } from '@/components/ui/select/select'
 
 const meta = {
-  component: SelectControl,
+  component: Select,
   tags: ['autodocs'],
-  title: 'Components/SelectControl',
-} satisfies Meta<typeof SelectControl>
+  title: 'Components/Select',
+} satisfies Meta<typeof Select>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-const listValues = [
-  { value: '1', label: 'Science' },
-  { value: '2', label: 'Sports' },
-  { value: '3', label: 'Movie' },
-  { value: '4', label: 'Technology' },
-  { value: '5', label: 'Music' },
+const options = [
+  { label: 'Science', value: '1' },
+  { label: 'Sports', value: '2' },
+  { label: 'Movie', value: '3' },
+  { label: 'Technology', value: '4' },
+  { label: 'Music', value: '5' },
 ]
 
 export const Default: Story = {
   args: {
-    label: "Select-box",
-    listValues: listValues,
     disabled: false,
+    label: 'Select-box',
+    options,
   },
   render: args => {
-    const [selectedValue, setSelectedValue] = useState<string>(args.listValues[0].label);
+    const [selectedValue, setSelectedValue] = useState<string>(args.options[0].label)
     const handleSelectChange = (value: string) => {
-      setSelectedValue(value);
-    };
-    return  <SelectControl selectedValue={selectedValue} disabled={args.disabled} handleSelectChange={handleSelectChange} listValues={args.listValues} label={args.label}/>
+      setSelectedValue(value)
+    }
+
+    return (
+      <Select {...args} handleSelectChange={handleSelectChange} selectedValue={selectedValue} />
+    )
   },
 }
 
 export const Disabled: Story = {
   args: {
-    label: "Select-box",
-    listValues: listValues,
     disabled: true,
+    label: 'Select-box',
+    options,
   },
   render: args => {
-    const [selectedValue, setSelectedValue] = useState<string>(args.listValues[0].label);
+    const [selectedValue, setSelectedValue] = useState<string>(args.options[0].label)
     const handleSelectChange = (value: string) => {
-      setSelectedValue(value);
-    };
-    return  <SelectControl selectedValue={selectedValue} disabled={args.disabled} handleSelectChange={handleSelectChange} listValues={args.listValues} label={args.label}/>
+      setSelectedValue(value)
+    }
+
+    return (
+      <Select {...args} handleSelectChange={handleSelectChange} selectedValue={selectedValue} />
+    )
   },
 }
-

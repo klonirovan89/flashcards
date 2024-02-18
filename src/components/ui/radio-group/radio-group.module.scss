@@ -1,0 +1,82 @@
+button {
+  all: unset;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 12px;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-accent-500);
+  border-radius: 50%;
+
+  &:hover:not([data-disabled]) .frame {
+    width: 36px;
+    height: 36px;
+    background-color: var(--color-dark-500);
+    transition: 0.3s;
+  }
+
+  &:active:not([data-disabled]) .frame {
+    width: 36px;
+    height: 36px;
+    background-color: var(--color-accent-900);
+    transition: 0.3s;
+  }
+
+  &:focus-visible:not([data-disabled]) .frame {
+    width: 36px;
+    height: 36px;
+    background-color: var(--color-dark-700);
+    transition: 0.3s;
+  }
+
+  &:disabled {
+    cursor: initial;
+    border: 2px solid var(--color-accent-900);
+  }
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  background-color: #8c61ff;
+  border-radius: 50%;
+
+  &[data-disabled] {
+    background-color: var(--color-accent-900);
+  }
+}
+
+.frame {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  background-color: #333333ff;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.typographyDisabled {
+  opacity: 0.5;
+}
+
+.error {
+  color: red;
+}

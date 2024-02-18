@@ -1,38 +1,50 @@
-import { useForm, useController } from 'react-hook-form'
+import { useController, useForm } from 'react-hook-form'
+
+import { Checkbox } from '@/components/ui/checkbox'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
 
 import { Button } from '../../ui/button/button'
-import { SuperInput } from "../../ui/input/input";
-import { Input } from "@mui/material";
-import { CheckboxControl } from "../../ui/checkbox/checkbox";
-import React from "react";
-
-type FormValues = {
-  email: string
-  password: string
-  rememberMe?: boolean
-}
+import { SuperInput } from '../../ui/input/input'
 
 export const LoginForm = () => {
-  const { register, handleSubmit , control} = useForm<FormValues>()
-
-  const onSubmit = (data: FormValues) => {
-    console.log(data)
-  }
+  const loginSchema = z.object({
+    email: z.string().email(),
+    password: z.string().min(3),
+    rememberMe: z.boolean().default(false),
+  })
 
   const {
-    field: { value, onChange },
+    control,
+    formState: { errors },
+    handleSubmit,
+    register,
+  } = useForm<FormValues>({
+    resolver: zodResolver(loginSchema),
+  })
+
+  type FormValues = z.infer<typeof loginSchema>
+
+  const onSubmit = (data: FormValues) => {}
+
+  const {
+    field: { onChange, value },
   } = useController({
-    name: 'rememberMe',
     control,
     defaultValue: false,
+    name: 'rememberMe',
   })
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Input {...register('email')} name={'email'} />
-      <Input {...register('password')} name={'password'} />
-      <CheckboxControl checked={value} onValueChange={onChange} label={'remember me'} />
-      <Button type="submit">Submit</Button>
+      <SuperInput {...register('email')} errorMessage={errors.email?.message} label={'email'} />
+      <SuperInput
+        {...register('password')}
+        errorMessage={errors.password?.message}
+        label={'password'}
+      />
+      <Checkbox checked={value} label={'remember me'} name={'rememberMe'} onChange={onChange} />
+      <Button type={'submit'}>Submit</Button>
     </form>
   )
 }

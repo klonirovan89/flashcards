@@ -1,3 +1,5 @@
+import { Typography } from '@/components/ui/typography'
+
 import s from './card.module.scss'
 
 export type CardProps = {
@@ -5,5 +7,11 @@ export type CardProps = {
 }
 
 export const Card = (props: CardProps) => {
-  return <div className={s.card}>{props.children}</div>
+  return (
+    <div className={s.card}>
+      <Typography className={s.typographyStyle} variant={'body2'}>
+        {props.children}
+      </Typography>
+    </div>
+  )
 }
