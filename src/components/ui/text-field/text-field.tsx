@@ -44,7 +44,9 @@ export const TextField = forwardRef<HTMLInputElement, PropsType>(
 
     return (
       <div className={s.container}>
-        <Typography variant={'body2'}>{label}</Typography>
+        <Typography className={s.typographyStyle} variant={'body2'}>
+          {label}
+        </Typography>
 
         <div className={s.textField}>
           <input
@@ -60,7 +62,7 @@ export const TextField = forwardRef<HTMLInputElement, PropsType>(
         </div>
 
         {!!errorMessage && (
-          <Typography className={s.typographyStyle} variant={'caption'}>
+          <Typography className={s.typographyErrorStyle} variant={'caption'}>
             {errorMessage}
           </Typography>
         )}
