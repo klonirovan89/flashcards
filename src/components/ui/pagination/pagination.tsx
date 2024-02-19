@@ -90,7 +90,6 @@ export const PaginationControl = (props: PropsType) => {
             Show
           </Typography>
           <Select
-            classForPagination
             handleSelectChange={handleSelectChange}
             options={listNumberValues}
             selectedValue={selectedValue}

@@ -14,7 +14,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
-  color: #808080;
+  color: white;
 
   background: none;
   border: 1px solid #4c4c4c;
@@ -74,5 +74,9 @@
 }
 
 .typographyStyle {
+  color: var(--color-dark-100);
+}
+
+.typographyErrorStyle {
   color: var(--color-danger-300);
 }
