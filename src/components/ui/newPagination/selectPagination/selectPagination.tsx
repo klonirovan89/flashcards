@@ -1,4 +1,5 @@
 import { Select } from '@/components/ui/select'
+
 type Props = {
   pageSize: number
   pageSizeChange: (newPageSize: number) => void
@@ -18,8 +19,8 @@ export const SelectPagination = ({ pageSize, pageSizeChange }: Props) => {
 
   return (
     <Select
-      classForPagination
       handleSelectChange={onValueChange}
+      isPagination
       options={options}
       selectedValue={pageSize.toString()}
       value={pageSize.toString()}

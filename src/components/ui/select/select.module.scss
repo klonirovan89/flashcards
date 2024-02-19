@@ -27,9 +27,11 @@ button {
   align-items: center;
   justify-content: space-between;
 
+  box-sizing: border-box;
   width: 210px;
   height: 36px;
-  padding: 3px 1px 3px 5px;
+  margin-left: 10px;
+  padding: 6px 12px;
 
   text-align: justify;
 
@@ -60,12 +62,19 @@ button {
   }
 
   &[data-state='open'] {
+    margin-right: 10px;
     border: 1px solid var(--color-dark-100);
     border-radius: 2px 2px 0 0;
 
     .arrow {
       transform: rotate(-180deg);
     }
+  }
+
+  &.pagination {
+    width: 60px;
+    height: 24px;
+    padding: 3px 1px 3px 5px;
   }
 }
 
@@ -77,10 +86,16 @@ button {
   background-color: var(--color-dark-700);
   border: 1px solid var(--color-dark-100);
   border-radius: 0 0 2px 2px;
+
+  &.pagination {
+    width: 60px;
+    height: 24px;
+    padding: 3px 1px 3px 5px;
+  }
 }
 
 .item {
-  padding: 5px 12px;
+  padding: 6px 12px;
   outline: none;
 
   &[data-highlighted] {
@@ -98,13 +113,10 @@ button {
       color: var(--color-accent-300);
     }
   }
-}
 
-.triggerPagination {
-  width: 60px;
-  height: 24px;
-}
-
-.viewportPagination {
-  width: 60px;
+  &.pagination {
+    width: 60px;
+    height: 24px;
+    padding: 3px 1px 3px 5px;
+  }
 }

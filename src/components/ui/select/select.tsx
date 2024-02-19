@@ -2,12 +2,12 @@ import { Icon } from '@/components/ui/icon/Icon'
 import { Options } from '@/components/ui/radio-group'
 import { Typography } from '@/components/ui/typography'
 import * as RadixSelect from '@radix-ui/react-select'
+import { clsx } from 'clsx'
 
 import s from '../select/select.module.scss'
 
 export const Select = (props: PropsType) => {
-  const { classForPagination, disabled, handleSelectChange, label, options, selectedValue, value } =
-    props
+  const { disabled, handleSelectChange, isPagination, label, options, selectedValue, value } = props
 
   return (
     <div className={s.container}>
@@ -18,7 +18,7 @@ export const Select = (props: PropsType) => {
         value={value}
       >
         <RadixSelect.Trigger
-          className={classForPagination ? `${s.triggerPagination} ${s.trigger}` : s.trigger}
+          className={clsx(s.trigger, isPagination && s.pagination)}
           disabled={disabled}
         >
           <RadixSelect.Value placeholder={selectedValue} />
@@ -28,11 +28,13 @@ export const Select = (props: PropsType) => {
         </RadixSelect.Trigger>
         <RadixSelect.Portal>
           <RadixSelect.Content position={'popper'} sideOffset={-1}>
-            <RadixSelect.Viewport
-              className={classForPagination ? `${s.viewportPagination} ${s.viewport}` : s.viewport}
-            >
+            <RadixSelect.Viewport className={clsx(s.viewport, isPagination && s.pagination)}>
               {options.map((el, index) => (
-                <RadixSelect.Item className={s.item} key={index} value={el.label}>
+                <RadixSelect.Item
+                  className={clsx(s.item, isPagination && s.pagination)}
+                  key={index}
+                  value={el.label}
+                >
                   <RadixSelect.ItemText>
                     <Typography className={s.typographyStyle} variant={'body2'}>
                       {el.label}
@@ -49,9 +51,9 @@ export const Select = (props: PropsType) => {
 }
 
 export type PropsType = {
-  classForPagination?: boolean
   disabled?: boolean
   handleSelectChange: (value: string) => void
+  isPagination?: boolean
   label?: string
   options: Options[]
   selectedValue?: string
