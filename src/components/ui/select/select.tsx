@@ -1,3 +1,5 @@
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
+
 import { Icon } from '@/components/ui/icon/Icon'
 import { Options } from '@/components/ui/radio-group'
 import { Typography } from '@/components/ui/typography'
@@ -6,20 +8,21 @@ import { clsx } from 'clsx'
 
 import s from '../select/select.module.scss'
 
-export const Select = (props: PropsType) => {
+export const Select = forwardRef<ElementRef<typeof RadixSelect.Root>, SelectProps>((props, ref) => {
   const { disabled, handleSelectChange, isPagination, label, options, selectedValue, value } = props
 
   return (
     <div className={s.container}>
       {label && <Typography variant={'body2'}>{label}</Typography>}
       <RadixSelect.Root
-        defaultValue={value}
+        defaultValue={selectedValue}
         onValueChange={value => handleSelectChange(value)}
         value={value}
       >
         <RadixSelect.Trigger
           className={clsx(s.trigger, isPagination && s.pagination)}
           disabled={disabled}
+          ref={ref}
         >
           <RadixSelect.Value placeholder={selectedValue} />
           <div className={s.arrow}>
@@ -48,9 +51,9 @@ export const Select = (props: PropsType) => {
       </RadixSelect.Root>
     </div>
   )
-}
+})
 
-export type PropsType = {
+export type SelectProps = {
   disabled?: boolean
   handleSelectChange: (value: string) => void
   isPagination?: boolean
@@ -58,4 +61,4 @@ export type PropsType = {
   options: Options[]
   selectedValue?: string
   value?: string
-}
+} & ComponentPropsWithoutRef<typeof RadixSelect.Root>
