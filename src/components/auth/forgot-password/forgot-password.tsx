@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form'
 
+import { Button } from '@/components/ui/button'
 import { Typography } from '@/components/ui/typography'
 import { ControlledTextField } from '@/controlled/controlled-text-field/controlled-text-field'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -7,17 +8,15 @@ import { z } from 'zod'
 
 import s from './forgot-password.module.scss'
 
-import { Button } from '@/components/ui/button'
-
 export const ForgotPassword = () => {
   const users = [
     {
-      name: 'Test',
       email: 'test@gmail.com',
+      name: 'Test',
     },
     {
-      name: 'Pasha',
       email: 'pasha@gmail.com',
+      name: 'Pasha',
     },
   ]
 
@@ -42,6 +41,7 @@ export const ForgotPassword = () => {
 
   const onSubmit = (data: FormValues) => {
     alert('submit')
+
     return data
   }
 
