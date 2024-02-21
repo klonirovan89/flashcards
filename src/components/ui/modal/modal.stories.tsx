@@ -23,7 +23,6 @@ export const Primary: Story = {
     children: <Button variant={'primary'}>sdfsdf</Button>,
     open: false,
     title: 'ModalTitle',
-    withSecondary: true,
     withTrigger: true,
   },
 }
@@ -33,7 +32,6 @@ export const WithForm: Story = {
     children: 'modalContent',
     open: false,
     title: 'ModalTitle',
-    withSecondary: true,
     withTrigger: true,
   },
 }
