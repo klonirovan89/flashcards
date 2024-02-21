@@ -10,7 +10,6 @@ import s from './forgot-password.module.scss'
 import { Button } from '@/components/ui/button'
 
 export const ForgotPassword = () => {
-
   const users = [
     {
       name: 'Test',
@@ -26,16 +25,10 @@ export const ForgotPassword = () => {
     .object({
       email: z.string().email(),
     })
-    .refine(
-      data =>
-        users.some(el => {
-          return el.email === data.email
-        }),
-      {
-        message: 'User not found',
-        path: ['email'],
-      }
-    )
+    .refine(data => users.some(el => el.email === data.email), {
+      message: 'User not found',
+      path: ['email'],
+    })
 
   const {
     control,
