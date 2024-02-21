@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
 import { Select } from '@/components/ui/select/select'
+import { Typography } from '@/components/ui/typography'
 
 const meta = {
   component: Select,
@@ -24,7 +25,6 @@ const options = [
 export const Default: Story = {
   args: {
     disabled: false,
-    label: 'Select-box',
     options,
   },
   render: args => {
@@ -34,7 +34,14 @@ export const Default: Story = {
     }
 
     return (
-      <Select {...args} handleSelectChange={handleSelectChange} selectedValue={selectedValue} />
+      <div>
+        <Typography style={{ marginLeft: '10px' }} variant={'h3'}>
+          Select-box
+        </Typography>
+        <div style={{ margin: '10px 0' }}>
+          <Select {...args} handleSelectChange={handleSelectChange} selectedValue={selectedValue} />
+        </div>
+      </div>
     )
   },
 }
@@ -42,7 +49,6 @@ export const Default: Story = {
 export const Disabled: Story = {
   args: {
     disabled: true,
-    label: 'Select-box',
     options,
   },
   render: args => {
@@ -52,7 +58,14 @@ export const Disabled: Story = {
     }
 
     return (
-      <Select {...args} handleSelectChange={handleSelectChange} selectedValue={selectedValue} />
+      <div>
+        <Typography style={{ marginLeft: '10px' }} variant={'h3'}>
+          Select-Disabled
+        </Typography>
+        <div style={{ margin: '10px 0' }}>
+          <Select {...args} handleSelectChange={handleSelectChange} selectedValue={selectedValue} />
+        </div>
+      </div>
     )
   },
 }
