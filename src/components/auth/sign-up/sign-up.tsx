@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form'
 
+import { Button } from '@/components/ui/button'
 import { Typography } from '@/components/ui/typography'
 import { ControlledTextField } from '@/controlled/controlled-text-field/controlled-text-field'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -7,14 +8,12 @@ import { z } from 'zod'
 
 import s from './sign-up.module.scss'
 
-import { Button } from '@/components/ui/button'
-
 export const SignUp = () => {
   const loginSchema = z
     .object({
+      confirmPassword: z.string().min(3).max(30),
       email: z.string().email(),
       password: z.string().min(3).max(30),
-      confirmPassword: z.string().min(3).max(30),
     })
     .refine(data => data.password === data.confirmPassword, {
       message: "Passwords don't match",
