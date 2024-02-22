@@ -9,6 +9,7 @@ import { Typography } from '@/components/ui/typography'
 import s from './table.module.scss'
 
 import { Table } from './'
+import {Button} from "@/components/ui/button";
 
 const meta = {
   component: Table.Root,
@@ -183,15 +184,15 @@ export const Default: Story = {
               </Table.Cell>
               <Table.Cell>
                 <div className={s.control}>
-                  <button className={s.button} onClick={() => alert('play')}>
+                  <Button variant={'pure'} onClick={() => alert('play')}>
                     <Icon height={'16px'} iconId={'Learn'} width={'16px'} />
-                  </button>
-                  <button className={s.button} onClick={() => alert('play')}>
+                  </Button>
+                  <Button variant={'pure'} onClick={() => alert('play')}>
                     <Icon height={'16px'} iconId={'Edit'} width={'16px'} />
-                  </button>
-                  <button className={s.button} onClick={() => alert('play')}>
+                  </Button>
+                  <Button variant={'pure'} onClick={() => alert('play')}>
                     <Icon height={'16px'} iconId={'Delete'} width={'16px'} />
-                  </button>
+                  </Button>
                 </div>
               </Table.Cell>
             </Table.Row>
