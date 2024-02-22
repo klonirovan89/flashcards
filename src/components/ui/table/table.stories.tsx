@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useState } from 'react'
 
+import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon/Icon'
 import { Rating } from '@/components/ui/rating'
 import { Typography } from '@/components/ui/typography'
@@ -9,7 +10,6 @@ import { Typography } from '@/components/ui/typography'
 import s from './table.module.scss'
 
 import { Table } from './'
-import {Button} from "@/components/ui/button";
 
 const meta = {
   component: Table.Root,
@@ -184,13 +184,13 @@ export const Default: Story = {
               </Table.Cell>
               <Table.Cell>
                 <div className={s.control}>
-                  <Button variant={'pure'} onClick={() => alert('play')}>
+                  <Button onClick={() => alert('play')} variant={'pure'}>
                     <Icon height={'16px'} iconId={'Learn'} width={'16px'} />
                   </Button>
-                  <Button variant={'pure'} onClick={() => alert('play')}>
+                  <Button onClick={() => alert('play')} variant={'pure'}>
                     <Icon height={'16px'} iconId={'Edit'} width={'16px'} />
                   </Button>
-                  <Button variant={'pure'} onClick={() => alert('play')}>
+                  <Button onClick={() => alert('play')} variant={'pure'}>
                     <Icon height={'16px'} iconId={'Delete'} width={'16px'} />
                   </Button>
                 </div>

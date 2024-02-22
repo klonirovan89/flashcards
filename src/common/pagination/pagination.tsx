@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 
-import { ButtonBlock } from '@/components/ui/pagination/buttonBlock/buttonBlock'
 import { Select } from '@/components/ui/select'
 import { Typography } from '@/components/ui/typography'
 
 import s from '../pagination/pagination.module.scss'
+
+import { ButtonBlock } from './buttonBlock/buttonBlock'
 
 type ListNumberValuesType = {
   label: string
