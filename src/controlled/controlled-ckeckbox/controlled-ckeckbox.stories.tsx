@@ -10,9 +10,9 @@ import { ControlledCheckbox } from '@/controlled/controlled-ckeckbox/controlled-
 type FormValues = Record<string, any>
 
 export const ExampleCheckboxForm = () => {
-  const { control, getValues, handleSubmit } = useForm<FormValues>({
+  const { control, getValues, handleSubmit, register } = useForm<FormValues>({
     defaultValues: {
-      controlledCheckbox: true,
+      controlledCheckbox: false,
     },
   })
   const onSubmit = () => {
@@ -22,14 +22,21 @@ export const ExampleCheckboxForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Typography style={{ marginLeft: '10px' }} variant={'h3'}>
-        Controlled Checkbox
+        Controlled
       </Typography>
       <div style={{ padding: '10px' }}>
         <div style={{ marginBottom: '10px' }}>
-          <ControlledCheckbox control={control} label={'controlled'} name={'controlledCheckbox'} />
+          <ControlledCheckbox control={control} name={'controlledCheckbox'} />
         </div>
-
-        <Checkbox checked={false} label={'dont controlled'} name={'dont controlled'} />
+        <Typography variant={'h3'}>Uncontrolled</Typography>
+        <div style={{ marginTop: '10px' }}>
+          <Checkbox
+            {...register('Uncontrolled')}
+            checked={false}
+            name={'dont controlled'}
+            onChange={() => getValues('12')}
+          />
+        </div>
         <div style={{ marginTop: '10px' }}>
           <Button variant={'link'}>Click me for promotion</Button>
         </div>
