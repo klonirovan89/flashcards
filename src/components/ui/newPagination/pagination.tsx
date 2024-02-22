@@ -25,7 +25,7 @@ export const Pagination = memo((props: Props) => {
     totalCount,
   })
 
-  if (!paginationRange || currentPage === 0 || paginationRange.length < 2) {
+  if (!paginationRange) {
     return (
       <div className={s.paginationContainer}>
         Показать
