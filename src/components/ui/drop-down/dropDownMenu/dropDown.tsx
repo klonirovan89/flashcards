@@ -1,9 +1,9 @@
+import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon/Icon'
 import { Typography } from '@/components/ui/typography'
 import * as RadixDropdownMenu from '@radix-ui/react-dropdown-menu'
 
 import s from './dropDown.module.scss'
-import {Button} from "@/components/ui/button";
 
 export const DropDownMenu = (props: PropsType) => {
   const { value } = props
@@ -19,7 +19,7 @@ export const DropDownMenu = (props: PropsType) => {
           <RadixDropdownMenu.Content align={'end'} className={s.content} sideOffset={2}>
             {value.map((el, index) => (
               <RadixDropdownMenu.Item className={s.menuItem} key={index}>
-                <Button variant={'pure'} className={s.item} onClick={() => alert('play')}>
+                <Button className={s.item} onClick={() => alert('play')} variant={'pure'}>
                   <div className={s.icon}>
                     <Icon height={'16px'} iconId={el.id} width={'16px'} />
                   </div>

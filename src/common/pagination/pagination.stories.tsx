@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { PaginationControl } from '@/components/ui/pagination/pagination'
+import { PaginationControl } from './pagination'
 
 const meta = {
   component: PaginationControl,
