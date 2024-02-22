@@ -8,6 +8,7 @@
 
 .button {
   all: unset;
+  cursor: pointer;
 
   display: flex;
   justify-content: center;
@@ -24,12 +25,17 @@
   transition: 0.3s;
 
   &:hover {
-    cursor: pointer;
     background-color: var(--color-dark-500);
   }
 
   &:disabled {
     color: var(--color-dark-300);
+
+    &:hover {
+      cursor: initial;
+      background-color: var(--color-dark-900);
+    }
+
   }
 
   &:focus-visible {
