@@ -9,26 +9,22 @@ import { Icon } from '../icon/Icon'
 import { Typography } from '../typography'
 
 type SuperModalProps = {
-  callback?: () => void
+  changeModalState: (open: boolean) => void
   children: ReactNode
   open: boolean
   title: string
-  withSecondary: boolean
   withTrigger: boolean
 }
 
 export const SuperModal = ({
-  callback,
+  changeModalState,
   children,
   open,
   title,
-  withSecondary,
   withTrigger,
 }: SuperModalProps) => {
-  const [tempOpen, setTempOpen] = useState<boolean>(open)
-
   return (
-    <Dialog.Root onOpenChange={() => setTempOpen(!tempOpen)} open={tempOpen}>
+    <Dialog.Root onOpenChange={() => changeModalState(!open)} open={open}>
       {withTrigger && (
         <Dialog.Trigger className={c.trigger}>
           <Button variant={'primary'}>
@@ -48,26 +44,6 @@ export const SuperModal = ({
             </Dialog.Close>
           </div>
           <div className={c.content}>{children}</div>
-          {withSecondary ? (
-            <div className={c.footer}>
-              <Button onClick={() => setTempOpen(!tempOpen)} variant={'secondary'}>
-                <Typography variant={'subtitle2'}>Cancel</Typography>
-              </Button>
-              <Button variant={'primary'}>
-                <Typography onClick={callback} variant={'subtitle2'}>
-                  {title}
-                </Typography>
-              </Button>
-            </div>
-          ) : (
-            <div className={c.footer + ' ' + c.only_primary}>
-              <Button variant={'primary'}>
-                <Typography onClick={callback} variant={'subtitle2'}>
-                  {title}
-                </Typography>
-              </Button>
-            </div>
-          )}
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
