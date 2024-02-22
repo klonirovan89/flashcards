@@ -23,7 +23,7 @@ export const ExampleCheckboxForm = () => {
           <ControlledTextField control={control} defaultValue={'Controlled'} name={'Controlled'} />
         </div>
         <div style={{ marginBottom: '20px', width: '300px' }}>
-          <TextField {...register('No Controlled')} defaultValue={'Dont Change'} />
+          <TextField {...register('Uncontrolled')} defaultValue={'Dont Change'} />
         </div>
         <Button variant={'link'}>Click me for promotion</Button>
       </div>
