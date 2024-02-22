@@ -13,7 +13,7 @@ export const Default = () => {
   const [pageSize, setPageSize] = useState(10)
 
   return (
-    <div>
+    <div style={{ margin: '30px 30px' }}>
       <Pagination
         currentPage={page}
         pageChange={setPage}
