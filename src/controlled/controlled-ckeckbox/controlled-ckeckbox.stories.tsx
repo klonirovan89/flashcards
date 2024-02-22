@@ -34,7 +34,7 @@ export const ExampleCheckboxForm = () => {
             {...register('Uncontrolled')}
             checked={false}
             name={'dont controlled'}
-            onChange={() => getValues('12')}
+            onChange={() => getValues()}
           />
         </div>
         <div style={{ marginTop: '10px' }}>
