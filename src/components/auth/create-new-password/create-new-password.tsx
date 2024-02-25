@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 import s from './create-new-password.module.scss'
+import { Card } from '@/components/ui/card'
 
 export const CreateNewPassword = () => {
   const loginSchema = z.object({
@@ -31,7 +32,7 @@ export const CreateNewPassword = () => {
 
   return (
     <div className={s.root}>
-      <div className={s.container}>
+      <Card>
         <div className={s.section}>
           <Typography variant={'h1'}>Create new password</Typography>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -44,15 +45,15 @@ export const CreateNewPassword = () => {
                 type={'password'}
               />
             </div>
+            <Typography className={s.typographyStyle} variant={'body2'}>
+              Enter new password and then sign in with it.
+            </Typography>
             <Button className={s.button} fullWidth type={'submit'}>
               <Typography variant={'subtitle2'}>Create New Password</Typography>
             </Button>
           </form>
-          <Typography variant={'body2'}>
-            Create new password and we will send you further instructions to email
-          </Typography>
         </div>
-      </div>
+      </Card>
     </div>
   )
 }

@@ -7,21 +7,22 @@
 </div>
 
 # Links:
+
 - [UI-kit ](https://storybook-flashcards-example.vercel.app/?path=/docs) on Storybook
 - [Quiz-Cards](https://falshcards-pavels-projects-3d7de22a.vercel.app/) - web application
 
-
 # Libraries and packages:
+
 - redux-toolkit
-- clsx	
+- clsx
 - eslint
 - stylelint
 - sass
-- radix-ui	
+- radix-ui
 - storybook
-- react	
+- react
 - react-dom
-- react-hook-form	vite
-- react-redux	zod
+- react-hook-form vite
+- react-redux zod
 - react-router-dom
 - typescript
