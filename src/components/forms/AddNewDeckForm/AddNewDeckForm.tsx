@@ -24,5 +24,5 @@ export const AddNewDeckForm = ({ changeModalState, withSecondary }: AddNewDeckFo
 
 type AddNewDeckFormProps = {
   changeModalState: (open: boolean) => void
-  withSecondary: boolean
+  withSecondary?: boolean
 }

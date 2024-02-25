@@ -6,7 +6,7 @@ const meta = {
   argTypes: {},
   component: AddNewDeckForm,
   tags: ['autodocs'],
-  title: 'Components/AddNewDeckForm',
+  title: 'Components/Forms/AddNewDeckForm',
 } satisfies Meta<typeof AddNewDeckForm>
 
 export default meta

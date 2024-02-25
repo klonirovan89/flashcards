@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 import s from './sign-up.module.scss'
+import { Card } from '@/components/ui/card'
 
 export const SignUp = () => {
   const loginSchema = z
@@ -36,7 +37,7 @@ export const SignUp = () => {
 
   return (
     <div className={s.root}>
-      <div className={s.container}>
+      <Card>
         <div className={s.section}>
           <Typography variant={'h1'}>Sign Up</Typography>
           <div className={s.form}>
@@ -83,7 +84,7 @@ export const SignUp = () => {
             </Typography>
           </div>
         </div>
-      </div>
+      </Card>
     </div>
   )
 }

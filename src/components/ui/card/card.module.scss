@@ -1,14 +1,12 @@
 .card {
-  cursor: pointer;
+  display: flex;
+  justify-content: center;
 
-  min-width: 420px;
-  min-height: 552px;
+  max-width: 420px;
+  margin: 30px 12px;
+  padding: 36px;
 
   background-color: var(--color-dark-700);
-  border: 1px solid #313131;
-  box-shadow: 0 0 18px rgba(0, 0, 0, 0.1);
-}
-
-.typographyStyle {
-  margin: 0px 12px;
+  border: 1px solid var(--color-dark-500);
+  border-radius: 2px;
 }

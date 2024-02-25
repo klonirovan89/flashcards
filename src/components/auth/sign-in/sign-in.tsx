@@ -9,6 +9,7 @@ import { z } from 'zod'
 import s from './sign-in.module.scss'
 
 import { Button } from '../../ui/button/button'
+import { Card } from '@/components/ui/card'
 
 export const SignIn = () => {
   const loginSchema = z.object({
@@ -33,7 +34,7 @@ export const SignIn = () => {
 
   return (
     <div className={s.root}>
-      <div className={s.container}>
+      <Card>
         <div className={s.section}>
           <Typography variant={'h1'}>Sign In</Typography>
           <div className={s.form}>
@@ -82,7 +83,7 @@ export const SignIn = () => {
             </Typography>
           </div>
         </div>
-      </div>
+      </Card>
     </div>
   )
 }

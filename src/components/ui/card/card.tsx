@@ -1,17 +1,9 @@
-import { Typography } from '@/components/ui/typography'
-
 import s from './card.module.scss'
+import { ComponentPropsWithoutRef } from 'react'
 
-export type CardProps = {
-  children: string
-}
-
+export type CardProps = ComponentPropsWithoutRef<'div'>
 export const Card = (props: CardProps) => {
-  return (
-    <div className={s.card}>
-      <Typography className={s.typographyStyle} variant={'body2'}>
-        {props.children}
-      </Typography>
-    </div>
-  )
+  const { children } = props
+
+  return <div className={s.card}>{children}</div>
 }

@@ -3,13 +3,14 @@ import { Icon } from '@/components/ui/icon/Icon'
 import { Typography } from '@/components/ui/typography'
 
 import s from './check-email.module.scss'
+import { Card } from '@/components/ui/card'
 
 export const CheckEmail = () => {
   const email = 'test@gmail.com'
 
   return (
     <div className={s.root}>
-      <div className={s.container}>
+      <Card>
         <div className={s.section}>
           <Typography variant={'h1'}>Check Email</Typography>
           <Icon height={'96'} iconId={'Email'} width={'96'} />
@@ -26,7 +27,7 @@ export const CheckEmail = () => {
             <Typography variant={'subtitle2'}>Back to Sign In</Typography>
           </Button>
         </div>
-      </div>
+      </Card>
     </div>
   )
 }

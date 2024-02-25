@@ -50,5 +50,5 @@ export const AddNewCardForm = ({ changeModalState, withSecondary }: AddNewCardFo
 
 type AddNewCardFormProps = {
   changeModalState: (open: boolean) => void
-  withSecondary: boolean
+  withSecondary?: boolean
 }

@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 import s from './forgot-password.module.scss'
+import { Card } from '@/components/ui/card'
 
 export const ForgotPassword = () => {
   const users = [
@@ -47,7 +48,7 @@ export const ForgotPassword = () => {
 
   return (
     <div className={s.root}>
-      <div className={s.container}>
+      <Card>
         <div className={s.section}>
           <Typography variant={'h1'}>Forgot your password?</Typography>
           <div className={s.form}>
@@ -79,7 +80,7 @@ export const ForgotPassword = () => {
             </Typography>
           </div>
         </div>
-      </div>
+      </Card>
     </div>
   )
 }

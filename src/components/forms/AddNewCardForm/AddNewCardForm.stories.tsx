@@ -6,7 +6,7 @@ const meta = {
   argTypes: {},
   component: AddNewCardForm,
   tags: ['autodocs'],
-  title: 'Components/AddNewCardForm',
+  title: 'Components/Forms/AddNewCardForm',
 } satisfies Meta<typeof AddNewCardForm>
 
 export default meta
