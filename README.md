@@ -2,8 +2,6 @@
 <img src="src/assets/icons/icons8-quizlet-300.png" alt="Cards">
 <h1 style="font-size: 78px; padding: 0; margin: 0">CARDS</h1>
 </div>
-
-#
 <div style=" text-align: justify">
 <h3 style="padding: 0; margin: 0; font-size: 24px;">In this application you can create a set of cards on absolutely any topic and use them for memorization. You can also look at decks of other users. The main page contains filtering, navigation and sorting elements, while the decks themselves are presented in table form. The application implements authorization, registration and password recovery.</h3>
 </div>
