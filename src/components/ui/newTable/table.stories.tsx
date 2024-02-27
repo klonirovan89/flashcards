@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Table } from './'
+import {Sort, Table} from './'
+import {useState} from "react";
 
 const meta = {
   component: Table,
@@ -14,10 +15,11 @@ type Story = StoryObj<typeof meta>
 export const Decks: Story = {
   args: {
     columns: [
-      { id: 'name', label: 'Name' },
-      { id: 'cardsCount', label: 'Cards' },
-      { id: 'update', label: 'Last update' },
-      { id: 'author.name', label: 'Crated by' },
+      { id: 'name', label: 'Name', sortable: true},
+      { id: 'cardsCount', label: 'Cards', sortable: true },
+      { id: 'updated', label: 'Last update', sortable: true },
+      { id: 'author.name', label: 'Created by', sortable: true },
+      { id: 'actions', label: '', sortable: false },
     ],
     data: {
       items: [
@@ -41,7 +43,7 @@ export const Decks: Story = {
             id: 'df6760fa-5ae1-46ef-916e-85f670d7b903',
             name: 'test',
           },
-          id: 'clt42d84q015dxh2g9a9p532l',
+          id: 'clt42d84q0fdfd15dxh2g9a9p532l',
           userId: 'df6760fa-5ae1-46ef-916e-85f670d7b903',
           name: 'test',
           isPrivate: false,
@@ -58,5 +60,11 @@ export const Decks: Story = {
         totalPages: 258,
       },
     },
+  },
+  render: args => {
+    const [sort, setSort] = useState<Sort>(null)
+
+
+    return  <Table columns={args.columns} data={args.data} sort={sort} onSort={setSort}/>
   },
 }
