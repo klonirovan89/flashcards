@@ -11,6 +11,7 @@ export const Decks = () => {
         {id: 'author.name', label: 'Crated by'},
     ]
 
+
     const {isLoading, data, error} = useGetDecksQuery()
 
     if (isLoading) {
