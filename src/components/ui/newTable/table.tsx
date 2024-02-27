@@ -1,11 +1,11 @@
 import s from './table.module.scss'
-import { useState } from 'react'
 import { Typography } from '@/components/ui/typography'
 import { Icon } from '@/components/ui/icon/Icon'
 import { Button } from '@/components/ui/button'
 import { ColumnsType } from '@/decks'
 import { Pagination } from '@/services/base-api'
-import { TableComponents } from '@/components/ui/newTable/teble-components'
+import { TableComponents } from '@/components/ui/newTable/table-components'
+import NoPhoto from '@/assets/icons/NoPhoto.png'
 
 export type DeckResponse = {
   items: Deck[]
@@ -32,58 +32,38 @@ export type DeckUser = {
 type PropsType = {
   columns: ColumnsType[]
   data: DeckResponse
+  sort?: Sort
+  onSort?: (sort: Sort) => void
 }
 
+export type Sort = {
+  key: string
+  direction: 'asc' | 'desc'
+} | null
+
 export const Table = (props: PropsType) => {
-  const { columns, data } = props
+  const { columns, data, sort, onSort } = props
 
-  const [currentColumnId, setCurrentColumnId] = useState<null | string>(null)
-  const [currentSortDirection, setCurrentSortDirection] = useState<null | string>(null)
-  const [dataList, setDataList] = useState<Deck[]>(data.items)
-
-  console.log(data.items)
-
-  const handleColumnSort = (columnId: string) => {
-    let sortDirection = currentSortDirection
-
-    if (currentColumnId !== columnId) {
-      setCurrentColumnId(columnId)
-      sortDirection = null
+  const handleSort = (column: ColumnsType) => {
+    if (!onSort || !column.sortable) {
+      return
     }
 
-    const nextSortDirection = getNextSortDirection(sortDirection)
+    if (sort && sort.key === column.id) {
+      if (sort.direction === 'desc') {
+        onSort(null)
+      } else {
+        onSort({
+          key: column.id,
+          direction: 'desc',
+        })
+      }
 
-    setCurrentSortDirection(nextSortDirection)
-
-    sortDataByColumn(columnId, nextSortDirection)
-  }
-
-  const getNextSortDirection = (currentSortDirection: null | string) => {
-    switch (currentSortDirection) {
-      case null:
-        return 'asc'
-      case 'asc':
-        return 'desc'
-      default:
-        return null
-    }
-  }
-
-  const sortDataByColumn = (columnId: string, nextSortDirection: null | string) => {
-    if (nextSortDirection === 'asc') {
-      const newData = [...dataList].sort((a, b) =>
-        a[columnId as keyof typeof a] > b[columnId as keyof typeof a] ? 1 : -1
-      )
-
-      setDataList(newData)
-    } else if (nextSortDirection === 'desc') {
-      const newData = [...dataList].sort((a, b) =>
-        b[columnId as keyof typeof a] > a[columnId as keyof typeof a] ? 1 : -1
-      )
-
-      setDataList(newData)
     } else {
-      setDataList(data.items)
+      onSort({
+        key: column.id,
+        direction: 'asc',
+      })
     }
   }
 
@@ -95,17 +75,16 @@ export const Table = (props: PropsType) => {
             {columns.map(el => (
               <TableComponents.HeadCell
                 key={el.id}
-                onClick={() => {
-                  handleColumnSort(el.id)
-                }}
+                onClick={() => handleSort(el)}
+                className={el.sortable ? s.headCellSortable : ''}
               >
                 <div className={s.divHeadCell}>
                   <Typography className={s.typographyStyleHead} variant={'subtitle2'}>
                     {el.label}
                   </Typography>
-                  {currentSortDirection !== null && currentColumnId === el.id ? (
-                    <div
-                      className={`${s.arrow} ${currentSortDirection === 'desc' ? s.arrowDESC : ''}`}
+                  {sort && sort.key === el.id ? (
+                      <div
+                      className={`${s.arrow} ${sort.direction === 'desc' ? s.arrowDESC : ''}`}
                     >
                       <Icon height={'24px'} iconId={'Arrow'} width={'24px'} />
                     </div>
@@ -115,11 +94,11 @@ export const Table = (props: PropsType) => {
                 </div>
               </TableComponents.HeadCell>
             ))}
-            <TableComponents.HeadCell className={s.headCellControl} />
+
           </TableComponents.Row>
         </TableComponents.Head>
         <TableComponents.Body>
-          {dataList.map(el => (
+          {data.items.map(el => (
             <TableComponents.Row key={el.id}>
               <TableComponents.Cell>
                 <Button onClick={() => alert('Здесь должен быть роут колоды')} variant={'pure'}>
@@ -129,7 +108,7 @@ export const Table = (props: PropsType) => {
                     ) : (
                       <div className={s.img}>
                         <img
-                          src={'src/assets/icons/NoPhoto.png'}
+                          src={NoPhoto}
                           width={50}
                           height={50}
                           alt={'img'}

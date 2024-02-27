@@ -35,10 +35,6 @@
   &:first-child {
     width: 320px;
   }
-
-  &:hover {
-    background-color: #3f3f3f;
-  }
 }
 
 .headCellRating {
@@ -49,8 +45,12 @@
   }
 }
 
-.headCellControl {
-  min-width: 116px;
+.headCellSortable {
+  cursor: pointer;
+
+  &:hover {
+    background-color: #3f3f3f;
+  }
 }
 
 .cellName {
@@ -93,7 +93,6 @@
 
 .typographyStyleHead {
   position: relative;
-  cursor: pointer;
   min-width: 95px;
   margin-left: 12px;
   z-index: 0;
