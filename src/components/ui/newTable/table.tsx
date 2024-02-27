@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { ColumnsType } from '@/decks'
 import { Pagination } from '@/services/base-api'
 import { TableComponents } from '@/components/ui/newTable/table-components'
+import NoPhoto from '@/assets/icons/NoPhoto.png'
 
 export type DeckResponse = {
   items: Deck[]
@@ -107,7 +108,7 @@ export const Table = (props: PropsType) => {
                     ) : (
                       <div className={s.img}>
                         <img
-                          src={'src/assets/icons/NoPhoto.png'}
+                          src={NoPhoto}
                           width={50}
                           height={50}
                           alt={'img'}
