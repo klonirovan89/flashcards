@@ -1,4 +1,4 @@
-import s from './table.module.scss'
+import s from './../newTable/table.module.scss'
 
 const Root = ({ ...rest }) => {
   return <table className={s.root} {...rest} />
@@ -28,4 +28,4 @@ const Empty = ({ ...rest }) => {
   return <div className={s.empty} {...rest} />
 }
 
-export const Table = { Body, Cell, Empty, Head, HeadCell, Root, Row }
+export const TableComponents = { Body, Cell, Empty, Head, HeadCell, Root, Row }
