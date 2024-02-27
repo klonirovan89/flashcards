@@ -1,15 +1,26 @@
-th {
-  padding: 0;
+.cell {
+  padding: 6px 24px;
+
+  border-collapse: collapse;
+  border-bottom: 1px solid #333333;
 }
 
-svg {
-  fill: var(--color-light-100);
+.container {
+  display: flex;
+  justify-content: center;
+
+  margin: 30px 0;
+  position: relative;
+
+  svg {
+    fill: var(--color-light-100);
+  }
 }
 
 .root {
-  width: 100%;
+  width: 1006px;
   border-collapse: collapse;
-  border-bottom: 1px solid #333333;
+  border: 1px solid #333333;
 }
 
 .head {
@@ -19,6 +30,12 @@ svg {
 }
 
 .headCell {
+  padding: 0;
+
+  &:first-child {
+    width: 320px;
+  }
+
   &:hover {
     background-color: #3f3f3f;
   }
@@ -34,10 +51,6 @@ svg {
 
 .headCellControl {
   min-width: 116px;
-
-  &:hover {
-    background-color: #3f3f3f;
-  }
 }
 
 .cellName {
@@ -45,13 +58,30 @@ svg {
 }
 
 .divNameBody {
-  min-width: 250px;
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
   margin: 10px 2px;
+
+  &:hover {
+    span {
+      color: var(--color-accent-500);
+
+      text-decoration: underline var(--color-accent-500);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 5px;
+
+      transition: 0.3ms;
+    }
+  }
+
+  .img {
+    width: 70px;
+    height: 50px;
+  }
 }
 
 .control {
@@ -99,10 +129,6 @@ svg {
   justify-content: center;
   align-items: center;
   margin-left: 14px;
-
-  .divHeadCellControl {
-    margin-left: 0;
-  }
 }
 
 .divArrow {

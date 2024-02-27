@@ -1,4 +1,4 @@
-import s from './table.module.scss'
+import s from './../newTable/table.module.scss'
 
 const Root = ({ ...rest }) => {
     return <table className={s.root} {...rest} />
