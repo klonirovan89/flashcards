@@ -1,4 +1,4 @@
-import { Table } from './components/ui/table'
+import { Table } from '@/components/ui/newTable'
 import { useGetDecksQuery } from '@/services/base-api'
 
 export const Decks = () => {

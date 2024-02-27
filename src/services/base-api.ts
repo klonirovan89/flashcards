@@ -1,32 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-export type DeckResponse = {
-  items: Deck[]
-  pagination: Pagination
-}
-
-type Pagination = {
+export type Pagination = {
   currentPage: number
   itemsPerPage: number
   totalPages: number
   totalItems: number
-}
-
-export type Deck = {
-  author: DeckUser
-  id: string
-  userId: string
-  name: string
-  isPrivate: boolean
-  cover: string
-  created: string
-  updated: string
-  cardsCount: number
-}
-
-type DeckUser = {
-  id: string
-  name: string
 }
 
 export type GetDecksArgs = {
