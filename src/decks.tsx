@@ -1,5 +1,6 @@
+
+import {Table} from "@/components/ui/newTable";
 import {useGetDecksQuery} from "@/services/base-api";
-import {Table} from "./components/ui/newTable/table";
 
 export const Decks = () => {
 
@@ -20,7 +21,7 @@ export const Decks = () => {
     }
     return (
         <div>
-            <Table columns={columnsDecks}/>
+            <Table columns={columnsDecks} data={data}/>
         </div>
     );
 };

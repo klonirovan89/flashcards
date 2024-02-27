@@ -1,13 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import {Deck} from "../components/ui/newTable/table";
 
-
-export type DeckResponse = {
-    items: Deck[]
-    pagination: Pagination
-}
-
-type Pagination = {
+export type Pagination = {
     currentPage: number
     itemsPerPage: number
     totalPages: number

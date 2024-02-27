@@ -4,8 +4,14 @@ import {Typography} from "@/components/ui/typography";
 import {Icon} from "@/components/ui/icon/Icon";
 import {Button} from "@/components/ui/button";
 import {ColumnsType} from "@/decks";
-import {useGetDecksQuery} from "@/services/base-api";
+import {Pagination} from "@/services/base-api";
+import {TableComponents} from "@/common/table/teble-components";
 
+
+export type DeckResponse = {
+    items: Deck[]
+    pagination: Pagination
+}
 
 export type Deck = {
     author: DeckUser
@@ -26,18 +32,15 @@ export type DeckUser = {
 
 type PropsType = {
     columns: ColumnsType[]
+    data: DeckResponse
 }
 
 export const Table = (props: PropsType) => {
-    const {columns} = props;
-
-    const {data} = useGetDecksQuery();
+    const {columns, data} = props;
 
     const [currentColumnId, setCurrentColumnId] = useState<null | string>(null)
     const [currentSortDirection, setCurrentSortDirection] = useState<null | string>(null)
     const [dataList, setDataList] = useState<Deck[]>(data.items)
-
-    console.log(data)
 
     const handleColumnSort = (columnId: string) => {
         let sortDirection = currentSortDirection
@@ -84,82 +87,82 @@ export const Table = (props: PropsType) => {
     }
 
     return (
-        <table>
-            <thead>
-            <tr>
-                {columns.map(el => (
-                    <th
-                        key={el.id}
-                        onClick={() => {
-                            handleColumnSort(el.id)
-                        }}
-                    >
-                        <div className={s.divHeadCell}>
-                            <Typography className={s.typographyStyleHead} variant={'subtitle2'}>
-                                {el.label}
+        <TableComponents.Root>
+            <TableComponents.Head>
+                <TableComponents.Row>
+                    {columns.map(el => (
+                        <TableComponents.HeadCell
+                            key={el.id}
+                            onClick={() => {
+                                handleColumnSort(el.id)
+                            }}
+                        >
+                            <div className={s.divHeadCell}>
+                                <Typography className={s.typographyStyleHead} variant={'subtitle2'}>
+                                    {el.label}
+                                </Typography>
+                                {currentSortDirection !== null && currentColumnId === el.id ? (
+                                    <div
+                                        className={`${s.arrow} ${currentSortDirection === 'desc' ? s.arrowDESC : ''}`}
+                                    >
+                                        <Icon height={'24px'} iconId={'Arrow'} width={'24px'}/>
+                                    </div>
+                                ) : (
+                                    <div className={s.divArrow}></div>
+                                )}
+                            </div>
+                        </TableComponents.HeadCell>
+                    ))}
+                    <TableComponents.HeadCell className={s.headCellControl}>
+                        <div className={s.divHeadCellControl}>
+                            <Typography className={s.typographyStyleHeadControl} variant={'subtitle2'}>
+                                Control
                             </Typography>
-                            {currentSortDirection !== null && currentColumnId === el.id ? (
-                                <div
-                                    className={`${s.arrow} ${currentSortDirection === 'desc' ? s.arrowDESC : ''}`}
-                                >
-                                    <Icon height={'24px'} iconId={'Arrow'} width={'24px'}/>
-                                </div>
-                            ) : (
-                                <div className={s.divArrow}></div>
-                            )}
                         </div>
-                    </th>
-                ))}
-                <th className={s.headCellControl}>
-                    <div className={s.divHeadCellControl}>
-                        <Typography className={s.typographyStyleHeadControl} variant={'subtitle2'}>
-                            Control
-                        </Typography>
-                    </div>
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            {dataList.map(el => (
-                <tr key={el.id}>
-                    <th>
-                        <div className={s.divNameBody}>
+                    </TableComponents.HeadCell>
+                </TableComponents.Row>
+            </TableComponents.Head>
+            <TableComponents.Body>
+                {dataList.map(el => (
+                    <TableComponents.Row key={el.id}>
+                        <TableComponents.Cell>
+                            <div className={s.divNameBody}>
+                                <Typography className={s.typographyStyleBody} variant={'body2'}>
+                                    {el.name}
+                                </Typography>
+                            </div>
+                        </TableComponents.Cell>
+                        <TableComponents.Cell>
                             <Typography className={s.typographyStyleBody} variant={'body2'}>
-                                {el.name}
+                                {el.cardsCount}
                             </Typography>
-                        </div>
-                    </th>
-                    <th>
-                        <Typography className={s.typographyStyleBody} variant={'body2'}>
-                            {el.cardsCount}
-                        </Typography>
-                    </th>
-                    <th>
-                        <Typography className={s.typographyStyleBody} variant={'body2'}>
-                            {new Date(el.updated).toLocaleDateString('ru-RU')}
-                        </Typography>
-                    </th>
-                    <th>
-                        <Typography className={s.typographyStyleBody} variant={'body2'}>
-                            {el.author.name}
-                        </Typography>
-                    </th>
-                    <th>
-                        <div className={s.control}>
-                            <Button onClick={() => alert('play')} variant={'pure'}>
-                                <Icon height={'16px'} iconId={'Learn'} width={'16px'}/>
-                            </Button>
-                            <Button onClick={() => alert('play')} variant={'pure'}>
-                                <Icon height={'16px'} iconId={'Edit'} width={'16px'}/>
-                            </Button>
-                            <Button onClick={() => alert('play')} variant={'pure'}>
-                                <Icon height={'16px'} iconId={'Delete'} width={'16px'}/>
-                            </Button>
-                        </div>
-                    </th>
-                </tr>
-            ))}
-            </tbody>
-        </table>
+                        </TableComponents.Cell>
+                        <TableComponents.Cell>
+                            <Typography className={s.typographyStyleBody} variant={'body2'}>
+                                {new Date(el.updated).toLocaleDateString('ru-RU')}
+                            </Typography>
+                        </TableComponents.Cell>
+                        <TableComponents.Cell>
+                            <Typography className={s.typographyStyleBody} variant={'body2'}>
+                                {el.author.name}
+                            </Typography>
+                        </TableComponents.Cell>
+                        <TableComponents.Cell>
+                            <div className={s.control}>
+                                <Button onClick={() => alert('play')} variant={'pure'}>
+                                    <Icon height={'16px'} iconId={'Learn'} width={'16px'}/>
+                                </Button>
+                                <Button onClick={() => alert('play')} variant={'pure'}>
+                                    <Icon height={'16px'} iconId={'Edit'} width={'16px'}/>
+                                </Button>
+                                <Button onClick={() => alert('play')} variant={'pure'}>
+                                    <Icon height={'16px'} iconId={'Delete'} width={'16px'}/>
+                                </Button>
+                            </div>
+                        </TableComponents.Cell>
+                    </TableComponents.Row>
+                ))}
+            </TableComponents.Body>
+        </TableComponents.Root>
     )
 }
