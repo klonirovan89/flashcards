@@ -15,6 +15,8 @@ export const FileUploaderWithImage = (props: PropsType) => {
   const MAX_FILE_SIZE = 1048576 // 1MB in bytes
   const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/gif']
 
+  console.log(selectedFile)
+
   const handleFileInputChange = (event: any) => {
     const file = event.target.files && event.target.files[0]
 
@@ -99,7 +101,6 @@ export const FileUploaderWithImage = (props: PropsType) => {
           variant={'secondary'}
         />
       )}
-      {selectedFile}
     </div>
   )
 }

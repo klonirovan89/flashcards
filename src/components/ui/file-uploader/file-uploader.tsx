@@ -9,6 +9,8 @@ export const FileUploader = (props: PropsType) => {
   const [selectedFile, setSelectedFile] = useState(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
+  console.log(selectedFile)
+
   const handleFileInputChange = (event: any) => {
     const file = event.target.files && event.target.files[0]
 
@@ -35,7 +37,6 @@ export const FileUploader = (props: PropsType) => {
         text={text}
         variant={'secondary'}
       />
-      {selectedFile}
     </>
   )
 }

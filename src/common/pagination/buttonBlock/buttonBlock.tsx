@@ -47,8 +47,8 @@ export const ButtonBlock = (props: PropsType) => {
                     selectedPage === 1 && index === 0
                       ? s.btnActive
                       : selectedPage === el
-                        ? s.btnActive
-                        : s.btn
+                      ? s.btnActive
+                      : s.btn
                   }
                   disabled={selectedPage === el}
                   key={index}
