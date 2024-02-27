@@ -1,0 +1,40 @@
+.divNameBody {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 2px;
+
+  &:hover {
+    span {
+      color: var(--color-accent-500);
+
+      text-decoration: underline var(--color-accent-500);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 5px;
+
+      transition: 0.3ms;
+    }
+  }
+
+  .img {
+    width: 70px;
+    height: 50px;
+  }
+}
+
+.control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.typographyStyleBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}

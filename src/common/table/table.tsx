@@ -1,9 +1,11 @@
-import s from './table.module.scss'
 import { useState } from 'react'
-import { Typography } from '@/components/ui/typography'
-import { Icon } from '@/components/ui/icon/Icon'
+
 import { Button } from '@/components/ui/button'
+import { Icon } from '@/components/ui/icon/Icon'
+import { Typography } from '@/components/ui/typography'
 import { useGetDecksQuery } from '@/services/base-api'
+
+import s from './table.module.scss'
 
 type ColumnsType = {
   id: string
@@ -12,14 +14,14 @@ type ColumnsType = {
 
 export type Deck = {
   author: DeckUser
-  id: string
-  userId: string
-  name: string
-  isPrivate: boolean
+  cardsCount: number
   cover: string
   created: string
+  id: string
+  isPrivate: boolean
+  name: string
   updated: string
-  cardsCount: number
+  userId: string
 }
 
 type DeckUser = {
@@ -40,8 +42,6 @@ export const TableComponents = () => {
   const [currentColumnId, setCurrentColumnId] = useState<null | string>(null)
   const [currentSortDirection, setCurrentSortDirection] = useState<null | string>(null)
   const [dataList, setDataList] = useState<Deck[]>(data.items)
-
-  console.log(dataList)
 
   const handleColumnSort = (columnId: string) => {
     let sortDirection = currentSortDirection
@@ -196,4 +196,4 @@ const Empty = ({ ...rest }) => {
   return <div className={s.empty} {...rest} />
 }
 
-export const Table = { Root, Head, HeadCell, Body, Row, Cell, Empty }
+export const Table = { Body, Cell, Empty, Head, HeadCell, Root, Row }
