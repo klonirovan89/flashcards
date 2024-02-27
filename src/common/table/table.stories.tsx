@@ -71,7 +71,6 @@ export const Default: Story = {
     const [currentSortDirection, setCurrentSortDirection] = useState<null | string>(null)
     const [dataList, setDataList] = useState<DataType[]>(args.data)
 
-
     const handleColumnSort = (columnId: string) => {
       let sortDirection = currentSortDirection
 
