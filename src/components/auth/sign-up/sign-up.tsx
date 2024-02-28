@@ -1,13 +1,13 @@
 import { useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
 import { ControlledTextField } from '@/controlled/controlled-text-field/controlled-text-field'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 import s from './sign-up.module.scss'
-import { Card } from '@/components/ui/card'
 
 export const SignUp = () => {
   const loginSchema = z

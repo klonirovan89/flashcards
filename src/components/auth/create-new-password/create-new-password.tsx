@@ -1,13 +1,13 @@
 import { useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
 import { ControlledTextField } from '@/controlled/controlled-text-field/controlled-text-field'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 import s from './create-new-password.module.scss'
-import { Card } from '@/components/ui/card'
 
 export const CreateNewPassword = () => {
   const loginSchema = z.object({

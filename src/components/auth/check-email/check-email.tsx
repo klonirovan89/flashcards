@@ -1,9 +1,9 @@
 import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 import { Icon } from '@/components/ui/icon/Icon'
 import { Typography } from '@/components/ui/typography'
 
 import s from './check-email.module.scss'
-import { Card } from '@/components/ui/card'
 
 export const CheckEmail = () => {
   const email = 'test@gmail.com'

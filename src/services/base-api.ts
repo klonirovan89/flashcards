@@ -1,23 +1,7 @@
+import { CardsResponse, DecksResponse, GetCardsArgs, GetDecksArgs } from '@/services/type'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-export type Pagination = {
-  currentPage: number
-  itemsPerPage: number
-  totalPages: number
-  totalItems: number
-}
-
-export type GetDecksArgs = {
-  orderBy?: string
-  minCardsCount?: number
-  maxCardsCount?: number
-  name?: string
-  authorId?: string
-  currentPage?: number
-  itemsPerPage?: number
-}
 export const baseApi = createApi({
-  reducerPath: 'baseApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://api.flashcards.andrii.es',
     credentials: 'include',
@@ -27,14 +11,21 @@ export const baseApi = createApi({
   }),
   endpoints: builder => {
     return {
-      getDecks: builder.query<any, GetDecksArgs | void>({
+      getCards: builder.query<CardsResponse, GetCardsArgs>({
         query: args => ({
-          url: `v1/decks`,
+          params: args.params ? args.params : undefined,
+          url: `v1/decks/${args.id}/cards`,
+        }),
+      }),
+      getDecks: builder.query<DecksResponse, GetDecksArgs | void>({
+        query: args => ({
           params: args ? args : undefined,
+          url: `v2/decks`,
         }),
       }),
     }
   },
+  reducerPath: 'baseApi',
 })
 
-export const { useGetDecksQuery } = baseApi
+export const { useGetCardsQuery, useGetDecksQuery } = baseApi
