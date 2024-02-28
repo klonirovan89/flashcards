@@ -3,9 +3,9 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
 import { CardRow } from '@/features/cardsTable/cardRow'
-import { Card } from '@/features/cardsTable/cards'
 import { DeckRow } from '@/features/decksTable/deckRow'
-import { Deck } from '@/features/decksTable/decks'
+import { Card } from '@/pages/cards/api/cards.type'
+import { Deck } from '@/pages/decks/api/decks.types'
 
 import { Sort, Table } from './'
 

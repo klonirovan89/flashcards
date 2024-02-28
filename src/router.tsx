@@ -6,7 +6,7 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
-import { Cards } from './features/cardsTable/cards'
+import { Cards } from './pages/cards/ui/cards'
 
 const publicRoutes: RouteObject[] = [
   {

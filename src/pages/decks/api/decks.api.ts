@@ -1,4 +1,4 @@
-import { CreateDecksArgs, Decks, DecksArgs, DecksResponse } from '@/pages/decks/api/decks.types'
+import { CreateDecksArgs, Deck, DecksArgs, DecksResponse } from '@/pages/decks/api/decks.types'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const decksApi = createApi({
@@ -11,7 +11,7 @@ export const decksApi = createApi({
   }),
   endpoints: builder => {
     return {
-      createDecks: builder.mutation<Decks, CreateDecksArgs>({
+      createDecks: builder.mutation<Deck, CreateDecksArgs>({
         invalidatesTags: ['Decks'],
         query: body => ({
           body,
@@ -19,7 +19,7 @@ export const decksApi = createApi({
           url: `v1/decks`,
         }),
       }),
-      deleteDecks: builder.mutation<Decks, { id: string }>({
+      deleteDecks: builder.mutation<Deck, { id: string }>({
         invalidatesTags: ['Decks'],
         query: ({ id }) => ({
           method: 'DELETE',
@@ -41,7 +41,7 @@ export const decksApi = createApi({
           url: `v2/decks`,
         }),
       }),
-      updateDecks: builder.mutation<Decks, { data: FormData; id: string }>({
+      updateDecks: builder.mutation<Deck, { data: FormData; id: string }>({
         invalidatesTags: ['Decks'],
         query: ({ data, id }) => ({
           body: data,

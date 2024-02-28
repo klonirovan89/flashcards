@@ -3,7 +3,8 @@ import { useState } from 'react'
 import { ColumnsType, Sort, Table } from '@/components/ui/newTable'
 import { Typography } from '@/components/ui/typography'
 import { CardRow } from '@/features/cardsTable/cardRow'
-import { useGetCardsQuery } from '@/services/base-api'
+import { useGetCardsQuery } from '@/pages/cards/api/cards.api'
+import { Card } from '@/pages/cards/api/cards.type'
 
 export const Cards = () => {
   const [sort, setSort] = useState<Sort>(null)
@@ -43,20 +44,4 @@ export const Cards = () => {
       )}
     </div>
   )
-}
-
-export type Card = {
-  answer: string
-  answerImg: null | string
-  answerVideo: null | string
-  created: string
-  deckId: string
-  grade: number
-  id: string
-  question: string
-  questionImg: null | string
-  questionVideo: null | string
-  shots: number
-  updated: string
-  userId: string
 }

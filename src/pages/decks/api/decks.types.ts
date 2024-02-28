@@ -1,16 +1,13 @@
 export type DecksResponse = {
-  items: Decks[]
+  items: Deck[]
   maxCardsCount: number
   pagination: Pagination
 }
-export type Author = {
-  id: string
-  name: string
-}
-export type Decks = {
-  author: Author
+
+export type Deck = {
+  author: DeckUser
   cardsCount: number
-  cover: null | string
+  cover: string
   created: string
   id: string
   isPrivate: boolean
@@ -18,6 +15,12 @@ export type Decks = {
   updated: string
   userId: string
 }
+
+export type DeckUser = {
+  id: string
+  name: string
+}
+
 export type Pagination = {
   currentPage: number
   itemsPerPage: number

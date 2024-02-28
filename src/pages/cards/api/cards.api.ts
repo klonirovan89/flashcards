@@ -1,7 +1,7 @@
-import { CardsResponse, DecksResponse, GetCardsArgs, GetDecksArgs } from '@/services/type'
+import { CardsResponse, GetCardsArgs } from '@/pages/cards/api/cards.type'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-export const baseApi = createApi({
+export const cardsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://api.flashcards.andrii.es',
     credentials: 'include',
@@ -17,15 +17,9 @@ export const baseApi = createApi({
           url: `v1/decks/${args.id}/cards`,
         }),
       }),
-      getDecks: builder.query<DecksResponse, GetDecksArgs | void>({
-        query: args => ({
-          params: args ? args : undefined,
-          url: `v2/decks`,
-        }),
-      }),
     }
   },
   reducerPath: 'baseApi',
 })
 
-export const { useGetCardsQuery, useGetDecksQuery } = baseApi
+export const { useGetCardsQuery } = cardsApi
