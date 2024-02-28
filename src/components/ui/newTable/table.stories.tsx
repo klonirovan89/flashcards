@@ -2,10 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useState } from 'react'
 
-import { Deck } from '@/features/deckTable/decks'
+import { CardRow } from '@/features/cardsTable/cardRow'
+import { Card } from '@/features/cardsTable/cards'
+import { DeckRow } from '@/features/decksTable/deckRow'
+import { Deck } from '@/features/decksTable/decks'
 
 import { Sort, Table } from './'
-import {DeckRow} from "@/features/deckTable/deckRow";
 
 const meta = {
   component: Table,
@@ -16,7 +18,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const data = {
+const dataDecks = {
   items: [
     {
       author: {
@@ -56,15 +58,64 @@ const data = {
   },
 }
 
+const dataCards = {
+  items: [
+    {
+      answer: 'sdfsdfs',
+      answerImg: null,
+      answerVideo: null,
+      created: '2024-02-27T21:36:30.720Z',
+      deckId: 'clt4vwmdj02e8xh2g6tkbidhn',
+      grade: 0,
+      id: 'clt4w0ydc02e9xh2g2b06vz9j',
+      question: 'fdsfs',
+      questionImg: null,
+      questionVideo: null,
+      shots: 0,
+      updated: '2024-02-27T21:36:30.720Z',
+      userId: '4080bcb3-7077-49be-bf65-d5c37bf5c5fd',
+    },
+  ],
+  pagination: {
+    currentPage: 1,
+    itemsPerPage: 10,
+    totalItems: 1,
+    totalPages: 1,
+  },
+}
+
 export const Decks: Story = {
   args: {
-    children: data.items.map((el: Deck) => <DeckRow deck={el} key={el.id} />),
+    children: dataDecks.items.map((el: Deck) => <DeckRow deck={el} key={el.id} />),
     columns: [
-      { id: 'name', label: 'Name', sortable: true },
-      { id: 'cardsCount', label: 'Cards', sortable: true },
-      { id: 'updated', label: 'Last update', sortable: true },
-      { id: 'author.name', label: 'Created by', sortable: true },
-      { id: 'actions', label: '', sortable: false },
+      { key: 'name', sortable: true, title: 'Name' },
+      { key: 'cardsCount', sortable: true, title: 'Cards' },
+      { key: 'updated', sortable: true, title: 'Last update' },
+      { key: 'author.name', sortable: true, title: 'Created by' },
+      { key: 'actions', sortable: false, title: '' },
+    ],
+  },
+
+  render: args => {
+    const [sort, setSort] = useState<Sort>(null)
+
+    return (
+      <Table columns={args.columns} onSort={setSort} sort={sort}>
+        {args.children}
+      </Table>
+    )
+  },
+}
+
+export const Cards: Story = {
+  args: {
+    children: dataCards.items.map((el: Card) => <CardRow card={el} key={el.id} />),
+    columns: [
+      { key: 'question', sortable: true, title: 'Question' },
+      { key: 'answer', sortable: true, title: 'Answer' },
+      { key: 'updated', sortable: true, title: 'Last Updated' },
+      { key: 'grade', sortable: true, title: 'Grade' },
+      { key: 'controls', sortable: false, title: '' },
     ],
   },
 

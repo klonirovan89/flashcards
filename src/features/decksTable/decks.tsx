@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { ColumnsType, Sort, Table } from '@/components/ui/newTable'
+import { Typography } from '@/components/ui/typography'
 import { useGetDecksQuery } from '@/services/base-api'
 
 import { DeckRow } from './deckRow'
@@ -9,11 +10,11 @@ export const Decks = () => {
   const [sort, setSort] = useState<Sort>(null)
 
   const columnsDecks: ColumnsType[] = [
-    { id: 'name', label: 'Name', sortable: true },
-    { id: 'cardsCount', label: 'Cards', sortable: true },
-    { id: 'updated', label: 'Last update', sortable: true },
-    { id: 'author.name', label: 'Created by', sortable: true },
-    { id: 'actions', label: '', sortable: false },
+    { key: 'name', sortable: true, title: 'Name' },
+    { key: 'cardsCount', sortable: true, title: 'Cards' },
+    { key: 'updated', sortable: true, title: 'Last update' },
+    { key: 'author.name', sortable: true, title: 'Created by' },
+    { key: 'actions', sortable: false, title: '' },
   ]
 
   const { data, error, isLoading } = useGetDecksQuery({
@@ -29,11 +30,15 @@ export const Decks = () => {
 
   return (
     <div>
-      <Table columns={columnsDecks} onSort={setSort} sort={sort}>
-        {data.items.map((el: Deck) => (
-          <DeckRow deck={el} key={el.id} />
-        ))}
-      </Table>
+      {data ? (
+        <Table columns={columnsDecks} onSort={setSort} sort={sort}>
+          {data.items.map((el: Deck) => (
+            <DeckRow deck={el} key={el.id} />
+          ))}
+        </Table>
+      ) : (
+        <Typography variant={'body1'}>No cards.</Typography>
+      )}
     </div>
   )
 }

@@ -13,9 +13,9 @@ type PropsType = {
 } & PropsWithChildren
 
 export type ColumnsType = {
-  id: string
-  label: string
+  key: string
   sortable: boolean
+  title: string
 }
 
 export type Sort = {
@@ -31,19 +31,19 @@ export const Table = (props: PropsType) => {
       return
     }
 
-    if (sort && sort.key === column.id) {
+    if (sort && sort.key === column.key) {
       if (sort.direction === 'desc') {
         onSort(null)
       } else {
         onSort({
           direction: 'desc',
-          key: column.id,
+          key: column.key,
         })
       }
     } else {
       onSort({
         direction: 'asc',
-        key: column.id,
+        key: column.key,
       })
     }
   }
@@ -56,14 +56,14 @@ export const Table = (props: PropsType) => {
             {columns.map(el => (
               <TableComponents.HeadCell
                 className={el.sortable ? s.headCellSortable : ''}
-                key={el.id}
+                key={el.key}
                 onClick={() => handleSort(el)}
               >
                 <div className={s.divHeadCell}>
                   <Typography className={s.typographyStyleHead} variant={'subtitle2'}>
-                    {el.label}
+                    {el.title}
                   </Typography>
-                  {sort && sort.key === el.id ? (
+                  {sort && sort.key === el.key ? (
                     <div className={`${s.arrow} ${sort.direction === 'desc' ? s.arrowDESC : ''}`}>
                       <Icon height={'24px'} iconId={'Arrow'} width={'24px'} />
                     </div>
