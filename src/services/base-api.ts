@@ -3,21 +3,20 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export type Pagination = {
   currentPage: number
   itemsPerPage: number
-  totalPages: number
   totalItems: number
+  totalPages: number
 }
 
 export type GetDecksArgs = {
-  orderBy?: string
-  minCardsCount?: number
-  maxCardsCount?: number
-  name?: string
   authorId?: string
   currentPage?: number
   itemsPerPage?: number
+  maxCardsCount?: number
+  minCardsCount?: number
+  name?: string
+  orderBy?: string
 }
 export const baseApi = createApi({
-  reducerPath: 'baseApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://api.flashcards.andrii.es',
     credentials: 'include',
@@ -29,12 +28,13 @@ export const baseApi = createApi({
     return {
       getDecks: builder.query<any, GetDecksArgs | void>({
         query: args => ({
-          url: `v1/decks`,
           params: args ? args : undefined,
+          url: `v1/decks`,
         }),
       }),
     }
   },
+  reducerPath: 'baseApi',
 })
 
 export const { useGetDecksQuery } = baseApi

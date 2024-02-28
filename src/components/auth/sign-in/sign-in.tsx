@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form'
 
+import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
 import { ControlledCheckbox } from '@/controlled/controlled-ckeckbox/controlled-ckeckbox'
 import { ControlledTextField } from '@/controlled/controlled-text-field/controlled-text-field'
@@ -9,7 +10,6 @@ import { z } from 'zod'
 import s from './sign-in.module.scss'
 
 import { Button } from '../../ui/button/button'
-import { Card } from '@/components/ui/card'
 
 export const SignIn = () => {
   const loginSchema = z.object({
