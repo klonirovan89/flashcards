@@ -1,30 +1,32 @@
 import {
-  createBrowserRouter,
   Navigate,
   Outlet,
   RouteObject,
   RouterProvider,
+  createBrowserRouter,
 } from 'react-router-dom'
-import { Decks } from '@/decks'
+
+import { Cards } from './features/cardsTable/cards'
 
 const publicRoutes: RouteObject[] = [
   {
-    path: '/login',
     element: <div>login</div>,
+    path: '/login',
   },
 ]
 
 const privateRoutes: RouteObject[] = [
   {
+    // element: <Decks />,
+    element: <Cards />,
     path: '/',
-    element: <Decks />,
   },
 ]
 
 const router = createBrowserRouter([
   {
-    element: <PrivateRoutes />,
     children: privateRoutes,
+    element: <PrivateRoutes />,
   },
   ...publicRoutes,
 ])
@@ -36,5 +38,5 @@ export const Router = () => {
 function PrivateRoutes() {
   const isAuthenticated = true
 
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" />
+  return isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />
 }
