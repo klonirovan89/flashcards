@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon/Icon'
 import { Typography } from '@/components/ui/typography'
-import { useGetDecksQuery } from '@/services/base-api'
+
 
 import s from './table.module.scss'
 
@@ -37,11 +37,51 @@ export const TableComponents = () => {
     { id: 'author.name', label: 'Crated by' },
   ]
 
-  const { data } = useGetDecksQuery()
+  // const { data } = useGetDecksQuery()
+
+  const dataDecks = {
+    items: [
+      {
+        author: {
+          id: 'df6760fa-5ae1-46ef-916e-85f670d7b903',
+          name: 'test',
+        },
+        cardsCount: 0,
+        cover:
+            'https://andrii-flashcards.s3.eu-central-1.amazonaws.com/9938cef3-d6c9-4ec8-838f-6e94abbc684b-photo_2024-02-02_21-43-10.jpg',
+        created: '2024-02-27T07:46:14.763Z',
+        id: 'clt42d84q015dxh2g9a9p532l',
+        isPrivate: false,
+        name: 'test',
+        updated: '2024-02-27T07:46:14.763Z',
+        userId: 'df6760fa-5ae1-46ef-916e-85f670d7b903',
+      },
+      {
+        author: {
+          id: 'df6760fa-5ae1-46ef-916e-85f670d7b903',
+          name: 'test',
+        },
+        cardsCount: 0,
+        cover: '',
+        created: '2024-02-27T07:46:14.763Z',
+        id: 'clt42d84q0fdfd15dxh2g9a9p532l',
+        isPrivate: false,
+        name: 'test',
+        updated: '2024-02-27T07:46:14.763Z',
+        userId: 'df6760fa-5ae1-46ef-916e-85f670d7b903',
+      },
+    ],
+    pagination: {
+      currentPage: 1,
+      itemsPerPage: 10,
+      totalItems: 2579,
+      totalPages: 258,
+    },
+  }
 
   const [currentColumnId, setCurrentColumnId] = useState<null | string>(null)
   const [currentSortDirection, setCurrentSortDirection] = useState<null | string>(null)
-  const [dataList, setDataList] = useState<Deck[]>(data.items)
+  const [dataList, setDataList] = useState<Deck[]>(dataDecks.items)
 
   const handleColumnSort = (columnId: string) => {
     let sortDirection = currentSortDirection
@@ -83,7 +123,7 @@ export const TableComponents = () => {
 
       setDataList(newData)
     } else {
-      setDataList(data.items)
+      setDataList(dataDecks.items)
     }
   }
 
