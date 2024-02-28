@@ -2,9 +2,9 @@ import { useState } from 'react'
 
 import { ColumnsType, Sort, Table } from '@/components/ui/newTable'
 import { Typography } from '@/components/ui/typography'
-import { useGetDecksQuery } from '@/services/base-api'
-
-import { DeckRow } from './deckRow'
+import { DeckRow } from '@/features/decksTable/deckRow'
+import { useGetDecksQuery } from '@/pages/decks/api/decks.api'
+import { Deck } from '@/pages/decks/api/decks.types'
 
 export const Decks = () => {
   const [sort, setSort] = useState<Sort>(null)
@@ -41,21 +41,4 @@ export const Decks = () => {
       )}
     </div>
   )
-}
-
-export type Deck = {
-  author: DeckUser
-  cardsCount: number
-  cover: string
-  created: string
-  id: string
-  isPrivate: boolean
-  name: string
-  updated: string
-  userId: string
-}
-
-export type DeckUser = {
-  id: string
-  name: string
 }
