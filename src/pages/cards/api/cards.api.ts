@@ -19,7 +19,7 @@ export const cardsApi = createApi({
       }),
     }
   },
-  reducerPath: 'baseApi',
+  reducerPath: 'cardsApi',
 })
 
 export const { useGetCardsQuery } = cardsApi
