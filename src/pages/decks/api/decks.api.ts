@@ -51,7 +51,7 @@ export const decksApi = createApi({
       }),
     }
   },
-  reducerPath: 'baseApi',
+  reducerPath: 'decksApi',
   tagTypes: ['Decks'],
 })
 
