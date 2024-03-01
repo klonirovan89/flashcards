@@ -23,7 +23,7 @@ const dataDecks = {
     {
       author: {
         id: 'df6760fa-5ae1-46ef-916e-85f670d7b903',
-        name: 'test',
+        name: 'testddddddddddddddddddddddddddddddddddd',
       },
       cardsCount: 0,
       cover:
@@ -31,7 +31,7 @@ const dataDecks = {
       created: '2024-02-27T07:46:14.763Z',
       id: 'clt42d84q015dxh2g9a9p532l',
       isPrivate: false,
-      name: 'testfffffffffffffffffffff',
+      name: 'testfffffffffffffffffffffhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh',
       updated: '2024-02-27T07:46:14.763Z',
       userId: 'df6760fa-5ae1-46ef-916e-85f670d7b903',
     },
@@ -61,14 +61,14 @@ const dataDecks = {
 const dataCards = {
   items: [
     {
-      answer: 'sdfsdfs',
+      answer: 'sdfsdfshhhhhhh hhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhh hhhhhhhhhh hhhhhh hhhhhhhhhhhhhhhh',
       answerImg: null,
       answerVideo: null,
       created: '2024-02-27T21:36:30.720Z',
       deckId: 'clt4vwmdj02e8xh2g6tkbidhn',
       grade: 3,
       id: 'clt4w0ydc02e9xh2g2b06vz9j',
-      question: 'fdsfs',
+      question: 'fdsfshhhhhhhhh hhhhhhhhh hhhhhh hhhhhhhhhhh hhhhhh hhhh hhhhhhhhhh hhh hhhhhhhhhh',
       questionImg: null,
       questionVideo: null,
       shots: 0,
