@@ -1,7 +1,10 @@
 .divNameBody {
   width: 100%;
+
   display: flex;
   align-items: center;
+  justify-content: center;
+
   gap: 10px;
   margin: 10px 2px;
 
@@ -15,6 +18,17 @@
 
       transition: 0.3ms;
     }
+  }
+
+  .text {
+    display: block;
+
+    width: 200px;
+    max-width: 200px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .img {
@@ -39,12 +53,15 @@
   align-items: center;
 }
 
-.CreatedBy {
+.createdBy {
+  text-align: center;
+}
+
+.typographyStyle {
   display: block;
-  width: 150px;
-  max-width: 150px;
+  width: 200px;
+  max-width: 200px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-align: center;
 }

@@ -26,7 +26,7 @@ export const DeckRow = (props: PropsType) => {
                               <img alt={'img'} height={50} src={NoPhoto} width={50}/>
                           </div>
                       )}
-                      <Typography className={s.typographyStyleBody} variant={'body2'}>
+                      <Typography className={s.typographyStyle} variant={'body2'}>
                           {deck.name}
                       </Typography>
                   </div>
@@ -42,8 +42,8 @@ export const DeckRow = (props: PropsType) => {
                   {new Date(deck.updated).toLocaleDateString('ru-RU')}
               </Typography>
           </TableComponents.Cell>
-          <TableComponents.Cell >
-              <Typography className={s.CreatedBy} variant={'body2'}>
+          <TableComponents.Cell>
+              <Typography className={`${s.typographyStyle} ${s.createdBy}`} variant={'body2'}>
                   {deck.author.name}
               </Typography>
           </TableComponents.Cell>
