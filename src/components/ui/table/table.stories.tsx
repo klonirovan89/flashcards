@@ -12,7 +12,7 @@ import { Sort, Table } from './'
 const meta = {
   component: Table,
   tags: ['autodocs'],
-  title: 'Components/New Table',
+  title: 'Components/Table',
 } satisfies Meta<typeof Table>
 
 export default meta
@@ -31,7 +31,7 @@ const dataDecks = {
       created: '2024-02-27T07:46:14.763Z',
       id: 'clt42d84q015dxh2g9a9p532l',
       isPrivate: false,
-      name: 'test',
+      name: 'testfffffffffffffffffffff',
       updated: '2024-02-27T07:46:14.763Z',
       userId: 'df6760fa-5ae1-46ef-916e-85f670d7b903',
     },
@@ -66,7 +66,7 @@ const dataCards = {
       answerVideo: null,
       created: '2024-02-27T21:36:30.720Z',
       deckId: 'clt4vwmdj02e8xh2g6tkbidhn',
-      grade: 0,
+      grade: 3,
       id: 'clt4w0ydc02e9xh2g2b06vz9j',
       question: 'fdsfs',
       questionImg: null,

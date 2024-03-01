@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react'
 
 import { Icon } from '@/components/ui/icon/Icon'
-import { TableComponents } from '@/components/ui/newTable/table-components'
+import { TableComponents } from '@/components/ui/table/table-components'
 import { Typography } from '@/components/ui/typography'
 
 import s from './table.module.scss'
