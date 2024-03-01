@@ -1,9 +1,7 @@
 .divNameBody {
   width: 100%;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  flex-wrap: wrap;
   gap: 10px;
   margin: 10px 2px;
 
@@ -20,6 +18,9 @@
   }
 
   .img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 70px;
     height: 50px;
   }
@@ -36,5 +37,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+}
+
+.CreatedBy {
+  display: block;
+  width: 150px;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
 }
