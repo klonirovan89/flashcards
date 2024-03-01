@@ -61,14 +61,14 @@ const dataDecks = {
 const dataCards = {
   items: [
     {
-      answer: 'sdfsdfshhhhhhh hhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhh hhhhhhhhhh hhhhhh hhhhhhhhhhhhhhhh',
+      answer: 'Хуки позволяют вам использовать различные функции React',
       answerImg: null,
       answerVideo: null,
       created: '2024-02-27T21:36:30.720Z',
       deckId: 'clt4vwmdj02e8xh2g6tkbidhn',
       grade: 3,
       id: 'clt4w0ydc02e9xh2g2b06vz9j',
-      question: 'fdsfshhhhhhhhh hhhhhhhhh hhhhhh hhhhhhhhhhh hhhhhh hhhh hhhhhhhhhh hhh hhhhhhhhhh',
+      question: 'Хуки позволяют вам использовать различные функции React',
       questionImg: null,
       questionVideo: null,
       shots: 0,

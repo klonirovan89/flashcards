@@ -46,4 +46,4 @@ const Empty: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...rest }) => {
   return <div className={classes} {...rest} />
 }
 
-export const TableComponents = { Root, Head, HeadCell, Body, Row, Cell, Empty }
+export const TableComponents = { Body, Cell, Empty, Head, HeadCell, Root, Row }

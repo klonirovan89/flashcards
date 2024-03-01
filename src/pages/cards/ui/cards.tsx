@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { ColumnsType, Sort, Table } from '@/components/ui/newTable'
+import { ColumnsType, Sort, Table } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
 import { CardRow } from '@/features/cardsTable/cardRow'
 import { useGetCardsQuery } from '@/pages/cards/api/cards.api'
