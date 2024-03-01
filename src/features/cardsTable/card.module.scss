@@ -1,13 +1,21 @@
+.cell {
+width: 300px;
+}
+
 .divNameBody {
   width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  flex-wrap: wrap;
   gap: 10px;
   margin: 10px 2px;
+  word-break: break-word;
 
   .img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 70px;
     height: 50px;
   }
@@ -25,4 +33,9 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.update,
+.grade  {
+  width: 160px;
 }

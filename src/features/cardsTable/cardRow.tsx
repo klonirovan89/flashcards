@@ -1,8 +1,8 @@
 import NoPhoto from '@/assets/icons/NoPhoto.png'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon/Icon'
-import { TableComponents } from '@/components/ui/newTable/table-components'
 import { Rating } from '@/components/ui/rating'
+import { TableComponents } from '@/components/ui/table/table-components'
 import { Typography } from '@/components/ui/typography'
 import { Card } from '@/pages/cards/api/cards.type'
 
@@ -17,7 +17,7 @@ export const CardRow = (props: PropsType) => {
 
   return (
     <TableComponents.Row key={card.id}>
-      <TableComponents.Cell>
+      <TableComponents.Cell className={s.cell}>
         <div className={s.divNameBody}>
           {card.questionImg ? (
             <img alt={'img'} height={50} src={card.questionImg} width={70} />
@@ -31,7 +31,7 @@ export const CardRow = (props: PropsType) => {
           </Typography>
         </div>
       </TableComponents.Cell>
-      <TableComponents.Cell>
+      <TableComponents.Cell className={s.cell}>
         <div className={s.divNameBody}>
           {card.answerImg ? (
             <img alt={'img'} height={50} src={card.answerImg} width={70} />
@@ -45,12 +45,12 @@ export const CardRow = (props: PropsType) => {
           </Typography>
         </div>
       </TableComponents.Cell>
-      <TableComponents.Cell>
+      <TableComponents.Cell className={s.update}>
         <Typography className={s.typographyStyleBody} variant={'body2'}>
           {new Date(card.updated).toLocaleDateString('ru-RU')}
         </Typography>
       </TableComponents.Cell>
-      <TableComponents.Cell>
+      <TableComponents.Cell className={s.grade}>
         <Typography className={s.typographyStyleBody} variant={'body2'}>
           <Rating defaultValue={card.grade} />
         </Typography>
