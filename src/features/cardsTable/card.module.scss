@@ -42,7 +42,7 @@ width: 300px;
     content: '';
     width: 0;
     height: 0;
-    background-color: red;
+    background-color: var(--color-dark-500);
     z-index: -1;
     border-radius: 50%;
     top: 60%;
@@ -52,8 +52,8 @@ width: 300px;
   }
 
   &:hover::before {
-    width: 20px;
-    height: 20px;
+    width: 32px;
+    height: 32px;
   }
 }
 
