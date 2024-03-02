@@ -20,17 +20,6 @@
     }
   }
 
-  .text {
-    display: block;
-
-    width: 200px;
-    max-width: 200px;
-
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
   .img {
     display: flex;
     align-items: center;
@@ -46,6 +35,31 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+.button {
+  position: relative;
+  height: 16px;
+  z-index: 0;
+
+  &::before {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    background-color: var(--color-dark-500);
+    z-index: -1;
+    border-radius: 50%;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.3s;
+  }
+
+  &:hover::before {
+    width: 28px;
+    height: 28px;
+  }
 }
 
 .typographyStyleBody {

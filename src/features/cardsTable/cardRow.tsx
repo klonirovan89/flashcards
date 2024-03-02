@@ -58,7 +58,7 @@ export const CardRow = (props: PropsType) => {
       <TableComponents.Cell>
         <div className={s.control}>
           <Button className={s.button} onClick={() => alert('play')} variant={'pure'}>
-            <Icon height={'16px'} iconId={'Edit'} width={'16px'}/>
+            <Icon height={'16px'} iconId={'Edit'} width={'16px'} />
           </Button>
           <Button className={s.button} onClick={() => alert('play')} variant={'pure'}>
             <Icon height={'16px'} iconId={'Delete'} width={'16px'} />

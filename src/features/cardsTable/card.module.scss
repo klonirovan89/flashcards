@@ -1,5 +1,6 @@
 .cell {
-width: 300px;
+  width: 30%;
+  min-width: 300px;
 }
 
 .divNameBody {
@@ -29,7 +30,7 @@ width: 300px;
 
   button {
     height: 16px;
-}
+  }
 }
 
 .button {
@@ -42,7 +43,7 @@ width: 300px;
     content: '';
     width: 0;
     height: 0;
-    background-color: red;
+    background-color: var(--color-dark-500);
     z-index: -1;
     border-radius: 50%;
     top: 60%;
@@ -52,8 +53,8 @@ width: 300px;
   }
 
   &:hover::before {
-    width: 20px;
-    height: 20px;
+    width: 28px;
+    height: 28px;
   }
 }
 
@@ -65,6 +66,6 @@ width: 300px;
 }
 
 .update,
-.grade  {
-  width: 160px;
+.grade {
+  min-width: 160px;
 }
