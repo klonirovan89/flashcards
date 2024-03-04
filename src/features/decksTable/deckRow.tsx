@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon/Icon'
 import { TableComponents } from '@/components/ui/newTable/table-components'
 import { Typography } from '@/components/ui/typography'
-import { Deck } from '@/pages/decks/api/decks.types'
+import { Deck } from '@/pages/decks/api/decks-types'
 
 import s from './deck.module.scss'
 

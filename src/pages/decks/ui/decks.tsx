@@ -3,8 +3,8 @@ import { useState } from 'react'
 import { ColumnsType, Sort, Table } from '@/components/ui/newTable'
 import { Typography } from '@/components/ui/typography'
 import { DeckRow } from '@/features/decksTable/deckRow'
-import { useGetDecksQuery } from '@/pages/decks/api/decks.api'
-import { Deck } from '@/pages/decks/api/decks.types'
+import { useGetDecksQuery } from '@/pages/decks/api/decks-api'
+import { Deck } from '@/pages/decks/api/decks-types'
 
 export const Decks = () => {
   const [sort, setSort] = useState<Sort>(null)
