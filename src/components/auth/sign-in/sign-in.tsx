@@ -10,27 +10,31 @@ import { z } from 'zod'
 import s from './sign-in.module.scss'
 
 import { Button } from '../../ui/button/button'
+type Props = {
+  onSubmit: (data: FormValues) => void
+}
+type FormValues = z.infer<typeof loginSchema>
+const loginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(3).max(30),
+  rememberMe: z.boolean().optional(),
+})
 
-export const SignIn = () => {
-  const loginSchema = z.object({
-    email: z.string().email(),
-    password: z.string().min(3).max(30),
-    rememberMe: z.boolean().default(false),
-  })
-
+export const SignIn = ({ onSubmit }: Props) => {
   const {
     control,
     formState: { errors },
     handleSubmit,
   } = useForm<FormValues>({
+    defaultValues: {
+      email: 'test@test.com',
+      password: 'test',
+      rememberMe: false,
+    },
     resolver: zodResolver(loginSchema),
   })
 
-  type FormValues = z.infer<typeof loginSchema>
-
-  const onSubmit = (data: FormValues) => {
-    return data
-  }
+  const handleFormSubmit = handleSubmit(onSubmit)
 
   return (
     <div className={s.root}>
@@ -38,7 +42,7 @@ export const SignIn = () => {
         <div className={s.section}>
           <Typography variant={'h1'}>Sign In</Typography>
           <div className={s.form}>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleFormSubmit}>
               <div className={s.textField}>
                 <ControlledTextField
                   control={control}

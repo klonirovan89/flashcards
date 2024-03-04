@@ -27,7 +27,7 @@ const dataDecks = {
       },
       cardsCount: 0,
       cover:
-          'https://andrii-flashcards.s3.eu-central-1.amazonaws.com/9938cef3-d6c9-4ec8-838f-6e94abbc684b-photo_2024-02-02_21-43-10.jpg',
+        'https://andrii-flashcards.s3.eu-central-1.amazonaws.com/9938cef3-d6c9-4ec8-838f-6e94abbc684b-photo_2024-02-02_21-43-10.jpg',
       created: '2024-02-27T07:46:14.763Z',
       id: 'clt42d84q015dxh2g9a9p532l',
       isPrivate: false,
@@ -99,9 +99,9 @@ export const Decks: Story = {
     const [sort, setSort] = useState<Sort>(null)
 
     return (
-        <Table columns={args.columns} onSort={setSort} sort={sort}>
-          {args.children}
-        </Table>
+      <Table columns={args.columns} onSort={setSort} sort={sort}>
+        {args.children}
+      </Table>
     )
   },
 }
@@ -122,9 +122,9 @@ export const Cards: Story = {
     const [sort, setSort] = useState<Sort>(null)
 
     return (
-        <Table columns={args.columns} onSort={setSort} sort={sort}>
-          {args.children}
-        </Table>
+      <Table columns={args.columns} onSort={setSort} sort={sort}>
+        {args.children}
+      </Table>
     )
   },
 }
