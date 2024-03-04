@@ -6,11 +6,14 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
-import { Decks } from './pages/decks/ui/decks'
+import { Loader } from '@/components/ui/spinner'
+import { useGetMeQuery } from '@/pages/auth/api/auth-api'
+import { LoginPage } from '@/pages/auth/ui/login'
+import { Decks } from '@/pages/decks/ui/decks'
 
 const publicRoutes: RouteObject[] = [
   {
-    element: <div>login</div>,
+    element: <LoginPage />,
     path: '/login',
   },
 ]
@@ -23,7 +26,7 @@ const privateRoutes: RouteObject[] = [
   },
 ]
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     children: privateRoutes,
     element: <PrivateRoutes />,
@@ -36,7 +39,13 @@ export const Router = () => {
 }
 
 function PrivateRoutes() {
-  const isAuthenticated = true
+  const { isError, isLoading } = useGetMeQuery()
+
+  const isAuthenticated = !isError
+
+  if (isLoading) {
+    return <Loader />
+  }
 
   return isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />
 }
