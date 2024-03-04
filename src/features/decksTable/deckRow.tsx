@@ -14,7 +14,7 @@ type PropsType = {
 export const DeckRow = (props: PropsType) => {
   const { deck } = props
 
-    return (
+  return (
     <TableComponents.Row key={deck.id}>
       <TableComponents.Cell>
         <Button onClick={() => alert('Здесь должен быть роут колоды')} variant={'pure'}>
