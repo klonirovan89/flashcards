@@ -1,4 +1,4 @@
-import { Pagination } from '@/pages/decks/api/decks.types'
+import { Pagination } from '@/pages/decks/api/decks-types'
 
 export type Card = {
   answer: string
@@ -27,9 +27,28 @@ export type CardsParams = {
   itemsPerPage?: number
   orderBy?: string
   question?: string
-}
+} | void
 
 export type CardsResponse = {
   items: Card[]
   pagination: Pagination
+}
+export type CardsSave = {
+  cardsId: string
+  grade: number
+}
+
+export type FormDataCards = {
+  data: FormData
+  id: string
+}
+
+export type RandomCardType = {
+  id: string
+  previousCardId: string
+}
+
+export type MinMaxCardType = {
+  max: number
+  min: number
 }
