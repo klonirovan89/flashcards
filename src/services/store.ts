@@ -1,16 +1,11 @@
-import { cardsApi } from '@/pages/cards/api/cards.api'
-import { decksApi } from '@/pages/decks/api/decks.api'
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
-
-const rootReducer = combineReducers({
-  [cardsApi.reducerPath]: cardsApi.reducer,
-  [decksApi.reducerPath]: decksApi.reducer,
-})
+import { cardsApi } from '@/pages/cards/api/cards-api'
+import { configureStore } from '@reduxjs/toolkit'
 
 export const store = configureStore({
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(decksApi.middleware, cardsApi.middleware),
-  reducer: rootReducer,
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(cardsApi.middleware),
+  reducer: {
+    [cardsApi.reducerPath]: cardsApi.reducer,
+  },
 })
 
 export type AppDispatch = typeof store.dispatch

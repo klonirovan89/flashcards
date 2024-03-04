@@ -4,15 +4,15 @@ import { useState } from 'react'
 
 import { CardRow } from '@/features/cardsTable/cardRow'
 import { DeckRow } from '@/features/decksTable/deckRow'
-import { Card } from '@/pages/cards/api/cards.type'
-import { Deck } from '@/pages/decks/api/decks.types'
+import { Card } from '@/pages/cards/api/cards-types'
+import { Deck } from '@/pages/decks/api/decks-types'
 
 import { Sort, Table } from './'
 
 const meta = {
   component: Table,
   tags: ['autodocs'],
-  title: 'Components/Table',
+  title: 'Components/New Table',
 } satisfies Meta<typeof Table>
 
 export default meta
@@ -23,15 +23,15 @@ const dataDecks = {
     {
       author: {
         id: 'df6760fa-5ae1-46ef-916e-85f670d7b903',
-        name: 'testddddddddddddddddddddddddddddddddddd',
+        name: 'test',
       },
       cardsCount: 0,
       cover:
-        'https://andrii-flashcards.s3.eu-central-1.amazonaws.com/9938cef3-d6c9-4ec8-838f-6e94abbc684b-photo_2024-02-02_21-43-10.jpg',
+          'https://andrii-flashcards.s3.eu-central-1.amazonaws.com/9938cef3-d6c9-4ec8-838f-6e94abbc684b-photo_2024-02-02_21-43-10.jpg',
       created: '2024-02-27T07:46:14.763Z',
       id: 'clt42d84q015dxh2g9a9p532l',
       isPrivate: false,
-      name: 'testfffffffffffffffffffffhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh',
+      name: 'test',
       updated: '2024-02-27T07:46:14.763Z',
       userId: 'df6760fa-5ae1-46ef-916e-85f670d7b903',
     },
@@ -57,18 +57,17 @@ const dataDecks = {
     totalPages: 258,
   },
 }
-
 const dataCards = {
   items: [
     {
-      answer: 'Хуки позволяют вам использовать различные функции React',
+      answer: 'sdfsdfs',
       answerImg: null,
       answerVideo: null,
       created: '2024-02-27T21:36:30.720Z',
       deckId: 'clt4vwmdj02e8xh2g6tkbidhn',
-      grade: 3,
+      grade: 0,
       id: 'clt4w0ydc02e9xh2g2b06vz9j',
-      question: 'Хуки позволяют вам использовать различные функции React',
+      question: 'fdsfs',
       questionImg: null,
       questionVideo: null,
       shots: 0,
@@ -100,9 +99,9 @@ export const Decks: Story = {
     const [sort, setSort] = useState<Sort>(null)
 
     return (
-      <Table columns={args.columns} onSort={setSort} sort={sort}>
-        {args.children}
-      </Table>
+        <Table columns={args.columns} onSort={setSort} sort={sort}>
+          {args.children}
+        </Table>
     )
   },
 }
@@ -123,9 +122,9 @@ export const Cards: Story = {
     const [sort, setSort] = useState<Sort>(null)
 
     return (
-      <Table columns={args.columns} onSort={setSort} sort={sort}>
-        {args.children}
-      </Table>
+        <Table columns={args.columns} onSort={setSort} sort={sort}>
+          {args.children}
+        </Table>
     )
   },
 }
