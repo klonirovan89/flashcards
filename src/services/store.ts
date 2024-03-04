@@ -1,4 +1,4 @@
-import { cardsApi } from '@/pages/cards/api/cards.api'
+import { cardsApi } from '@/pages/cards/api/cards-api'
 import { configureStore } from '@reduxjs/toolkit'
 
 export const store = configureStore({

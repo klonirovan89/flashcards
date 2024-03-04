@@ -4,7 +4,7 @@ import { Icon } from '@/components/ui/icon/Icon'
 import { TableComponents } from '@/components/ui/newTable/table-components'
 import { Rating } from '@/components/ui/rating'
 import { Typography } from '@/components/ui/typography'
-import { Card } from '@/pages/cards/api/cards.type'
+import { Card } from '@/pages/cards/api/cards-types'
 
 import s from './card.module.scss'
 

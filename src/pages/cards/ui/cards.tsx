@@ -3,8 +3,8 @@ import { useState } from 'react'
 import { ColumnsType, Sort, Table } from '@/components/ui/newTable'
 import { Typography } from '@/components/ui/typography'
 import { CardRow } from '@/features/cardsTable/cardRow'
-import { useGetCardsQuery } from '@/pages/cards/api/cards.api'
-import { Card } from '@/pages/cards/api/cards.type'
+import { useGetCardsQuery } from '@/pages/cards/api/cards-api'
+import { Card } from '@/pages/cards/api/cards-types'
 
 export const Cards = () => {
   const [sort, setSort] = useState<Sort>(null)

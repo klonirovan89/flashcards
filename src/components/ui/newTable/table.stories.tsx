@@ -4,8 +4,8 @@ import { useState } from 'react'
 
 import { CardRow } from '@/features/cardsTable/cardRow'
 import { DeckRow } from '@/features/decksTable/deckRow'
-import { Card } from '@/pages/cards/api/cards.type'
-import { Deck } from '@/pages/decks/api/decks.types'
+import { Card } from '@/pages/cards/api/cards-types'
+import { Deck } from '@/pages/decks/api/decks-types'
 
 import { Sort, Table } from './'
 
