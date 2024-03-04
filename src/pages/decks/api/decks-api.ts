@@ -9,40 +9,40 @@ export const decksApi = baseAPI.injectEndpoints({
         query: body => ({
           body,
           method: 'POST',
-          url: /v1/decks,
+          url: `/v1/decks`,
         }),
       }),
       deleteDecks: builder.mutation<void, { id: string }>({
         invalidatesTags: ['Decks'],
         query: ({ id }) => ({
           method: 'DELETE',
-          url: /v1/decks/${id},
+          url: `/v1/decks/${id}`,
+        }),
       }),
-    }),
-    getDeckById: builder.query<DecksArgs, { id: string }>({
-      providesTags: ['Decks'],
-      query: ({ id }) => ({
-        method: 'GET',
-        url: /v1/decks/${id},
-    }),
-  }),
-    getDecks: builder.query<DecksResponse, DecksArgs | void>({
-      providesTags: ['Decks'],
-      query: args => ({
-        method: 'GET',
-        params: args ?? undefined,
-        url: /v2/decks,
+      getDeckById: builder.query<DecksArgs, { id: string }>({
+        providesTags: ['Decks'],
+        query: ({ id }) => ({
+          method: 'GET',
+          url: `/v1/decks/${id}`,
+        }),
       }),
-    }),
-        updateDecks: builder.mutation<Deck, { data: FormData; id: string }>({
-      invalidatesTags: ['Decks'],
-      query: ({ data, id }) => ({
-        body: data,
-        method: 'PATCH',
-        url: /v1/decks/${id},
-    }),
-  }),
-  }
+      getDecks: builder.query<DecksResponse, DecksArgs | void>({
+        providesTags: ['Decks'],
+        query: args => ({
+          method: 'GET',
+          params: args ?? undefined,
+          url: `/v2/decks`,
+        }),
+      }),
+      updateDecks: builder.mutation<Deck, { data: FormData; id: string }>({
+        invalidatesTags: ['Decks'],
+        query: ({ data, id }) => ({
+          body: data,
+          method: 'PATCH',
+          url: `/v1/decks/${id}`,
+        }),
+      }),
+    }
   },
 })
 
