@@ -6,11 +6,22 @@ export const decksApi = baseAPI.injectEndpoints({
     return {
       createDecks: builder.mutation<Deck, CreateDecksArgs>({
         invalidatesTags: ['Decks'],
-        query: body => ({
-          body,
-          method: 'POST',
-          url: `/v1/decks`,
-        }),
+        query: body => {
+          const formData = new FormData()
+
+          if (body.cover) {
+            formData.append('cover', body.cover)
+          }
+
+          formData.append('name', body.name)
+          formData.append('isPrivate', String(body.isPrivate))
+
+          return {
+            body: formData,
+            method: 'POST',
+            url: `/v1/decks`,
+          }
+        },
       }),
       deleteDecks: builder.mutation<void, { id: string }>({
         invalidatesTags: ['Decks'],
