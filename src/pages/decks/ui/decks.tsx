@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { ColumnsType, Sort, Table } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
+import { AddNewDeck } from '@/features/AddNewDeck'
 import { DeckRow } from '@/features/decksTable/deckRow'
 import { useGetDecksQuery } from '@/pages/decks/api/decks-api'
 import { Deck } from '@/pages/decks/api/decks-types'
@@ -30,6 +31,7 @@ export const Decks = () => {
 
   return (
     <div>
+      <AddNewDeck />
       {data ? (
         <Table columns={columnsDecks} onSort={setSort} sort={sort}>
           {data.items.map((el: Deck) => (
