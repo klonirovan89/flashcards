@@ -6,7 +6,7 @@ import { TextField } from '@/components/ui/text-field/text-field'
 import s from './file-uploader-with-image.module.scss'
 
 export const FileUploaderWithImage = (props: PropsType) => {
-  const { iconId, text } = props
+  const { handleSetCover, iconId, name, text } = props
 
   const [selectedFile, setSelectedFile] = useState(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -34,6 +34,7 @@ export const FileUploaderWithImage = (props: PropsType) => {
       }
 
       setSelectedFile(file)
+      handleSetCover?.(file)
     }
     if (file) {
       const reader = new FileReader()
@@ -71,6 +72,7 @@ export const FileUploaderWithImage = (props: PropsType) => {
         }
       />
       <TextField
+        name={name}
         onChange={handleFileInputChange}
         ref={fileInputRef}
         style={{ display: 'none' }}
@@ -98,6 +100,7 @@ export const FileUploaderWithImage = (props: PropsType) => {
           iconId={iconId}
           onClick={handleButtonClick}
           text={text}
+          type={'button'}
           variant={'secondary'}
         />
       )}
@@ -106,6 +109,8 @@ export const FileUploaderWithImage = (props: PropsType) => {
 }
 
 type PropsType = {
+  handleSetCover?: (file: File) => void
   iconId?: string
+  name: string
   text?: string
 }
