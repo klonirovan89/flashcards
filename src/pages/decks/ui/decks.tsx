@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { Page } from '@/components/ui/page/page'
 import { ColumnsType, Sort, Table } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
 import { DeckRow } from '@/features/decksTable/deckRow'
@@ -29,7 +30,7 @@ export const Decks = () => {
   }
 
   return (
-    <div>
+    <Page>
       {data ? (
         <Table columns={columnsDecks} onSort={setSort} sort={sort}>
           {data.items.map((el: Deck) => (
@@ -39,6 +40,6 @@ export const Decks = () => {
       ) : (
         <Typography variant={'body1'}>No cards.</Typography>
       )}
-    </div>
+    </Page>
   )
 }

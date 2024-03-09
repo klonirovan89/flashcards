@@ -1,10 +1,11 @@
-import { cardsApi } from '@/pages/cards/api/cards-api'
 import { configureStore } from '@reduxjs/toolkit'
 
+import { baseApi } from './base-api'
+
 export const store = configureStore({
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(cardsApi.middleware),
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(baseApi.middleware),
   reducer: {
-    [cardsApi.reducerPath]: cardsApi.reducer,
+    [baseApi.reducerPath]: baseApi.reducer,
   },
 })
 

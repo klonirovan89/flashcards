@@ -39,6 +39,9 @@ export type DecksArgs = {
 }
 
 export type CreateDecksArgs = {
+  cover?: File | null
   isPrivate?: boolean
   name: string
 }
+
+export type UpdateDecksArgs = Partial<CreateDecksArgs> & { id: Deck['id'] }

@@ -6,22 +6,22 @@ import { useLoginMutation } from '@/pages/auth/api/auth-api'
 import { LoginArgs } from '@/pages/auth/api/auth-types'
 
 export const LoginPage = () => {
-  const [login] = useLoginMutation()
+  const [signIn] = useLoginMutation()
   const navigate = useNavigate()
-  const handleLogin = (data: LoginArgs) => {
-    login(data)
+  const handleSignIn = (data: LoginArgs) => {
+    signIn(data)
       .unwrap()
       .then(() => {
         navigate('/')
       })
       .catch(err => {
-        toast.error(err.data.message)
+        toast.error(err?.data?.message ?? 'Could not sign in')
       })
   }
 
   return (
     <>
-      <SignIn onSubmit={handleLogin} />
+      <SignIn onSubmit={handleSignIn} />
     </>
   )
 }
