@@ -17,13 +17,13 @@ export const FormButtons = ({
               Cancel
             </Typography>
           </Button>
-          <Button variant={'primary'}>
+          <Button type={'submit'} variant={'primary'}>
             <Typography variant={'subtitle2'}>{primaryButtonText}</Typography>
           </Button>
         </div>
       ) : (
         <div className={c.footer + ' ' + c.only_primary}>
-          <Button variant={'primary'}>
+          <Button type={'submit'} variant={'primary'}>
             <Typography variant={'subtitle2'}>{primaryButtonText}</Typography>
           </Button>
         </div>
