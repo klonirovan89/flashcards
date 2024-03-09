@@ -8,9 +8,9 @@ import {
   MinMaxCardType,
   RandomCardType,
 } from '@/pages/cards/api/cards-types'
-import { baseAPI } from '@/services/base-api'
+import { baseApi } from '@/services/base-api'
 
-export const cardsApi = baseAPI.injectEndpoints({
+export const cardsApi = baseApi.injectEndpoints({
   endpoints: builder => {
     return {
       createCard: builder.mutation<Card, FormDataCards>({

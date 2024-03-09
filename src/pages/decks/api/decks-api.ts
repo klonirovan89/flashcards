@@ -1,7 +1,13 @@
-import { CreateDecksArgs, Deck, DecksArgs, DecksResponse } from '@/pages/decks/api/decks-types'
-import { baseAPI } from '@/services/base-api'
+import {
+  CreateDecksArgs,
+  Deck,
+  DecksArgs,
+  DecksResponse,
+  UpdateDecksArgs,
+} from '@/pages/decks/api/decks-types'
+import { baseApi } from '@/services/base-api'
 
-export const decksApi = baseAPI.injectEndpoints({
+export const decksApi = baseApi.injectEndpoints({
   endpoints: builder => {
     return {
       createDecks: builder.mutation<Deck, CreateDecksArgs>({
@@ -12,7 +18,7 @@ export const decksApi = baseAPI.injectEndpoints({
           if (body.cover) {
             formData.append('cover', body.cover)
           }
-
+          
           formData.append('name', body.name)
           formData.append('isPrivate', String(body.isPrivate))
 
@@ -45,10 +51,32 @@ export const decksApi = baseAPI.injectEndpoints({
           url: `/v2/decks`,
         }),
       }),
-      updateDecks: builder.mutation<Deck, { data: FormData; id: string }>({
+      updateDecks: builder.mutation<Deck, UpdateDecksArgs>({
         invalidatesTags: ['Decks'],
-        query: ({ data, id }) => ({
-          body: data,
+        async onQueryStarted({ id, ...patch }, { dispatch, getState, queryFulfilled }) {
+          const decksArr = decksApi.util.selectInvalidatedBy(getState(), ['Decks'])
+          let patchResult: any
+
+          decksArr.forEach(({ originalArgs }) => {
+            patchResult = dispatch(
+              decksApi.util.updateQueryData('getDecks', originalArgs, draft => {
+                const deck = draft.items.find(deck => deck.id === id)
+
+                if (deck) {
+                  Object.assign(draft, patch)
+                }
+              })
+            )
+          })
+
+          try {
+            await queryFulfilled
+          } catch {
+            patchResult.undo()
+          }
+        },
+        query: ({ id, ...body }) => ({
+          body,
           method: 'PATCH',
           url: `/v1/decks/${id}`,
         }),

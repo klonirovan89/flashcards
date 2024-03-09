@@ -43,3 +43,5 @@ export type CreateDecksArgs = {
   isPrivate?: boolean
   name: string
 }
+
+export type UpdateDecksArgs = Partial<CreateDecksArgs> & { id: Deck['id'] }
