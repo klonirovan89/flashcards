@@ -16,7 +16,14 @@ type Props = {
 }
 
 export const Pagination = memo((props: Props) => {
-  const { currentPage, pageChange, pageSize, pageSizeChange, siblingCount = 1, totalCount } = props
+  const {
+    currentPage,
+    pageChange,
+    pageSize,
+    pageSizeChange,
+    siblingCount = 1,
+    totalCount = 10,
+  } = props
 
   const paginationRange = usePagination({
     currentPage,

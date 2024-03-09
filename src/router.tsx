@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 
 import { Loader } from '@/components/ui/spinner'
-import { useGetMeQuery } from '@/pages/auth/api/auth-api'
+import { useMeQuery } from '@/pages/auth/api/auth-api'
 import { LoginPage } from '@/pages/auth/ui/login'
 import { Decks } from '@/pages/decks/ui/decks'
 
@@ -28,10 +28,15 @@ const privateRoutes: RouteObject[] = [
 
 export const router = createBrowserRouter([
   {
-    children: privateRoutes,
-    element: <PrivateRoutes />,
+    children: [
+      {
+        children: privateRoutes,
+        element: <PrivateRoutes />,
+      },
+      ...publicRoutes,
+    ],
+    // element: <Layout />,
   },
-  ...publicRoutes,
 ])
 
 export const Router = () => {
@@ -39,10 +44,11 @@ export const Router = () => {
 }
 
 function PrivateRoutes() {
-  const { isError, isLoading } = useGetMeQuery()
+  const { isError, isLoading } = useMeQuery()
 
   const isAuthenticated = !isError
 
+  console.log('Value of isAuthenticated:', isAuthenticated)
   if (isLoading) {
     return <Loader />
   }
