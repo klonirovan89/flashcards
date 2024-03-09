@@ -8,20 +8,12 @@ import { Button } from '../button'
 import { Icon } from '../icon/Icon'
 import { Typography } from '../typography'
 
-type SuperModalProps = {
-  changeModalState: (open: boolean) => void
-  children: ReactNode
-  open: boolean
-  title: string
-  withTrigger: boolean
-}
-
 export const SuperModal = ({
   changeModalState,
   children,
   open,
   title,
-  withTrigger,
+  withTrigger = true,
 }: SuperModalProps) => {
   return (
     <Dialog.Root onOpenChange={() => changeModalState(!open)} open={open}>
@@ -48,4 +40,12 @@ export const SuperModal = ({
       </Dialog.Portal>
     </Dialog.Root>
   )
+}
+
+type SuperModalProps = {
+  changeModalState: (open: boolean) => void
+  children: ReactNode
+  open: boolean
+  title: string
+  withTrigger: boolean
 }
