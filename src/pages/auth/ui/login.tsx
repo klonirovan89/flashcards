@@ -11,6 +11,7 @@ export const LoginPage = () => {
   const handleSignIn = (data: LoginArgs) => {
     signIn(data)
       .unwrap()
+      //TODO: переделать
       .then(() => {
         navigate('/')
       })
