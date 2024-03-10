@@ -3,13 +3,17 @@ import { useState } from 'react'
 import { Page } from '@/components/ui/page/page'
 import { ColumnsType, Sort, Table } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
-import { AddNewDeck } from '@/features/AddNewDeck'
-import { DeckRow } from '@/features/decksTable/deckRow'
+import { DeckRow } from '@/features/decks/decksTable/deckRow'
+import { useMeQuery } from '@/pages/auth/api/auth-api'
 import { useGetDecksQuery } from '@/pages/decks/api/decks-api'
 import { Deck } from '@/pages/decks/api/decks-types'
 
+import { AddNewDeck } from '../../../features/decks/addNewDeck'
+
 export const Decks = () => {
   const [sort, setSort] = useState<Sort>(null)
+
+  const [open, setOpen] = useState<boolean>(false)
 
   const columnsDecks: ColumnsType[] = [
     { key: 'name', sortable: true, title: 'Name' },
@@ -19,23 +23,36 @@ export const Decks = () => {
     { key: 'actions', sortable: false, title: '' },
   ]
 
-  const { data, error, isLoading } = useGetDecksQuery({
+  const decks = useGetDecksQuery({
     orderBy: sort ? `${sort.key}-${sort.direction}` : 'null',
   })
 
-  if (isLoading) {
+  const { data } = useMeQuery()
+
+  const changeModalState = () => {
+    setOpen(!open)
+  }
+
+  if (decks.isLoading) {
     return <>Loading....</>
   }
-  if (error) {
-    return <>Error: {JSON.stringify(error)}</>
+  if (decks.error) {
+    return <>Error: {JSON.stringify(decks.error)}</>
   }
 
   return (
     <Page>
-      {data ? (
+      <AddNewDeck
+        changeModalState={changeModalState}
+        open={open}
+        text={'Add New Deck'}
+        title={'Add New Deck'}
+        withTrigger
+      />
+      {decks.data ? (
         <Table columns={columnsDecks} onSort={setSort} sort={sort}>
-          {data.items.map((el: Deck) => (
-            <DeckRow deck={el} key={el.id} />
+          {decks.data.items.map((el: Deck) => (
+            <DeckRow authUserId={data?.id} deck={el} key={el.id} />
           ))}
         </Table>
       ) : (

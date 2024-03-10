@@ -6,7 +6,7 @@ import { TextField } from '@/components/ui/text-field/text-field'
 import s from './file-uploader-with-image.module.scss'
 
 export const FileUploaderWithImage = (props: PropsType) => {
-  const { handleSetCover, iconId, name, text } = props
+  const { handleSetCover, name, text } = props
 
   const [selectedFile, setSelectedFile] = useState(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -81,7 +81,7 @@ export const FileUploaderWithImage = (props: PropsType) => {
       {imageSrc ? (
         <div className={s.buttonBlock}>
           <ButtonWithIcon
-            iconId={iconId}
+            iconId={'Layer'}
             onClick={handleButtonClick}
             text={text}
             variant={'secondary'}
@@ -97,7 +97,7 @@ export const FileUploaderWithImage = (props: PropsType) => {
         <ButtonWithIcon
           className={s.buttonBlock}
           fullWidth
-          iconId={iconId}
+          iconId={'Layer'}
           onClick={handleButtonClick}
           text={text}
           type={'button'}
@@ -110,7 +110,6 @@ export const FileUploaderWithImage = (props: PropsType) => {
 
 type PropsType = {
   handleSetCover?: (file: File) => void
-  iconId?: string
-  name: string
+  name?: string
   text?: string
 }

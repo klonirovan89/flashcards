@@ -4,8 +4,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 542px;
-
   animation: content-show 400ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -25,6 +23,8 @@
   background-color: var(--color-dark-700);
   border-right: 1px solid var(--color-dark-500);
   border-left: 1px solid var(--color-dark-500);
+
+  padding: 24px 24px 0;
 }
 
 .overlay {

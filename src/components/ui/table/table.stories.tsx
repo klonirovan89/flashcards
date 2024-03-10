@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
 import { CardRow } from '@/features/cardsTable/cardRow'
-import { DeckRow } from '@/features/decksTable/deckRow'
+import { DeckRow } from '@/features/decks/decksTable/deckRow'
 import { Card } from '@/pages/cards/api/cards-types'
 import { Deck } from '@/pages/decks/api/decks-types'
 
@@ -12,7 +12,7 @@ import { Sort, Table } from './'
 const meta = {
   component: Table,
   tags: ['autodocs'],
-  title: 'Components/New Table',
+  title: 'Components/Table',
 } satisfies Meta<typeof Table>
 
 export default meta
@@ -37,7 +37,7 @@ const dataDecks = {
     },
     {
       author: {
-        id: 'df6760fa-5ae1-46ef-916e-85f670d7b903',
+        id: '11111-5ae1-46ef-916e-85f670d7b903',
         name: 'test',
       },
       cardsCount: 0,
@@ -47,7 +47,7 @@ const dataDecks = {
       isPrivate: false,
       name: 'test',
       updated: '2024-02-27T07:46:14.763Z',
-      userId: 'df6760fa-5ae1-46ef-916e-85f670d7b903',
+      userId: '11111-5ae1-46ef-916e-85f670d7b903',
     },
   ],
   pagination: {
@@ -72,7 +72,7 @@ const dataCards = {
       questionVideo: null,
       shots: 0,
       updated: '2024-02-27T21:36:30.720Z',
-      userId: '4080bcb3-7077-49be-bf65-d5c37bf5c5fd',
+      userId: 'df6760fa-5ae1-46ef-916e-85f670d7b903',
     },
   ],
   pagination: {
@@ -85,7 +85,9 @@ const dataCards = {
 
 export const Decks: Story = {
   args: {
-    children: dataDecks.items.map((el: Deck) => <DeckRow deck={el} key={el.id} />),
+    children: dataDecks.items.map((el: Deck) => (
+      <DeckRow authUserId={'df6760fa-5ae1-46ef-916e-85f670d7b903'} deck={el} key={el.id} />
+    )),
     columns: [
       { key: 'name', sortable: true, title: 'Name' },
       { key: 'cardsCount', sortable: true, title: 'Cards' },

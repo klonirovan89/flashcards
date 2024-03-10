@@ -1,13 +1,14 @@
 import { useState } from 'react'
 
-import { AddNewCardForm } from '@/components/forms/AddNewCardForm'
 import { SuperModal } from '@/components/ui/modal'
+
+import { AddNewCardForm } from '../../components/forms/CardForm'
 
 export const AddNewCard = () => {
   const [open, setOpen] = useState<boolean>(false)
 
-  const changeModalState = (open: boolean) => {
-    setOpen(open)
+  const changeModalState = () => {
+    setOpen(!open)
   }
 
   return (
