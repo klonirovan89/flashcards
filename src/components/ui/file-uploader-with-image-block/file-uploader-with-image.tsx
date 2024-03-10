@@ -111,6 +111,6 @@ export const FileUploaderWithImage = (props: PropsType) => {
 type PropsType = {
   handleSetCover?: (file: File) => void
   iconId?: string
-  name: string
+  name?: string
   text?: string
 }

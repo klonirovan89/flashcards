@@ -13,5 +13,10 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    open: false,
+    text: 'Add New Deck',
+    title: 'Add New Deck',
+    withTrigger: true,
+  },
 }

@@ -22,6 +22,7 @@ export const EditControl = (props: PropsType) => {
   }
 
   const editDeck = (newDeck: CreateDecksArgs) => {
+    console.log(newDeck)
     deck({ id: deckId, ...newDeck })
       .unwrap()
       .catch(e => {
