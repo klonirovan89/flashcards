@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { DeckForm } from '@/components/forms/AddNewDeckForm'
+import { DeckForm } from "@/components/forms/deckForm"
 import { Button } from '@/components/ui/button/button'
 import { Icon } from '@/components/ui/icon/Icon'
 import { SuperModal } from '@/components/ui/modal'

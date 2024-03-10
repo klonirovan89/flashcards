@@ -9,7 +9,7 @@ import { CreateDecksArgs } from '@/pages/decks/api/decks-types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import c from './AddNewDeckForm.module.scss'
+import c from './deckForm.module.scss'
 
 const newDeckSchema = z.object({
   isPrivate: z.boolean(),

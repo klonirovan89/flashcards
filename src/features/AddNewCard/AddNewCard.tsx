@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { AddNewCardForm } from '@/components/forms/AddNewCardForm'
+import { AddNewCardForm } from '../../components/forms/CardForm'
 import { SuperModal } from '@/components/ui/modal'
 
 export const AddNewCard = () => {
