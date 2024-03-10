@@ -4,6 +4,7 @@ import { Button } from '../button'
 import { Typography } from '../typography'
 
 export const FormButtons = ({
+  callback,
   changeModalState,
   primaryButtonText,
   withSecondary,
@@ -12,18 +13,16 @@ export const FormButtons = ({
     <>
       {withSecondary ? (
         <div className={c.footer}>
-          <Button variant={'secondary'}>
-            <Typography onClick={() => changeModalState(false)} variant={'subtitle2'}>
-              Cancel
-            </Typography>
+          <Button onClick={changeModalState} type={'button'} variant={'secondary'}>
+            <Typography variant={'subtitle2'}>Cancel</Typography>
           </Button>
-          <Button type={'submit'} variant={'primary'}>
+          <Button onClick={callback} type={'submit'} variant={'primary'}>
             <Typography variant={'subtitle2'}>{primaryButtonText}</Typography>
           </Button>
         </div>
       ) : (
         <div className={c.footer + ' ' + c.only_primary}>
-          <Button type={'submit'} variant={'primary'}>
+          <Button onClick={changeModalState} type={'submit'} variant={'primary'}>
             <Typography variant={'subtitle2'}>{primaryButtonText}</Typography>
           </Button>
         </div>
@@ -33,7 +32,8 @@ export const FormButtons = ({
 }
 
 type FormButtonsProps = {
-  changeModalState: (open: boolean) => void
+  callback?: () => void
+  changeModalState: () => void
   primaryButtonText: string
   withSecondary?: boolean
 }

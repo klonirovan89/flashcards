@@ -1,17 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { AddNewDeckForm } from '.'
+import { DeckForm } from '.'
 
 const meta = {
   argTypes: {},
-  component: AddNewDeckForm,
+  component: DeckForm,
   tags: ['autodocs'],
   title: 'Components/Forms/AddNewDeckForm',
-} satisfies Meta<typeof AddNewDeckForm>
+} satisfies Meta<typeof DeckForm>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const CardWithValue: Story = {
-  args: {},
+  args: {
+    text: 'Add new Deck',
+  },
 }
