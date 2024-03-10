@@ -16,9 +16,8 @@ const newDeckSchema = z.object({
   name: z.string().min(3).max(100),
 })
 
-export const AddNewDeckForm = ({
+export const DeckForm = ({
   changeModalState,
-  closeModalWindow,
   createNewDeck,
   deckName,
   text,
@@ -44,7 +43,7 @@ export const AddNewDeckForm = ({
 
   const onSubmit = (data: newDeckArgTypes) => {
     createNewDeck({ ...data, cover })
-    closeModalWindow()
+    changeModalState()
   }
 
   return (
@@ -73,8 +72,7 @@ export const AddNewDeckForm = ({
 }
 
 type AddNewDeckFormProps = {
-  changeModalState: (open: boolean) => void
-  closeModalWindow: () => void
+  changeModalState: () => void
   createNewDeck: (newDeck: CreateDecksArgs) => void
   deckName?: string
   text: string

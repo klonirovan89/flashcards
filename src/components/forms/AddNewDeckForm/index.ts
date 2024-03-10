@@ -1,1 +1,1 @@
-export * from './AddNewDeckForm'
+export * from './DeckForm'

@@ -16,7 +16,7 @@ export const SuperModal = ({
   withTrigger = true,
 }: SuperModalProps) => {
   return (
-    <Dialog.Root onOpenChange={() => changeModalState(!open)} open={open}>
+    <Dialog.Root onOpenChange={changeModalState} open={open}>
       {withTrigger && (
         <Dialog.Trigger className={c.trigger}>
           <Button variant={'primary'}>
@@ -43,7 +43,7 @@ export const SuperModal = ({
 }
 
 type SuperModalProps = {
-  changeModalState: (open: boolean) => void
+  changeModalState: () => void
   children: ReactNode
   open: boolean
   title: string

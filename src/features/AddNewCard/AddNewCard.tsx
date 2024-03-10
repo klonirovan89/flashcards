@@ -6,8 +6,8 @@ import { SuperModal } from '@/components/ui/modal'
 export const AddNewCard = () => {
   const [open, setOpen] = useState<boolean>(false)
 
-  const changeModalState = (open: boolean) => {
-    setOpen(open)
+  const changeModalState = () => {
+    setOpen(!open)
   }
 
   return (

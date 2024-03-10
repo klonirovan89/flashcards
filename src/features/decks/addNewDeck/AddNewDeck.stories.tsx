@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { AddNewDeck } from '.'
+import { AddNewDeck } from './index'
 
 const meta = {
   argTypes: {},

@@ -13,7 +13,7 @@ export const FormButtons = ({
     <>
       {withSecondary ? (
         <div className={c.footer}>
-          <Button onClick={() => changeModalState(false)} type={'button'} variant={'secondary'}>
+          <Button onClick={changeModalState} type={'button'} variant={'secondary'}>
             <Typography variant={'subtitle2'}>Cancel</Typography>
           </Button>
           <Button onClick={callback} type={'submit'} variant={'primary'}>
@@ -22,7 +22,7 @@ export const FormButtons = ({
         </div>
       ) : (
         <div className={c.footer + ' ' + c.only_primary}>
-          <Button onClick={() => changeModalState(false)} type={'submit'} variant={'primary'}>
+          <Button onClick={changeModalState} type={'submit'} variant={'primary'}>
             <Typography variant={'subtitle2'}>{primaryButtonText}</Typography>
           </Button>
         </div>
@@ -33,7 +33,7 @@ export const FormButtons = ({
 
 type FormButtonsProps = {
   callback?: () => void
-  changeModalState: (open: boolean) => void
+  changeModalState: () => void
   primaryButtonText: string
   withSecondary?: boolean
 }

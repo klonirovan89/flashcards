@@ -1,8 +1,9 @@
 import { useState } from 'react'
 
+import { DeckForm } from '@/components/forms/AddNewDeckForm'
 import { Button } from '@/components/ui/button/button'
 import { Icon } from '@/components/ui/icon/Icon'
-import { AddNewDeck } from '@/features/AddNewDeck'
+import { SuperModal } from '@/components/ui/modal'
 import { useUpdateDecksMutation } from '@/pages/decks/api/decks-api'
 import { CreateDecksArgs } from '@/pages/decks/api/decks-types'
 
@@ -17,10 +18,6 @@ export const EditControl = (props: PropsType) => {
     setOpen(!open)
   }
 
-  const closeModalWindow = () => {
-    changeModalState()
-  }
-
   const editDeck = (newDeck: CreateDecksArgs) => {
     console.log(newDeck)
     deck({ id: deckId, ...newDeck })
@@ -32,16 +29,20 @@ export const EditControl = (props: PropsType) => {
 
   return (
     <>
-      <AddNewDeck
+      <SuperModal
         changeModalState={changeModalState}
-        closeModalWindow={closeModalWindow}
-        createNewDeck={editDeck}
-        deckName={deckName}
         open={open}
-        text={'Edit Deck'}
         title={'Edit Deck'}
         withTrigger={false}
-      />
+      >
+        <DeckForm
+          changeModalState={changeModalState}
+          createNewDeck={editDeck}
+          deckName={deckName}
+          text={'Edit Deck'}
+          withSecondary
+        />
+      </SuperModal>
       <Button className={className} onClick={() => setOpen(!open)} variant={'pure'}>
         <Icon height={'16px'} iconId={'Edit'} width={'16px'} />
       </Button>

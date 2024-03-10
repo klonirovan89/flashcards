@@ -3,11 +3,12 @@ import { useState } from 'react'
 import { Page } from '@/components/ui/page/page'
 import { ColumnsType, Sort, Table } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
-import { AddDeck } from '@/features/decks/addDeck/addDeck'
 import { DeckRow } from '@/features/decks/decksTable/deckRow'
 import { useMeQuery } from '@/pages/auth/api/auth-api'
 import { useGetDecksQuery } from '@/pages/decks/api/decks-api'
 import { Deck } from '@/pages/decks/api/decks-types'
+
+import { AddNewDeck } from '../../../features/decks/addNewDeck'
 
 export const Decks = () => {
   const [sort, setSort] = useState<Sort>(null)
@@ -28,10 +29,6 @@ export const Decks = () => {
 
   const { data } = useMeQuery()
 
-  const closeModalWindow = () => {
-    changeModalState()
-  }
-
   const changeModalState = () => {
     setOpen(!open)
   }
@@ -45,9 +42,8 @@ export const Decks = () => {
 
   return (
     <Page>
-      <AddDeck
+      <AddNewDeck
         changeModalState={changeModalState}
-        closeModalWindow={closeModalWindow}
         open={open}
         text={'Add New Deck'}
         title={'Add New Deck'}

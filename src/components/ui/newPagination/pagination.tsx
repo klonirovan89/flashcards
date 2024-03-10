@@ -5,16 +5,6 @@ import { SelectPagination } from '@/components/ui/newPagination/selectPagination
 
 import s from './pagination.module.scss'
 
-type Props = {
-  className?: string
-  currentPage: number
-  pageChange: (pageNumber: number) => void
-  pageSize: number
-  pageSizeChange: (newPageSize: number) => void
-  siblingCount?: number
-  totalCount: number
-}
-
 export const Pagination = memo((props: Props) => {
   const {
     currentPage,
@@ -88,3 +78,13 @@ export const Pagination = memo((props: Props) => {
     </div>
   )
 })
+
+type Props = {
+  className?: string
+  currentPage: number
+  pageChange: (pageNumber: number) => void
+  pageSize: number
+  pageSizeChange: (newPageSize: number) => void
+  siblingCount?: number
+  totalCount: number
+}
