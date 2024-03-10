@@ -1,4 +1,4 @@
-import { DeckForm } from "@/components/forms/deckForm"
+import { DeckForm } from '@/components/forms/deckForm'
 import { SuperModal } from '@/components/ui/modal'
 import { useCreateDecksMutation } from '@/pages/decks/api/decks-api'
 import { CreateDecksArgs } from '@/pages/decks/api/decks-types'

@@ -2,6 +2,7 @@ import { ComponentPropsWithoutRef } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon/Icon'
+import { Typography } from '@/components/ui/typography'
 
 import s from './buttonWithIcon.module.scss'
 
@@ -12,7 +13,7 @@ export const ButtonWithIcon = (props: PropsType) => {
     <Button disabled={disabled} fullWidth={fullWidth} variant={variant} {...rest}>
       <div className={`${s.container} ${disabled ? s.disabled : ''}`}>
         {iconId && <Icon height={'16px'} iconId={iconId} width={'16px'} />}
-        {text ? text : ''}
+        {text ? <Typography variant={'subtitle2'}>{text}</Typography> : ''}
       </div>
     </Button>
   )

@@ -1,12 +1,13 @@
 .button {
   all: unset;
-
+  display: flex;
+  align-items: center;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   outline: 2px solid transparent;
   padding: 6px 28px;
-
+  height: min-content;
   border-radius: 4px;
   background: transparent;
 

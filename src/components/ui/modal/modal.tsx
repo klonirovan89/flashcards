@@ -20,7 +20,7 @@ export const SuperModal = ({
       {withTrigger && (
         <Dialog.Trigger className={c.trigger}>
           <Button variant={'primary'}>
-            <Typography variant={'h3'}>{title}</Typography>
+            <Typography variant={'subtitle2'}>{title}</Typography>
           </Button>
         </Dialog.Trigger>
       )}

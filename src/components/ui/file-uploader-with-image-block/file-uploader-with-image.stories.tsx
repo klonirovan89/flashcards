@@ -18,14 +18,11 @@ export const Default: Story = {
 }
 
 export const Icon: Story = {
-  args: {
-    iconId: 'Edit',
-  },
+  args: {},
 }
 
 export const IconAndText: Story = {
   args: {
-    iconId: 'Edit',
     text: 'Choose file',
   },
 }
