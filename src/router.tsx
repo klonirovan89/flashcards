@@ -8,7 +8,7 @@ import {
 
 import { Loader } from '@/components/ui/spinner'
 import { LoginPage } from '@/pages/auth/ui/login'
-import { Cards } from '@/pages/cards/ui/cards'
+import { Decks } from '@/pages/decks/ui/decks'
 
 import { useMeQuery } from './pages/auth/api/auth-api'
 
@@ -21,8 +21,8 @@ const publicRoutes: RouteObject[] = [
 
 const privateRoutes: RouteObject[] = [
   {
-    // element: <Decks />,
-    element: <Cards />,
+    element: <Decks />,
+    // element: <Cards />,
     path: '/',
   },
 ]
