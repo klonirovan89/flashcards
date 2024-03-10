@@ -13,11 +13,9 @@ export const baseQueryWithReauth: BaseQueryFn<
   unknown,
   FetchBaseQueryError
 > = async (args, api, extraOptions) => {
-  // console.log({ api, args, extraOptions })
   await mutex.waitForUnlock()
   let result = await baseQuery(args, api, extraOptions)
 
-  // console.log(result)
   if (result.error && result.error.status === 401) {
     if (!mutex.isLocked()) {
       const release = await mutex.acquire()
@@ -30,8 +28,7 @@ export const baseQueryWithReauth: BaseQueryFn<
       if (refreshResult.meta?.response && refreshResult.meta.response.status === 204) {
         result = await baseQuery(args, api, extraOptions)
       } else {
-        // router.navigate('/login')
-        // console.log('YA LOG')
+        router.navigate('/login')
       }
       release()
     } else {

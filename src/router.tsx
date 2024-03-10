@@ -7,9 +7,10 @@ import {
 } from 'react-router-dom'
 
 import { Loader } from '@/components/ui/spinner'
-import { useMeQuery } from '@/pages/auth/api/auth-api'
 import { LoginPage } from '@/pages/auth/ui/login'
-import { Decks } from '@/pages/decks/ui/decks'
+import { Cards } from '@/pages/cards/ui/cards'
+
+import { useMeQuery } from './pages/auth/api/auth-api'
 
 const publicRoutes: RouteObject[] = [
   {
@@ -20,8 +21,8 @@ const publicRoutes: RouteObject[] = [
 
 const privateRoutes: RouteObject[] = [
   {
-    element: <Decks />,
-    // element: <Cards />,
+    // element: <Decks />,
+    element: <Cards />,
     path: '/',
   },
 ]
@@ -44,11 +45,11 @@ export const Router = () => {
 }
 
 function PrivateRoutes() {
+  //TODO: перенести в layout
   const { isError, isLoading } = useMeQuery()
 
   const isAuthenticated = !isError
 
-  console.log('Value of isAuthenticated:', isAuthenticated)
   if (isLoading) {
     return <Loader />
   }

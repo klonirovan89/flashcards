@@ -1,5 +1,6 @@
-import { LoginArgs, User } from '@/pages/auth/api/auth-types'
 import { baseApi } from '@/services/base-api'
+
+import { LoginArgs, User } from '../../auth/api/auth-types'
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: builder => ({
