@@ -4,7 +4,7 @@ import * as RadixSlider from '@radix-ui/react-slider'
 import s from './slider.module.scss'
 
 export const Slider = (props: PropsType) => {
-  const { max, min, onChangeSliderValue, step= 1, value } = props
+  const { max, min, onChangeSliderValue, step = 1, value } = props
 
   return (
     <div className={s.container}>

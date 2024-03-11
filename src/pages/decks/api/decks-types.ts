@@ -44,7 +44,7 @@ export type CreateDecksArgs = {
 }
 
 export type MinMaxCards = {
-  max: number,
+  max: number
   min: number
 }
 

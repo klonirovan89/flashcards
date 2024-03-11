@@ -62,11 +62,11 @@ export const TextField = forwardRef<HTMLInputElement, PropsType>(
 )
 
 export type TextFiledProps = {
-    disabled?: boolean
-    errorMessage?: string
-    label?: string
-    placeholder?: string
-    type?: 'default' | 'file' | 'password' | 'search'
+  disabled?: boolean
+  errorMessage?: string
+  label?: string
+  placeholder?: string
+  type?: 'default' | 'file' | 'password' | 'search'
 } & ComponentPropsWithoutRef<'input'>
 
 type PropsType = TextFiledProps & Omit<ComponentPropsWithoutRef<'input'>, keyof TextFiledProps>
