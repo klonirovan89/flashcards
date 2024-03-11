@@ -23,10 +23,10 @@ export const Default: Story = {
   render: args => {
     const [sliderValue, setSliderValue] = useState<number[]>(args.value)
 
-    const onValueChange = (value: number[]) => {
+    const onChangeSliderValue = (value: number[]) => {
       setSliderValue(value)
     }
 
-    return <Slider {...args} onValueChange={onValueChange} value={sliderValue} />
+    return <Slider {...args} onChangeSliderValue={onChangeSliderValue} value={sliderValue} />
   },
 }

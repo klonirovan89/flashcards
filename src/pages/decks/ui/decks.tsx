@@ -1,20 +1,17 @@
 import { useState } from 'react'
 
+import { useDebounce } from '@/common/hooks'
 import { Page } from '@/components/ui/page/page'
 import { ColumnsType, Sort, Table } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
+import { CreateControlBlock } from '@/features/decks/createControlBlock/createControlBlock'
 import { DeckRow } from '@/features/decks/decksTable/deckRow'
+import { FilterControlBlock } from '@/features/decks/filterControlBlock/filterControlBlock'
 import { useMeQuery } from '@/pages/auth/api/auth-api'
-import { useGetDecksQuery } from '@/pages/decks/api/decks-api'
+import { useGetDecksMinMaxCardsQuery, useGetDecksQuery } from '@/pages/decks/api/decks-api'
 import { Deck } from '@/pages/decks/api/decks-types'
 
-import { AddNewDeck } from '../../../features/decks/addNewDeck'
-
 export const Decks = () => {
-  const [sort, setSort] = useState<Sort>(null)
-
-  const [open, setOpen] = useState<boolean>(false)
-
   const columnsDecks: ColumnsType[] = [
     { key: 'name', sortable: true, title: 'Name' },
     { key: 'cardsCount', sortable: true, title: 'Cards' },
@@ -22,32 +19,53 @@ export const Decks = () => {
     { key: 'author.name', sortable: true, title: 'Created by' },
     { key: 'actions', sortable: false, title: '' },
   ]
+  const listValues = [
+    { disabled: false, text: 'My Cards', value: 'My Cards' },
+    { disabled: false, text: 'All Cards', value: 'All Cards' },
+  ]
 
-  const decks = useGetDecksQuery({
-    orderBy: sort ? `${sort.key}-${sort.direction}` : 'null',
-  })
+  const cardsCount = useGetDecksMinMaxCardsQuery()
+  const maxCardsCount = cardsCount.data ? cardsCount.data.max : 10
+  const maxCount = cardsCount.data ? Math.floor(cardsCount.data.max / 2) : 10
+
+  console.log(maxCount)
+
+  const [sort, setSort] = useState<Sort>(null)
+  const [searchName, setSearchName] = useState<string>('')
+  const [tabSwitcherValue, setTabSwitcherValue] = useState<string>(listValues[1].value)
+  const [sliderValue, setSliderValue] = useState<number[]>([0, maxCardsCount])
+
+  const debouncedSearchName = useDebounce(searchName)
 
   const { data } = useMeQuery()
 
-  const changeModalState = () => {
-    setOpen(!open)
-  }
+  const decks = useGetDecksQuery({
+    authorId: tabSwitcherValue === 'My Cards' ? data?.id : undefined,
+    name: debouncedSearchName,
+    orderBy: sort ? `${sort.key}-${sort.direction}` : 'null',
+    // maxCardsCount: undefined,
+    // minCardsCount?: number
+  })
 
-  if (decks.isLoading) {
+  if (decks.isLoading || cardsCount.isLoading) {
     return <>Loading....</>
   }
+
   if (decks.error) {
     return <>Error: {JSON.stringify(decks.error)}</>
   }
 
   return (
     <Page>
-      <AddNewDeck
-        changeModalState={changeModalState}
-        open={open}
-        text={'Add New Deck'}
-        title={'Add New Deck'}
-        withTrigger
+      <CreateControlBlock />
+      <FilterControlBlock
+        listValues={listValues}
+        maxCardsCount={maxCardsCount}
+        setSearchName={setSearchName}
+        setSliderValue={setSliderValue}
+        setTabSwitcherValue={setTabSwitcherValue}
+        sliderValue={sliderValue}
+        tabSwitcherValue={tabSwitcherValue}
       />
       {decks.data ? (
         <Table columns={columnsDecks} onSort={setSort} sort={sort}>

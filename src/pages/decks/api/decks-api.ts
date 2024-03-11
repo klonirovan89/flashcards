@@ -3,6 +3,7 @@ import {
   Deck,
   DecksArgs,
   DecksResponse,
+  MinMaxCards,
   UpdateDecksArgs,
 } from '@/pages/decks/api/decks-types'
 import { baseApi } from '@/services/base-api'
@@ -51,31 +52,15 @@ export const decksApi = baseApi.injectEndpoints({
           url: `/v2/decks`,
         }),
       }),
+      getDecksMinMaxCards: builder.query<MinMaxCards, void>({
+        providesTags: ['Decks'],
+        query: () => ({
+          method: 'GET',
+          url: `/v2/decks/min-max-cards`,
+        }),
+      }),
       updateDecks: builder.mutation<Deck, UpdateDecksArgs>({
         invalidatesTags: ['Decks'],
-        // async onQueryStarted({ id, ...patch }, { dispatch, getState, queryFulfilled }) {
-        //   const decksArr = decksApi.util.selectInvalidatedBy(getState(), ['Decks'])
-        //   //TODO: fix any
-        //   let patchResult: any
-        //
-        //   decksArr.forEach(({ originalArgs }) => {
-        //     patchResult = dispatch(
-        //       decksApi.util.updateQueryData('getDecks', originalArgs, draft => {
-        //         const deck = draft.items.find(deck => deck.id === id)
-        //
-        //         if (deck) {
-        //           Object.assign(draft, patch)
-        //         }
-        //       })
-        //     )
-        //   })
-        //
-        //   try {
-        //     await queryFulfilled
-        //   } catch {
-        //     patchResult.undo()
-        //   }
-        // },
         query: ({ id, ...body }) => ({
           body,
           method: 'PATCH',
@@ -90,6 +75,7 @@ export const {
   useCreateDecksMutation,
   useDeleteDecksMutation,
   useGetDeckByIdQuery,
+  useGetDecksMinMaxCardsQuery,
   useGetDecksQuery,
   useUpdateDecksMutation,
 } = decksApi
