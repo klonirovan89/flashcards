@@ -2,12 +2,13 @@ import { Typography } from '@/components/ui/typography'
 import * as RadixTabsSwitcher from '@radix-ui/react-tabs'
 
 import s from './tab-switcher.module.scss'
+import {ListValuesType} from "@/features/decks/filterControlBlock";
 
 export const TabSwitcher = (props: PropsType) => {
-  const { listValues, onValueChange, value } = props
+  const { listValues, onValueChange, tabSwitcherValue } = props
 
   return (
-    <RadixTabsSwitcher.Root className={s.root} onValueChange={onValueChange} value={value}>
+    <RadixTabsSwitcher.Root className={s.root} onValueChange={onValueChange} value={tabSwitcherValue}>
       <RadixTabsSwitcher.List>
         {listValues.map(el => (
           <RadixTabsSwitcher.Trigger
@@ -27,11 +28,7 @@ export const TabSwitcher = (props: PropsType) => {
 }
 
 type PropsType = {
-  listValues: {
-    disabled: boolean
-    text: string
-    value: string
-  }[]
+  listValues: ListValuesType[]
+  tabSwitcherValue: string
   onValueChange: (value: string) => void
-  value: string
 }

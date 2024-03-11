@@ -24,7 +24,6 @@ const listValues = [
 export const Default: Story = {
   args: {
     listValues,
-    value: 'My cards',
   },
   render: args => {
     const [tabSwitcherValue, setTabSwitcherValue] = useState<string>(listValues[0].value)
@@ -35,7 +34,7 @@ export const Default: Story = {
 
     return (
       <div>
-        <TabSwitcher {...args} onValueChange={onValueChange} value={tabSwitcherValue} />
+        <TabSwitcher {...args} onValueChange={onValueChange}/>
         <Typography variant={'body2'}>Selected value: {tabSwitcherValue}</Typography>
       </div>
     )
