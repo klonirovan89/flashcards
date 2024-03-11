@@ -5,12 +5,12 @@ import s from './tab-switcher.module.scss'
 import {ListValuesType} from "@/features/decks/filterControlBlock";
 
 export const TabSwitcher = (props: PropsType) => {
-    const {listValues, onValueChange, tabSwitcherValue, text} = props
+    const {listValues, onChangeTabSwitcherValue, tabSwitcherValue, text} = props
 
     return (
         <div>
             <Typography variant={'body2'}>{text}</Typography>
-            <RadixTabsSwitcher.Root className={s.root} onValueChange={onValueChange} value={tabSwitcherValue}>
+            <RadixTabsSwitcher.Root className={s.root} onValueChange={onChangeTabSwitcherValue} value={tabSwitcherValue}>
                 <RadixTabsSwitcher.List>
                     {listValues.map(el => (
                         <RadixTabsSwitcher.Trigger
@@ -35,5 +35,5 @@ type PropsType = {
     text: string
     listValues: ListValuesType[]
     tabSwitcherValue: string
-    onValueChange: (value: string) => void
+    onChangeTabSwitcherValue: (value: string) => void
 }

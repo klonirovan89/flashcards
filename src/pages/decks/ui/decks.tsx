@@ -5,7 +5,7 @@ import {ColumnsType, Sort, Table} from '@/components/ui/table'
 import {Typography} from '@/components/ui/typography'
 import {DeckRow} from '@/features/decks/decksTable/deckRow'
 import {useMeQuery} from '@/pages/auth/api/auth-api'
-import {useGetDecksQuery} from '@/pages/decks/api/decks-api'
+import {useGetDecksMinMaxCardsQuery, useGetDecksQuery} from '@/pages/decks/api/decks-api'
 import {Deck} from '@/pages/decks/api/decks-types'
 import {CreateControlBlock} from "@/features/decks/createControlBlock/createControlBlock";
 import {FilterControlBlock} from "@/features/decks/filterControlBlock/filterControlBlock";
@@ -25,24 +25,37 @@ export const Decks = () => {
         {disabled: false, text: 'All Cards', value: 'All Cards'},
     ]
 
+    const cardsCount = useGetDecksMinMaxCardsQuery()
+    const maxCardsCount = cardsCount.data ? cardsCount.data.max : 10
+    const maxCount = cardsCount.data ? Math.floor(cardsCount.data.max / 2) : 10
+
+    console.log(maxCount)
+
     const [sort, setSort] = useState<Sort>(null)
     const [searchName, setSearchName] = useState<string>('')
     const [tabSwitcherValue, setTabSwitcherValue] = useState<string>(listValues[1].value)
+    const [sliderValue, setSliderValue] = useState<number[]>([0, maxCardsCount])
 
 
     let debouncedSearchName = useDebounce(searchName)
 
     const {data} = useMeQuery()
 
-    let decks = useGetDecksQuery({
+
+    const decks = useGetDecksQuery({
         orderBy: sort ? `${sort.key}-${sort.direction}` : 'null',
         name: debouncedSearchName,
         authorId: tabSwitcherValue === 'My Cards' ? data?.id : undefined,
+        // maxCardsCount: undefined,
+        // minCardsCount?: number
     })
 
-    if (decks.isLoading) {
+
+
+    if (decks.isLoading || cardsCount.isLoading) {
         return <>Loading....</>
     }
+
     if (decks.error) {
         return <>Error: {JSON.stringify(decks.error)}</>
     }
@@ -51,7 +64,7 @@ export const Decks = () => {
         <Page>
             <CreateControlBlock/>
             <FilterControlBlock setSearchName={setSearchName} tabSwitcherValue={tabSwitcherValue} setTabSwitcherValue={setTabSwitcherValue}
-                                listValues={listValues}/>
+                                listValues={listValues} maxCardsCount={maxCardsCount} setSliderValue={setSliderValue} sliderValue={sliderValue}/>
             {decks.data ? (
                 <Table columns={columnsDecks} onSort={setSort} sort={sort}>
                     {decks.data.items.map((el: Deck) => (

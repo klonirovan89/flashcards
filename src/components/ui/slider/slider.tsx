@@ -4,7 +4,7 @@ import * as RadixSlider from '@radix-ui/react-slider'
 import s from './slider.module.scss'
 
 export const Slider = (props: PropsType) => {
-  const { max, min, onValueChange, step, value } = props
+  const { max, min, onChangeSliderValue, step= 1, value } = props
 
   return (
     <div className={s.container}>
@@ -16,7 +16,7 @@ export const Slider = (props: PropsType) => {
         defaultValue={value}
         max={max}
         min={min}
-        onValueChange={onValueChange}
+        onValueChange={onChangeSliderValue}
         step={step}
       >
         <RadixSlider.Track className={s.track}>
@@ -35,7 +35,7 @@ export const Slider = (props: PropsType) => {
 type PropsType = {
   max: number
   min: number
-  onValueChange: (value: number[]) => void
-  step: number
+  onChangeSliderValue: (value: number[]) => void
+  step?: number
   value: number[]
 }
