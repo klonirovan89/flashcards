@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import { Typography } from '../typography/typography'
 import { TabSwitcher } from './'
+import {ListValuesType} from "@/features/decks/filterControlBlock";
 
 const meta = {
   component: TabSwitcher,
@@ -14,7 +15,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const listValues = [
+const listValues: ListValuesType[] = [
   { disabled: false, text: 'City', value: 'City' },
   { disabled: false, text: 'Music', value: 'Music' },
   { disabled: false, text: 'Movies', value: 'Movies' },
@@ -23,9 +24,10 @@ const listValues = [
 
 export const Default: Story = {
   args: {
-    listValues,
+    listValues
   },
   render: args => {
+
     const [tabSwitcherValue, setTabSwitcherValue] = useState<string>(listValues[0].value)
 
     const onValueChange = (value: string) => {
@@ -34,7 +36,7 @@ export const Default: Story = {
 
     return (
       <div>
-        <TabSwitcher {...args} onValueChange={onValueChange}/>
+        <TabSwitcher onValueChange={onValueChange} listValues={args.listValues} tabSwitcherValue={tabSwitcherValue} text={'Show decks cards'}/>
         <Typography variant={'body2'}>Selected value: {tabSwitcherValue}</Typography>
       </div>
     )

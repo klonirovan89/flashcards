@@ -5,16 +5,13 @@ import {TabSwitcher} from "@/components/ui/tab-switcher";
 export const FilterControlBlock = (props: PropsType) => {
     const {setSearchName, setTabSwitcherValue, listValues, tabSwitcherValue} = props
 
-
-
-
     const onValueChange = (value: string) => {
         setTabSwitcherValue(value)
     }
     return (
         <div className={s.top}>
             <TextField type={'search'} onChange={e => setSearchName(e.currentTarget.value)}/>
-            <TabSwitcher listValues={listValues} onValueChange={onValueChange} tabSwitcherValue={tabSwitcherValue}/>
+            <TabSwitcher listValues={listValues} onValueChange={onValueChange} tabSwitcherValue={tabSwitcherValue} text={'Show decks cards'}/>
         </div>
     )
 }
