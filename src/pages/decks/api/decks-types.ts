@@ -1,6 +1,5 @@
 export type DecksResponse = {
   items: Deck[]
-  maxCardsCount: number
   pagination: Pagination
 }
 
@@ -42,6 +41,11 @@ export type CreateDecksArgs = {
   cover?: File | null
   isPrivate?: boolean
   name: string
+}
+
+export type MinMaxCards = {
+  max: number
+  min: number
 }
 
 export type UpdateDecksArgs = Partial<CreateDecksArgs> & { id: Deck['id'] }
