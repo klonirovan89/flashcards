@@ -1,8 +1,9 @@
 import { useState } from 'react'
 
+import { InitLoader } from '@/components/ui/loader/initLoader'
 import { ColumnsType, Sort, Table } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
-import { CardRow } from '@/features/cardsTable/cardRow'
+import { CardRow } from '@/features/cards/cardsTable/cardRow'
 import { useGetCardsQuery } from '@/pages/cards/api/cards-api'
 import { Card } from '@/pages/cards/api/cards-types'
 
@@ -25,7 +26,7 @@ export const Cards = () => {
   })
 
   if (isLoading) {
-    return <>Loading....</>
+    return <InitLoader />
   }
   if (error) {
     return <>Error: {JSON.stringify(error)}</>

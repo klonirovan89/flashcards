@@ -5,9 +5,9 @@ import { Slider } from '@/components/ui/slider'
 import { TabSwitcher } from '@/components/ui/tab-switcher'
 import { TextField } from '@/components/ui/text-field'
 
-import s from './filterControlBlock.module.css'
+import s from './filterControlDecks.module.css'
 
-export const FilterControlBlock = (props: PropsType) => {
+export const FilterControlDecks = (props: PropsType) => {
   const {
     listValues,
     maxCardsCount,

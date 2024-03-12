@@ -2,7 +2,7 @@ import NoPhoto from '@/assets/icons/NoPhoto.png'
 import { Button } from '@/components/ui/button'
 import { TableComponents } from '@/components/ui/table/table-components'
 import { Typography } from '@/components/ui/typography'
-import { ButtonBlock } from '@/features/decks/buttonBlock/buttonBlock'
+import { ButtonDecks } from '@/features/decks/buttonDecks/buttonDecks'
 import { Deck } from '@/pages/decks/api/decks-types'
 
 import s from './deck.module.scss'
@@ -44,7 +44,7 @@ export const DeckRow = (props: PropsType) => {
         </Typography>
       </TableComponents.Cell>
       <TableComponents.Cell>
-        <ButtonBlock authUserId={authUserId} deck={deck} disabled={deck.cardsCount === 0} />
+        <ButtonDecks authUserId={authUserId} deck={deck} disabled={deck.cardsCount === 0} />
       </TableComponents.Cell>
     </TableComponents.Row>
   )

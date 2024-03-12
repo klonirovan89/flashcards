@@ -6,9 +6,9 @@ import { Pagination } from '@/components/ui/newPagination'
 import { Page } from '@/components/ui/page/page'
 import { ColumnsType, Sort, Table } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
-import { CreateControlBlock } from '@/features/decks/createControlBlock/createControlBlock'
+import { CreateControlDecks } from '@/features/decks/createControlDecks/createControlDecks'
 import { DeckRow } from '@/features/decks/decksTable/deckRow'
-import { FilterControlBlock } from '@/features/decks/filterControlBlock/filterControlBlock'
+import { FilterControlDecks } from '@/features/decks/filterControlDecks/filterControlDecks'
 import { useMeQuery } from '@/pages/auth/api/auth-api'
 import { useGetDecksMinMaxCardsQuery, useGetDecksQuery } from '@/pages/decks/api/decks-api'
 import { Deck } from '@/pages/decks/api/decks-types'
@@ -63,8 +63,8 @@ export const Decks = () => {
 
   return (
     <Page>
-      <CreateControlBlock />
-      <FilterControlBlock
+      <CreateControlDecks />
+      <FilterControlDecks
         listValues={listValues}
         maxCardsCount={maxCardsCount}
         searchName={searchName}

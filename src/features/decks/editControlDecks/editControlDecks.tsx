@@ -7,7 +7,7 @@ import { SuperModal } from '@/components/ui/modal'
 import { useUpdateDecksMutation } from '@/pages/decks/api/decks-api'
 import { CreateDecksArgs } from '@/pages/decks/api/decks-types'
 
-export const EditControl = (props: PropsType) => {
+export const EditControlDecks = (props: PropsType) => {
   const { className, deckId, deckName } = props
 
   const [open, setOpen] = useState<boolean>(false)

@@ -3,9 +3,9 @@ import { useState } from 'react'
 import { Typography } from '@/components/ui/typography'
 import { AddNewDeck } from '@/features/decks/addNewDeck'
 
-import s from './createControlBlock.module.css'
+import s from './createControlDecks.module.css'
 
-export const CreateControlBlock = () => {
+export const CreateControlDecks = () => {
   const [open, setOpen] = useState<boolean>(false)
 
   const changeModalState = () => {
