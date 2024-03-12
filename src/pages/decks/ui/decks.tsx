@@ -10,6 +10,7 @@ import { FilterControlBlock } from '@/features/decks/filterControlBlock/filterCo
 import { useMeQuery } from '@/pages/auth/api/auth-api'
 import { useGetDecksMinMaxCardsQuery, useGetDecksQuery } from '@/pages/decks/api/decks-api'
 import { Deck } from '@/pages/decks/api/decks-types'
+import s from './decks.module.scss'
 
 export const Decks = () => {
   const columnsDecks: ColumnsType[] = [
@@ -73,14 +74,14 @@ export const Decks = () => {
         sliderValue={sliderValue}
         tabSwitcherValue={tabSwitcherValue}
       />
-      {decks.data ? (
+      {decks.data && decks.data.items.length > 0? (
         <Table columns={columnsDecks} onSort={setSort} sort={sort}>
           {decks.data.items.map((el: Deck) => (
             <DeckRow authUserId={data?.id} deck={el} key={el.id} />
           ))}
         </Table>
       ) : (
-        <Typography variant={'body1'}>No cards.</Typography>
+        <Typography className={s.typographyStyle} variant={'body1'}>No content with these terms...</Typography>
       )}
     </Page>
   )
