@@ -69,6 +69,7 @@ export const Decks = () => {
         listValues={listValues}
         maxCardsCount={maxCardsCount}
         setSearchName={setSearchName}
+        searchName={searchName}
         setSliderValue={setSliderValue}
         setTabSwitcherValue={setTabSwitcherValue}
         sliderValue={sliderValue}

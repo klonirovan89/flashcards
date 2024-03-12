@@ -15,7 +15,7 @@ export const Slider = (props: PropsType) => {
                 </Typography>
                 <RadixSlider.Root
                     className={s.root}
-                    defaultValue={value}
+                    value={value}
                     max={max}
                     min={min}
                     onValueChange={onChangeSliderValue}
