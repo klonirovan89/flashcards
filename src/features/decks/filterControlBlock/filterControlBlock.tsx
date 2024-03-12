@@ -46,7 +46,7 @@ export const FilterControlBlock = (props: PropsType) => {
         onChangeSliderValue={onChangeSliderValue}
         text={'Number of cards'}
       />
-      <ButtonWithIcon onClick={clearFilter} iconId={'Delete'} text={'Clear Filter'} />
+      <ButtonWithIcon variant={'secondary'} onClick={clearFilter} iconId={'Delete'} text={'Clear Filter'} />
     </div>
   )
 }

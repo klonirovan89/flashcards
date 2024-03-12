@@ -36,7 +36,7 @@ export const TabSwitcher = (props: PropsType) => {
 
 type PropsType = {
   listValues: ListValuesType[]
-  onChangeTabSwitcherValue: (value: string) => void
-  tabSwitcherValue: string
+  onChangeTabSwitcherValue?: (value: string) => void
+  tabSwitcherValue?: string
   text: string
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import {useState} from 'react'
 
 import { useDebounce } from '@/common/hooks'
 import { Page } from '@/components/ui/page/page'
@@ -46,10 +46,12 @@ export const Decks = () => {
   })
 
   const clearFilter = () => {
-    setSliderValue([0, maxCardsCount])
-    setSearchName('')
-    setTabSwitcherValue(listValues[1].value)
-  }
+        setSliderValue([0, maxCardsCount])
+        setSearchName('')
+        setTabSwitcherValue(listValues[1].value)
+    }
+
+
 
   if (decks.isLoading || cardsCount.isLoading) {
     return <>Loading....</>
