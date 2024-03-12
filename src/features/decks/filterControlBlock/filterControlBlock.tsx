@@ -2,6 +2,7 @@ import s from './filterControlBlock.module.css'
 import { TextField } from '@/components/ui/text-field'
 import { TabSwitcher } from '@/components/ui/tab-switcher'
 import { Slider } from '@/components/ui/slider'
+import {ButtonWithIcon} from "@/components/ui/button-with-icon";
 
 export const FilterControlBlock = (props: PropsType) => {
   const {
@@ -12,6 +13,7 @@ export const FilterControlBlock = (props: PropsType) => {
     sliderValue,
     setSliderValue,
     tabSwitcherValue,
+    clearFilter
   } = props
 
   const onChangeTabSwitcherValue = (value: string) => {
@@ -36,7 +38,9 @@ export const FilterControlBlock = (props: PropsType) => {
         min={0}
         max={maxCardsCount}
         onChangeSliderValue={onChangeSliderValue}
+        text={'Number of cards'}
       />
+        <ButtonWithIcon onClick={clearFilter} iconId={'Delete'} text={'Clear Filter'}/>
     </div>
   )
 }
@@ -49,6 +53,7 @@ type PropsType = {
   maxCardsCount: number
   sliderValue: number[]
   setSliderValue: (value: number[]) => void
+  clearFilter: () => void
 }
 export type ListValuesType = {
   disabled: boolean
