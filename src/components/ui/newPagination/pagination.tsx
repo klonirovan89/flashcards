@@ -6,14 +6,7 @@ import { SelectPagination } from '@/components/ui/newPagination/selectPagination
 import s from './pagination.module.scss'
 
 export const Pagination = memo((props: Props) => {
-  const {
-    currentPage,
-    pageChange,
-    pageSize,
-    pageSizeChange,
-    siblingCount = 1,
-    totalCount = 10,
-  } = props
+  const { currentPage, pageChange, pageSize, pageSizeChange, siblingCount, totalCount } = props
 
   const paginationRange = usePagination({
     currentPage,
@@ -25,8 +18,8 @@ export const Pagination = memo((props: Props) => {
   if (!paginationRange || currentPage === 0 || paginationRange.length < 2) {
     return (
       <div className={s.paginationContainer}>
-        Показать
-        <SelectPagination pageSize={pageSize} pageSizeChange={pageSizeChange} /> на странице
+        Show
+        <SelectPagination pageSize={pageSize} pageSizeChange={pageSizeChange} /> on the page
       </div>
     )
   }
@@ -62,7 +55,7 @@ export const Pagination = memo((props: Props) => {
             key={index}
             onClick={() => pageChange(pageNumber)}
           >
-            {pageNumber}
+              <span>{pageNumber}</span>
           </button>
         )
       })}
@@ -73,8 +66,8 @@ export const Pagination = memo((props: Props) => {
       >
         {'❯'}
       </button>
-      Показать
-      <SelectPagination pageSize={pageSize} pageSizeChange={pageSizeChange} /> на странице
+      Show
+      <SelectPagination pageSize={pageSize} pageSizeChange={pageSizeChange} /> on the page
     </div>
   )
 })

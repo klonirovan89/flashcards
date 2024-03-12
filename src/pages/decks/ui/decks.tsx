@@ -11,6 +11,7 @@ import { useMeQuery } from '@/pages/auth/api/auth-api'
 import { useGetDecksMinMaxCardsQuery, useGetDecksQuery } from '@/pages/decks/api/decks-api'
 import { Deck } from '@/pages/decks/api/decks-types'
 import s from './decks.module.scss'
+import { Pagination } from '@/components/ui/newPagination'
 
 export const Decks = () => {
   const columnsDecks: ColumnsType[] = [
@@ -32,6 +33,8 @@ export const Decks = () => {
   const [searchName, setSearchName] = useState<string>('')
   const [tabSwitcherValue, setTabSwitcherValue] = useState<string>(listValues[1].value)
   const [sliderValue, setSliderValue] = useState<number[]>([0, maxCardsCount])
+  const [page, setPage] = useState(1)
+  const [pageSize, setPageSize] = useState(10)
 
   const debouncedSearchName = useDebounce(searchName)
   const debouncedSliderValue = useDebounce(sliderValue)
@@ -44,6 +47,8 @@ export const Decks = () => {
     orderBy: sort ? `${sort.key}-${sort.direction}` : 'null',
     maxCardsCount: debouncedSliderValue[1],
     minCardsCount: debouncedSliderValue[0],
+    currentPage: page,
+    itemsPerPage: pageSize,
   })
 
   const clearFilter = () => {
@@ -74,14 +79,26 @@ export const Decks = () => {
         sliderValue={sliderValue}
         tabSwitcherValue={tabSwitcherValue}
       />
-      {decks.data && decks.data.items.length > 0? (
-        <Table columns={columnsDecks} onSort={setSort} sort={sort}>
-          {decks.data.items.map((el: Deck) => (
-            <DeckRow authUserId={data?.id} deck={el} key={el.id} />
-          ))}
-        </Table>
+      {decks.data && decks.data.items.length > 0 ? (
+        <div>
+          <Table columns={columnsDecks} onSort={setSort} sort={sort}>
+            {decks.data.items.map((el: Deck) => (
+              <DeckRow authUserId={data?.id} deck={el} key={el.id} />
+            ))}
+          </Table>
+          <Pagination
+            className={s.pagination}
+            currentPage={decks.data.pagination.currentPage}
+            pageChange={setPage}
+            pageSize={decks.data.pagination.itemsPerPage}
+            pageSizeChange={setPageSize}
+            totalCount={decks.data.pagination.totalItems}
+          />
+        </div>
       ) : (
-        <Typography className={s.typographyStyle} variant={'body1'}>No content with these terms...</Typography>
+        <Typography className={s.typographyStyle} variant={'body1'}>
+          No content with these terms...
+        </Typography>
       )}
     </Page>
   )
