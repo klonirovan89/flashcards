@@ -25,10 +25,7 @@ export const Decks = () => {
   ]
 
   const cardsCount = useGetDecksMinMaxCardsQuery()
-  const maxCardsCount = cardsCount.data ? cardsCount.data.max : 10
-  const maxCount = cardsCount.data ? Math.floor(cardsCount.data.max / 2) : 10
-
-  console.log(maxCount)
+  const maxCardsCount = cardsCount.data ? cardsCount.data.max : 30
 
   const [sort, setSort] = useState<Sort>(null)
   const [searchName, setSearchName] = useState<string>('')
@@ -36,6 +33,7 @@ export const Decks = () => {
   const [sliderValue, setSliderValue] = useState<number[]>([0, maxCardsCount])
 
   const debouncedSearchName = useDebounce(searchName)
+  const debouncedSliderValue = useDebounce(sliderValue)
 
   const { data } = useMeQuery()
 
@@ -43,9 +41,15 @@ export const Decks = () => {
     authorId: tabSwitcherValue === 'My Cards' ? data?.id : undefined,
     name: debouncedSearchName,
     orderBy: sort ? `${sort.key}-${sort.direction}` : 'null',
-    // maxCardsCount: undefined,
-    // minCardsCount?: number
+    maxCardsCount: debouncedSliderValue[1],
+    minCardsCount: debouncedSliderValue[0],
   })
+
+  const clearFilter = () => {
+    setSliderValue([0, maxCardsCount])
+    setSearchName('')
+    setTabSwitcherValue(listValues[1].value)
+  }
 
   if (decks.isLoading || cardsCount.isLoading) {
     return <>Loading....</>
@@ -59,9 +63,11 @@ export const Decks = () => {
     <Page>
       <CreateControlBlock />
       <FilterControlBlock
+        clearFilter={clearFilter}
         listValues={listValues}
         maxCardsCount={maxCardsCount}
         setSearchName={setSearchName}
+        searchName={searchName}
         setSliderValue={setSliderValue}
         setTabSwitcherValue={setTabSwitcherValue}
         sliderValue={sliderValue}
