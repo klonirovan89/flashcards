@@ -2,8 +2,8 @@ import s from './filterControlBlock.module.css'
 import { TextField } from '@/components/ui/text-field'
 import { TabSwitcher } from '@/components/ui/tab-switcher'
 import { Slider } from '@/components/ui/slider'
-import {ButtonWithIcon} from "@/components/ui/button-with-icon";
-import React from "react";
+import { ButtonWithIcon } from '@/components/ui/button-with-icon'
+import React from 'react'
 
 export const FilterControlBlock = (props: PropsType) => {
   const {
@@ -15,7 +15,7 @@ export const FilterControlBlock = (props: PropsType) => {
     sliderValue,
     setSliderValue,
     tabSwitcherValue,
-    clearFilter
+    clearFilter,
   } = props
 
   const onChangeTabSwitcherValue = (value: string) => {
@@ -32,7 +32,7 @@ export const FilterControlBlock = (props: PropsType) => {
 
   return (
     <div className={s.top}>
-      <TextField type={'search'} onChange={onChangeTextFieldValue} searchName={searchName}/>
+      <TextField type={'search'} onChange={onChangeTextFieldValue} searchName={searchName} />
       <TabSwitcher
         listValues={listValues}
         onChangeTabSwitcherValue={onChangeTabSwitcherValue}
@@ -46,7 +46,7 @@ export const FilterControlBlock = (props: PropsType) => {
         onChangeSliderValue={onChangeSliderValue}
         text={'Number of cards'}
       />
-        <ButtonWithIcon onClick={clearFilter} iconId={'Delete'} text={'Clear Filter'}/>
+      <ButtonWithIcon onClick={clearFilter} iconId={'Delete'} text={'Clear Filter'} />
     </div>
   )
 }

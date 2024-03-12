@@ -42,14 +42,14 @@ export const Decks = () => {
     name: debouncedSearchName,
     orderBy: sort ? `${sort.key}-${sort.direction}` : 'null',
     maxCardsCount: debouncedSliderValue[1],
-    minCardsCount: debouncedSliderValue[0]
+    minCardsCount: debouncedSliderValue[0],
   })
 
-    const clearFilter = () => {
-        setSliderValue([0, maxCardsCount])
-        setSearchName('')
-        setTabSwitcherValue(listValues[1].value)
-    }
+  const clearFilter = () => {
+    setSliderValue([0, maxCardsCount])
+    setSearchName('')
+    setTabSwitcherValue(listValues[1].value)
+  }
 
   if (decks.isLoading || cardsCount.isLoading) {
     return <>Loading....</>
@@ -58,8 +58,6 @@ export const Decks = () => {
   if (decks.error) {
     return <>Error: {JSON.stringify(decks.error)}</>
   }
-
-    console.log(sliderValue)
 
   return (
     <Page>

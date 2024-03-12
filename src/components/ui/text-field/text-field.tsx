@@ -7,7 +7,10 @@ import { clsx } from 'clsx'
 import s from './text-field.module.scss'
 
 export const TextField = forwardRef<HTMLInputElement, PropsType>(
-  ({ disabled = false, errorMessage, label, placeholder, type = 'default', searchName, ...rest }, ref) => {
+  (
+    { disabled = false, errorMessage, label, placeholder, type = 'default', searchName, ...rest },
+    ref
+  ) => {
     const [isVisiblePassword, setIsVisiblePassword] = useState<boolean>(false)
 
     const finalInputType = isVisiblePassword ? 'default' : type
