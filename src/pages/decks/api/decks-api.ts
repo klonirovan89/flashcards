@@ -61,6 +61,29 @@ export const decksApi = baseApi.injectEndpoints({
       }),
       updateDecks: builder.mutation<Deck, UpdateDecksArgs>({
         invalidatesTags: ['Decks'],
+        // async onQueryStarted({ id, ...patch }, { dispatch, getState, queryFulfilled }) {
+        //   const decksArr = decksApi.util.selectInvalidatedBy(getState(), ['Decks'])
+        //   //TODO: fix any
+        //   let patchResult: any
+        //
+        //   decksArr.forEach(({ originalArgs }) => {
+        //     patchResult = dispatch(
+        //       decksApi.util.updateQueryData('getDecks', originalArgs, draft => {
+        //         const deck = draft.items.find(deck => deck.id === id)
+        //
+        //         if (deck) {
+        //           Object.assign(draft, patch)
+        //         }
+        //       })
+        //     )
+        //   })
+        //
+        //   try {
+        //     await queryFulfilled
+        //   } catch {
+        //     patchResult.undo()
+        //   }
+        // },
         query: ({ id, ...body }) => ({
           body,
           method: 'PATCH',
