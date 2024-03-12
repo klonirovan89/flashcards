@@ -23,12 +23,12 @@
 
   transition: 0.3s;
 
-span {
-  padding-inline: 4px;
-  font-weight: var(--font-weight-regular);
-  font-size: 16px;
-  line-height: var(--line-height-m);
-}
+  span {
+    padding-inline: 4px;
+    font-weight: var(--font-weight-regular);
+    font-size: 16px;
+    line-height: var(--line-height-m);
+  }
 
   &:hover {
     background-color: var(--color-dark-500);
@@ -52,7 +52,7 @@ span {
     color: var(--color-dark-900);
     background-color: var(--color-light-100);
   }
-  }
+}
 
 .dots {
   display: flex;

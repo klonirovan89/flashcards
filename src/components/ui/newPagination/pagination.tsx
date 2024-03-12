@@ -55,7 +55,7 @@ export const Pagination = memo((props: Props) => {
             key={index}
             onClick={() => pageChange(pageNumber)}
           >
-              <span>{pageNumber}</span>
+            <span>{pageNumber}</span>
           </button>
         )
       })}
