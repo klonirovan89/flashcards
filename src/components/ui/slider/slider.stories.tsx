@@ -18,8 +18,8 @@ export const Default: Story = {
     max: 10,
     min: 0,
     step: 1,
-    value: [2, 10],
     text: 'Number of cards',
+    value: [2, 10],
   },
   render: args => {
     const [sliderValue, setSliderValue] = useState<number[]>(args.value)

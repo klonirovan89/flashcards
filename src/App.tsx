@@ -1,10 +1,10 @@
 import { Provider } from 'react-redux'
+import { ToastContainer } from 'react-toastify'
 
 import { Layout } from '@/components/ui/layout/layout'
 
 import { Router } from './router'
 import { store } from './services/store'
-import { ToastContainer } from 'react-toastify'
 
 export function App() {
   return (

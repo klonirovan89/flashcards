@@ -1,6 +1,8 @@
 import { useState } from 'react'
 
 import { useDebounce } from '@/common/hooks'
+import { InitLoader } from '@/components/ui/loader/initLoader'
+import { Pagination } from '@/components/ui/newPagination'
 import { Page } from '@/components/ui/page/page'
 import { ColumnsType, Sort, Table } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
@@ -10,8 +12,8 @@ import { FilterControlBlock } from '@/features/decks/filterControlBlock/filterCo
 import { useMeQuery } from '@/pages/auth/api/auth-api'
 import { useGetDecksMinMaxCardsQuery, useGetDecksQuery } from '@/pages/decks/api/decks-api'
 import { Deck } from '@/pages/decks/api/decks-types'
+
 import s from './decks.module.scss'
-import { Pagination } from '@/components/ui/newPagination'
 
 export const Decks = () => {
   const columnsDecks: ColumnsType[] = [
@@ -43,22 +45,16 @@ export const Decks = () => {
 
   const decks = useGetDecksQuery({
     authorId: tabSwitcherValue === 'My Cards' ? data?.id : undefined,
-    name: debouncedSearchName,
-    orderBy: sort ? `${sort.key}-${sort.direction}` : 'null',
-    maxCardsCount: debouncedSliderValue[1],
-    minCardsCount: debouncedSliderValue[0],
     currentPage: page,
     itemsPerPage: pageSize,
+    maxCardsCount: debouncedSliderValue[1],
+    minCardsCount: debouncedSliderValue[0],
+    name: debouncedSearchName,
+    orderBy: sort ? `${sort.key}-${sort.direction}` : 'null',
   })
 
-  const clearFilter = () => {
-    setSliderValue([0, maxCardsCount])
-    setSearchName('')
-    setTabSwitcherValue(listValues[1].value)
-  }
-
   if (decks.isLoading || cardsCount.isLoading) {
-    return <>Loading....</>
+    return <InitLoader />
   }
 
   if (decks.error) {
@@ -69,11 +65,10 @@ export const Decks = () => {
     <Page>
       <CreateControlBlock />
       <FilterControlBlock
-        clearFilter={clearFilter}
         listValues={listValues}
         maxCardsCount={maxCardsCount}
-        setSearchName={setSearchName}
         searchName={searchName}
+        setSearchName={setSearchName}
         setSliderValue={setSliderValue}
         setTabSwitcherValue={setTabSwitcherValue}
         sliderValue={sliderValue}
