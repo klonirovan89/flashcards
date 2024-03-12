@@ -8,7 +8,7 @@ import s from './text-field.module.scss'
 
 export const TextField = forwardRef<HTMLInputElement, PropsType>(
   (
-    { disabled = false, errorMessage, label, placeholder, type = 'default', searchName, ...rest },
+    { disabled = false, errorMessage, label, placeholder, searchName, type = 'default', ...rest },
     ref
   ) => {
     const [isVisiblePassword, setIsVisiblePassword] = useState<boolean>(false)
@@ -70,8 +70,8 @@ export type TextFiledProps = {
   errorMessage?: string
   label?: string
   placeholder?: string
-  type?: 'default' | 'file' | 'password' | 'search'
   searchName?: string
+  type?: 'default' | 'file' | 'password' | 'search'
 } & ComponentPropsWithoutRef<'input'>
 
 type PropsType = TextFiledProps & Omit<ComponentPropsWithoutRef<'input'>, keyof TextFiledProps>
