@@ -28,15 +28,18 @@
 
   &:hover {
     background: var(--color-accent-300);
+    transition: 0.3s;
   }
 
   &:focus-visible {
     background: var(--color-accent-500);
     outline: 2px solid var(--color-info-700);
+    transition: 0.3s;
   }
 
   &:active {
     background: var(--color-accent-700);
+    transition: 0.3s;
   }
 
   &:disabled {
@@ -52,15 +55,18 @@
 
   &:hover {
     background: var(--color-dark-100);
+    transition: 0.3s;
   }
 
   &:focus-visible {
     background: var(--color-dark-300);
     outline: 2px solid var(--color-info-700);
+    transition: 0.3s;
   }
 
   &:active {
     background: var(--color-dark-500);
+    transition: 0.3s;
   }
 
   &:disabled {
@@ -78,16 +84,19 @@
   &:hover {
     background: var(--color-dark-500);
     border: 1px solid var(--color-accent-700);
+    transition: 0.3s;
   }
 
   &:focus-visible {
     background: transparent;
     outline: 2px solid var(--color-info-700);
+    transition: 0.3s;
   }
 
   &:active {
     background: var(--color-accent-900);
     border: 1px solid var(--color-accent-700);
+    transition: 0.3s;
   }
 
   &:disabled {
@@ -106,16 +115,19 @@
 
   &:hover {
     color: var(--color-accent-300);
+    transition: 0.3s;
   }
 
   &:focus-visible {
     color: var(--color-accent-500);
     border-radius: 2rem;
     outline: 0.125rem solid var(--color-info-700);
+    transition: 0.3s;
   }
 
   &:active {
     color: var(--color-accent-700);
+    transition: 0.3s;
   }
 
   &:disabled {

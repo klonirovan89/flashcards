@@ -8,7 +8,7 @@ export const TabSwitcher = (props: PropsType) => {
   const { listValues, onChangeTabSwitcherValue, tabSwitcherValue, text } = props
 
   return (
-    <div>
+    <div className={s.wrapper}>
       <Typography variant={'body2'}>{text}</Typography>
       <RadixTabsSwitcher.Root
         className={s.root}
@@ -36,7 +36,7 @@ export const TabSwitcher = (props: PropsType) => {
 
 type PropsType = {
   listValues: ListValuesType[]
-  onChangeTabSwitcherValue: (value: string) => void
-  tabSwitcherValue: string
+  onChangeTabSwitcherValue?: (value: string) => void
+  tabSwitcherValue?: string
   text: string
 }

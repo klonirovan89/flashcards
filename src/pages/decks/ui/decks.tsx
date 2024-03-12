@@ -10,6 +10,8 @@ import { FilterControlBlock } from '@/features/decks/filterControlBlock/filterCo
 import { useMeQuery } from '@/pages/auth/api/auth-api'
 import { useGetDecksMinMaxCardsQuery, useGetDecksQuery } from '@/pages/decks/api/decks-api'
 import { Deck } from '@/pages/decks/api/decks-types'
+import s from './decks.module.scss'
+import { Pagination } from '@/components/ui/newPagination'
 
 export const Decks = () => {
   const columnsDecks: ColumnsType[] = [
@@ -25,17 +27,17 @@ export const Decks = () => {
   ]
 
   const cardsCount = useGetDecksMinMaxCardsQuery()
-  const maxCardsCount = cardsCount.data ? cardsCount.data.max : 10
-  const maxCount = cardsCount.data ? Math.floor(cardsCount.data.max / 2) : 10
-
-  console.log(maxCount)
+  const maxCardsCount = cardsCount.data ? cardsCount.data.max : 30
 
   const [sort, setSort] = useState<Sort>(null)
   const [searchName, setSearchName] = useState<string>('')
   const [tabSwitcherValue, setTabSwitcherValue] = useState<string>(listValues[1].value)
   const [sliderValue, setSliderValue] = useState<number[]>([0, maxCardsCount])
+  const [page, setPage] = useState(1)
+  const [pageSize, setPageSize] = useState(10)
 
   const debouncedSearchName = useDebounce(searchName)
+  const debouncedSliderValue = useDebounce(sliderValue)
 
   const { data } = useMeQuery()
 
@@ -43,9 +45,17 @@ export const Decks = () => {
     authorId: tabSwitcherValue === 'My Cards' ? data?.id : undefined,
     name: debouncedSearchName,
     orderBy: sort ? `${sort.key}-${sort.direction}` : 'null',
-    // maxCardsCount: undefined,
-    // minCardsCount?: number
+    maxCardsCount: debouncedSliderValue[1],
+    minCardsCount: debouncedSliderValue[0],
+    currentPage: page,
+    itemsPerPage: pageSize,
   })
+
+  const clearFilter = () => {
+    setSliderValue([0, maxCardsCount])
+    setSearchName('')
+    setTabSwitcherValue(listValues[1].value)
+  }
 
   if (decks.isLoading || cardsCount.isLoading) {
     return <>Loading....</>
@@ -59,22 +69,36 @@ export const Decks = () => {
     <Page>
       <CreateControlBlock />
       <FilterControlBlock
+        clearFilter={clearFilter}
         listValues={listValues}
         maxCardsCount={maxCardsCount}
         setSearchName={setSearchName}
+        searchName={searchName}
         setSliderValue={setSliderValue}
         setTabSwitcherValue={setTabSwitcherValue}
         sliderValue={sliderValue}
         tabSwitcherValue={tabSwitcherValue}
       />
-      {decks.data ? (
-        <Table columns={columnsDecks} onSort={setSort} sort={sort}>
-          {decks.data.items.map((el: Deck) => (
-            <DeckRow authUserId={data?.id} deck={el} key={el.id} />
-          ))}
-        </Table>
+      {decks.data && decks.data.items.length > 0 ? (
+        <div>
+          <Table columns={columnsDecks} onSort={setSort} sort={sort}>
+            {decks.data.items.map((el: Deck) => (
+              <DeckRow authUserId={data?.id} deck={el} key={el.id} />
+            ))}
+          </Table>
+          <Pagination
+            className={s.pagination}
+            currentPage={decks.data.pagination.currentPage}
+            pageChange={setPage}
+            pageSize={decks.data.pagination.itemsPerPage}
+            pageSizeChange={setPageSize}
+            totalCount={decks.data.pagination.totalItems}
+          />
+        </div>
       ) : (
-        <Typography variant={'body1'}>No cards.</Typography>
+        <Typography className={s.typographyStyle} variant={'body1'}>
+          No content with these terms...
+        </Typography>
       )}
     </Page>
   )
