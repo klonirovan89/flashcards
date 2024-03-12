@@ -6,7 +6,7 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
-import { Loader } from '@/components/ui/spinner'
+import { QueryLoader } from '@/components/ui/loader/qeryLoader'
 import { LoginPage } from '@/pages/auth/ui/login'
 import { Decks } from '@/pages/decks/ui/decks'
 
@@ -51,7 +51,7 @@ function PrivateRoutes() {
   const isAuthenticated = !isError
 
   if (isLoading) {
-    return <Loader />
+    return <QueryLoader />
   }
 
   return isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />

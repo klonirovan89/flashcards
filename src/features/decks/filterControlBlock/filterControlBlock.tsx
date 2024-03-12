@@ -1,21 +1,22 @@
-import s from './filterControlBlock.module.css'
-import { TextField } from '@/components/ui/text-field'
-import { TabSwitcher } from '@/components/ui/tab-switcher'
-import { Slider } from '@/components/ui/slider'
-import { ButtonWithIcon } from '@/components/ui/button-with-icon'
 import React from 'react'
+
+import { ButtonWithIcon } from '@/components/ui/button-with-icon'
+import { Slider } from '@/components/ui/slider'
+import { TabSwitcher } from '@/components/ui/tab-switcher'
+import { TextField } from '@/components/ui/text-field'
+
+import s from './filterControlBlock.module.css'
 
 export const FilterControlBlock = (props: PropsType) => {
   const {
-    setSearchName,
-    searchName,
-    setTabSwitcherValue,
     listValues,
     maxCardsCount,
-    sliderValue,
+    searchName,
+    setSearchName,
     setSliderValue,
+    setTabSwitcherValue,
+    sliderValue,
     tabSwitcherValue,
-    clearFilter,
   } = props
 
   const onChangeTabSwitcherValue = (value: string) => {
@@ -30,9 +31,15 @@ export const FilterControlBlock = (props: PropsType) => {
     setSearchName(e.currentTarget.value)
   }
 
+  const clearFilter = () => {
+    setSliderValue([0, maxCardsCount])
+    setSearchName('')
+    setTabSwitcherValue(listValues[1].value)
+  }
+
   return (
     <div className={s.top}>
-      <TextField type={'search'} onChange={onChangeTextFieldValue} searchName={searchName} />
+      <TextField onChange={onChangeTextFieldValue} searchName={searchName} type={'search'} />
       <TabSwitcher
         listValues={listValues}
         onChangeTabSwitcherValue={onChangeTabSwitcherValue}
@@ -40,17 +47,17 @@ export const FilterControlBlock = (props: PropsType) => {
         text={'Show decks cards'}
       />
       <Slider
-        value={sliderValue}
-        min={0}
         max={maxCardsCount}
+        min={0}
         onChangeSliderValue={onChangeSliderValue}
         text={'Number of cards'}
+        value={sliderValue}
       />
       <ButtonWithIcon
-        variant={'secondary'}
-        onClick={clearFilter}
         iconId={'Delete'}
+        onClick={clearFilter}
         text={'Clear Filter'}
+        variant={'secondary'}
       />
     </div>
   )
@@ -58,14 +65,13 @@ export const FilterControlBlock = (props: PropsType) => {
 
 type PropsType = {
   listValues: ListValuesType[]
-  setSearchName: (e: string) => void
-  searchName: string
-  tabSwitcherValue: string
-  setTabSwitcherValue: (value: string) => void
   maxCardsCount: number
-  sliderValue: number[]
+  searchName: string
+  setSearchName: (e: string) => void
   setSliderValue: (value: number[]) => void
-  clearFilter: () => void
+  setTabSwitcherValue: (value: string) => void
+  sliderValue: number[]
+  tabSwitcherValue: string
 }
 export type ListValuesType = {
   disabled: boolean
