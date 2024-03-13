@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useState } from 'react'
 
-import { CardRow } from '@/features/cardsTable/cardRow'
+import { CardRow } from '@/features/cards/cardsTable/cardRow'
 import { DeckRow } from '@/features/decks/decksTable/deckRow'
 import { Card } from '@/pages/cards/api/cards-types'
 import { Deck } from '@/pages/decks/api/decks-types'
