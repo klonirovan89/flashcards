@@ -32,11 +32,11 @@ export const AddNewCardForm = ({ changeModalState, withSecondary }: AddNewCardFo
         />
         <div className={c.formRow}>
           <TextField label={'Question'} />
-          {selectValue === 'Picture' && <FileUploaderWithImage text={'Change Cover'} />}
+          {selectValue === 'Picture' && <FileUploaderWithImage />}
         </div>
         <div className={c.formRow}>
           <TextField label={'Answer'} />
-          {selectValue === 'Picture' && <FileUploaderWithImage text={'Change Cover'} />}
+          {selectValue === 'Picture' && <FileUploaderWithImage />}
         </div>
       </form>
       <FormButtons

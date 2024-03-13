@@ -12,9 +12,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: {
-    text: 'Choose file',
-  },
+  args: {},
 }
 
 export const Icon: Story = {
@@ -22,7 +20,5 @@ export const Icon: Story = {
 }
 
 export const IconAndText: Story = {
-  args: {
-    text: 'Choose file',
-  },
+  args: {},
 }
