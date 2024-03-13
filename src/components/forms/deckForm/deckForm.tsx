@@ -5,7 +5,7 @@ import { FileUploaderWithImage } from '@/components/ui/file-uploader-with-image-
 import { FormButtons } from '@/components/ui/form-buttons'
 import { ControlledCheckbox } from '@/controlled/controlled-ckeckbox/controlled-ckeckbox'
 import { ControlledTextField } from '@/controlled/controlled-text-field/controlled-text-field'
-import { CreateDecksArgs } from '@/pages/decks/api/decks-types'
+import { CreateDecksArgs, Deck } from '@/pages/decks/api/decks-types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -19,7 +19,7 @@ const newDeckSchema = z.object({
 export const DeckForm = ({
   changeModalState,
   createNewDeck,
-  deckName,
+  deck,
   text,
   withSecondary,
 }: AddNewDeckFormProps) => {
@@ -32,7 +32,7 @@ export const DeckForm = ({
   } = useForm<newDeckArgTypes>({
     defaultValues: {
       isPrivate: false,
-      name: deckName || '',
+      name: deck?.name || '',
     },
     resolver: zodResolver(newDeckSchema),
   })
@@ -55,11 +55,7 @@ export const DeckForm = ({
           label={'Deck Name'}
           name={'name'}
         />
-        <FileUploaderWithImage
-          handleSetCover={handleSetCover}
-          name={'cover'}
-          text={'Change Cover'}
-        />
+        <FileUploaderWithImage cover={deck?.cover} handleSetCover={handleSetCover} name={'cover'} />
         <ControlledCheckbox control={control} label={'Private pack'} name={'isPrivate'} />
         <FormButtons
           changeModalState={changeModalState}
@@ -74,7 +70,7 @@ export const DeckForm = ({
 type AddNewDeckFormProps = {
   changeModalState: () => void
   createNewDeck: (newDeck: CreateDecksArgs) => void
-  deckName?: string
+  deck?: Deck
   text: string
   withSecondary?: boolean
 }

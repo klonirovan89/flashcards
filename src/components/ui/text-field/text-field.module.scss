@@ -17,30 +17,42 @@
   color: white;
 
   background: none;
-  border: 1px solid #4c4c4c;
+  border: 1px solid var(--color-dark-300);
   border-radius: 2px;
-}
 
-.input.password {
-  padding-right: 35px;
-}
+  &:hover {
+    background-color: var(--color-dark-700);
+    border-color: var(--color-dark-100);
+  }
 
-.input.search {
-  padding-left: 35px;
-}
+  &:active {
+    color: var(--color-light-100);
+    outline: 2px solid var(--color-info-700);
+  }
 
-.input:hover {
-  background-color: #171717;
-}
+  &:focus:enabled {
+    border-color: var(--color-info-700);
+    outline: 1px solid var(--color-info-700);
+  }
 
-.input:active {
-  color: #fff;
-  border-color: #fff;
-}
+  &.password {
+    padding-right: 35px;
+  }
 
-.input.error {
-  color: var(--color-danger-300);
-  border-color: var(--color-danger-300);
+  &.search {
+    padding-left: 35px;
+  }
+
+  &.error {
+    color: var(--color-danger-500);
+    border-color: var(--color-danger-500);
+  }
+
+  &:disabled,
+  &:disabled .magniGlass,
+  &:disabled .eyeButton {
+    color: #4c4c4c;
+  }
 }
 
 .eyeButton {
@@ -64,13 +76,7 @@
   width: 20px;
   height: 20px;
 
-  color: #fff;
-}
-
-.input:disabled,
-.input:disabled .magniGlass,
-.input:disabled .eyeButton {
-  color: #4c4c4c;
+  color: var(--color-light-100);
 }
 
 .typographyStyle {
@@ -78,5 +84,5 @@
 }
 
 .typographyErrorStyle {
-  color: var(--color-danger-300);
+  color: var(--color-danger-500);
 }

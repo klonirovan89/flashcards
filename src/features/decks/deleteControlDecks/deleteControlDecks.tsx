@@ -6,7 +6,7 @@ import { Icon } from '@/components/ui/icon/Icon'
 import { SuperModal } from '@/components/ui/modal'
 import { useDeleteDecksMutation } from '@/pages/decks/api/decks-api'
 
-export const DeleteControl = (props: PropsType) => {
+export const DeleteControlDecks = (props: PropsType) => {
   const { className, deckId, deckName } = props
 
   const [open, setOpen] = useState(false)
