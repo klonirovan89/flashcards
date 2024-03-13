@@ -52,10 +52,6 @@ button {
     }
   }
 
-  &:focus-visible {
-    border-color: var(--color-info-700);
-  }
-
   &:hover:not([data-disabled]) {
     background-color: var(--color-dark-500);
     border: 1px solid var(--color-dark-100);
