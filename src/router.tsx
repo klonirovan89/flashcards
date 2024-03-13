@@ -8,7 +8,8 @@ import {
 
 import { QueryLoader } from '@/components/ui/loader/qeryLoader'
 import { LoginPage } from '@/pages/auth/ui/login'
-import { Cards } from '@/pages/cards/ui'
+// import { Cards } from '@/pages/cards/ui'
+import { Decks } from '@/pages/decks/ui'
 
 import { useMeQuery } from './pages/auth/api/auth-api'
 
@@ -21,8 +22,8 @@ const publicRoutes: RouteObject[] = [
 
 const privateRoutes: RouteObject[] = [
   {
-    // element: <Decks />,
-    element: <Cards />,
+    element: <Decks />,
+    // element: <Cards />,
     path: '/',
   },
 ]

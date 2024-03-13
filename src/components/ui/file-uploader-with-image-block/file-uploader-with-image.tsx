@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 import { ButtonWithIcon } from '@/components/ui/button-with-icon'
 import { TextField } from '@/components/ui/text-field/text-field'
@@ -6,11 +6,11 @@ import { TextField } from '@/components/ui/text-field/text-field'
 import s from './file-uploader-with-image.module.scss'
 
 export const FileUploaderWithImage = (props: PropsType) => {
-  const { handleSetCover, name, text } = props
+  const { cover, handleSetCover, name } = props
 
   const [selectedFile, setSelectedFile] = useState(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
-  const [imageSrc, setImageSrc] = useState('')
+  const [imageSrc, setImageSrc] = useState(cover)
 
   const MAX_FILE_SIZE = 1048576 // 1MB in bytes
   const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/gif']
@@ -34,9 +34,7 @@ export const FileUploaderWithImage = (props: PropsType) => {
       }
 
       setSelectedFile(file)
-      handleSetCover?.(file)
-    }
-    if (file) {
+      handleSetCover && handleSetCover(file)
       const reader = new FileReader()
 
       reader.onloadend = () => {
@@ -50,7 +48,8 @@ export const FileUploaderWithImage = (props: PropsType) => {
     }
   }
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault()
     if (fileInputRef.current) {
       fileInputRef.current.click()
     }
@@ -83,7 +82,7 @@ export const FileUploaderWithImage = (props: PropsType) => {
           <ButtonWithIcon
             iconId={'Layer'}
             onClick={handleButtonClick}
-            text={text}
+            text={'Change cover'}
             variant={'secondary'}
           />
           <ButtonWithIcon
@@ -99,7 +98,7 @@ export const FileUploaderWithImage = (props: PropsType) => {
           fullWidth
           iconId={'Layer'}
           onClick={handleButtonClick}
-          text={text}
+          text={'Change cover'}
           type={'button'}
           variant={'secondary'}
         />
@@ -109,7 +108,7 @@ export const FileUploaderWithImage = (props: PropsType) => {
 }
 
 type PropsType = {
+  cover?: string
   handleSetCover?: (file: File) => void
   name?: string
-  text?: string
 }

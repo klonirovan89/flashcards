@@ -5,14 +5,14 @@ import { Button } from '@/components/ui/button/button'
 import { Icon } from '@/components/ui/icon/Icon'
 import { SuperModal } from '@/components/ui/modal'
 import { useUpdateDecksMutation } from '@/pages/decks/api/decks-api'
-import { CreateDecksArgs } from '@/pages/decks/api/decks-types'
+import { CreateDecksArgs, Deck } from '@/pages/decks/api/decks-types'
 
 export const EditControlDecks = (props: PropsType) => {
-  const { className, deckId, deckName } = props
+  const { className, deck } = props
 
   const [open, setOpen] = useState<boolean>(false)
 
-  const [deck] = useUpdateDecksMutation()
+  const [deckAPI] = useUpdateDecksMutation()
 
   const changeModalState = () => {
     setOpen(!open)
@@ -20,7 +20,7 @@ export const EditControlDecks = (props: PropsType) => {
 
   const editDeck = (newDeck: CreateDecksArgs) => {
     console.log(newDeck)
-    deck({ id: deckId, ...newDeck })
+    deckAPI({ data: newDeck, id: deck.id })
       .unwrap()
       .catch(e => {
         console.log(e.data.message)
@@ -38,7 +38,7 @@ export const EditControlDecks = (props: PropsType) => {
         <DeckForm
           changeModalState={changeModalState}
           createNewDeck={editDeck}
-          deckName={deckName}
+          deck={deck}
           text={'Edit Deck'}
           withSecondary
         />
@@ -52,6 +52,5 @@ export const EditControlDecks = (props: PropsType) => {
 
 type PropsType = {
   className: string
-  deckId: string
-  deckName: string
+  deck: Deck
 }

@@ -13,7 +13,7 @@ export const ButtonDecks = (props: PropsType) => {
     <div>
       {authUserId === deck.userId ? (
         <div className={s.control}>
-          <EditControlDecks className={s.button} deckId={deck.id} deckName={deck.name} />
+          <EditControlDecks className={s.button} deck={deck} />
           <Button
             className={s.button}
             disabled={disabled}

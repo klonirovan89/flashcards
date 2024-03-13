@@ -4,7 +4,7 @@ import {
   DecksArgs,
   DecksResponse,
   MinMaxCards,
-  UpdateDecksArgs,
+  // UpdateDecksArgs,
 } from '@/pages/decks/api/decks-types'
 import { baseApi } from '@/services/base-api'
 
@@ -14,17 +14,8 @@ export const decksApi = baseApi.injectEndpoints({
       createDecks: builder.mutation<Deck, CreateDecksArgs>({
         invalidatesTags: ['Decks'],
         query: body => {
-          const formData = new FormData()
-
-          if (body.cover) {
-            formData.append('cover', body.cover)
-          }
-
-          formData.append('name', body.name)
-          formData.append('isPrivate', String(body.isPrivate))
-
           return {
-            body: formData,
+            body: generateFormData(body),
             method: 'POST',
             url: `/v1/decks`,
           }
@@ -37,7 +28,7 @@ export const decksApi = baseApi.injectEndpoints({
           url: `/v1/decks/${id}`,
         }),
       }),
-      getDeckById: builder.query<Deck, { id: string }>({
+      getDeckById: builder.query<DecksArgs, { id: string }>({
         providesTags: ['Decks'],
         query: ({ id }) => ({
           method: 'GET',
@@ -59,7 +50,7 @@ export const decksApi = baseApi.injectEndpoints({
           url: `/v2/decks/min-max-cards`,
         }),
       }),
-      updateDecks: builder.mutation<Deck, UpdateDecksArgs>({
+      updateDecks: builder.mutation<Deck, { data: CreateDecksArgs; id: string }>({
         invalidatesTags: ['Decks'],
         // async onQueryStarted({ id, ...patch }, { dispatch, getState, queryFulfilled }) {
         //   const decksArr = decksApi.util.selectInvalidatedBy(getState(), ['Decks'])
@@ -84,11 +75,13 @@ export const decksApi = baseApi.injectEndpoints({
         //     patchResult.undo()
         //   }
         // },
-        query: ({ id, ...body }) => ({
-          body,
-          method: 'PATCH',
-          url: `/v1/decks/${id}`,
-        }),
+        query: ({ data, id }) => {
+          return {
+            body: generateFormData(data),
+            method: 'PATCH',
+            url: `/v1/decks/${id}`,
+          }
+        },
       }),
     }
   },
@@ -102,3 +95,13 @@ export const {
   useGetDecksQuery,
   useUpdateDecksMutation,
 } = decksApi
+
+const generateFormData = (data: CreateDecksArgs) => {
+  const formData = new FormData()
+
+  formData.append('cover', data.cover || '')
+  formData.append('name', data.name)
+  formData.append('isPrivate', String(data.isPrivate))
+
+  return formData
+}
