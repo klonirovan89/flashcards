@@ -1,20 +1,20 @@
 import { useState } from 'react'
 
 import { useDebounce } from '@/common/hooks'
+import { DropDownMenu } from '@/components/ui/drop-down/dropDownMenu'
 import { InitLoader } from '@/components/ui/loader/initLoader'
 import { Pagination } from '@/components/ui/newPagination'
 import { Page } from '@/components/ui/page/page'
 import { ColumnsType, Sort, Table } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
 import { CardRow } from '@/features/cards/cardsTable/cardRow'
+import { CreateCards } from '@/features/cards/createCards'
+import { FilterCards } from '@/features/cards/filterCards/filterCards'
 import { useGetCardsQuery } from '@/pages/cards/api/cards-api'
 import { Card } from '@/pages/cards/api/cards-types'
 import { useGetDeckByIdQuery } from '@/pages/decks/api/decks-api'
 
 import s from './cards.module.scss'
-import {DropDownMenu} from "@/components/ui/drop-down/dropDownMenu";
-import {FilterCards} from "@/features/cards/filterCards/filterCards";
-import {CreateCards} from "@/features/cards/createCards";
 
 export const Cards = () => {
   const [sort, setSort] = useState<Sort>(null)
@@ -62,11 +62,11 @@ export const Cards = () => {
       <div className={s.wrapper}>
         <Typography variant={'h1'}>
           {deck.data?.name}
-        <DropDownMenu value={valueDropDownMenu}/>
+          <DropDownMenu value={valueDropDownMenu} />
         </Typography>
-        <CreateCards/>
+        <CreateCards />
         {deck.data?.cover && (
-            <img alt={'No photo'} className={s.img} height={107} src={deck.data?.cover} width={170} />
+          <img alt={'No photo'} className={s.img} height={107} src={deck.data?.cover} width={170} />
         )}
         <FilterCards searchName={searchName} setSearchName={setSearchName} />
         {data && data.items.length > 0 ? (
