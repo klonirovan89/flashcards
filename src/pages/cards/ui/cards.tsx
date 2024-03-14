@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { useDebounce } from '@/common/hooks'
+import { BackButton } from '@/components/ui/back-button'
 import { InitLoader } from '@/components/ui/loader/initLoader'
 import { Pagination } from '@/components/ui/newPagination'
 import { Page } from '@/components/ui/page/page'
@@ -13,7 +14,6 @@ import { Card } from '@/pages/cards/api/cards-types'
 import { useGetDeckByIdQuery } from '@/pages/decks/api/decks-api'
 
 import s from './cards.module.scss'
-import { BackButton } from "@/components/ui/back-button";
 
 export const Cards = () => {
   const [sort, setSort] = useState<Sort>(null)
