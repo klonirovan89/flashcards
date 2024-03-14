@@ -13,13 +13,7 @@ export const CreateDecks = () => {
 
   return (
     <div className={s.top}>
-      <AddNewDeck
-        changeModalState={changeModalState}
-        open={open}
-        text={'Add New Deck'}
-        title={'Add New Deck'}
-        withTrigger
-      />
+      <AddNewDeck changeModalState={changeModalState} open={open} withTrigger />
     </div>
   )
 }

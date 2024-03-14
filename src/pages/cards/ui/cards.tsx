@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
 import { useDebounce } from '@/common/hooks'
+import { BackButton } from '@/components/ui/back-button'
 import { DropDownMenu } from '@/components/ui/drop-down/dropDownMenu'
-
 import { InitLoader } from '@/components/ui/loader/initLoader'
 import { Pagination } from '@/components/ui/newPagination'
 import { Page } from '@/components/ui/page/page'
@@ -39,10 +39,10 @@ export const Cards = () => {
 
   const debouncedSearchName = useDebounce(searchName)
 
-  const deck = useGetDeckByIdQuery({ id: 'cltodvfje0673v72g8yl32ar4' })
+  const deck = useGetDeckByIdQuery({ id: 'cltr8wl2v00gqth2gzpmhxzf8' })
 
   const { data, error, isLoading } = useGetCardsQuery({
-    id: 'cltodvfje0673v72g8yl32ar4',
+    id: 'cltr8wl2v00gqth2gzpmhxzf8',
     params: {
       currentPage: page,
       itemsPerPage: pageSize,
@@ -61,6 +61,7 @@ export const Cards = () => {
   return (
     <Page>
       <div className={s.wrapper}>
+        <BackButton />
         <Typography variant={'h1'}>
           {deck.data?.name}
           <DropDownMenu value={valueDropDownMenu} />

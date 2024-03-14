@@ -3,6 +3,12 @@
   min-width: 300px;
 }
 
+.row {
+  &:hover {
+    background-color: var(--color-dark-800);;
+  }
+}
+
 .divNameBody {
   width: 100%;
   display: flex;

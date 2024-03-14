@@ -40,7 +40,9 @@
   color: var(--color-danger-500);
   border-color: var(--color-danger-500);
 }
-.input:disabled, .input:disabled .magniGlass, .input:disabled .eyeButton {
+.input:disabled,
+.input:disabled .magniGlass,
+.input:disabled .eyeButton {
   color: #4c4c4c;
 }
 

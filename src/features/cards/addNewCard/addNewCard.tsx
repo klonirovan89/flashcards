@@ -1,19 +1,31 @@
-import { useState } from 'react'
+import { CardForm } from '@/components/forms/cardForm'
+import { SuperModal } from '@/components/ui/modal'
+import { useCreateCardMutation } from '@/pages/cards/api/cards-api'
+import { FormDataCards } from '@/pages/cards/api/cards-types'
 
-import { SuperModal } from '../../../components/ui/modal/modal'
+export const AddNewCard = (props: PropsType) => {
+  const { changeModalState, open, withTrigger } = props
 
-import { CardForm } from '../../../components/forms/cardForm'
+  const [createCard] = useCreateCardMutation()
 
-export const AddNewCard = () => {
-  const [open, setOpen] = useState<boolean>(false)
-
-  const changeModalState = () => {
-    setOpen(!open)
+  const createNewCard = (newCard: FormDataCards) => {
+    createCard(newCard)
   }
 
   return (
-    <SuperModal changeModalState={changeModalState} open={open} title={'Add New Card'} withTrigger>
-      <CardForm changeModalState={changeModalState} withSecondary />
+    <SuperModal
+      changeModalState={changeModalState}
+      open={open}
+      title={'Add New Card'}
+      withTrigger={withTrigger}
+    >
+      <CardForm changeModalState={changeModalState} createNewCard={createNewCard} withSecondary />
     </SuperModal>
   )
+}
+
+type PropsType = {
+  changeModalState: () => void
+  open: boolean
+  withTrigger: boolean
 }
