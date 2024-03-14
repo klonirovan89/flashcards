@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button/button'
 import { Icon } from '@/components/ui/icon/Icon'
-import { DeleteControlDecks } from '@/features/decks/deleteControlDecks/deleteControlDecks'
-import { EditControlDecks } from '@/features/decks/editControlDecks/editControlDecks'
+import { DeleteDecks } from '@/features/decks/deleteDecks/deleteDecks'
+import { EditDecks } from '@/features/decks/editDecks/editDecks'
 import { Deck } from '@/pages/decks/api/decks-types'
 
 import s from './buttonDecks.module.scss'
@@ -13,7 +13,7 @@ export const ButtonDecks = (props: PropsType) => {
     <div>
       {authUserId === deck.userId ? (
         <div className={s.control}>
-          <EditControlDecks className={s.button} deck={deck} />
+          <EditDecks className={s.button} deck={deck} />
           <Button
             className={s.button}
             disabled={disabled}
@@ -22,7 +22,7 @@ export const ButtonDecks = (props: PropsType) => {
           >
             <Icon disabled={disabled} height={'16px'} iconId={'Learn'} width={'16px'} />
           </Button>
-          <DeleteControlDecks className={s.button} deckId={deck.id} deckName={deck.name} />
+          <DeleteDecks className={s.button} deckId={deck.id} deckName={deck.name} />
         </div>
       ) : (
         <div className={s.control}>

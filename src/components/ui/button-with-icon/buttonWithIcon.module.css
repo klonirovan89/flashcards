@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.container svg {
+  fill: var(--color-light-100);
+}
+
+.disabled svg {
+  fill: var(--color-light-900);
+}
+
+/*# sourceMappingURL=buttonWithIcon.module.css.map */

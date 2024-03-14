@@ -1,0 +1,12 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 24px 0 0;
+  height: 84px;
+  background-color: var(--color-dark-700);
+}
+.footer.only_primary {
+  justify-content: flex-end;
+}
+
+/*# sourceMappingURL=form-buttons.module.css.map */

@@ -1,0 +1,70 @@
+button {
+  all: unset;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 12px;
+}
+
+.root {
+  background-color: rgba(255, 255, 255, 0);
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  display: flex;
+  border: 2px solid var(--color-light-900);
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.root[data-state='checked'] {
+  border: 2px solid transparent;
+}
+.root:not([data-disabled])::before {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+.root:hover::before {
+  width: 36px;
+  height: 36px;
+  background-color: var(--color-dark-500);
+}
+.root:active::before {
+  width: 36px;
+  height: 36px;
+  background-color: var(--color-dark-100);
+}
+.root:disabled {
+  cursor: not-allowed;
+  border: 2px solid var(--color-dark-100);
+}
+
+.indicator {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: var(--color-light-700);
+  border-radius: 4px;
+  background-color: var(--color-dark-100);
+}
+.indicator:not([data-disabled]) {
+  color: black;
+  background-color: var(--color-light-100);
+}
+
+.typographyDisabled {
+  opacity: 0.5;
+}
+
+/*# sourceMappingURL=checkbox.module.css.map */
