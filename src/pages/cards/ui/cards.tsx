@@ -13,6 +13,7 @@ import { Card } from '@/pages/cards/api/cards-types'
 import { useGetDeckByIdQuery } from '@/pages/decks/api/decks-api'
 
 import s from './cards.module.scss'
+import { BackButton } from "@/components/ui/back-button";
 
 export const Cards = () => {
   const [sort, setSort] = useState<Sort>(null)
@@ -52,6 +53,7 @@ export const Cards = () => {
   return (
     <Page>
       <div className={s.wrapper}>
+        <BackButton />
         <Typography variant={'h1'}>{deck.data?.name}</Typography>
         {deck.data?.cover && (
           <img alt={'No photo'} className={s.img} height={107} src={deck.data?.cover} width={170} />
