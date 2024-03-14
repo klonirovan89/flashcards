@@ -1,0 +1,93 @@
+.h1 {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xxl);
+  line-height: var(--line-height-l);
+  color: var(--color-light-100);
+}
+
+.h2 {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-l);
+  color: var(--color-light-100);
+}
+
+.h3 {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-l);
+  line-height: var(--line-height-m);
+  color: var(--color-light-100);
+}
+
+.h4 {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  color: var(--color-light-100);
+}
+
+.body1 {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  color: var(--color-light-100);
+}
+
+.subtitle1 {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  color: var(--color-light-100);
+}
+
+.body2 {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-m);
+  color: var(--color-light-100);
+}
+
+.subtitle2 {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-m);
+  color: var(--color-light-100);
+}
+
+.caption {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-s);
+  color: var(--color-light-100);
+}
+
+.overline {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-s);
+  color: var(--color-light-100);
+}
+
+.link1,
+.link1:visited {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-m);
+  color: var(--color-light-100);
+  cursor: pointer;
+  color: var(--color-info-500);
+  text-decoration: underline;
+}
+
+.link2,
+.link2:visited {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-s);
+  color: var(--color-light-100);
+  cursor: pointer;
+  color: var(--color-info-500);
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=typography.module.css.map */

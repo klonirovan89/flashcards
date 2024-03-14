@@ -1,0 +1,106 @@
+button {
+  all: unset;
+}
+
+div {
+  outline: none;
+}
+
+.icon svg {
+  fill: var(--color-light-100);
+}
+
+.img {
+  display: flex;
+  align-items: center;
+}
+
+.itemProfile {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: 17px;
+  padding: 30px 0;
+  margin: 0 10px;
+  column-gap: 6px;
+  border-bottom: 1px solid var(--color-dark-500);
+}
+.itemProfile .typographyStyleEmail {
+  color: var(--color-dark-100);
+}
+
+.userData {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: center;
+}
+
+.trigger {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  z-index: 0;
+}
+.trigger:hover {
+  filter: drop-shadow(0 0 6px var(--color-accent-500));
+}
+
+.content {
+  width: 250px;
+  white-space: nowrap;
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-500);
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.item {
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: 17px;
+  padding: 20px 0;
+  margin: 0 10px;
+  column-gap: 6px;
+  border-bottom: 1px solid var(--color-dark-500);
+}
+.item:hover .icon svg {
+  fill: var(--color-accent-300);
+}
+.item:hover .typographyStyle {
+  color: var(--color-accent-300);
+}
+
+.menuItem:last-of-type .item {
+  border-bottom: none;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  cursor: pointer;
+  display: flex;
+}
+
+.arrow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-500);
+  border-right: none;
+  border-bottom: none;
+  top: -3.2%;
+  left: 91%;
+  rotate: 45deg;
+}
+
+/*# sourceMappingURL=dropDownWithProfile.module.css.map */

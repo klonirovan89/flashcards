@@ -1,5 +1,5 @@
 import { Typography } from '@/components/ui/typography'
-import { ListValuesType } from '@/features/decks/filterControlDecks'
+import { ListValuesType } from '../../../features/decks/filterDecks'
 import * as RadixTabsSwitcher from '@radix-ui/react-tabs'
 
 import s from './tab-switcher.module.scss'
