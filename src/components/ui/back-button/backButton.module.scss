@@ -1,0 +1,37 @@
+.button {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 24px;
+  margin-left: -12px;
+
+  svg,
+  .text {
+    transition: 0.3s;
+    color: var(--color-light-100);
+  }
+
+  svg {
+    fill: var(--color-light-100);
+  }
+
+  &:hover {
+    svg {
+      fill: var(--color-accent-100);
+    }
+
+    .text {
+      color: var(--color-accent-100);
+    }
+  }
+
+  &:active {
+    svg {
+      fill: var(--color-accent-500);
+    }
+
+    .text {
+      color: var(--color-accent-500);
+    }
+  }
+}

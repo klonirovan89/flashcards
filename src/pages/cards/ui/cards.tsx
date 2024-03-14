@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { useDebounce } from '@/common/hooks'
+import { BackButton } from '@/components/ui/back-button'
 import { InitLoader } from '@/components/ui/loader/initLoader'
 import { Pagination } from '@/components/ui/newPagination'
 import { Page } from '@/components/ui/page/page'
@@ -52,6 +53,7 @@ export const Cards = () => {
   return (
     <Page>
       <div className={s.wrapper}>
+        <BackButton />
         <Typography variant={'h1'}>{deck.data?.name}</Typography>
         {deck.data?.cover && (
           <img alt={'No photo'} className={s.img} height={107} src={deck.data?.cover} width={170} />
