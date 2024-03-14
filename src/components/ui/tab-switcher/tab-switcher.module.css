@@ -1,0 +1,62 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 7px;
+  column-gap: 0;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.root {
+  width: max-content;
+}
+.root:has(:focus-visible) {
+  border-radius: 2px;
+  outline: 2px solid var(--color-info-700);
+  outline-offset: -1px;
+}
+.root .trigger {
+  all: unset;
+  cursor: pointer;
+  padding: 6px 24px;
+  min-width: 60px;
+  color: var(--color-light-100);
+  background: transparent;
+  border: 1px solid var(--color-dark-300);
+  border-left: none;
+  transition: all 0.3s;
+}
+.root .trigger:first-child {
+  border-left: 1px solid var(--color-dark-300);
+  border-radius: 2px 0 0 2px;
+}
+.root .trigger:last-child {
+  border-radius: 0 2px 2px 0;
+}
+.root .trigger:hover {
+  background-color: var(--color-dark-700);
+  border-color: var(--color-dark-100);
+}
+.root .trigger:active {
+  color: var(--color-light-100);
+  background-color: var(--color-accent-500);
+  border-color: var(--color-accent-500);
+}
+.root .trigger[data-state=active] {
+  color: var(--color-light-100);
+  background-color: var(--color-accent-500);
+  border-color: var(--color-accent-500);
+}
+.root .trigger[data-disabled] {
+  cursor: initial;
+  color: var(--color-dark-300);
+  background-color: var(--color-dark-700);
+  border-color: var(--color-dark-300);
+}
+.root .typographyStyle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=tab-switcher.module.css.map */

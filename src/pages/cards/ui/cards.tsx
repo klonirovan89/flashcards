@@ -7,12 +7,14 @@ import { Page } from '@/components/ui/page/page'
 import { ColumnsType, Sort, Table } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
 import { CardRow } from '@/features/cards/cardsTable/cardRow'
-import { FilterControlCards } from '@/features/cards/filterControlCards'
 import { useGetCardsQuery } from '@/pages/cards/api/cards-api'
 import { Card } from '@/pages/cards/api/cards-types'
 import { useGetDeckByIdQuery } from '@/pages/decks/api/decks-api'
 
 import s from './cards.module.scss'
+import {DropDownMenu} from "@/components/ui/drop-down/dropDownMenu";
+import {FilterCards} from "@/features/cards/filterCards/filterCards";
+import {CreateCards} from "@/features/cards/createCards";
 
 export const Cards = () => {
   const [sort, setSort] = useState<Sort>(null)
@@ -26,6 +28,12 @@ export const Cards = () => {
     { key: 'updated', sortable: true, title: 'Last Updated' },
     { key: 'grade', sortable: true, title: 'Grade' },
     { key: 'controls', sortable: false, title: '' },
+  ]
+
+  const valueDropDownMenu = [
+    { id: 'Learn', label: 'Learn' },
+    { id: 'Edit', label: 'Edit' },
+    { id: 'Delete', label: 'Delete' },
   ]
 
   const debouncedSearchName = useDebounce(searchName)
@@ -52,11 +60,15 @@ export const Cards = () => {
   return (
     <Page>
       <div className={s.wrapper}>
-        <Typography variant={'h1'}>{deck.data?.name}</Typography>
+        <Typography variant={'h1'}>
+          {deck.data?.name}
+        <DropDownMenu value={valueDropDownMenu}/>
+        </Typography>
+        <CreateCards/>
         {deck.data?.cover && (
-          <img alt={'No photo'} className={s.img} height={107} src={deck.data?.cover} width={170} />
+            <img alt={'No photo'} className={s.img} height={107} src={deck.data?.cover} width={170} />
         )}
-        <FilterControlCards searchName={searchName} setSearchName={setSearchName} />
+        <FilterCards searchName={searchName} setSearchName={setSearchName} />
         {data && data.items.length > 0 ? (
           <div>
             <Table columns={columnsCards} onSort={setSort} sort={sort}>

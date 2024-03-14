@@ -1,0 +1,68 @@
+.cell {
+  width: 30%;
+  min-width: 300px;
+}
+
+.divNameBody {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 2px;
+  word-break: break-word;
+}
+.divNameBody .img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 50px;
+}
+
+.control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.control button {
+  height: 16px;
+}
+
+.button {
+  position: relative;
+  height: 16px;
+  z-index: 0;
+}
+.button::before {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  background-color: var(--color-dark-500);
+  z-index: -1;
+  border-radius: 50%;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.3s;
+}
+.button:hover::before {
+  width: 28px;
+  height: 28px;
+}
+
+.typographyStyleBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.update,
+.grade {
+  min-width: 160px;
+}
+
+/*# sourceMappingURL=card.module.css.map */

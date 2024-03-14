@@ -1,0 +1,28 @@
+.root {
+  display: flex;
+  justify-content: center;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 357px;
+}
+.section svg {
+  margin-bottom: 20px;
+}
+.section span {
+  text-align: center;
+  color: var(--color-light-100);
+  margin-bottom: 20px;
+}
+.section span:nth-child(3n) {
+  color: var(--color-dark-100);
+}
+.section .button {
+  box-sizing: border-box;
+}
+
+/*# sourceMappingURL=check-email.module.css.map */
