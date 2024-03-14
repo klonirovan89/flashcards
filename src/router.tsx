@@ -21,8 +21,8 @@ const publicRoutes: RouteObject[] = [
 
 const privateRoutes: RouteObject[] = [
   {
-    element: <Decks />,
-    // element: <Cards />,
+    // element: <Decks />,
+    element: <Cards />,
     path: '/',
   },
 ]
