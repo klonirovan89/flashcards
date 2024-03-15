@@ -4,7 +4,8 @@ import s from './createCards.module.scss'
 
 import { AddNewCard } from '../addNewCard/addNewCard'
 
-export const CreateCards = () => {
+export const CreateCards = (props: PropsType) => {
+  const {deckId} = props
   const [open, setOpen] = useState<boolean>(false)
 
   const changeModalState = () => {
@@ -13,7 +14,11 @@ export const CreateCards = () => {
 
   return (
     <div className={s.top}>
-      <AddNewCard changeModalState={changeModalState} open={open} withTrigger />
+      <AddNewCard deckId={deckId} changeModalState={changeModalState} open={open} withTrigger />
     </div>
   )
+}
+
+type PropsType = {
+  deckId: string
 }

@@ -68,7 +68,7 @@ export const Cards = () => {
               <Typography variant={'h1'}>{deck.data?.name}</Typography>
               <DropDownMenu value={valueDropDownMenu}/>
             </div>
-            <CreateCards/>
+            <CreateCards deckId={deck.data?.id || ''} />
           </div>
           {deck.data?.cover && (
               <img alt={'No photo'} className={s.img} height={107} src={deck.data?.cover} width={170}/>
@@ -79,7 +79,7 @@ export const Cards = () => {
             <div>
               <Table columns={columnsCards} onSort={setSort} sort={sort}>
                 {data.items.map((el: Card) => (
-                    <CardRow card={el} key={el.id}/>
+                    <CardRow deckId={deck.data?.id || ''} card={el} key={el.id}/>
                 ))}
               </Table>
               <Pagination
@@ -87,8 +87,8 @@ export const Cards = () => {
                   currentPage={data.pagination.currentPage}
                   pageChange={setPage}
                   pageSize={data.pagination.itemsPerPage}
-              pageSizeChange={setPageSize}
-              totalCount={data.pagination.totalItems}
+                  pageSizeChange={setPageSize}
+                  totalCount={data.pagination.totalItems}
             />
           </div>
         ) : (

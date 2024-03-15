@@ -1,30 +1,31 @@
 import { useState } from 'react'
 
-import { DeckForm } from '@/components/forms/deckForm'
 import { Button } from '@/components/ui/button/button'
 import { Icon } from '@/components/ui/icon/Icon'
 import { SuperModal } from '@/components/ui/modal'
-import { useUpdateDecksMutation } from '@/pages/decks/api/decks-api'
-import { CreateDecksArgs, Deck } from '@/pages/decks/api/decks-types'
+import {CardForm} from "@/components/forms/cardForm";
+import {Card, FormDataCards} from "@/pages/cards/api/cards-types";
+import {useUpdateCardsMutation} from "@/pages/cards/api/cards-api";
 
-export const EditDecks = (props: PropsType) => {
-  const { className, deck } = props
+export const EditCards = (props: PropsType) => {
+  const { className, card, deckId } = props
 
   const [open, setOpen] = useState<boolean>(false)
 
-  const [deckAPI] = useUpdateDecksMutation()
+  const [cardAPI] = useUpdateCardsMutation()
 
   const changeModalState = () => {
     setOpen(!open)
   }
 
-  const editDeck = (newDeck: CreateDecksArgs) => {
-    deckAPI({ data: newDeck, id: deck.id })
+  const editCard = ( newCard: FormDataCards) => {
+      cardAPI( newCard )
       .unwrap()
       .catch(e => {
         console.log(e.data.message)
       })
   }
+
 
   return (
     <>
@@ -34,12 +35,13 @@ export const EditDecks = (props: PropsType) => {
         title={'Edit Deck'}
         withTrigger={false}
       >
-        <DeckForm
+        <CardForm
           changeModalState={changeModalState}
-          createNewDeck={editDeck}
-          deck={deck}
+          createNewCard={editCard}
+          card={card}
           text={'Edit Deck'}
           withSecondary
+          deckId={deckId}
         />
       </SuperModal>
       <Button className={className} onClick={() => setOpen(!open)} variant={'pure'}>
@@ -51,5 +53,6 @@ export const EditDecks = (props: PropsType) => {
 
 type PropsType = {
   className: string
-  deck: Deck
+  card: Card
+  deckId: string
 }
