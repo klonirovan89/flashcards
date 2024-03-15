@@ -29,6 +29,10 @@
     background-color: var(--color-dark-500);
   }
 
+  &:focus-visible {
+    outline: 0.125rem solid var(--color-info-700);
+  }
+
   &:disabled {
     color: var(--color-dark-300);
 
@@ -36,10 +40,6 @@
       cursor: initial;
       background-color: var(--color-dark-900);
     }
-  }
-
-  &:focus-visible {
-    outline: 0.125rem solid var(--color-info-700);
   }
 
   &:active:enabled,
