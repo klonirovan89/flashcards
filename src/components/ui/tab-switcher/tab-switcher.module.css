@@ -42,7 +42,7 @@
   background-color: var(--color-accent-500);
   border-color: var(--color-accent-500);
 }
-.root .trigger[data-state=active] {
+.root .trigger[data-state='active'] {
   color: var(--color-light-100);
   background-color: var(--color-accent-500);
   border-color: var(--color-accent-500);

@@ -8,9 +8,10 @@ import {
 
 import { QueryLoader } from '@/components/ui/loader/qeryLoader'
 import { LoginPage } from '@/pages/auth/ui/login'
+import { Cards } from '@/pages/cards/ui'
+import { Decks } from '@/pages/decks/ui'
 
 import { useMeQuery } from './pages/auth/api/auth-api'
-import {Decks} from "@/pages/decks/ui";
 
 const publicRoutes: RouteObject[] = [
   {

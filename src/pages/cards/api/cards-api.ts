@@ -3,6 +3,7 @@ import {
   CardsParams,
   CardsResponse,
   CardsSave,
+  DataCards,
   FormDataCards,
   GetCardsArgs,
   MinMaxCardType,
@@ -16,7 +17,7 @@ export const cardsApi = baseApi.injectEndpoints({
       createCard: builder.mutation<Card, FormDataCards>({
         invalidatesTags: ['Cards'],
         query: ({ data, id }) => ({
-          body: data,
+          body: generateFormData(data),
           method: 'POST',
           url: `/v1/decks/${id}/cards`,
         }),
@@ -90,3 +91,14 @@ export const {
   useUpdateCardsMutation,
   useUpdateRatingCardsMutation,
 } = cardsApi
+
+const generateFormData = (data: DataCards) => {
+  const formData = new FormData()
+
+  formData.append('question', data.question)
+  formData.append('answer', data.answer)
+  formData.append('questionImg', data.questionImg || '')
+  formData.append('answerImg', data.answerImg || '')
+
+  return formData
+}

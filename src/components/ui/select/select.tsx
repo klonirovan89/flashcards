@@ -9,7 +9,7 @@ import { clsx } from 'clsx'
 import s from '../select/select.module.scss'
 
 export const Select = forwardRef<ElementRef<typeof RadixSelect.Root>, SelectProps>((props, ref) => {
-  const { disabled, handleSelectChange, isPagination, label, options, selectedValue, value } = props
+  const { disabled, handleSelectChange, isPagination, label, options, selectedValue, value, fullWidth } = props
 
   return (
     <div className={s.container}>
@@ -20,7 +20,7 @@ export const Select = forwardRef<ElementRef<typeof RadixSelect.Root>, SelectProp
         value={value}
       >
         <RadixSelect.Trigger
-          className={clsx(s.trigger, isPagination && s.pagination)}
+          className={clsx(s.trigger, isPagination && s.pagination, fullWidth && s.fullWidth)}
           disabled={disabled}
           ref={ref}
         >
@@ -30,8 +30,8 @@ export const Select = forwardRef<ElementRef<typeof RadixSelect.Root>, SelectProp
           </div>
         </RadixSelect.Trigger>
         <RadixSelect.Portal>
-          <RadixSelect.Content position={'popper'} sideOffset={-1}>
-            <RadixSelect.Viewport className={clsx(s.viewport, isPagination && s.pagination)}>
+          <RadixSelect.Content position={'popper'} sideOffset={-1} >
+            <RadixSelect.Viewport className={clsx(s.viewport, isPagination && s.pagination, fullWidth && s.fullWidth)}>
               {options.map((el, index) => (
                 <RadixSelect.Item
                   className={clsx(s.item, isPagination && s.pagination)}
@@ -61,4 +61,5 @@ export type SelectProps = {
   options: Options[]
   selectedValue?: string
   value?: string
+  fullWidth?: boolean
 } & ComponentPropsWithoutRef<typeof RadixSelect.Root>

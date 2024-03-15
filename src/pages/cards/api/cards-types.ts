@@ -39,7 +39,7 @@ export type CardsSave = {
 }
 
 export type FormDataCards = {
-  data: FormData
+  data: DataCards
   id: string
 }
 
@@ -51,4 +51,11 @@ export type RandomCardType = {
 export type MinMaxCardType = {
   max: number
   min: number
+}
+
+export type DataCards = {
+  answer: string
+  answerImg: File | null
+  question: string
+  questionImg: File | null
 }
