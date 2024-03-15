@@ -16,12 +16,7 @@ export const Pagination = memo((props: Props) => {
   })
 
   if (!paginationRange || currentPage === 0 || paginationRange.length < 2) {
-    return (
-      <div className={s.paginationContainer}>
-        Show
-        <SelectPagination pageSize={pageSize} pageSizeChange={pageSizeChange} /> on the page
-      </div>
-    )
+    return null
   }
 
   const onPrevious = () => {
@@ -67,7 +62,8 @@ export const Pagination = memo((props: Props) => {
         {'❯'}
       </button>
       Show
-      <SelectPagination pageSize={pageSize} pageSizeChange={pageSizeChange} /> on the page
+      <SelectPagination pageSize={pageSize} pageSizeChange={pageSizeChange} />
+      on the page
     </div>
   )
 })
