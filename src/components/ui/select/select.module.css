@@ -9,50 +9,64 @@ button {
 .arrow {
   transform-origin: center;
   rotate: 180deg;
+
   display: flex;
   align-items: center;
+
   margin-left: 2px;
+
   fill: var(--color-light-100);
+
   transition: 0.3s;
 }
 
 .trigger {
   cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   box-sizing: border-box;
   width: 210px;
   height: 36px;
-  margin-left: 10px;
   padding: 6px 12px;
+
   text-align: justify;
+
   background-color: var(--color-dark-700);
   border: 1px solid var(--color-dark-300);
   border-radius: 2px;
 }
+
 .trigger:disabled {
   cursor: initial;
   border-color: var(--color-dark-300);
 }
+
 .trigger:disabled .typographyStyle {
   opacity: 0.5;
 }
+
 .trigger:disabled .arrow {
   opacity: 0.5;
 }
+
 .trigger:hover:not([data-disabled]) {
   background-color: var(--color-dark-500);
   border: 1px solid var(--color-dark-100);
 }
+
 .trigger[data-state='open'] {
   margin-right: 10px;
   border: 1px solid var(--color-dark-100);
   border-radius: 2px 2px 0 0;
 }
+
 .trigger[data-state='open'] .arrow {
   transform: rotate(-180deg);
 }
+
 .trigger.pagination {
   width: 60px;
   height: 24px;
@@ -61,11 +75,14 @@ button {
 
 .viewport {
   cursor: pointer;
+
   width: 210px;
+
   background-color: var(--color-dark-700);
   border: 1px solid var(--color-dark-100);
   border-radius: 0 0 2px 2px;
 }
+
 .viewport.pagination {
   width: 60px;
   height: 24px;
@@ -76,22 +93,25 @@ button {
   padding: 6px 12px;
   outline: none;
 }
+
 .item[data-highlighted] {
   background-color: var(--color-accent-900);
 }
+
 .item[data-highlighted] .typographyStyle {
   color: var(--color-accent-300);
 }
+
 .item:hover {
   background-color: var(--color-accent-900);
 }
+
 .item:hover .typographyStyle {
   color: var(--color-accent-300);
 }
+
 .item.pagination {
   width: 60px;
   height: 24px;
   padding: 3px 1px 3px 5px;
 }
-
-/*# sourceMappingURL=select.module.css.map */

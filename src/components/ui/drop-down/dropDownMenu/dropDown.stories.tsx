@@ -22,6 +22,11 @@ export const Default: Story = {
     value,
   },
   render: args => {
-    return <DropDownMenu {...args} />
+    return (
+        <div>
+          <div>Click me:</div>
+          <DropDownMenu {...args} />
+        </div>
+    )
   },
 }

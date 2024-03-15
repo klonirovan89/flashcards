@@ -73,6 +73,7 @@ export const CardForm = (props: PropsType) => {
           label={'Choose A Question Format'}
           options={options}
           selectedValue={selectValue}
+          fullWidth
         />
         <div className={c.formRow}>
           <ControlledTextField

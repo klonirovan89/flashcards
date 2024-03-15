@@ -10,20 +10,19 @@ export const DropDownMenu = (props: PropsType) => {
 
   return (
     <div className={s.container}>
-      <div>Click me:</div>
       <RadixDropdownMenu.Root>
         <RadixDropdownMenu.Trigger className={s.trigger}>
-          <Icon height={'24px'} iconId={'verticalOutline'} width={'24px'} />
+          <Icon height={'20px'} iconId={'verticalOutline'} width={'20px'} />
         </RadixDropdownMenu.Trigger>
         <RadixDropdownMenu.Portal>
-          <RadixDropdownMenu.Content align={'end'} className={s.content} sideOffset={2}>
+          <RadixDropdownMenu.Content align={'end'} className={s.content} sideOffset={8}>
             {value.map((el, index) => (
               <RadixDropdownMenu.Item className={s.menuItem} key={index}>
                 <Button className={s.item} onClick={() => alert('play')} variant={'pure'}>
                   <div className={s.icon}>
                     <Icon height={'16px'} iconId={el.id} width={'16px'} />
                   </div>
-                  <Typography className={s.typographyStyle} variant={'caption'}>
+                  <Typography className={s.typographyStyle} variant={'body2'}>
                     {el.label}
                   </Typography>
                 </Button>
