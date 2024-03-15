@@ -4,7 +4,7 @@ import { ButtonWithIcon } from '@/components/ui/button-with-icon'
 import { TextField } from '@/components/ui/text-field/text-field'
 
 export const FileUploader = (props: PropsType) => {
-  const { iconId, text } = props
+  const { className, iconId, setFile, text } = props
 
   const [selectedFile, setSelectedFile] = useState(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -15,6 +15,7 @@ export const FileUploader = (props: PropsType) => {
     const file = event.target.files && event.target.files[0]
 
     setSelectedFile(file)
+    setFile?.(file)
   }
 
   const handleButtonClick = () => {
@@ -24,7 +25,7 @@ export const FileUploader = (props: PropsType) => {
   }
 
   return (
-    <>
+    <div className={className}>
       <TextField
         onChange={handleFileInputChange}
         ref={fileInputRef}
@@ -37,11 +38,13 @@ export const FileUploader = (props: PropsType) => {
         text={text}
         variant={'secondary'}
       />
-    </>
+    </div>
   )
 }
 
 type PropsType = {
+  className?: string
   iconId?: string
+  setFile?: (file: File) => void
   text?: string
 }
