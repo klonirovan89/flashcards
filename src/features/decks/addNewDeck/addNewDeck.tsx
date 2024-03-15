@@ -4,7 +4,7 @@ import { useCreateDecksMutation } from '@/pages/decks/api/decks-api'
 import { CreateDecksArgs } from '@/pages/decks/api/decks-types'
 
 export const AddNewDeck = (props: PropsType) => {
-  const { changeModalState, open, text, title, withTrigger } = props
+  const { changeModalState, open, withTrigger } = props
 
   const [createDeck] = useCreateDecksMutation()
 
@@ -16,13 +16,13 @@ export const AddNewDeck = (props: PropsType) => {
     <SuperModal
       changeModalState={changeModalState}
       open={open}
-      title={title}
+      title={'Add New Deck'}
       withTrigger={withTrigger}
     >
       <DeckForm
         changeModalState={changeModalState}
         createNewDeck={createNewDeck}
-        text={text}
+        text={'Add New Deck'}
         withSecondary
       />
     </SuperModal>
@@ -32,7 +32,5 @@ export const AddNewDeck = (props: PropsType) => {
 type PropsType = {
   changeModalState: () => void
   open: boolean
-  text: string
-  title: string
   withTrigger: boolean
 }

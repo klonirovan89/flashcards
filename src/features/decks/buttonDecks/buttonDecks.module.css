@@ -13,7 +13,7 @@
 }
 .button::before {
   position: absolute;
-  content: "";
+  content: '';
   width: 0;
   height: 0;
   background-color: var(--color-dark-500);

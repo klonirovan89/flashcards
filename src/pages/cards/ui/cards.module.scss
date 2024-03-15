@@ -3,6 +3,24 @@
   flex-direction: column;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.typographyWhitMenu {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+}
+
 .typographyStyle {
   display: flex;
   align-items: center;

@@ -11,22 +11,30 @@ div {
 }
 
 .trigger {
+  display: flex;
+  align-items: center;
   position: relative;
   z-index: 0;
 
-  &:hover::before {
-    z-index: -1;
-    position: absolute;
-    content: '';
-    top: 39%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 26px;
-    height: 26px;
-    background-color: var(--color-dark-500);
-    transition: 0.3s;
-    border-radius: 50px;
+  &:hover{
+    cursor: pointer;
+
+    &::before {
+      z-index: -1;
+      position: absolute;
+      content: '';
+      top: 39%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 36px;
+      height: 36px;
+      background-color: var(--color-dark-500);
+      transition: 0.3s;
+      border-radius: 50px;
+    }
   }
+
+
 }
 
 .content {
@@ -82,6 +90,6 @@ div {
   border-right: none;
   border-bottom: none;
   top: -3.8%;
-  left: 82%;
+  left: 83%;
   rotate: 45deg;
 }

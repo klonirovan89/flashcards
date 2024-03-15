@@ -38,7 +38,8 @@
 .button:focus-visible {
   outline: 0.125rem solid var(--color-info-700);
 }
-.button:active:enabled, .button.active:enabled {
+.button:active:enabled,
+.button.active:enabled {
   color: var(--color-dark-900);
   background-color: var(--color-light-100);
 }

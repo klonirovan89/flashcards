@@ -67,7 +67,7 @@ export const Decks = () => {
         <Typography variant={'h1'}>Decks list</Typography>
         <CreateDecks />
       </div>
-        <FilterDecks
+      <FilterDecks
         listValues={listValues}
         maxCardsCount={maxCardsCount}
         searchName={searchName}
