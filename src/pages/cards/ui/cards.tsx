@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
 import { useDebounce } from '@/common/hooks'
+import { BackButton } from '@/components/ui/back-button'
 import { DropDownMenu } from '@/components/ui/drop-down/dropDownMenu'
-
 import { InitLoader } from '@/components/ui/loader/initLoader'
 import { Pagination } from '@/components/ui/newPagination'
 import { Page } from '@/components/ui/page/page'
@@ -39,10 +39,10 @@ export const Cards = () => {
 
   const debouncedSearchName = useDebounce(searchName)
 
-  const deck = useGetDeckByIdQuery({ id: 'cltodvfje0673v72g8yl32ar4' })
+  const deck = useGetDeckByIdQuery({ id: 'cltquy4on0067th2gbh90jhm5' })
 
   const { data, error, isLoading } = useGetCardsQuery({
-    id: 'cltodvfje0673v72g8yl32ar4',
+    id: 'cltquy4on0067th2gbh90jhm5',
     params: {
       currentPage: page,
       itemsPerPage: pageSize,
@@ -61,27 +61,32 @@ export const Cards = () => {
   return (
     <Page>
       <div className={s.wrapper}>
-        <Typography variant={'h1'}>
-          {deck.data?.name}
-          <DropDownMenu value={valueDropDownMenu} />
-        </Typography>
-        <CreateCards />
-        {deck.data?.cover && (
-          <img alt={'No photo'} className={s.img} height={107} src={deck.data?.cover} width={170} />
-        )}
-        <FilterCards searchName={searchName} setSearchName={setSearchName} />
+        <BackButton />
+        <div className={s.container}>
+          <div className={s.box}>
+            <div className={s.typographyWhitMenu}>
+              <Typography variant={'h1'}>{deck.data?.name}</Typography>
+              <DropDownMenu value={valueDropDownMenu}/>
+            </div>
+            <CreateCards/>
+          </div>
+          {deck.data?.cover && (
+              <img alt={'No photo'} className={s.img} height={107} src={deck.data?.cover} width={170}/>
+          )}
+          <FilterCards searchName={searchName} setSearchName={setSearchName}/>
+        </div>
         {data && data.items.length > 0 ? (
-          <div>
-            <Table columns={columnsCards} onSort={setSort} sort={sort}>
-              {data.items.map((el: Card) => (
-                <CardRow card={el} key={el.id} />
-              ))}
-            </Table>
-            <Pagination
-              className={s.pagination}
-              currentPage={data.pagination.currentPage}
-              pageChange={setPage}
-              pageSize={data.pagination.itemsPerPage}
+            <div>
+              <Table columns={columnsCards} onSort={setSort} sort={sort}>
+                {data.items.map((el: Card) => (
+                    <CardRow card={el} key={el.id}/>
+                ))}
+              </Table>
+              <Pagination
+                  className={s.pagination}
+                  currentPage={data.pagination.currentPage}
+                  pageChange={setPage}
+                  pageSize={data.pagination.itemsPerPage}
               pageSizeChange={setPageSize}
               totalCount={data.pagination.totalItems}
             />
