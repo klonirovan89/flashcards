@@ -4,17 +4,18 @@ import { Button } from '@/components/ui/button/button'
 import { FormButtons } from '@/components/ui/form-buttons'
 import { Icon } from '@/components/ui/icon/Icon'
 import { SuperModal } from '@/components/ui/modal'
-import { useDeleteDecksMutation } from '@/pages/decks/api/decks-api'
+import {Card} from "@/pages/cards/api/cards-types";
+import {useDeleteCardsMutation} from "@/pages/cards/api/cards-api";
 
-export const DeleteDecks = (props: PropsType) => {
-  const { className, deckId, deckName } = props
+export const DeleteCards = (props: PropsType) => {
+  const { className, card } = props
 
   const [open, setOpen] = useState(false)
 
-  const [deck] = useDeleteDecksMutation()
+  const [cardApi] = useDeleteCardsMutation()
 
   const deleteDeck = async () => {
-    await deck({ id: deckId })
+    await cardApi({ id: card.id })
       .unwrap()
       .catch(e => {
         console.log(e.data.message)
@@ -27,14 +28,14 @@ export const DeleteDecks = (props: PropsType) => {
       <SuperModal
         changeModalState={() => setOpen(!open)}
         open={open}
-        title={'Delete Deck'}
+        title={'Delete Card'}
         withTrigger={false}
       >
-        Do you really want to remove {deckName} ? All cards will be deleted.
+        Do you really want to remove this card?
         <FormButtons
           callback={deleteDeck}
           changeModalState={() => setOpen(!open)}
-          primaryButtonText={'Delete Deck'}
+          primaryButtonText={'Delete Card'}
           withSecondary
         />
       </SuperModal>
@@ -47,6 +48,5 @@ export const DeleteDecks = (props: PropsType) => {
 
 type PropsType = {
   className: string
-  deckId: string
-  deckName: string
+  card: Card
 }
