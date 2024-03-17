@@ -9,7 +9,16 @@ import { clsx } from 'clsx'
 import s from '../select/select.module.scss'
 
 export const Select = forwardRef<ElementRef<typeof RadixSelect.Root>, SelectProps>((props, ref) => {
-  const { disabled, handleSelectChange, isPagination, label, options, selectedValue, value, fullWidth } = props
+  const {
+    disabled,
+    handleSelectChange,
+    isPagination,
+    label,
+    options,
+    selectedValue,
+    value,
+    fullWidth,
+  } = props
 
   return (
     <div className={s.container}>
@@ -30,8 +39,10 @@ export const Select = forwardRef<ElementRef<typeof RadixSelect.Root>, SelectProp
           </div>
         </RadixSelect.Trigger>
         <RadixSelect.Portal>
-          <RadixSelect.Content position={'popper'} sideOffset={-1} >
-            <RadixSelect.Viewport className={clsx(s.viewport, isPagination && s.pagination, fullWidth && s.fullWidth)}>
+          <RadixSelect.Content position={'popper'} sideOffset={-1}>
+            <RadixSelect.Viewport
+              className={clsx(s.viewport, isPagination && s.pagination, fullWidth && s.fullWidth)}
+            >
               {options.map((el, index) => (
                 <RadixSelect.Item
                   className={clsx(s.item, isPagination && s.pagination)}

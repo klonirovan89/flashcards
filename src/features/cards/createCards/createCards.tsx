@@ -5,7 +5,7 @@ import s from './createCards.module.scss'
 import { AddNewCard } from '../addNewCard/addNewCard'
 
 export const CreateCards = (props: PropsType) => {
-  const {deckId} = props
+  const { deckId } = props
   const [open, setOpen] = useState<boolean>(false)
 
   const changeModalState = () => {

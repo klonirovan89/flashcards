@@ -17,7 +17,7 @@ const newCardSchema = z.object({
 })
 
 export const CardForm = (props: PropsType) => {
-  const { card, deckId, text, changeModalState, createNewCard, withSecondary } = props
+  const { card, changeModalState, createNewCard, deckId, text, withSecondary } = props
   const options = [
     {
       label: 'Text',
@@ -45,11 +45,11 @@ export const CardForm = (props: PropsType) => {
     resolver: zodResolver(newCardSchema),
   })
 
-  const handleSetQuestionCover = (file: File) => {
+  const handleSetQuestionCover = (file: File | null) => {
     setQuestionCover(file)
   }
 
-  const handleSetAnswerCover = (file: File) => {
+  const handleSetAnswerCover = (file: File | null) => {
     setAnswerCover(file)
   }
 
@@ -71,11 +71,11 @@ export const CardForm = (props: PropsType) => {
     <div className={c.wrapper}>
       <form className={c.formWrapper} onSubmit={handleSubmit(onSubmit)}>
         <Select
+          fullWidth
           handleSelectChange={value => setSelectValue(value)}
           label={'Choose A Question Format'}
           options={options}
           selectedValue={selectValue}
-          fullWidth
         />
         <div className={c.formRow}>
           <ControlledTextField
@@ -121,9 +121,9 @@ type PropsType = {
   card?: Card
   changeModalState: () => void
   createNewCard: (newCard: FormDataCards) => void
-  withSecondary?: boolean
-  text: string
   deckId: string
+  text: string
+  withSecondary?: boolean
 }
 
 export type newCardArgTypes = z.infer<typeof newCardSchema>

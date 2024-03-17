@@ -1,16 +1,17 @@
+import { DeleteCards } from '@/features/cards/deleteCards'
+import { EditCards } from '@/features/cards/editCards'
+import { Card } from '@/pages/cards/api/cards-types'
+
 import s from './buttonCards.module.scss'
-import {Card} from "@/pages/cards/api/cards-types";
-import {EditCards} from "@/features/cards/editCards";
-import {DeleteCards} from "@/features/cards/deleteCards";
 
 export const ButtonCards = (props: PropsType) => {
   const { card, deckId } = props
 
   return (
-        <div className={s.control}>
-          <EditCards className={s.button} card={card} deckId={deckId}/>
-          <DeleteCards className={s.button} card={card}/>
-        </div>
+    <div className={s.control}>
+      <EditCards card={card} className={s.button} deckId={deckId} />
+      <DeleteCards card={card} className={s.button} />
+    </div>
   )
 }
 

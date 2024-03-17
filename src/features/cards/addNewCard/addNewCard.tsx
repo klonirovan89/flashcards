@@ -4,7 +4,7 @@ import { useCreateCardMutation } from '@/pages/cards/api/cards-api'
 import { FormDataCards } from '@/pages/cards/api/cards-types'
 
 export const AddNewCard = (props: PropsType) => {
-  const { changeModalState, open, withTrigger, deckId } = props
+  const { changeModalState, deckId, open, withTrigger } = props
 
   const [createCard] = useCreateCardMutation()
 
@@ -19,14 +19,20 @@ export const AddNewCard = (props: PropsType) => {
       title={'Add New Card'}
       withTrigger={withTrigger}
     >
-      <CardForm deckId={deckId} changeModalState={changeModalState} createNewCard={createNewCard} text={'Add New Card'} withSecondary />
+      <CardForm
+        changeModalState={changeModalState}
+        createNewCard={createNewCard}
+        deckId={deckId}
+        text={'Add New Card'}
+        withSecondary
+      />
     </SuperModal>
   )
 }
 
 type PropsType = {
   changeModalState: () => void
+  deckId: string
   open: boolean
   withTrigger: boolean
-  deckId: string
 }

@@ -24,6 +24,7 @@ export const DeckForm = ({
   withSecondary,
 }: AddNewDeckFormProps) => {
   const [cover, setCover] = useState<File | null>(null)
+  const [sendCover, setSendCover] = useState<boolean>(false)
 
   const {
     control,
@@ -37,12 +38,13 @@ export const DeckForm = ({
     resolver: zodResolver(newDeckSchema),
   })
 
-  const handleSetCover = (file: File) => {
+  const handleSetCover = (file: File | null) => {
     setCover(file)
+    setSendCover(true)
   }
 
   const onSubmit = (data: newDeckArgTypes) => {
-    createNewDeck({ ...data, cover })
+    createNewDeck({ ...data, cover, sendCover })
     changeModalState()
   }
 

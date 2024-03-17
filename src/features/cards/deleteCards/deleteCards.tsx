@@ -4,8 +4,8 @@ import { Button } from '@/components/ui/button/button'
 import { FormButtons } from '@/components/ui/form-buttons'
 import { Icon } from '@/components/ui/icon/Icon'
 import { SuperModal } from '@/components/ui/modal'
-import {Card} from "@/pages/cards/api/cards-types";
-import {useDeleteCardsMutation} from "@/pages/cards/api/cards-api";
+import { Card } from '@/pages/cards/api/cards-types'
+import { useDeleteCardsMutation } from '@/pages/cards/api/cards-api'
 
 export const DeleteCards = (props: PropsType) => {
   const { className, card } = props

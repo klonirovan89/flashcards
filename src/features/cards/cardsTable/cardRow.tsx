@@ -2,10 +2,10 @@ import NoPhoto from '@/assets/icons/NoPhoto.png'
 import { Rating } from '@/components/ui/rating'
 import { TableComponents } from '@/components/ui/table/table-components'
 import { Typography } from '@/components/ui/typography'
+import { ButtonCards } from '@/features/cards/buttonCards'
 import { Card } from '@/pages/cards/api/cards-types'
 
 import s from './card.module.scss'
-import {ButtonCards} from "@/features/cards/buttonCards";
 
 export const CardRow = (props: PropsType) => {
   const { card, deckId } = props
@@ -52,7 +52,7 @@ export const CardRow = (props: PropsType) => {
       </TableComponents.Cell>
       <TableComponents.Cell>
         <div className={s.control}>
-            <ButtonCards card={card} deckId={deckId}/>
+          <ButtonCards card={card} deckId={deckId} />
         </div>
       </TableComponents.Cell>
     </TableComponents.Row>
@@ -60,6 +60,6 @@ export const CardRow = (props: PropsType) => {
 }
 
 type PropsType = {
-    card: Card
-    deckId: string
+  card: Card
+  deckId: string
 }

@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { Button } from '@/components/ui/button/button'
 import { Icon } from '@/components/ui/icon/Icon'
 import { DeleteDecks } from '@/features/decks/deleteDecks/deleteDecks'
@@ -9,11 +11,21 @@ import s from './buttonDecks.module.scss'
 export const ButtonDecks = (props: PropsType) => {
   const { authUserId, deck, disabled } = props
 
+  const [openEditModal, setOpenEditModal] = useState(false)
+  const [openDeleteModal, setOpenDeleteModal] = useState(false)
+
   return (
     <div>
       {authUserId === deck.userId ? (
         <div className={s.control}>
-          <EditDecks className={s.button} deck={deck} />
+          <Button className={s.button} onClick={() => setOpenEditModal(true)} variant={'pure'}>
+            <Icon height={'16px'} iconId={'Edit'} width={'16px'} />
+          </Button>
+          <EditDecks
+            changeModalState={() => setOpenEditModal(!openEditModal)}
+            deck={deck}
+            open={openEditModal}
+          />
           <Button
             className={s.button}
             disabled={disabled}
@@ -22,7 +34,15 @@ export const ButtonDecks = (props: PropsType) => {
           >
             <Icon disabled={disabled} height={'16px'} iconId={'Learn'} width={'16px'} />
           </Button>
-          <DeleteDecks className={s.button} deckId={deck.id} deckName={deck.name} />
+          <Button className={s.button} onClick={() => setOpenDeleteModal(true)} variant={'pure'}>
+            <Icon height={'16px'} iconId={'Delete'} width={'16px'} />
+          </Button>
+          <DeleteDecks
+            changeModalState={() => setOpenDeleteModal(!openDeleteModal)}
+            deckId={deck.id}
+            deckName={deck.name}
+            open={openDeleteModal}
+          />
         </div>
       ) : (
         <div className={s.control}>
