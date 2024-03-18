@@ -19,7 +19,7 @@ export const SuperModal = ({
     <Dialog.Root onOpenChange={changeModalState} open={open}>
       {withTrigger && (
         <Dialog.Trigger className={c.trigger}>
-          <Button variant={'primary'}>
+          <Button as={'span'} variant={'primary'}>
             <Typography variant={'subtitle2'}>{title}</Typography>
           </Button>
         </Dialog.Trigger>

@@ -6,9 +6,12 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
+import { Layout } from '@/components/ui/layout/layout'
 import { QueryLoader } from '@/components/ui/loader/qeryLoader'
+import { useMeQuery } from '@/pages/auth/api/auth-api'
 import { LoginPage } from '@/pages/auth/ui/login'
-
+import { Decks } from '@/pages/decks/ui'
+import { MyProfilePage } from '@/pages/profile/profile'
 
 const publicRoutes: RouteObject[] = [
   {
@@ -39,7 +42,7 @@ export const router = createBrowserRouter([
       },
       ...publicRoutes,
     ],
-    // element: <Layout />,
+    element: <Layout />,
   },
 ])
 
