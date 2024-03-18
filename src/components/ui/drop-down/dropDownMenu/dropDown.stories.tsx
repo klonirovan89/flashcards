@@ -11,22 +11,20 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const value = [
-  { id: 'Learn', label: 'Learn' },
-  { id: 'Edit', label: 'Edit' },
-  { id: 'Delete', label: 'Delete' },
-]
-
 export const Default: Story = {
   args: {
-    value,
+    options: [
+      { handler: () => alert('Learn'), id: 'Learn', label: 'Learn' },
+      { handler: () => alert('Edit'), id: 'Edit', label: 'Edit' },
+      { handler: () => alert('Delete'), id: 'Delete', label: 'Delete' },
+    ],
   },
   render: args => {
     return (
-        <div>
-          <div>Click me:</div>
-          <DropDownMenu {...args} />
-        </div>
+      <div>
+        <div>Click me:</div>
+        <DropDownMenu options={args.options} />
+      </div>
     )
   },
 }

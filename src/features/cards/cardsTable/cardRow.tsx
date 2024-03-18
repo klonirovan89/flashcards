@@ -1,19 +1,14 @@
 import NoPhoto from '@/assets/icons/NoPhoto.png'
-import { Button } from '@/components/ui/button'
-import { Icon } from '@/components/ui/icon/Icon'
 import { Rating } from '@/components/ui/rating'
 import { TableComponents } from '@/components/ui/table/table-components'
 import { Typography } from '@/components/ui/typography'
+import { ButtonCards } from '@/features/cards/buttonCards'
 import { Card } from '@/pages/cards/api/cards-types'
 
 import s from './card.module.scss'
 
-type PropsType = {
-  card: Card
-}
-
 export const CardRow = (props: PropsType) => {
-  const { card } = props
+  const { card, deckId } = props
 
   return (
     <TableComponents.Row key={card.id}>
@@ -57,14 +52,14 @@ export const CardRow = (props: PropsType) => {
       </TableComponents.Cell>
       <TableComponents.Cell>
         <div className={s.control}>
-          <Button className={s.button} onClick={() => alert('play')} variant={'pure'}>
-            <Icon height={'16px'} iconId={'Edit'} width={'16px'} />
-          </Button>
-          <Button className={s.button} onClick={() => alert('play')} variant={'pure'}>
-            <Icon height={'16px'} iconId={'Delete'} width={'16px'} />
-          </Button>
+          <ButtonCards card={card} deckId={deckId} />
         </div>
       </TableComponents.Cell>
     </TableComponents.Row>
   )
+}
+
+type PropsType = {
+  card: Card
+  deckId: string
 }

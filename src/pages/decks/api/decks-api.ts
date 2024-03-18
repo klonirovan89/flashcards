@@ -99,7 +99,9 @@ export const {
 const generateFormData = (data: CreateDecksArgs) => {
   const formData = new FormData()
 
-  formData.append('cover', data.cover || '')
+  if (data.sendCover) {
+    formData.append('cover', data.cover || '')
+  }
   formData.append('name', data.name)
   formData.append('isPrivate', String(data.isPrivate))
 

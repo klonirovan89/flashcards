@@ -18,6 +18,7 @@ export const FilterCards = (props: PropsType) => {
         placeholder={'Search by question'}
         searchName={searchName}
         type={'search'}
+        fullWidth
       />
     </div>
   )
