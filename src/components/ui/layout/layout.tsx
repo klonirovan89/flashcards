@@ -18,7 +18,7 @@ export const Layout = forwardRef<ElementRef<'div'>, Props>(
     return (
       <div ref={ref} {...rest}>
         <Header
-          avatar={data?.avatar}
+          avatar={data?.avatar ?? ''}
           email={data?.email ?? ''}
           isLoggedIn={isAuthenticated}
           logout={signOut}
