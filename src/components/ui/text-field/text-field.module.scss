@@ -1,5 +1,9 @@
 .container {
   min-width: 290px;
+
+  &.fullWidth {
+    width: 100%;
+  }
 }
 
 .textField {
@@ -76,7 +80,7 @@
   width: 20px;
   height: 20px;
 
-  color: var(--color-light-100);
+  color: var(--color-dark-100);
 }
 
 .typographyStyle {

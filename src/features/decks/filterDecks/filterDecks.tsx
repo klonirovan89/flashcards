@@ -38,7 +38,7 @@ export const FilterDecks = (props: PropsType) => {
   }
 
   return (
-    <div className={s.top}>
+    <div className={s.container}>
       <TextField onChange={onChangeTextFieldValue} searchName={searchName} type={'search'} />
       <TabSwitcher
         listValues={listValues}

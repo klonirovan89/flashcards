@@ -11,6 +11,8 @@ import { Typography } from '@/components/ui/typography'
 import { CardRow } from '@/features/cards/cardsTable/cardRow'
 import { CreateCards } from '@/features/cards/createCards'
 import { FilterCards } from '@/features/cards/filterCards/filterCards'
+import { DeleteDecks } from '@/features/decks/deleteDecks'
+import { EditDecks } from '@/features/decks/editDecks'
 import { useGetCardsQuery } from '@/pages/cards/api/cards-api'
 import { Card } from '@/pages/cards/api/cards-types'
 import { useGetDeckByIdQuery } from '@/pages/decks/api/decks-api'
@@ -22,6 +24,8 @@ export const Cards = () => {
   const [searchName, setSearchName] = useState<string>('')
   const [page, setPage] = useState(1)
   const [pageSize, setPageSize] = useState(10)
+  const [openEditModal, setOpenEditModal] = useState(false)
+  const [openDeleteModal, setOpenDeleteModal] = useState(false)
 
   const columnsCards: ColumnsType[] = [
     { key: 'question', sortable: true, title: 'Question' },
@@ -31,18 +35,12 @@ export const Cards = () => {
     { key: 'controls', sortable: false, title: '' },
   ]
 
-  const valueDropDownMenu = [
-    { id: 'Learn', label: 'Learn' },
-    { id: 'Edit', label: 'Edit' },
-    { id: 'Delete', label: 'Delete' },
-  ]
-
   const debouncedSearchName = useDebounce(searchName)
 
-  const deck = useGetDeckByIdQuery({ id: 'cltquy4on0067th2gbh90jhm5' })
+  const deck = useGetDeckByIdQuery({ id: 'cltvp3i5900k1vq2gf99je4jg' })
 
   const { data, error, isLoading } = useGetCardsQuery({
-    id: 'cltquy4on0067th2gbh90jhm5',
+    id: 'cltvp3i5900k1vq2gf99je4jg',
     params: {
       currentPage: page,
       itemsPerPage: pageSize,
@@ -58,6 +56,12 @@ export const Cards = () => {
     return <>Error: {JSON.stringify(error)}</>
   }
 
+  const options = [
+    { handler: () => setOpenEditModal(true), id: 'Learn', label: 'Learn' },
+    { handler: () => setOpenEditModal(true), id: 'Edit', label: 'Edit' },
+    { handler: () => setOpenDeleteModal(true), id: 'Delete', label: 'Delete' },
+  ]
+
   return (
     <Page>
       <div className={s.wrapper}>
@@ -66,27 +70,48 @@ export const Cards = () => {
           <div className={s.box}>
             <div className={s.typographyWhitMenu}>
               <Typography variant={'h1'}>{deck.data?.name}</Typography>
-              <DropDownMenu value={valueDropDownMenu}/>
+              <DropDownMenu options={options} />
+              {deck.data && (
+                <>
+                  <EditDecks
+                    changeModalState={() => setOpenEditModal(!openEditModal)}
+                    deck={deck.data}
+                    open={openEditModal}
+                  />
+                  <DeleteDecks
+                    changeModalState={() => setOpenDeleteModal(!openDeleteModal)}
+                    deckId={deck.data.id}
+                    deckName={deck.data.name}
+                    open={openDeleteModal}
+                  />
+                </>
+              )}
             </div>
-            <CreateCards/>
+            <CreateCards deckId={deck.data?.id || ''} />
           </div>
           {deck.data?.cover && (
-              <img alt={'No photo'} className={s.img} height={107} src={deck.data?.cover} width={170}/>
+            <img
+              alt={'No photo'}
+              className={s.img}
+              height={107}
+              src={deck.data?.cover}
+              width={170}
+            />
           )}
-          <FilterCards searchName={searchName} setSearchName={setSearchName}/>
+          <FilterCards searchName={searchName} setSearchName={setSearchName} />
         </div>
         {data && data.items.length > 0 ? (
-            <div>
-              <Table columns={columnsCards} onSort={setSort} sort={sort}>
-                {data.items.map((el: Card) => (
-                    <CardRow card={el} key={el.id}/>
-                ))}
-              </Table>
-              <Pagination
-                  className={s.pagination}
-                  currentPage={data.pagination.currentPage}
-                  pageChange={setPage}
-                  pageSize={data.pagination.itemsPerPage}
+          <div>
+            <Table columns={columnsCards} onSort={setSort} sort={sort}>
+              {data.items.map((el: Card) => (
+                <CardRow card={el} deckId={deck.data?.id || ''} key={el.id} />
+              ))}
+            </Table>
+            <Pagination
+              className={s.pagination}
+              currentPage={data.pagination.currentPage}
+              pageChange={setPage}
+              pageSize={data.pagination.itemsPerPage}
               pageSizeChange={setPageSize}
               totalCount={data.pagination.totalItems}
             />
