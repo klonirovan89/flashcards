@@ -8,7 +8,16 @@ import s from './text-field.module.scss'
 
 export const TextField = forwardRef<HTMLInputElement, PropsType>(
   (
-    { disabled = false, errorMessage, label, placeholder, searchName, type = 'default', ...rest },
+    {
+      disabled = false,
+      errorMessage,
+      label,
+      fullWidth,
+      placeholder,
+      searchName,
+      type = 'default',
+      ...rest
+    },
     ref
   ) => {
     const [isVisiblePassword, setIsVisiblePassword] = useState<boolean>(false)
@@ -36,7 +45,7 @@ export const TextField = forwardRef<HTMLInputElement, PropsType>(
     }
 
     return (
-      <div className={s.container}>
+      <div className={clsx(s.container, fullWidth && s.fullWidth)}>
         <Typography className={s.typographyStyle} variant={'body2'}>
           {label}
         </Typography>
@@ -66,6 +75,7 @@ export const TextField = forwardRef<HTMLInputElement, PropsType>(
 )
 
 export type TextFiledProps = {
+  fullWidth?: boolean
   disabled?: boolean
   errorMessage?: string
   label?: string

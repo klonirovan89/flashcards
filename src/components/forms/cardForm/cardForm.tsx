@@ -17,7 +17,7 @@ const newCardSchema = z.object({
 })
 
 export const CardForm = (props: PropsType) => {
-  const { card, changeModalState, createNewCard, withSecondary } = props
+  const { card, changeModalState, createNewCard, deckId, text, withSecondary } = props
   const options = [
     {
       label: 'Text',
@@ -32,6 +32,8 @@ export const CardForm = (props: PropsType) => {
   const [selectValue, setSelectValue] = useState<string>('Text')
   const [questionCover, setQuestionCover] = useState<File | null>(null)
   const [answerCover, setAnswerCover] = useState<File | null>(null)
+  const [sendAnswerCover, setSendAnswerCover] = useState<boolean>(false)
+  const [sendQuestionCover, setSendQuestionCover] = useState<boolean>(false)
 
   const {
     control,
@@ -45,12 +47,14 @@ export const CardForm = (props: PropsType) => {
     resolver: zodResolver(newCardSchema),
   })
 
-  const handleSetQuestionCover = (file: File) => {
+  const handleSetQuestionCover = (file: File | null) => {
     setQuestionCover(file)
+    setSendQuestionCover(true)
   }
 
-  const handleSetAnswerCover = (file: File) => {
+  const handleSetAnswerCover = (file: File | null) => {
     setAnswerCover(file)
+    setSendAnswerCover(true)
   }
 
   const onSubmit = (data: newCardArgTypes) => {
@@ -59,21 +63,25 @@ export const CardForm = (props: PropsType) => {
       answerImg: answerCover,
       question: data.question,
       questionImg: questionCover,
+      sendAnswerCover: sendAnswerCover,
+      sendQuestionCover: sendQuestionCover,
     }
 
-    createNewCard({ data: newData, id: 'cltr8wl2v00gqth2gzpmhxzf8' })
+    createNewCard({ data: newData, id: card?.id || deckId })
     changeModalState()
   }
+
+  console.log(deckId)
 
   return (
     <div className={c.wrapper}>
       <form className={c.formWrapper} onSubmit={handleSubmit(onSubmit)}>
         <Select
+          fullWidth
           handleSelectChange={value => setSelectValue(value)}
           label={'Choose A Question Format'}
           options={options}
           selectedValue={selectValue}
-          fullWidth
         />
         <div className={c.formRow}>
           <ControlledTextField
@@ -107,7 +115,7 @@ export const CardForm = (props: PropsType) => {
         </div>
         <FormButtons
           changeModalState={changeModalState}
-          primaryButtonText={'Add New Card'}
+          primaryButtonText={text}
           withSecondary={withSecondary}
         />
       </form>
@@ -119,6 +127,8 @@ type PropsType = {
   card?: Card
   changeModalState: () => void
   createNewCard: (newCard: FormDataCards) => void
+  deckId: string
+  text: string
   withSecondary?: boolean
 }
 

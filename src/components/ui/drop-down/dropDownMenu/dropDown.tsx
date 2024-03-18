@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon/Icon'
 import { Typography } from '@/components/ui/typography'
@@ -6,24 +8,25 @@ import * as RadixDropdownMenu from '@radix-ui/react-dropdown-menu'
 import s from './dropDown.module.scss'
 
 export const DropDownMenu = (props: PropsType) => {
-  const { value } = props
+  const { options } = props
+  const [open, setOpen] = useState(false)
 
   return (
     <div className={s.container}>
-      <RadixDropdownMenu.Root>
+      <RadixDropdownMenu.Root onOpenChange={setOpen} open={open}>
         <RadixDropdownMenu.Trigger className={s.trigger}>
           <Icon height={'20px'} iconId={'verticalOutline'} width={'20px'} />
         </RadixDropdownMenu.Trigger>
         <RadixDropdownMenu.Portal>
           <RadixDropdownMenu.Content align={'end'} className={s.content} sideOffset={8}>
-            {value.map((el, index) => (
+            {options.map((option, index) => (
               <RadixDropdownMenu.Item className={s.menuItem} key={index}>
-                <Button className={s.item} onClick={() => alert('play')} variant={'pure'}>
+                <Button className={s.item} onClick={() => option.handler()} variant={'pure'}>
                   <div className={s.icon}>
-                    <Icon height={'16px'} iconId={el.id} width={'16px'} />
+                    <Icon height={'16px'} iconId={option.id} width={'16px'} />
                   </div>
                   <Typography className={s.typographyStyle} variant={'body2'}>
-                    {el.label}
+                    {option.label}
                   </Typography>
                 </Button>
               </RadixDropdownMenu.Item>
@@ -37,10 +40,9 @@ export const DropDownMenu = (props: PropsType) => {
 }
 
 type PropsType = {
-  value: ValuesType[]
-}
-
-type ValuesType = {
-  id: string
-  label: string
+  options: {
+    handler: () => void
+    id: string
+    label: string
+  }[]
 }

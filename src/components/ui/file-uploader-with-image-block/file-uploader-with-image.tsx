@@ -8,14 +8,11 @@ import s from './file-uploader-with-image.module.scss'
 export const FileUploaderWithImage = (props: PropsType) => {
   const { cover, handleSetCover, name } = props
 
-  const [selectedFile, setSelectedFile] = useState(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [imageSrc, setImageSrc] = useState(cover)
 
   const MAX_FILE_SIZE = 1048576 // 1MB in bytes
   const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/gif']
-
-  console.log(selectedFile)
 
   const handleFileInputChange = (event: any) => {
     const file = event.target.files && event.target.files[0]
@@ -33,7 +30,6 @@ export const FileUploaderWithImage = (props: PropsType) => {
         return
       }
 
-      setSelectedFile(file)
       handleSetCover && handleSetCover(file)
       const reader = new FileReader()
 
@@ -45,6 +41,7 @@ export const FileUploaderWithImage = (props: PropsType) => {
       reader.readAsDataURL(file)
     } else {
       setImageSrc('')
+      handleSetCover && handleSetCover(null)
     }
   }
 
@@ -57,6 +54,11 @@ export const FileUploaderWithImage = (props: PropsType) => {
 
   const deleteImageSrc = () => {
     setImageSrc('')
+    handleSetCover && handleSetCover(null)
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''
+    }
   }
 
   return (
@@ -109,6 +111,6 @@ export const FileUploaderWithImage = (props: PropsType) => {
 
 type PropsType = {
   cover?: null | string
-  handleSetCover?: (file: File) => void
+  handleSetCover?: (file: File | null) => void
   name?: string
 }

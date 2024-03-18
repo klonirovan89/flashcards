@@ -14,6 +14,7 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
+    deckId: '',
     open: true,
     withTrigger: true,
   },

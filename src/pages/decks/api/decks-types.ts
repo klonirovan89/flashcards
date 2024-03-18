@@ -41,6 +41,7 @@ export type CreateDecksArgs = {
   cover?: File | null
   isPrivate?: boolean
   name: string
+  sendCover: boolean
 }
 
 export type MinMaxCards = {

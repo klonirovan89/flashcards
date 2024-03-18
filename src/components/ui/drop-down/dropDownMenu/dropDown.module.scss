@@ -16,14 +16,14 @@ div {
   position: relative;
   z-index: 0;
 
-  &:hover{
+  &:hover {
     cursor: pointer;
 
     &::before {
       z-index: -1;
       position: absolute;
       content: '';
-      top: 39%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 36px;
@@ -33,8 +33,6 @@ div {
       border-radius: 50px;
     }
   }
-
-
 }
 
 .content {
