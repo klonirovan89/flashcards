@@ -63,41 +63,43 @@ export const Decks = () => {
 
   return (
     <Page>
-      <div className={s.wrapper}>
-        <Typography variant={'h1'}>Decks list</Typography>
-        <CreateDecks />
-      </div>
-      <FilterDecks
-        listValues={listValues}
-        maxCardsCount={maxCardsCount}
-        searchName={searchName}
-        setSearchName={setSearchName}
-        setSliderValue={setSliderValue}
-        setTabSwitcherValue={setTabSwitcherValue}
-        sliderValue={sliderValue}
-        tabSwitcherValue={tabSwitcherValue}
-      />
-      {decks.data && decks.data.items.length > 0 ? (
-        <div>
-          <Table columns={columnsDecks} onSort={setSort} sort={sort}>
-            {decks.data.items.map((el: Deck) => (
-              <DeckRow authUserId={data?.id} deck={el} key={el.id} />
-            ))}
-          </Table>
-          <Pagination
-            className={s.pagination}
-            currentPage={decks.data.pagination.currentPage}
-            pageChange={setPage}
-            pageSize={decks.data.pagination.itemsPerPage}
-            pageSizeChange={setPageSize}
-            totalCount={decks.data.pagination.totalItems}
-          />
+      <div>
+        <div className={s.container}>
+          <Typography variant={'h1'}>Decks list</Typography>
+          <CreateDecks />
         </div>
-      ) : (
-        <Typography className={s.typographyStyle} variant={'body1'}>
-          No content with these terms...
-        </Typography>
-      )}
+        <FilterDecks
+          listValues={listValues}
+          maxCardsCount={maxCardsCount}
+          searchName={searchName}
+          setSearchName={setSearchName}
+          setSliderValue={setSliderValue}
+          setTabSwitcherValue={setTabSwitcherValue}
+          sliderValue={sliderValue}
+          tabSwitcherValue={tabSwitcherValue}
+        />
+        {decks.data && decks.data.items.length > 0 ? (
+          <div>
+            <Table columns={columnsDecks} onSort={setSort} sort={sort}>
+              {decks.data.items.map((el: Deck) => (
+                <DeckRow authUserId={data?.id} deck={el} key={el.id} />
+              ))}
+            </Table>
+            <Pagination
+              className={s.pagination}
+              currentPage={decks.data.pagination.currentPage}
+              pageChange={setPage}
+              pageSize={decks.data.pagination.itemsPerPage}
+              pageSizeChange={setPageSize}
+              totalCount={decks.data.pagination.totalItems}
+            />
+          </div>
+        ) : (
+          <Typography className={s.typographyStyle} variant={'body1'}>
+            No content with these terms...
+          </Typography>
+        )}
+      </div>
     </Page>
   )
 }

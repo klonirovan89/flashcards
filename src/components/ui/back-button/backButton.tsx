@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon/Icon'
@@ -9,11 +10,11 @@ import s from './backButton.module.scss'
 
 export const BackButton = (props: PropsType) => {
   const { className, text = 'Back to Previous Page', ...rest } = props
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const backHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
-    // navigate(-1)
+    navigate(-1)
   }
 
   const classes = clsx(s.button, className)

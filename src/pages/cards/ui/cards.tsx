@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 import { useDebounce } from '@/common/hooks'
 import { BackButton } from '@/components/ui/back-button'
@@ -37,10 +38,12 @@ export const Cards = () => {
 
   const debouncedSearchName = useDebounce(searchName)
 
-  const deck = useGetDeckByIdQuery({ id: 'cltvp3i5900k1vq2gf99je4jg' })
+  const { id } = useParams()
+
+  const deck = useGetDeckByIdQuery({ id: id || '' })
 
   const { data, error, isLoading } = useGetCardsQuery({
-    id: 'cltvp3i5900k1vq2gf99je4jg',
+    id: id || '',
     params: {
       currentPage: page,
       itemsPerPage: pageSize,

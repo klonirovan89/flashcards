@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import NoPhoto from '@/assets/icons/NoPhoto.png'
 import { Button } from '@/components/ui/button'
 import { TableComponents } from '@/components/ui/table/table-components'
@@ -13,7 +15,7 @@ export const DeckRow = (props: PropsType) => {
   return (
     <TableComponents.Row key={deck.id}>
       <TableComponents.Cell>
-        <Button onClick={() => alert('Здесь должен быть роут колоды')} variant={'pure'}>
+        <Button as={Link} to={`/decks/${deck.id}`} variant={'pure'}>
           <div className={s.divNameBody}>
             {deck.cover ? (
               <img alt={'img'} height={50} src={deck.cover} width={70} />
