@@ -1,0 +1,65 @@
+.avatar {
+  position: relative;
+  margin-top: 28px;
+}
+
+.image {
+  position: relative;
+  z-index: 0;
+
+  width: 96px;
+  height: 96px;
+
+  border-radius: 50%;
+}
+
+.edit {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+
+  & > div {
+    min-width: unset !important;
+  }
+
+  button {
+    padding: 4px !important;
+  }
+}
+
+.name {
+  position: relative;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  cursor: pointer;
+
+  position: absolute;
+  top: 50%;
+  right: -26px;
+  transform: translate(0, -50%);
+}
+
+.email {
+  margin-bottom: 12px;
+  color: var(--color-dark-100);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 36px 0;
+  width: 100%;
+}
+
+.card {
+  flex-direction: column;
+  align-items: center;
+}

@@ -26,7 +26,23 @@ export const authApi = baseApi.injectEndpoints({
         url: `/v1/auth/me`,
       }),
     }),
+    setMe: builder.mutation<User, { avatar?: File | null; name?: string }>({
+      invalidatesTags: ['Auth'],
+      query: body => {
+        const formData = new FormData()
+
+        body.avatar && formData.append('avatar', body.avatar)
+
+        body.name && formData.append('name', body.name)
+
+        return {
+          body: formData,
+          method: 'PATCH',
+          url: '/v1/auth/me',
+        }
+      },
+    }),
   }),
 })
 
-export const { useLoginMutation, useLogoutMutation, useMeQuery } = authApi
+export const { useLoginMutation, useLogoutMutation, useMeQuery, useSetMeMutation } = authApi
