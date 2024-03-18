@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
@@ -78,7 +77,7 @@ const Avatar = ({ isEditMode }: AvatarProps) => {
 
   return (
     <div className={c.avatar}>
-      <img className={c.image} src={src ?? ''} />
+      <img alt={'No Avatar'} className={c.image} src={src ?? ''} />
       {!isEditMode && <FileUploader className={c.edit} iconId={'edit'} setFile={setFile} />}
     </div>
   )
