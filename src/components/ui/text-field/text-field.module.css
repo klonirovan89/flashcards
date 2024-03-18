@@ -10,40 +10,49 @@
   width: 100%;
   height: 36px;
   padding: 0 5px;
+
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
   color: white;
+
   background: none;
   border: 1px solid var(--color-dark-300);
   border-radius: 2px;
-}
-.input:hover {
-  background-color: var(--color-dark-700);
-  border-color: var(--color-dark-100);
-}
-.input:active {
-  color: var(--color-light-100);
-  outline: 2px solid var(--color-info-700);
-}
-.input:focus:enabled {
-  border-color: var(--color-info-700);
-  outline: 1px solid var(--color-info-700);
-}
-.input.password {
-  padding-right: 35px;
-}
-.input.search {
-  padding-left: 35px;
-}
-.input.error {
-  color: var(--color-danger-500);
-  border-color: var(--color-danger-500);
-}
-.input:disabled,
-.input:disabled .magniGlass,
-.input:disabled .eyeButton {
-  color: #4c4c4c;
+
+  &:hover {
+    background-color: var(--color-dark-700);
+    border-color: var(--color-dark-100);
+  }
+
+  &:active {
+    color: var(--color-light-100);
+    outline: 2px solid var(--color-info-700);
+  }
+
+  &:focus:enabled {
+    border-color: var(--color-info-700);
+    outline: 1px solid var(--color-info-700);
+  }
+
+  &.password {
+    padding-right: 35px;
+  }
+
+  &.search {
+    padding-left: 35px;
+  }
+
+  &.error {
+    color: var(--color-danger-500);
+    border-color: var(--color-danger-500);
+  }
+
+  &:disabled,
+  &:disabled .magniGlass,
+  &:disabled .eyeButton {
+    color: #4c4c4c;
+  }
 }
 
 .eyeButton {
@@ -52,6 +61,7 @@
   top: 50%;
   right: 15px;
   translate: 0 -10px;
+
   width: 18px;
   height: 18px;
 }
@@ -62,8 +72,10 @@
   top: 50%;
   left: 10px;
   translate: 0 -10px;
+
   width: 20px;
   height: 20px;
+
   color: var(--color-light-100);
 }
 
@@ -74,5 +86,3 @@
 .typographyErrorStyle {
   color: var(--color-danger-500);
 }
-
-/*# sourceMappingURL=text-field.module.css.map */

@@ -1,5 +1,9 @@
 .container {
   min-width: 290px;
+
+  &.fullWidth {
+    width: 100%;
+  }
 }
 
 .textField {
