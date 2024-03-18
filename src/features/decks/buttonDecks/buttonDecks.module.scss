@@ -1,7 +1,11 @@
+.wrapper,
 .control {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.control {
   gap: 10px;
   width: 124px;
 }

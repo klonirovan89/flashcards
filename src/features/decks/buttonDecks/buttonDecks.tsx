@@ -15,7 +15,7 @@ export const ButtonDecks = (props: PropsType) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false)
 
   return (
-    <div>
+    <div className={s.wrapper}>
       {authUserId === deck.userId ? (
         <div className={s.control}>
           <Button className={s.button} onClick={() => setOpenEditModal(true)} variant={'pure'}>
