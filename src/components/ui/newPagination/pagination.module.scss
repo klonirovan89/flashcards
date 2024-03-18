@@ -2,14 +2,16 @@
   display: flex;
   flex-direction: row;
   gap: 0 12px;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: start;
+
   margin-top: 24px;
   margin-bottom: 90px;
 }
 
 .button {
   all: unset;
+
   cursor: pointer;
 
   display: flex;
@@ -21,17 +23,14 @@
   border-radius: 2px;
   outline: 2px solid transparent;
 
-  transition: 0.3s;
-
-  span {
-    padding-inline: 4px;
-    font-weight: var(--font-weight-regular);
-    font-size: 16px;
-    line-height: var(--line-height-m);
-  }
+  transition: background-color 0.3s ease;
 
   &:hover {
     background-color: var(--color-dark-500);
+  }
+
+  &:focus-visible {
+    outline: 0.125rem solid var(--color-info-700);
   }
 
   &:disabled {
@@ -43,14 +42,11 @@
     }
   }
 
-  &:focus-visible {
-    outline: 0.125rem solid var(--color-info-700);
-  }
-
   &:active:enabled,
   &.active:enabled {
     color: var(--color-dark-900);
     background-color: var(--color-light-100);
+    transition: background-color 0.3s ease;
   }
 }
 
