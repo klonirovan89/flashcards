@@ -95,10 +95,16 @@ export const {
 const generateFormData = (data: DataCards) => {
   const formData = new FormData()
 
-  formData.append('question', data.question)
-  formData.append('answer', data.answer)
-  formData.append('questionImg', data.questionImg || '')
-  formData.append('answerImg', data.answerImg || '')
+  if (data.sendAnswerCover) {
+    formData.append('answerImg', data.answerImg || '')
+  }
+
+  if (data.sendQuestionCover) {
+    formData.append('questionImg', data.questionImg || '')
+  }
+
+  formData.append('question', data.question || '')
+  formData.append('answer', data.answer || '')
 
   return formData
 }

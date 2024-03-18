@@ -32,6 +32,8 @@ export const CardForm = (props: PropsType) => {
   const [selectValue, setSelectValue] = useState<string>('Text')
   const [questionCover, setQuestionCover] = useState<File | null>(null)
   const [answerCover, setAnswerCover] = useState<File | null>(null)
+  const [sendAnswerCover, setSendAnswerCover] = useState<boolean>(false)
+  const [sendQuestionCover, setSendQuestionCover] = useState<boolean>(false)
 
   const {
     control,
@@ -47,10 +49,12 @@ export const CardForm = (props: PropsType) => {
 
   const handleSetQuestionCover = (file: File | null) => {
     setQuestionCover(file)
+    setSendQuestionCover(true)
   }
 
   const handleSetAnswerCover = (file: File | null) => {
     setAnswerCover(file)
+    setSendAnswerCover(true)
   }
 
   const onSubmit = (data: newCardArgTypes) => {
@@ -59,6 +63,8 @@ export const CardForm = (props: PropsType) => {
       answerImg: answerCover,
       question: data.question,
       questionImg: questionCover,
+      sendAnswerCover: sendAnswerCover,
+      sendQuestionCover: sendQuestionCover,
     }
 
     createNewCard({ data: newData, id: card?.id || deckId })

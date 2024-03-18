@@ -58,4 +58,6 @@ export type DataCards = {
   answerImg: File | null
   question: string
   questionImg: File | null
+  sendAnswerCover: boolean
+  sendQuestionCover: boolean
 }

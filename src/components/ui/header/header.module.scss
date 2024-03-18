@@ -37,7 +37,8 @@ button {
   justify-content: space-between;
 
   box-sizing: content-box;
-  max-width: 1010px;
+  max-width: 1093px;
+  min-width: max-content;
   margin: 0 auto;
   padding: 12px 136px;
 }
