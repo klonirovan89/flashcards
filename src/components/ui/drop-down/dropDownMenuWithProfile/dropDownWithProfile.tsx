@@ -15,12 +15,12 @@ export const DropDownMenuWithProfile = (props: ProfileDropdownProps) => {
     <div className={s.container}>
       <RadixDropdownMenu.Root>
         <RadixDropdownMenu.Trigger className={s.trigger}>
-          <Avatar src={avatar} />
+          <Avatar src={avatar} userName={userName} />
         </RadixDropdownMenu.Trigger>
         <RadixDropdownMenu.Portal>
           <RadixDropdownMenu.Content align={'end'} className={s.content} sideOffset={8}>
             <div className={s.itemProfile}>
-              <Avatar src={avatar} />
+              <Avatar src={avatar} userName={userName} />
               <div className={s.userData}>
                 <Typography variant={'subtitle2'}>{userName}</Typography>
                 <Typography className={s.typographyStyleEmail} variant={'caption'}>

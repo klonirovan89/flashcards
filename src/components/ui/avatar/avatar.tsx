@@ -3,11 +3,19 @@ import * as RadixAvatar from '@radix-ui/react-avatar'
 import s from './avatar.module.scss'
 
 export const Avatar = (props: PropsType) => {
-  const { src } = props
+  const { src, userName } = props
+
+  // const arrName = userName.split(' ')
+  // let name = []
+
+  // for (i = 0; i < arrName.length; i++) {
+  //   i < 2 && name.push(arrName[i][0])
+  // }
+  // name = name.join('').toUpperCase()
 
   return (
     <RadixAvatar.Root className={s.avatarRoot}>
-      {src !== '' && <RadixAvatar.Image alt={'Sem'} className={s.image} src={src} />}
+      <RadixAvatar.Image alt={'Sem'} className={s.image} src={src} />
       <RadixAvatar.Fallback className={s.avatarFallback} delayMs={600}>
         JS
       </RadixAvatar.Fallback>
@@ -16,9 +24,6 @@ export const Avatar = (props: PropsType) => {
 }
 
 type PropsType = {
-  // value: {
-  //   id: string
-  //   image: string
-  // }
-  src: string
+  src?: string
+  userName: string
 }
