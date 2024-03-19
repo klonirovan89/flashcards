@@ -5,19 +5,36 @@ import s from './avatar.module.scss'
 export const Avatar = (props: PropsType) => {
   const { src, userName } = props
 
-  // const arrName = userName.split(' ')
-  // let name = []
+  const changeName = (userName: string) => {
+    const regex = /[a-zA-Zа-яА-ЯёЁ0-9]/
 
-  // for (i = 0; i < arrName.length; i++) {
-  //   i < 2 && name.push(arrName[i][0])
-  // }
-  // name = name.join('').toUpperCase()
+    const result = []
+    let count = 0
+
+    for (let i = 0; i < userName.length; i++) {
+      const char = userName[i]
+
+      if (regex.test(char)) {
+        result.push(char.toUpperCase())
+        count++
+        if (count === 2) {
+          break
+        }
+      } else if (char === ' ') {
+        count = 0
+      }
+    }
+
+    return result.join('')
+  }
+
+  const abbreviatedName = changeName(userName)
 
   return (
     <RadixAvatar.Root className={s.avatarRoot}>
       <RadixAvatar.Image alt={'Sem'} className={s.image} src={src} />
       <RadixAvatar.Fallback className={s.avatarFallback} delayMs={600}>
-        JS
+        {abbreviatedName}
       </RadixAvatar.Fallback>
     </RadixAvatar.Root>
   )

@@ -22,7 +22,7 @@ export const Default: Story = {
   args: {
     avatar: '',
     email: 'klonirovan_1@mail.ru',
-    userName: 'Pasha Vandam',
+    userName: 'Keanu Reeves',
   },
   render: args => {
     return (
@@ -73,7 +73,7 @@ export const WithAvatar: Story = {
   args: {
     avatar: 'src/components/ui/avatar/image/Sem.jpg',
     email: 'klonirovan_1@mail.ru',
-    userName: 'Pasha Vandam',
+    userName: 'Keanu Reeves',
   },
   render: args => {
     return (
