@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 
 import { ButtonWithIcon } from '@/components/ui/button-with-icon'
 import { TextField } from '@/components/ui/text-field/text-field'
@@ -6,15 +6,11 @@ import { TextField } from '@/components/ui/text-field/text-field'
 export const FileUploader = (props: PropsType) => {
   const { className, iconId, setFile, text } = props
 
-  const [selectedFile, setSelectedFile] = useState(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
-
-  console.log(selectedFile)
 
   const handleFileInputChange = (event: any) => {
     const file = event.target.files && event.target.files[0]
 
-    setSelectedFile(file)
     setFile?.(file)
   }
 

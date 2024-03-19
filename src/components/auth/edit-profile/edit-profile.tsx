@@ -29,7 +29,7 @@ export const EditProfileForm = ({ editMode, onSubmit, setEditMode }: EditProfile
   return (
     <Card className={c.card}>
       <Typography variant={'h1'}>Personal Information</Typography>
-      <Avatar isEditMode={editMode} />
+      <ProfileAvatar isEditMode={editMode} />
       {!editMode ? (
         <div className={c.info}>
           <div className={c.name}>
@@ -65,7 +65,7 @@ export const EditProfileForm = ({ editMode, onSubmit, setEditMode }: EditProfile
   )
 }
 
-const Avatar = ({ isEditMode }: AvatarProps) => {
+const ProfileAvatar = ({ isEditMode }: AvatarProps) => {
   const [setNewImage] = useSetMeMutation()
   const { data } = useMeQuery()
 

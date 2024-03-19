@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Avatar } from '@/components/ui/avatar'
@@ -10,10 +11,11 @@ import s from './dropDownWithProfile.module.scss'
 
 export const DropDownMenuWithProfile = (props: ProfileDropdownProps) => {
   const { avatar, email, logout, userName } = props
+  const [open, setOpen] = useState(false)
 
   return (
     <div className={s.container}>
-      <RadixDropdownMenu.Root>
+      <RadixDropdownMenu.Root onOpenChange={setOpen} open={open}>
         <RadixDropdownMenu.Trigger className={s.trigger}>
           <Avatar src={avatar} userName={userName} />
         </RadixDropdownMenu.Trigger>
@@ -28,7 +30,7 @@ export const DropDownMenuWithProfile = (props: ProfileDropdownProps) => {
                 </Typography>
               </div>
             </div>
-            <RadixDropdownMenu.Item className={s.menuItem}>
+            <RadixDropdownMenu.Item className={s.menuItem} onClick={() => setOpen(!open)}>
               <Button as={Link} className={s.item} to={'/edit-profile'} variant={'pure'}>
                 <div className={s.icon}>
                   <Icon height={'16px'} iconId={'User'} width={'16px'} />
@@ -37,6 +39,8 @@ export const DropDownMenuWithProfile = (props: ProfileDropdownProps) => {
                   My Profile
                 </Typography>
               </Button>
+            </RadixDropdownMenu.Item>
+            <RadixDropdownMenu.Item className={s.menuItem} onClick={() => setOpen(!open)}>
               <Button className={s.item} onClick={logout} variant={'pure'}>
                 <div className={s.icon}>
                   <Icon height={'16px'} iconId={'Logout'} width={'16px'} />
