@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 
 import { useDebounce } from '@/common/hooks'
 import { BackButton } from '@/components/ui/back-button'
+import { Button } from '@/components/ui/button'
 import { DropDownMenu } from '@/components/ui/drop-down/dropDownMenu'
 import { InitLoader } from '@/components/ui/loader/initLoader'
 import { Pagination } from '@/components/ui/newPagination'
@@ -14,6 +15,7 @@ import { CreateCards } from '@/features/cards/createCards'
 import { FilterCards } from '@/features/cards/filterCards/filterCards'
 import { DeleteDecks } from '@/features/decks/deleteDecks'
 import { EditDecks } from '@/features/decks/editDecks'
+import { useMeQuery } from '@/pages/auth/api/auth-api'
 import { useGetCardsQuery } from '@/pages/cards/api/cards-api'
 import { Card } from '@/pages/cards/api/cards-types'
 import { useGetDeckByIdQuery } from '@/pages/decks/api/decks-api'
@@ -42,6 +44,8 @@ export const Cards = () => {
 
   const deck = useGetDeckByIdQuery({ id: id || '' })
 
+  const meData = useMeQuery()
+
   const { data, error, isLoading } = useGetCardsQuery({
     id: id || '',
     params: {
@@ -51,6 +55,10 @@ export const Cards = () => {
       question: debouncedSearchName,
     },
   })
+
+  const isMyDeck = meData.data?.id === deck.data?.userId
+
+  const columns = columnsCards.filter(column => (isMyDeck ? column : column.key !== 'controls'))
 
   if (isLoading) {
     return <InitLoader />
@@ -73,7 +81,7 @@ export const Cards = () => {
           <div className={s.box}>
             <div className={s.typographyWhitMenu}>
               <Typography variant={'h1'}>{deck.data?.name}</Typography>
-              <DropDownMenu options={options} />
+              {isMyDeck && <DropDownMenu options={options} />}
               {deck.data && (
                 <>
                   <EditDecks
@@ -90,7 +98,16 @@ export const Cards = () => {
                 </>
               )}
             </div>
-            <CreateCards deckId={deck.data?.id || ''} />
+            {isMyDeck ? (
+              <CreateCards deckId={deck.data?.id || ''} />
+            ) : (
+              deck.data &&
+              deck.data?.cardsCount > 0 && (
+                <Button onClick={() => alert('Здесь должен быть роут')} variant={'primary'}>
+                  Learn Cards
+                </Button>
+              )
+            )}
           </div>
           {deck.data?.cover && (
             <img
@@ -105,9 +122,9 @@ export const Cards = () => {
         </div>
         {data && data.items.length > 0 ? (
           <div>
-            <Table columns={columnsCards} onSort={setSort} sort={sort}>
+            <Table columns={columns} onSort={setSort} sort={sort}>
               {data.items.map((el: Card) => (
-                <CardRow card={el} deckId={deck.data?.id || ''} key={el.id} />
+                <CardRow card={el} deckId={deck.data?.id || ''} isMyDeck={isMyDeck} key={el.id} />
               ))}
             </Table>
             <Pagination
