@@ -28,42 +28,46 @@ export const Pagination = memo((props: Props) => {
   }
 
   return (
-    <div className={s.paginationContainer}>
-      <button className={s.button} disabled={currentPage === 1} onClick={onPrevious}>
-        {'❮'}
-      </button>
-      {paginationRange.map((pageNumber, index) => {
-        if (typeof pageNumber !== 'number') {
-          return (
-            <span className={s.dots} key={index}>
-              {DOTS}
-            </span>
-          )
-        }
-        const buttonClass = (pageNumber: number) => {
-          return pageNumber === currentPage ? s.active : ''
-        }
+    <div className={s.wrapper}>
+      <div className={s.paginationContainer}>
+        <button className={s.button} disabled={currentPage === 1} onClick={onPrevious}>
+          {'❮'}
+        </button>
+        {paginationRange.map((pageNumber, index) => {
+          if (typeof pageNumber !== 'number') {
+            return (
+              <span className={s.dots} key={index}>
+                {DOTS}
+              </span>
+            )
+          }
+          const buttonClass = (pageNumber: number) => {
+            return pageNumber === currentPage ? s.active : ''
+          }
 
-        return (
-          <button
-            className={`${s.button} ${buttonClass(pageNumber)}`}
-            key={index}
-            onClick={() => pageChange(pageNumber)}
-          >
-            <span>{pageNumber}</span>
-          </button>
-        )
-      })}
-      <button
-        className={s.button}
-        disabled={currentPage === paginationRange[paginationRange.length - 1]}
-        onClick={onNext}
-      >
-        {'❯'}
-      </button>
-      Show
-      <SelectPagination pageSize={pageSize} pageSizeChange={pageSizeChange} />
-      on the page
+          return (
+            <button
+              className={`${s.button} ${buttonClass(pageNumber)}`}
+              key={index}
+              onClick={() => pageChange(pageNumber)}
+            >
+              <span>{pageNumber}</span>
+            </button>
+          )
+        })}
+        <button
+          className={s.button}
+          disabled={currentPage === paginationRange[paginationRange.length - 1]}
+          onClick={onNext}
+        >
+          {'❯'}
+        </button>
+      </div>
+      <div className={s.select}>
+        Show
+        <SelectPagination pageSize={pageSize} pageSizeChange={pageSizeChange} />
+        on the page
+      </div>
     </div>
   )
 })

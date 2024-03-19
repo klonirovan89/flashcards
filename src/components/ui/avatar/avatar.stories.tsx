@@ -13,24 +13,19 @@ type Story = StoryObj<typeof meta>
 
 export const AvatarStory: Story = {
   args: {
-    value: {
-      id: 'Sem',
-      image: 'src/components/ui/avatar/image/Sem.jpg',
-    },
+    src: 'src/components/ui/avatar/image/Sem.jpg',
+    userName: 'Keanu Reeves',
   },
   render: args => {
-    return <Avatar {...args} value={args.value} />
+    return <Avatar {...args} src={args.src} userName={args.userName} />
   },
 }
 
 export const AvatarFallback: Story = {
   args: {
-    value: {
-      id: 'Sem',
-      image: '',
-    },
+    userName: 'Keanu Reeves',
   },
   render: args => {
-    return <Avatar {...args} value={args.value} />
+    return <Avatar {...args} userName={args.userName} />
   },
 }

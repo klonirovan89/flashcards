@@ -1,3 +1,20 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  row-gap: 24px;
+  column-gap: 24px;
+}
+
+.select {
+  display: flex;
+  flex-direction: row;
+  gap: 0 12px;
+
+  margin-top: 24px;
+  margin-bottom: 90px;
+}
+
 .paginationContainer {
   display: flex;
   flex-direction: row;

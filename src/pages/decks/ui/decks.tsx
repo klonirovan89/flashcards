@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useDebounce } from '@/common/hooks'
 import { InitLoader } from '@/components/ui/loader/initLoader'
@@ -37,7 +37,7 @@ export const Decks = () => {
   const [sliderValue, setSliderValue] = useState<number[]>([0, maxCardsCount])
   const [page, setPage] = useState(1)
   const [pageSize, setPageSize] = useState(10)
-
+  const [pageForTab, setPageForTab] = useState(1)
   const debouncedSearchName = useDebounce(searchName)
   const debouncedSliderValue = useDebounce(sliderValue)
 
@@ -52,6 +52,16 @@ export const Decks = () => {
     name: debouncedSearchName,
     orderBy: sort ? `${sort.key}-${sort.direction}` : 'null',
   })
+
+  useEffect(() => {
+    if (tabSwitcherValue === 'My Cards') {
+      setPageForTab(page)
+      setPage(1)
+    }
+    if (tabSwitcherValue !== 'My Cards') {
+      setPage(pageForTab)
+    }
+  }, [tabSwitcherValue])
 
   if (decks.isLoading || cardsCount.isLoading) {
     return <InitLoader />
