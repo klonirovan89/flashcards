@@ -8,7 +8,7 @@ import { Card } from '@/pages/cards/api/cards-types'
 import s from './card.module.scss'
 
 export const CardRow = (props: PropsType) => {
-  const { card, deckId } = props
+  const { card, deckId, isMyDeck } = props
 
   return (
     <TableComponents.Row key={card.id}>
@@ -50,11 +50,13 @@ export const CardRow = (props: PropsType) => {
           <Rating defaultValue={card.grade} />
         </Typography>
       </TableComponents.Cell>
-      <TableComponents.Cell>
-        <div className={s.control}>
-          <ButtonCards card={card} deckId={deckId} />
-        </div>
-      </TableComponents.Cell>
+      {isMyDeck && (
+        <TableComponents.Cell>
+          <div className={s.control}>
+            <ButtonCards card={card} deckId={deckId} />
+          </div>
+        </TableComponents.Cell>
+      )}
     </TableComponents.Row>
   )
 }
@@ -62,4 +64,5 @@ export const CardRow = (props: PropsType) => {
 type PropsType = {
   card: Card
   deckId: string
+  isMyDeck: boolean
 }
