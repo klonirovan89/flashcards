@@ -110,7 +110,9 @@ export const Decks: Story = {
 
 export const Cards: Story = {
   args: {
-    children: dataCards.items.map((el: Card) => <CardRow card={el} deckId={''} key={el.id} />),
+    children: dataCards.items.map((el: Card) => (
+      <CardRow card={el} deckId={''} isMyDeck key={el.id} />
+    )),
     columns: [
       { key: 'question', sortable: true, title: 'Question' },
       { key: 'answer', sortable: true, title: 'Answer' },
