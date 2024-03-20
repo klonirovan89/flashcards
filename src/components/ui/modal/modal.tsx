@@ -32,7 +32,7 @@ export const SuperModal = ({
               <Typography variant={'h3'}>{title}</Typography>
             </Dialog.Title>
             <Dialog.Close className={c.close}>
-              <Icon height={'12px'} iconId={'Cross'} width={'12px'} />
+              <Icon height={'22px'} iconId={'Cross'} width={'22px'} />
             </Dialog.Close>
           </div>
           <div className={c.content}>{children}</div>

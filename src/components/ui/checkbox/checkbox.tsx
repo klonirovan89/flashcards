@@ -11,24 +11,26 @@ export const Checkbox = forwardRef<ElementRef<typeof RadixCheckbox.Root>, PropsT
     const { id, label, onChange, ...rest } = props
 
     return (
-      <div className={s.container}>
-        <RadixCheckbox.Root
-          checked={rest.checked}
-          className={s.root}
-          defaultChecked={rest.defaultChecked}
-          disabled={rest.disabled}
-          id={id}
-          onCheckedChange={onChange}
-          ref={ref}
-        >
-          <RadixCheckbox.Indicator className={s.indicator}>
-            <CheckIcon />
-          </RadixCheckbox.Indicator>
-        </RadixCheckbox.Root>
-        <div className={rest.disabled ? s.typographyDisabled : ''}>
-          {label && <Typography variant={'body2'}>{label}</Typography>}
+      <label>
+        <div className={s.container}>
+          <RadixCheckbox.Root
+            checked={rest.checked}
+            className={s.root}
+            defaultChecked={rest.defaultChecked}
+            disabled={rest.disabled}
+            id={id}
+            onCheckedChange={onChange}
+            ref={ref}
+          >
+            <RadixCheckbox.Indicator className={s.indicator}>
+              <CheckIcon />
+            </RadixCheckbox.Indicator>
+          </RadixCheckbox.Root>
+          <div className={rest.disabled ? s.typographyDisabled : ''}>
+            {label && <Typography variant={'body2'}>{label}</Typography>}
+          </div>
         </div>
-      </div>
+      </label>
     )
   }
 )

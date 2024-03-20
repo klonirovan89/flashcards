@@ -7,12 +7,14 @@ import { Typography } from '@/components/ui/typography'
 import s from './buttonWithIcon.module.scss'
 
 export const ButtonWithIcon = (props: PropsType) => {
-  const { disabled, fullWidth, iconId, text, variant = 'primary', ...rest } = props
+  const { disabled, fullWidth, height, iconId, text, variant = 'primary', width, ...rest } = props
 
   return (
     <Button disabled={disabled} fullWidth={fullWidth} variant={variant} {...rest}>
       <div className={`${s.container} ${disabled ? s.disabled : ''}`}>
-        {iconId && <Icon height={'16px'} iconId={iconId} width={'16px'} />}
+        {iconId && (
+          <Icon height={height ? height : '16px'} iconId={iconId} width={width ? width : '16px'} />
+        )}
         {text ? <Typography variant={'subtitle2'}>{text}</Typography> : ''}
       </div>
     </Button>
@@ -21,7 +23,9 @@ export const ButtonWithIcon = (props: PropsType) => {
 
 type PropsType = {
   fullWidth?: boolean
+  height?: string
   iconId?: string
   text?: string
   variant?: 'primary' | 'secondary'
+  width?: string
 } & ComponentPropsWithoutRef<'button'>
