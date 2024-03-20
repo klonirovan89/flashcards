@@ -1,6 +1,12 @@
 import { baseApi } from '@/services/base-api'
 
-import { LoginArgs, User } from '../../auth/api/auth-types'
+import {
+  LoginArgs,
+  PasswordRecovery,
+  SignUpArgs,
+  SignUpResponse,
+  User,
+} from '../../auth/api/auth-types'
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: builder => ({
@@ -26,6 +32,14 @@ export const authApi = baseApi.injectEndpoints({
         url: `/v1/auth/me`,
       }),
     }),
+    passwordRecovery: builder.mutation<void, PasswordRecovery>({
+      invalidatesTags: ['Auth'],
+      query: body => ({
+        body,
+        method: 'POST',
+        url: `/v1/auth/recover-password`,
+      }),
+    }),
     setMe: builder.mutation<User, { avatar?: File | null; name?: string }>({
       invalidatesTags: ['Auth'],
       query: body => {
@@ -42,7 +56,22 @@ export const authApi = baseApi.injectEndpoints({
         }
       },
     }),
+    signUp: builder.mutation<SignUpResponse, SignUpArgs>({
+      invalidatesTags: ['Auth'],
+      query: body => ({
+        body: body ?? undefined,
+        method: 'POST',
+        url: `/v1/auth/sign-up`,
+      }),
+    }),
   }),
 })
 
-export const { useLoginMutation, useLogoutMutation, useMeQuery, useSetMeMutation } = authApi
+export const {
+  useLoginMutation,
+  useLogoutMutation,
+  useMeQuery,
+  usePasswordRecoveryMutation,
+  useSetMeMutation,
+  useSignUpMutation,
+} = authApi
