@@ -1,7 +1,10 @@
 import { useState } from 'react'
 
 import { EditProfileArgs, EditProfileForm } from '@/components/auth/edit-profile/edit-profile'
-import { useSetMeMutation } from '@/pages/auth/api/auth-api'
+import { BackButton } from '@/components/ui/back-button'
+import { useLogoutMutation, useSetMeMutation } from '@/pages/auth/api/auth-api'
+
+import s from '@/pages/profile/profile.module.scss'
 
 export const MyProfilePage = () => {
   const [setName] = useSetMeMutation()
@@ -12,5 +15,19 @@ export const MyProfilePage = () => {
     setEditMode(!editMode)
   }
 
-  return <EditProfileForm editMode={editMode} onSubmit={onSubmit} setEditMode={setEditMode} />
+  const [signOut] = useLogoutMutation()
+
+  return (
+    <div className={s.wrapper}>
+      <BackButton className={s.backButton} />
+      <div className={s.section}>
+        <EditProfileForm
+          editMode={editMode}
+          logout={signOut}
+          onSubmit={onSubmit}
+          setEditMode={setEditMode}
+        />
+      </div>
+    </div>
+  )
 }

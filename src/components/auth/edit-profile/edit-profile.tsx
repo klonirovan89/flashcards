@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
+import { ButtonWithIcon } from '@/components/ui/button-with-icon'
 import { Card } from '@/components/ui/card'
 import { FileUploader } from '@/components/ui/file-uploader'
 import { Icon } from '@/components/ui/icon/Icon'
@@ -13,16 +14,25 @@ import z from 'zod'
 import c from './edit-profile.module.scss'
 
 const editProfileSchema = z.object({
-  name: z.string().min(2),
+  name: z.string().min(2).max(20),
 })
 
-export const EditProfileForm = ({ editMode, onSubmit, setEditMode }: EditProfileFormProps) => {
+export const EditProfileForm = ({
+  editMode,
+  logout,
+  onSubmit,
+  setEditMode,
+}: EditProfileFormProps) => {
   const { data: me } = useMeQuery()
+
   const {
     control,
     formState: { errors },
     handleSubmit,
   } = useForm<FormValues>({
+    defaultValues: {
+      name: me?.name || '',
+    },
     resolver: zodResolver(editProfileSchema),
   })
 
@@ -31,21 +41,23 @@ export const EditProfileForm = ({ editMode, onSubmit, setEditMode }: EditProfile
       <Typography variant={'h1'}>Personal Information</Typography>
       <ProfileAvatar isEditMode={editMode} />
       {!editMode ? (
-        <div className={c.info}>
+        <>
           <div className={c.name}>
             <Typography variant={'h2'}>{me?.name}</Typography>
-            <Button className={c.icon} onClick={() => setEditMode(!editMode)} variant={'pure'}>
-              <Icon height={'16px'} iconId={'edit'} width={'16px'} />
+            <Button className={c.button} onClick={() => setEditMode(!editMode)} variant={'pure'}>
+              <Icon height={'16px'} iconId={'Edit'} width={'16px'} />
             </Button>
           </div>
           <Typography className={c.email} variant={'body2'}>
             {me?.email}
           </Typography>
-          <Button variant={'secondary'}>
-            <Icon height={'16px'} iconId={'out'} width={'16px'} />
-            <Typography variant={'subtitle2'}>Logout</Typography>
-          </Button>
-        </div>
+          <ButtonWithIcon
+            iconId={'Logout'}
+            onClick={logout}
+            text={'Logout'}
+            variant={'secondary'}
+          />
+        </>
       ) : (
         <form className={c.form} onSubmit={handleSubmit(onSubmit)}>
           <ControlledTextField
@@ -56,7 +68,7 @@ export const EditProfileForm = ({ editMode, onSubmit, setEditMode }: EditProfile
             name={'name'}
             type={'default'}
           />
-          <Button fullWidth type={'submit'} variant={'primary'}>
+          <Button type={'submit'} variant={'primary'}>
             <Typography variant={'subtitle2'}>Save Changes</Typography>
           </Button>
         </form>
@@ -92,6 +104,7 @@ type FormValues = z.infer<typeof editProfileSchema>
 
 type EditProfileFormProps = {
   editMode: boolean
+  logout: () => void
   onSubmit: (name: EditProfileArgs) => void
   setEditMode: (editMode: boolean) => void
 }
