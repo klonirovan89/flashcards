@@ -3,8 +3,13 @@
 }
 
 .img {
+  aspect-ratio: 2/1;
   width: 100%;
-  aspect-ratio: auto;
+
+  object-fit: cover;
+  border-radius: 4px;
+
+  transition: 0.3s;
 }
 
 .buttonBlock {

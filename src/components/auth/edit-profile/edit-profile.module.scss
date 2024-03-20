@@ -73,6 +73,11 @@
   flex-direction: column;
   gap: 36px 0;
   width: 100%;
+
+  button {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .card {
@@ -83,5 +88,5 @@
   column-gap: 0;
 
   padding: 36px;
-  margin: 0;
+  margin: 0 auto;
 }

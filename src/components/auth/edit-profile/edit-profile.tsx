@@ -14,16 +14,25 @@ import z from 'zod'
 import c from './edit-profile.module.scss'
 
 const editProfileSchema = z.object({
-  name: z.string().min(2),
+  name: z.string().min(2).max(20),
 })
 
-export const EditProfileForm = ({ editMode, onSubmit, setEditMode }: EditProfileFormProps) => {
+export const EditProfileForm = ({
+  editMode,
+  logout,
+  onSubmit,
+  setEditMode,
+}: EditProfileFormProps) => {
   const { data: me } = useMeQuery()
+
   const {
     control,
     formState: { errors },
     handleSubmit,
   } = useForm<FormValues>({
+    defaultValues: {
+      name: me?.name || '',
+    },
     resolver: zodResolver(editProfileSchema),
   })
 
@@ -43,8 +52,8 @@ export const EditProfileForm = ({ editMode, onSubmit, setEditMode }: EditProfile
             {me?.email}
           </Typography>
           <ButtonWithIcon
-            iconId={'edit'}
-            onClick={() => setEditMode(!editMode)}
+            iconId={'Logout'}
+            onClick={logout}
             text={'Logout'}
             variant={'secondary'}
           />
@@ -95,6 +104,7 @@ type FormValues = z.infer<typeof editProfileSchema>
 
 type EditProfileFormProps = {
   editMode: boolean
+  logout: () => void
   onSubmit: (name: EditProfileArgs) => void
   setEditMode: (editMode: boolean) => void
 }
