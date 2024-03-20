@@ -1,0 +1,21 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  width: 1093px;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+}
+
+.backButton {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 24px;;
+}
+
