@@ -6,6 +6,9 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
+import { CheckEmail } from '@/components/auth/check-email'
+import { ForgotPassword } from '@/components/auth/forgot-password'
+import { SignUp } from '@/components/auth/sign-up'
 import { Layout } from '@/components/ui/layout/layout'
 import { QueryLoader } from '@/components/ui/loader/qeryLoader'
 import { useMeQuery } from '@/pages/auth/api/auth-api'
@@ -18,6 +21,18 @@ const publicRoutes: RouteObject[] = [
   {
     element: <LoginPage />,
     path: '/login',
+  },
+  {
+    element: <ForgotPassword />,
+    path: '/recover-password',
+  },
+  {
+    element: <SignUp />,
+    path: '/sign-up',
+  },
+  {
+    element: <CheckEmail />,
+    path: '/check-email',
   },
 ]
 

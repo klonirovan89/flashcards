@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Icon } from '@/components/ui/icon/Icon'
@@ -17,13 +19,7 @@ export const CheckEmail = () => {
           <Typography variant={'body2'}>
             We’ve sent an Email with instructions to {email}
           </Typography>
-          <Button
-            as={'a'}
-            className={s.button}
-            fullWidth
-            onClick={() => alert('Здесь дожлен быть роут')}
-            type={'submit'}
-          >
+          <Button as={Link} className={s.button} fullWidth to={'/login'} type={'submit'}>
             <Typography variant={'subtitle2'}>Back to Sign In</Typography>
           </Button>
         </div>

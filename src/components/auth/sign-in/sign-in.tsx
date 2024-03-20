@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 
 import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
@@ -63,9 +64,9 @@ export const SignIn = ({ onSubmit }: Props) => {
               <ControlledCheckbox control={control} label={'Remember Me'} name={'rememberMe'} />
               <div className={s.linkStyle}>
                 <Typography
-                  as={'a'}
+                  as={Link}
                   className={s.typographyLinkStyle}
-                  onClick={() => alert('Здесь дожлен быть роут')}
+                  to={'/recover-password'}
                   variant={'body2'}
                 >
                   Forgot Password?
@@ -78,11 +79,7 @@ export const SignIn = ({ onSubmit }: Props) => {
           </div>
           <div className={s.typographyStyle}>
             <Typography variant={'body2'}>Don&apos;t have an account?</Typography>
-            <Typography
-              as={'a'}
-              onClick={() => alert('Здесь дожлен быть роут')}
-              variant={'subtitle1'}
-            >
+            <Typography as={Link} to={'/sign-up'} variant={'subtitle1'}>
               Sign Up
             </Typography>
           </div>
