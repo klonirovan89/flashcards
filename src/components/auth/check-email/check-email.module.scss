@@ -12,13 +12,13 @@
   width: 357px;
 
   svg {
-    margin-bottom: 20px;
+    margin: 19px 0 27px 0;
+
   }
 
   span {
     text-align: center;
     color: var(--color-light-100);
-    margin-bottom: 20px;
   }
 
   span:nth-child(3n) {
@@ -27,5 +27,6 @@
 
   .button {
     box-sizing: border-box;
+    margin-top: 65px;
   }
 }
