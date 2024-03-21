@@ -53,7 +53,7 @@ export const cardsApi = baseApi.injectEndpoints({
           url: `/v2/decks/min-max-cards`,
         }),
       }),
-      getRandomCards: builder.query<CardsResponse, RandomCardType>({
+      getRandomCards: builder.query<Card, RandomCardType>({
         providesTags: ['Cards'],
         query: ({ id, previousCardId }) => ({
           method: 'GET',
@@ -71,10 +71,10 @@ export const cardsApi = baseApi.injectEndpoints({
       }),
       updateRatingCards: builder.mutation<CardsResponse, CardsSave>({
         invalidatesTags: ['Cards'],
-        query: ({ cardsId, grade }) => ({
+        query: ({ cardId, grade }) => ({
           body: grade,
           method: 'POST',
-          url: `/v1/decks/${cardsId}/learn`,
+          url: `/v1/decks/${cardId}/learn`,
         }),
       }),
     }

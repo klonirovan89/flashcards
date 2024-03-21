@@ -34,7 +34,7 @@ export type CardsResponse = {
   pagination: Pagination
 }
 export type CardsSave = {
-  cardsId: string
+  cardId: string
   grade: number
 }
 
@@ -45,7 +45,7 @@ export type FormDataCards = {
 
 export type RandomCardType = {
   id: string
-  previousCardId: string
+  previousCardId?: string
 }
 
 export type MinMaxCardType = {
