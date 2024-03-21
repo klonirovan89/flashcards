@@ -1,3 +1,4 @@
+import { router } from '@/router'
 import { BaseQueryFn, FetchArgs, FetchBaseQueryError, fetchBaseQuery } from '@reduxjs/toolkit/query'
 import { Mutex } from 'async-mutex'
 
@@ -8,7 +9,7 @@ const baseQuery = fetchBaseQuery({
 
 const mutex = new Mutex()
 
-export const baseQueryWithReauth: BaseQueryFn<
+export const baseQueryWithRauth: BaseQueryFn<
   FetchArgs | string,
   unknown,
   FetchBaseQueryError
@@ -27,10 +28,9 @@ export const baseQueryWithReauth: BaseQueryFn<
 
       if (refreshResult.meta?.response && refreshResult.meta.response.status === 204) {
         result = await baseQuery(args, api, extraOptions)
+      } else {
+        router.navigate('/login')
       }
-      // else {
-      //   // router.navigate('/login')
-      // }
       release()
     } else {
       await mutex.waitForUnlock()
