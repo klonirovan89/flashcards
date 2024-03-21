@@ -34,7 +34,7 @@ export type CardsResponse = {
   pagination: Pagination
 }
 export type CardsSave = {
-  cardsId: string
+  cardId: string
   grade: number
 }
 

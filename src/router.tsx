@@ -16,7 +16,7 @@ import { LoginPage } from '@/pages/auth/ui/login'
 import { Cards } from '@/pages/cards/ui'
 import { Decks } from '@/pages/decks/ui'
 import { MyProfilePage } from '@/pages/profile/profile'
-import {Learn} from "@/components/auth/learn";
+import { Learn } from '@/components/auth/learn'
 
 const publicRoutes: RouteObject[] = [
   {
@@ -53,7 +53,7 @@ const privateRoutes: RouteObject[] = [
   {
     path: '/decks/:id/learn',
     element: <Learn />,
-},
+  },
 ]
 
 export const router = createBrowserRouter([

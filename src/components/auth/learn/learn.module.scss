@@ -1,9 +1,17 @@
 .header {
   padding-bottom: 45px;
-margin: 0;
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 1093px;
+  padding-bottom: 30px;
 }
 
 .card {
+  width: 420px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,8 +31,6 @@ margin: 0;
   column-gap: 0;
 }
 
-
-
 .img {
   aspect-ratio: 2/1;
   width: 100%;
@@ -35,12 +41,12 @@ margin: 0;
   transition: 0.3s;
 }
 
-.button{
+.button {
   box-sizing: border-box;
 }
 
 .count {
-  color: var( --color-dark-100);
+  color: var(--color-dark-100);
   padding-bottom: 17px;
 }
 

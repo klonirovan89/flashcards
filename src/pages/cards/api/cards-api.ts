@@ -71,10 +71,10 @@ export const cardsApi = baseApi.injectEndpoints({
       }),
       updateRatingCards: builder.mutation<CardsResponse, CardsSave>({
         invalidatesTags: ['Cards'],
-        query: ({ cardsId, grade }) => ({
+        query: ({ cardId, grade }) => ({
           body: grade,
           method: 'POST',
-          url: `/v1/decks/${cardsId}/learn`,
+          url: `/v1/decks/${cardId}/learn`,
         }),
       }),
     }

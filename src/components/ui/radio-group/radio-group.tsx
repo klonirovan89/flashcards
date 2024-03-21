@@ -18,19 +18,24 @@ export const RadioGroup = forwardRef<ElementRef<typeof RadixRadioGroup.Root>, Ra
         ref={ref}
       >
         {options.map(el => (
-          <div className={s.container} key={el.value}>
-            <RadixRadioGroup.Item
-              checked={el.value === selectedValue}
-              className={s.item}
-              value={el.value}
-            >
-              <div className={s.frame} />
-              <RadixRadioGroup.Indicator className={s.indicator} />
-            </RadixRadioGroup.Item>
-            <Typography className={disabled ? s.typographyDisabled : ''} variant={'body2'}>
-              {el.label}
-            </Typography>
-          </div>
+          <label>
+            <div className={s.container} key={el.value}>
+              <RadixRadioGroup.Item
+                checked={el.value === selectedValue}
+                className={s.item}
+                value={el.value}
+              >
+                <div className={s.frame} />
+                <RadixRadioGroup.Indicator className={s.indicator} />
+              </RadixRadioGroup.Item>
+              <Typography
+                className={disabled ? s.typographyDisabled : s.typography}
+                variant={'body2'}
+              >
+                {el.label}
+              </Typography>
+            </div>
+          </label>
         ))}
         {errorMessage && (
           <Typography className={s.error} variant={'body2'}>

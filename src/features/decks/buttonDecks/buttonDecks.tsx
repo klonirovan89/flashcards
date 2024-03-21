@@ -7,7 +7,7 @@ import { EditDecks } from '@/features/decks/editDecks/editDecks'
 import { Deck } from '@/pages/decks/api/decks-types'
 
 import s from './buttonDecks.module.scss'
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 
 export const ButtonDecks = (props: PropsType) => {
   const { authUserId, deck, disabled } = props
