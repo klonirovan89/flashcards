@@ -7,12 +7,15 @@ import { EditDecks } from '@/features/decks/editDecks/editDecks'
 import { Deck } from '@/pages/decks/api/decks-types'
 
 import s from './buttonDecks.module.scss'
+import {useNavigate} from "react-router-dom";
 
 export const ButtonDecks = (props: PropsType) => {
   const { authUserId, deck, disabled } = props
 
   const [openEditModal, setOpenEditModal] = useState(false)
   const [openDeleteModal, setOpenDeleteModal] = useState(false)
+
+  const navigate = useNavigate()
 
   return (
     <div className={s.wrapper}>
@@ -29,7 +32,7 @@ export const ButtonDecks = (props: PropsType) => {
           <Button
             className={s.button}
             disabled={disabled}
-            onClick={() => alert('play')}
+            onClick={() => navigate(`/decks/${deck.id}/learn`)}
             variant={'pure'}
           >
             <Icon disabled={disabled} height={'16px'} iconId={'Learn'} width={'16px'} />
@@ -47,9 +50,9 @@ export const ButtonDecks = (props: PropsType) => {
       ) : (
         <div className={s.control}>
           <Button
+            onClick={() => navigate(`/decks/${deck.id}/learn`)}
             className={s.button}
             disabled={disabled}
-            onClick={() => alert('play')}
             variant={'pure'}
           >
             <Icon disabled={disabled} height={'16px'} iconId={'Learn'} width={'16px'} />

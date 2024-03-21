@@ -53,7 +53,7 @@ export const cardsApi = baseApi.injectEndpoints({
           url: `/v2/decks/min-max-cards`,
         }),
       }),
-      getRandomCards: builder.query<CardsResponse, RandomCardType>({
+      getRandomCards: builder.query<Card, RandomCardType>({
         providesTags: ['Cards'],
         query: ({ id, previousCardId }) => ({
           method: 'GET',

@@ -45,7 +45,7 @@ export type FormDataCards = {
 
 export type RandomCardType = {
   id: string
-  previousCardId: string
+  previousCardId?: string
 }
 
 export type MinMaxCardType = {
