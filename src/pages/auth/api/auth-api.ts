@@ -33,7 +33,6 @@ export const authApi = baseApi.injectEndpoints({
       }),
     }),
     passwordRecovery: builder.mutation<void, PasswordRecovery>({
-      invalidatesTags: ['Auth'],
       query: body => ({
         body,
         method: 'POST',
@@ -57,7 +56,6 @@ export const authApi = baseApi.injectEndpoints({
       },
     }),
     signUp: builder.mutation<SignUpResponse, SignUpArgs>({
-      invalidatesTags: ['Auth'],
       query: body => ({
         body: body ?? undefined,
         method: 'POST',
@@ -66,6 +64,8 @@ export const authApi = baseApi.injectEndpoints({
     }),
   }),
 })
+
+export const { useQueryState: useGetMeQueryState } = authApi.endpoints.me
 
 export const {
   useLoginMutation,
