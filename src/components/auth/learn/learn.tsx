@@ -1,16 +1,16 @@
-import { Card } from '@/components/ui/card'
-import c from './learn.module.scss'
-import { useParams } from 'react-router-dom'
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
+
 import { BackButton } from '@/components/ui/back-button'
-import { Typography } from '@/components/ui/typography'
-import { useGetRandomCardsQuery, useUpdateRatingCardsMutation } from '@/pages/cards/api/cards-api'
 import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
+import { Page } from '@/components/ui/page/page'
+import { Typography } from '@/components/ui/typography'
+import { RateCard, RateType } from '@/features/cards/rateCard'
+import { useGetRandomCardsQuery, useUpdateRatingCardsMutation } from '@/pages/cards/api/cards-api'
 import { useGetDeckByIdQuery } from '@/pages/decks/api/decks-api'
 
 import s from './learn.module.scss'
-import { Page } from '@/components/ui/page/page'
-import { RateCard, RateType } from '@/features/cards/rateCard'
 
 export const Learn = () => {
   const [showAnswer, setShowAnswer] = useState(false)
@@ -23,10 +23,10 @@ export const Learn = () => {
 
   const deck = useGetDeckByIdQuery({ id: id })
 
-  const card = useGetRandomCardsQuery({ id })
+  const card = useGetRandomCardsQuery({ id: id })
 
-  const onSubmit = (data: RateType) => {
-    rateCard({ cardId: card.data?.id || '', grade: +data.grade })
+  const onSubmit = async (data: RateType) => {
+    await rateCard({ cardId: card.data?.id || '', grade: +data.grade }).unwrap()
     setShowAnswer(false)
   }
 
@@ -34,35 +34,35 @@ export const Learn = () => {
     <Page>
       <div className={s.wrapper}>
         <BackButton />
-        <Card className={c.card}>
-          <Typography as="h1" variant={'h1'} className={s.header}>
+        <Card className={s.card}>
+          <Typography as={'h1'} className={s.header} variant={'h1'}>
             Learn {deck.data?.name}
           </Typography>
-          <div className={s.typography}>
-            <Typography variant={'subtitle1'}>
+          <div className={s.question}>
+            <Typography className={s.typography} variant={'subtitle1'}>
               Question: <Typography variant={'body1'}>{card.currentData?.question}</Typography>
             </Typography>
             {card.currentData?.questionImg && (
-              <img src={card.currentData?.questionImg} alt="Question Image" className={s.img} />
+              <img alt={'Question Image'} className={s.img} src={card.currentData?.questionImg} />
             )}
-            <Typography variant={'subtitle1'} className={s.count}>
+            <Typography className={s.count} variant={'subtitle1'}>
               Count of attempts:{' '}
-              <Typography variant={'body1'} className={s.count}>
+              <Typography className={s.count} variant={'body1'}>
                 {card.currentData?.shots}
               </Typography>
             </Typography>
           </div>
           {showAnswer ? (
             <>
-              <div className={s.typography}>
-                <Typography variant={'subtitle1'}>
+              <div className={s.answer}>
+                <Typography className={s.typography} variant={'subtitle1'}>
                   Answer: <Typography variant={'body1'}>{card.currentData?.answer}</Typography>
                 </Typography>
                 {card.currentData?.answerImg && (
-                  <img src={card.currentData?.answerImg} alt="Question Image" className={s.img} />
+                  <img alt={'Question Image'} className={s.img} src={card.currentData?.answerImg} />
                 )}
               </div>
-              <Typography variant={'subtitle1'} className={s.rate}>
+              <Typography className={s.rate} variant={'subtitle1'}>
                 <b>Rate yourself:</b>
               </Typography>
               <RateCard onSubmit={onSubmit} />
@@ -70,9 +70,9 @@ export const Learn = () => {
           ) : (
             <Button
               className={s.button}
-              variant={'primary'}
-              onClick={() => setShowAnswer(true)}
               fullWidth
+              onClick={() => setShowAnswer(true)}
+              variant={'primary'}
             >
               Show Answer
             </Button>

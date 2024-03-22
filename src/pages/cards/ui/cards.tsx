@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import { useDebounce } from '@/common/hooks'
 import { BackButton } from '@/components/ui/back-button'
@@ -46,6 +46,8 @@ export const Cards = () => {
 
   const meData = useMeQuery()
 
+  const navigate = useNavigate()
+
   const { data, error, isLoading } = useGetCardsQuery({
     id: id || '',
     params: {
@@ -68,7 +70,7 @@ export const Cards = () => {
   }
 
   const options = [
-    { handler: () => setOpenEditModal(true), id: 'Learn', label: 'Learn' },
+    { handler: () => navigate(`/decks/${deck.data?.id}/learn`), id: 'Learn', label: 'Learn' },
     { handler: () => setOpenEditModal(true), id: 'Edit', label: 'Edit' },
     { handler: () => setOpenDeleteModal(true), id: 'Delete', label: 'Delete' },
   ]

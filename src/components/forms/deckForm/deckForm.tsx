@@ -13,7 +13,7 @@ import c from './deckForm.module.scss'
 
 const newDeckSchema = z.object({
   isPrivate: z.boolean(),
-  name: z.string().min(3).max(100),
+  name: z.string().min(3).max(30),
 })
 
 export const DeckForm = ({
