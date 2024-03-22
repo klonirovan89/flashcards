@@ -38,8 +38,8 @@ export const Learn = () => {
           <Typography as={'h1'} className={s.header} variant={'h1'}>
             Learn {deck.data?.name}
           </Typography>
-          <div className={s.typography}>
-            <Typography variant={'subtitle1'}>
+          <div className={s.question}>
+            <Typography className={s.typography} variant={'subtitle1'}>
               Question: <Typography variant={'body1'}>{card.currentData?.question}</Typography>
             </Typography>
             {card.currentData?.questionImg && (
@@ -54,8 +54,8 @@ export const Learn = () => {
           </div>
           {showAnswer ? (
             <>
-              <div className={s.typography}>
-                <Typography variant={'subtitle1'}>
+              <div className={s.answer}>
+                <Typography className={s.typography} variant={'subtitle1'}>
                   Answer: <Typography variant={'body1'}>{card.currentData?.answer}</Typography>
                 </Typography>
                 {card.currentData?.answerImg && (
