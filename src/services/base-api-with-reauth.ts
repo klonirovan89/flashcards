@@ -17,8 +17,22 @@ export const baseQueryWithRauth: BaseQueryFn<
   await mutex.waitForUnlock()
   let result = await baseQuery(args, api, extraOptions)
 
-  if (result.error && result.error.status === 401) {
-    if (!mutex.isLocked() && router.state.location.pathname !== '/create-new-password') {
+  const pathCheckEmail = router.state.location.pathname.startsWith('/check-email')
+  const pathRecoverPassword = router.state.location.pathname.startsWith('/recover-password')
+  const pathCreatePassword = router.state.location.pathname.startsWith('/create-new-password')
+
+  console.log('pathCheckEmail: ' + pathCheckEmail)
+  console.log('pathRecoverPassword: ' + pathRecoverPassword)
+  console.log('pathCreatePassword: ' + pathCreatePassword)
+
+  if (
+    result.error &&
+    result.error.status === 401 &&
+    !pathCheckEmail &&
+    !pathRecoverPassword &&
+    !pathCreatePassword
+  ) {
+    if (!mutex.isLocked()) {
       const release = await mutex.acquire()
       const refreshResult = await baseQuery(
         { method: 'POST', url: '/v1/auth/refresh-token' },
