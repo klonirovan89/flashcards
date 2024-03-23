@@ -31,7 +31,7 @@ export const ForgotPassword = () => {
   const onSubmit = async (data: FormValues) => {
     recoveryPassword({
       email: data.email,
-      html: '<h1>Hi, ##name##</h1><p>Click <a href="https://falshcards-pavels-projects-3d7de22a.vercel.app/create-new-password/##token##">here</a> to recover your password</p>',
+      html: '<h1>Hi, ##name##</h1><p>Click <a href="https://cards-production.vercel.app/create-new-password/##token##">here</a> to recover your password</p>',
     })
     navigate('/check-email')
   }
