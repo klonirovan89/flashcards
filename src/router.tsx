@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 
 import { CheckEmail } from '@/components/auth/check-email'
+import { CreateNewPassword } from '@/components/auth/create-new-password'
 import { ForgotPassword } from '@/components/auth/forgot-password'
 import { Learn } from '@/components/auth/learn'
 import { SignUp } from '@/components/auth/sign-up'
@@ -34,6 +35,10 @@ const publicRoutes: RouteObject[] = [
   {
     element: <CheckEmail />,
     path: '/check-email',
+  },
+  {
+    element: <CreateNewPassword />,
+    path: '/create-new-password',
   },
 ]
 
