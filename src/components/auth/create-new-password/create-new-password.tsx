@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
 import { ControlledTextField } from '@/controlled/controlled-text-field/controlled-text-field'
 import { useResetPasswordMutation } from '@/pages/auth/api/auth-api'
+import { router } from '@/router'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -28,7 +29,8 @@ export const CreateNewPassword = () => {
   const { token } = useParams<{ token: string }>()
   const [resetPassword] = useResetPasswordMutation()
   const onSubmit = async (data: FormValues) => {
-    resetPassword({ password: data.password, token: token ?? '' })
+    await resetPassword({ password: data.password, token: token ?? '' })
+    await router.navigate('/login')
   }
 
   return (

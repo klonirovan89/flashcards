@@ -17,21 +17,12 @@ export const baseQueryWithRauth: BaseQueryFn<
   await mutex.waitForUnlock()
   let result = await baseQuery(args, api, extraOptions)
 
-  const pathCheckEmail = router.state.location.pathname.startsWith('/check-email')
-  const pathRecoverPassword = router.state.location.pathname.startsWith('/recover-password')
-  const pathCreatePassword = router.state.location.pathname.startsWith('/create-new-password')
+  const excludedPaths = ['/check-email', '/recover-password', '/create-new-password']
+  const currentPath = router.state.location.pathname
 
-  console.log('pathCheckEmail: ' + pathCheckEmail)
-  console.log('pathRecoverPassword: ' + pathRecoverPassword)
-  console.log('pathCreatePassword: ' + pathCreatePassword)
+  const isExcludedPath = excludedPaths.some(path => currentPath.startsWith(path))
 
-  if (
-    result.error &&
-    result.error.status === 401 &&
-    !pathCheckEmail &&
-    !pathRecoverPassword &&
-    !pathCreatePassword
-  ) {
+  if (result.error && result.error.status === 401 && !isExcludedPath) {
     if (!mutex.isLocked()) {
       const release = await mutex.acquire()
       const refreshResult = await baseQuery(
