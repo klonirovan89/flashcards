@@ -34,7 +34,7 @@ const publicRoutes: RouteObject[] = [
   },
   {
     element: <CheckEmail />,
-    path: '/check-email',
+    path: '/check-email/:email',
   },
   {
     element: <CreateNewPassword />,

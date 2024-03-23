@@ -10,11 +10,11 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 import s from './forgot-password.module.scss'
-const forgotPasswordSchema = z.object({
+const recoveryPasswordSchema = z.object({
   email: z.string().email().trim(),
 })
 
-type FormValues = z.infer<typeof forgotPasswordSchema>
+type FormValues = z.infer<typeof recoveryPasswordSchema>
 export const ForgotPassword = () => {
   const [recoveryPassword] = usePasswordRecoveryMutation()
 
@@ -23,8 +23,8 @@ export const ForgotPassword = () => {
     formState: { errors },
     handleSubmit,
   } = useForm<FormValues>({
-    defaultValues: { email: '' },
-    resolver: zodResolver(forgotPasswordSchema),
+    defaultValues: { email: 'gbmtt@mail.ru' },
+    resolver: zodResolver(recoveryPasswordSchema),
   })
 
   const navigate = useNavigate()
@@ -33,7 +33,7 @@ export const ForgotPassword = () => {
       email: data.email,
       html: '<h1>Hi, ##name##</h1><p>Click <a href="https://cards-production.vercel.app/create-new-password/##token##">here</a> to recover your password</p>',
     })
-    navigate('/check-email')
+    navigate(`/check-email/${data.email}`)
   }
 
   return (
