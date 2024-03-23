@@ -18,8 +18,8 @@ export const RadioGroup = forwardRef<ElementRef<typeof RadixRadioGroup.Root>, Ra
         ref={ref}
       >
         {options.map(el => (
-          <label>
-            <div className={s.container} key={el.value}>
+          <label key={el.value}>
+            <div className={s.container}>
               <RadixRadioGroup.Item
                 checked={el.value === selectedValue}
                 className={s.item}

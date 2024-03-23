@@ -18,7 +18,7 @@ export const baseQueryWithRauth: BaseQueryFn<
   let result = await baseQuery(args, api, extraOptions)
 
   if (result.error && result.error.status === 401) {
-    if (!mutex.isLocked()) {
+    if (!mutex.isLocked() && api.endpoint !== 'me') {
       const release = await mutex.acquire()
       const refreshResult = await baseQuery(
         { method: 'POST', url: '/v1/auth/refresh-token' },
@@ -29,7 +29,7 @@ export const baseQueryWithRauth: BaseQueryFn<
       if (refreshResult.meta?.response && refreshResult.meta.response.status === 204) {
         result = await baseQuery(args, api, extraOptions)
       } else {
-        router.navigate('/login')
+        await router.navigate('/login')
       }
       release()
     } else {

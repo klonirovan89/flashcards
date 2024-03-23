@@ -31,7 +31,7 @@ export const Header = ({ avatar, email, isLoggedIn, logout, userName }: HeaderPr
             </Typography>
           </div>
         ) : (
-          <Button as={Link} to={'/login'} variant={'secondary'}>
+          <Button as={Link} to={`/login`} variant={'secondary'}>
             Sign In
           </Button>
         )}
