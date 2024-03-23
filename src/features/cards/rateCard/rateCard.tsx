@@ -1,6 +1,8 @@
-import { ControlledRadioGroup } from '@/controlled/controlled-radio-group'
 import { useForm } from 'react-hook-form'
+
 import { Button } from '@/components/ui/button'
+import { ControlledRadioGroup } from '@/controlled/controlled-radio-group'
+
 import s from './rateCard.module.scss'
 
 export const RateCard = (props: PropsType) => {
@@ -19,11 +21,11 @@ export const RateCard = (props: PropsType) => {
   })
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={s.root}>
+    <form className={s.root} onSubmit={handleSubmit(onSubmit)}>
       <div className={s.radioGroup}>
-        <ControlledRadioGroup disabled={false} control={control} name={'grade'} options={options} />
+        <ControlledRadioGroup control={control} disabled={false} name={'grade'} options={options} />
       </div>
-      <Button fullWidth className={s.button}>
+      <Button className={s.button} fullWidth>
         Next Question
       </Button>
     </form>
