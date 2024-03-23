@@ -7,7 +7,7 @@ import { FileUploader } from '@/components/ui/file-uploader'
 import { Icon } from '@/components/ui/icon/Icon'
 import { Typography } from '@/components/ui/typography'
 import { ControlledTextField } from '@/controlled/controlled-text-field/controlled-text-field'
-import { useMeQuery, useSetMeMutation } from '@/pages/auth/api/auth-api'
+import { useGetMeQueryState, useSetMeMutation } from '@/pages/auth/api/auth-api'
 import { zodResolver } from '@hookform/resolvers/zod'
 import z from 'zod'
 
@@ -23,7 +23,7 @@ export const EditProfileForm = ({
   onSubmit,
   setEditMode,
 }: EditProfileFormProps) => {
-  const { data: me } = useMeQuery()
+  const { data: me } = useGetMeQueryState()
 
   const {
     control,
@@ -79,7 +79,7 @@ export const EditProfileForm = ({
 
 const ProfileAvatar = ({ isEditMode }: AvatarProps) => {
   const [setNewImage] = useSetMeMutation()
-  const { data } = useMeQuery()
+  const { data } = useGetMeQueryState()
 
   const src = data?.avatar
 

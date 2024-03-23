@@ -7,7 +7,9 @@ import {
 } from 'react-router-dom'
 
 import { CheckEmail } from '@/components/auth/check-email'
+import { CreateNewPassword } from '@/components/auth/create-new-password'
 import { ForgotPassword } from '@/components/auth/forgot-password'
+import { Learn } from '@/components/auth/learn'
 import { SignUp } from '@/components/auth/sign-up'
 import { Layout } from '@/components/ui/layout/layout'
 import { QueryLoader } from '@/components/ui/loader/qeryLoader'
@@ -16,7 +18,6 @@ import { LoginPage } from '@/pages/auth/ui/login'
 import { Cards } from '@/pages/cards/ui'
 import { Decks } from '@/pages/decks/ui'
 import { MyProfilePage } from '@/pages/profile/profile'
-import { Learn } from '@/components/auth/learn'
 
 const publicRoutes: RouteObject[] = [
   {
@@ -35,6 +36,10 @@ const publicRoutes: RouteObject[] = [
     element: <CheckEmail />,
     path: '/check-email',
   },
+  {
+    element: <CreateNewPassword />,
+    path: '/create-new-password',
+  },
 ]
 
 const privateRoutes: RouteObject[] = [
@@ -51,8 +56,8 @@ const privateRoutes: RouteObject[] = [
     path: '/edit-profile',
   },
   {
-    path: '/decks/:id/learn',
     element: <Learn />,
+    path: '/decks/:id/learn',
   },
 ]
 
