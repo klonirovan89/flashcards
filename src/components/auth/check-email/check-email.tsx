@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
@@ -8,7 +8,7 @@ import { Typography } from '@/components/ui/typography'
 import s from './check-email.module.scss'
 
 export const CheckEmail = () => {
-  const email = 'test@gmail.com'
+  const { email } = useParams<{ email: string }>()
 
   return (
     <div className={s.root}>

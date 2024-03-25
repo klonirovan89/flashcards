@@ -12,7 +12,7 @@ export const FileUploaderWithImage = (props: PropsType) => {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [imageSrc, setImageSrc] = useState(cover)
 
-  const MAX_FILE_SIZE = 1048576 // 1MB in bytes
+  const MAX_FILE_SIZE = 1048576
   const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/gif']
 
   const resetInputValue = () => {
@@ -39,7 +39,7 @@ export const FileUploaderWithImage = (props: PropsType) => {
         return
       }
 
-      handleSetCover && handleSetCover(file)
+      handleSetCover?.(file)
       const reader = new FileReader()
 
       reader.onloadend = () => {

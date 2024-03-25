@@ -1,28 +1,35 @@
-<div id="header" style="display: flex; justify-content: flex-start; align-items: center" >
-<img src="src/assets/icons/icons8-quizlet-300.png" alt="Cards">
-<h1 style="font-size: 78px; padding: 0; margin: 0">CARDS</h1>
-</div>
-<div style=" text-align: justify">
-<h3 style="padding: 0; margin: 0; font-size: 24px;">In this application you can create a set of cards on absolutely any topic and use them for memorization. You can also look at decks of other users. The main page contains filtering, navigation and sorting elements, while the decks themselves are presented in table form. The application implements authorization, registration and password recovery.</h3>
-</div>
+![Logo](src/assets/icons/icons8-quizlet-300.png)
+# Cards
+***
+**In this application you can create a set of cards on absolutely any topic and use them for memorization. You can also look at decks of other users. The main page contains filtering, navigation and sorting elements, while the decks themselves are presented in table form. The application implements authorization, registration and password recovery.**
 
-# Links:
+Register or use the test account:
 
+login: __test.account.cards@gmail.com__
+
+password: __1234__
+
+## Links:
+***
 - [UI-kit ](https://storybook-flashcards-example.vercel.app/?path=/docs) on Storybook
-- [Quiz-Cards](https://falshcards-pavels-projects-3d7de22a.vercel.app/) - web application
+- [Quiz-Cards](https://cards-production.vercel.app/) - web application
 
-# Libraries and packages:
+## Libraries and packages:
+***
+- [Redux-toolkit](https://redux-toolkit.js.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [clsx](https://www.npmjs.com/package/clsx)
+- [eslint](https://eslint.org/)
+- [stylelint](https://stylelint.io/)
+- [sass](https://sass-lang.com/)
+- [radix-ui](https://www.radix-ui.com/)
+- [storybook](https://storybook.js.org/)
+- [react](https://react.dev/)
+- [react-dom](https://legacy.reactjs.org/docs/react-dom.html)
+- [react-hook-form](https://react-hook-form.com/)
+- [vite](https://vitejs.dev/)
+- [react-redux](https://react-redux.js.org/)
+- [zod](https://zod.dev/)
+- [react-router-dom](https://reactrouter.com/en/main)
+- [react-toastify](https://www.npmjs.com/package/react-toastify)
 
-- redux-toolkit
-- clsx
-- eslint
-- stylelint
-- sass
-- radix-ui
-- storybook
-- react
-- react-dom
-- react-hook-form vite
-- react-redux zod
-- react-router-dom
-- typescript

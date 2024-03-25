@@ -1,9 +1,12 @@
 import { useForm } from 'react-hook-form'
+import { useParams } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
 import { ControlledTextField } from '@/controlled/controlled-text-field/controlled-text-field'
+import { useResetPasswordMutation } from '@/pages/auth/api/auth-api'
+import { router } from '@/router'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -23,11 +26,11 @@ export const CreateNewPassword = () => {
   })
 
   type FormValues = z.infer<typeof loginSchema>
-
-  const onSubmit = (data: FormValues) => {
-    alert('Произошел submit и дальше должен быть переход на новый роут')
-
-    return data
+  const { token } = useParams<{ token: string }>()
+  const [resetPassword] = useResetPasswordMutation()
+  const onSubmit = async (data: FormValues) => {
+    await resetPassword({ password: data.password, token: token ?? '' })
+    await router.navigate('/login')
   }
 
   return (

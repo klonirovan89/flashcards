@@ -2,49 +2,54 @@ button {
   all: unset;
 }
 
+.pseudo {
+  position: absolute;
+  z-index: 0;
+  top: 12px;
+  left: 10px;
+  transform: translate(-50%, -50%);
+
+  width: 0;
+  height: 0;
+
+  background-color: var(--color-dark-500);
+  border-radius: 50%;
+
+  transition: 0.2s;
+}
+
 .container {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  column-gap: 12px;
   cursor: pointer;
+
+  position: relative;
+
+  display: flex;
+  column-gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+
+  &:hover .pseudo {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 .root {
-  background-color: rgba(255, 255, 255, 0);
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
+  position: relative;
+
   display: flex;
-  border: 2px solid var(--color-light-900);
   align-items: center;
   justify-content: center;
-  position: relative;
+
+  width: 16px;
+  height: 16px;
+
+  background-color: rgb(255 255 255 / 0%);
+  border: 2px solid var(--color-light-900);
+  border-radius: 4px;
 
   &[data-state='checked'] {
     border: 2px solid transparent;
-  }
-
-  &:not([data-disabled])::before {
-    position: absolute;
-    z-index: -1;
-    content: '';
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    transition: 0.3s;
-  }
-
-  &:hover::before {
-    width: 36px;
-    height: 36px;
-    background-color: var(--color-dark-500);
-  }
-
-  &:active::before {
-    width: 36px;
-    height: 36px;
-    background-color: var(--color-dark-100);
   }
 
   &:disabled {
@@ -56,15 +61,18 @@ button {
 .indicator {
   position: absolute;
   z-index: 1;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
   width: 20px;
   height: 20px;
+
   color: var(--color-light-700);
-  border-radius: 4px;
+
   background-color: var(--color-dark-100);
+  border-radius: 4px;
 
   &:not([data-disabled]) {
     color: black;

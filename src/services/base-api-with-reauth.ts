@@ -17,7 +17,12 @@ export const baseQueryWithRauth: BaseQueryFn<
   await mutex.waitForUnlock()
   let result = await baseQuery(args, api, extraOptions)
 
-  if (result.error && result.error.status === 401) {
+  const excludedPaths = ['/check-email', '/recover-password', '/create-new-password']
+  const currentPath = router.state.location.pathname
+
+  const isExcludedPath = excludedPaths.some(path => currentPath.startsWith(path))
+
+  if (result.error && result.error.status === 401 && !isExcludedPath) {
     if (!mutex.isLocked()) {
       const release = await mutex.acquire()
       const refreshResult = await baseQuery(
@@ -29,7 +34,7 @@ export const baseQueryWithRauth: BaseQueryFn<
       if (refreshResult.meta?.response && refreshResult.meta.response.status === 204) {
         result = await baseQuery(args, api, extraOptions)
       } else {
-        router.navigate('/login')
+        await router.navigate('/login')
       }
       release()
     } else {

@@ -6,6 +6,10 @@ button {
   cursor: pointer;
 }
 
+.content {
+  width: var(--radix-select-trigger-width);
+}
+
 .arrow {
   transform-origin: center;
   rotate: 180deg;
@@ -67,16 +71,19 @@ button {
     height: 24px;
     padding: 3px 6px 3px 7px;
   }
+
+  &.fullWidth {
+    width: 100%;
+  }
 }
 
 .viewport {
   cursor: pointer;
 
-  width: 210px;
+  // width: 210px;
 
   background-color: var(--color-dark-700);
   border: 1px solid var(--color-dark-100);
-
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
@@ -91,11 +98,15 @@ button {
 .item {
   display: flex;
   align-items: center;
+
   padding: 6px 12px;
+
   outline: none;
+
   transition:
     background-color 0.5s ease,
     color 0.5s ease;
+
   &[data-state='checked'],
   &[data-highlighted] {
     background-color: var(--color-accent-900);
