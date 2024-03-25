@@ -19,13 +19,11 @@ export const FileUploader = (props: PropsType) => {
       if (!ALLOWED_FILE_TYPES.includes(file.type)) {
         toast.error('Only image/jpeg, image/png, image/gif formats are supported.')
 
-
         return
       }
 
       if (file.size > MAX_FILE_SIZE) {
         toast.error('Max image size is 1 MB.')
-
 
         return
       }

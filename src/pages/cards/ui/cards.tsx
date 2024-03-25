@@ -105,7 +105,10 @@ export const Cards = () => {
             ) : (
               deck.data &&
               deck.data?.cardsCount > 0 && (
-                <Button onClick={() => alert('Здесь должен быть роут')} variant={'primary'}>
+                <Button
+                  onClick={() => navigate(`/decks/${deck.data?.id}/learn`)}
+                  variant={'primary'}
+                >
                   Learn Cards
                 </Button>
               )
