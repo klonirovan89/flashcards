@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import { toast } from 'react-toastify'
 
 import { ButtonWithIcon } from '@/components/ui/button-with-icon'
 import { TextField } from '@/components/ui/text-field/text-field'
@@ -14,18 +15,26 @@ export const FileUploaderWithImage = (props: PropsType) => {
   const MAX_FILE_SIZE = 1048576
   const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/gif']
 
+  const resetInputValue = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''
+    }
+  }
+
   const handleFileInputChange = (event: any) => {
     const file = event.target.files && event.target.files[0]
 
     if (file) {
       if (!ALLOWED_FILE_TYPES.includes(file.type)) {
-        alert('Only image/jpeg, image/png, image/gif formats are supported.')
+        resetInputValue()
+        toast.error('Only image/jpeg, image/png, image/gif formats are supported.')
 
         return
       }
 
       if (file.size > MAX_FILE_SIZE) {
-        alert('Max image size is 1 MB.')
+        resetInputValue()
+        toast.error('Max image size is 1 MB.')
 
         return
       }
@@ -56,9 +65,7 @@ export const FileUploaderWithImage = (props: PropsType) => {
     setImageSrc('')
     handleSetCover && handleSetCover(null)
 
-    if (fileInputRef.current) {
-      fileInputRef.current.value = ''
-    }
+    resetInputValue()
   }
 
   return (

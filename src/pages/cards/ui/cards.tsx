@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { useDebounce } from '@/common/hooks'
+import { useDebounce } from '@/common/hooks/useDebounce/useDebounce'
 import { BackButton } from '@/components/ui/back-button'
 import { Button } from '@/components/ui/button'
 import { DropDownMenu } from '@/components/ui/drop-down/dropDownMenu'

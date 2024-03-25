@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { useDebounce } from '@/common/hooks'
+import { useDebounce } from '@/common/hooks/useDebounce/useDebounce'
 import { InitLoader } from '@/components/ui/loader/initLoader'
 import { Pagination } from '@/components/ui/newPagination'
 import { Page } from '@/components/ui/page/page'

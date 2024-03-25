@@ -11,8 +11,8 @@ export const TextField = forwardRef<HTMLInputElement, PropsType>(
     {
       disabled = false,
       errorMessage,
-      label,
       fullWidth,
+      label,
       placeholder,
       searchName,
       type = 'default',
@@ -75,9 +75,9 @@ export const TextField = forwardRef<HTMLInputElement, PropsType>(
 )
 
 export type TextFiledProps = {
-  fullWidth?: boolean
   disabled?: boolean
   errorMessage?: string
+  fullWidth?: boolean
   label?: string
   placeholder?: string
   searchName?: string
