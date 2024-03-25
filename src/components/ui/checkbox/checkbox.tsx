@@ -13,6 +13,7 @@ export const Checkbox = forwardRef<ElementRef<typeof RadixCheckbox.Root>, PropsT
     return (
       <label>
         <div className={s.container}>
+          <div className={s.pseudo} />
           <RadixCheckbox.Root
             checked={rest.checked}
             className={s.root}
