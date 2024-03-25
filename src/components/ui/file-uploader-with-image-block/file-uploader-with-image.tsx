@@ -15,17 +15,25 @@ export const FileUploaderWithImage = (props: PropsType) => {
   const MAX_FILE_SIZE = 1048576 // 1MB in bytes
   const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/gif']
 
+  const resetInputValue = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''
+    }
+  }
+
   const handleFileInputChange = (event: any) => {
     const file = event.target.files && event.target.files[0]
 
     if (file) {
       if (!ALLOWED_FILE_TYPES.includes(file.type)) {
+        resetInputValue()
         toast.error('Only image/jpeg, image/png, image/gif formats are supported.')
 
         return
       }
 
       if (file.size > MAX_FILE_SIZE) {
+        resetInputValue()
         toast.error('Max image size is 1 MB.')
 
         return
@@ -57,9 +65,7 @@ export const FileUploaderWithImage = (props: PropsType) => {
     setImageSrc('')
     handleSetCover && handleSetCover(null)
 
-    if (fileInputRef.current) {
-      fileInputRef.current.value = ''
-    }
+    resetInputValue()
   }
 
   return (
