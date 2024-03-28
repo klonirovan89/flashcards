@@ -21,7 +21,12 @@ export const DropDownMenu = (props: PropsType) => {
           <RadixDropdownMenu.Content align={'end'} className={s.content} sideOffset={8}>
             {options.map((option, index) => (
               <RadixDropdownMenu.Item className={s.menuItem} key={index}>
-                <Button className={s.item} onClick={() => option.handler()} variant={'pure'}>
+                <Button
+                  className={s.item}
+                  disabled={option.disabled}
+                  onClick={() => option.handler()}
+                  variant={'pure'}
+                >
                   <div className={s.icon}>
                     <Icon height={'16px'} iconId={option.id} width={'16px'} />
                   </div>
@@ -41,6 +46,7 @@ export const DropDownMenu = (props: PropsType) => {
 
 type PropsType = {
   options: {
+    disabled: boolean
     handler: () => void
     id: string
     label: string

@@ -64,6 +64,15 @@ div {
       color: var(--color-accent-300);
     }
   }
+  &:disabled {
+    .icon svg {
+      fill: var(--color-dark-100);
+    }
+
+    .typographyStyle {
+      color: var(--color-dark-100);
+    }
+  }
 }
 
 .menuItem:last-of-type .item {

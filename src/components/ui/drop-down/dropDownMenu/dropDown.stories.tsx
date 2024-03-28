@@ -14,9 +14,9 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     options: [
-      { handler: () => alert('Learn'), id: 'Learn', label: 'Learn' },
-      { handler: () => alert('Edit'), id: 'Edit', label: 'Edit' },
-      { handler: () => alert('Delete'), id: 'Delete', label: 'Delete' },
+      { disabled: false, handler: () => alert('Learn'), id: 'Learn', label: 'Learn' },
+      { disabled: false, handler: () => alert('Edit'), id: 'Edit', label: 'Edit' },
+      { disabled: false, handler: () => alert('Delete'), id: 'Delete', label: 'Delete' },
     ],
   },
   render: args => {

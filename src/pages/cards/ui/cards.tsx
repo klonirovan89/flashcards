@@ -60,6 +60,8 @@ export const Cards = () => {
 
   const isMyDeck = meData.data?.id === deck.data?.userId
 
+  const isEmptyDeck = data?.items.length === 0
+
   const columns = columnsCards.filter(column => (isMyDeck ? column : column.key !== 'controls'))
 
   if (isLoading) {
@@ -70,9 +72,14 @@ export const Cards = () => {
   }
 
   const options = [
-    { handler: () => navigate(`/decks/${deck.data?.id}/learn`), id: 'Learn', label: 'Learn' },
-    { handler: () => setOpenEditModal(true), id: 'Edit', label: 'Edit' },
-    { handler: () => setOpenDeleteModal(true), id: 'Delete', label: 'Delete' },
+    {
+      disabled: isEmptyDeck,
+      handler: () => navigate(`/decks/${deck.data?.id}/learn`),
+      id: 'Learn',
+      label: 'Learn',
+    },
+    { disabled: false, handler: () => setOpenEditModal(true), id: 'Edit', label: 'Edit' },
+    { disabled: false, handler: () => setOpenDeleteModal(true), id: 'Delete', label: 'Delete' },
   ]
 
   return (
