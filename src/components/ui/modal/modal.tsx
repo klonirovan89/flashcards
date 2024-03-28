@@ -28,8 +28,9 @@ export const SuperModal = ({
       <Dialog.Portal>
         <Dialog.Overlay className={c.overlay}>
           <ToastContainer
-            autoClose={2000}
+            autoClose={3000}
             containerId={'modalId'}
+            draggable
             hideProgressBar
             pauseOnHover
             position={'bottom-left'}

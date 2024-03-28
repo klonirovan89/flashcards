@@ -10,6 +10,8 @@ export function App() {
       <ToastContainer
         autoClose={3000}
         containerId={'appId'}
+        draggable
+        hideProgressBar
         pauseOnHover
         position={'bottom-left'}
         theme={'dark'}
