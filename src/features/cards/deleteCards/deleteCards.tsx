@@ -1,14 +1,15 @@
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 import { Button } from '@/components/ui/button/button'
 import { FormButtons } from '@/components/ui/form-buttons'
 import { Icon } from '@/components/ui/icon/Icon'
 import { SuperModal } from '@/components/ui/modal'
-import { Card } from '@/pages/cards/api/cards-types'
 import { useDeleteCardsMutation } from '@/pages/cards/api/cards-api'
+import { Card } from '@/pages/cards/api/cards-types'
 
 export const DeleteCards = (props: PropsType) => {
-  const { className, card } = props
+  const { card, className } = props
 
   const [open, setOpen] = useState(false)
 
@@ -17,8 +18,11 @@ export const DeleteCards = (props: PropsType) => {
   const deleteDeck = async () => {
     await cardApi({ id: card.id })
       .unwrap()
+      .then(() => {
+        toast.dark('Why, why you deleted me?', { containerId: 'appId' })
+      })
       .catch(e => {
-        console.log(e.data.message)
+        toast.error(e.error, { containerId: 'appId' })
       })
     setOpen(false)
   }
@@ -47,6 +51,6 @@ export const DeleteCards = (props: PropsType) => {
 }
 
 type PropsType = {
-  className: string
   card: Card
+  className: string
 }
