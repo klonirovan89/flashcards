@@ -14,7 +14,7 @@ export const CreateCards = (props: PropsType) => {
 
   return (
     <div className={s.top}>
-      <AddNewCard deckId={deckId} changeModalState={changeModalState} open={open} withTrigger />
+      <AddNewCard changeModalState={changeModalState} deckId={deckId} open={open} withTrigger />
     </div>
   )
 }
