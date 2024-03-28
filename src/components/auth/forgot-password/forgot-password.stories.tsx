@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { ForgotPassword } from './forgot-password'
+import { ForgotPassword, FormValuesRecoveryPassword } from './forgot-password'
 
 const meta = {
   component: ForgotPassword,
@@ -11,4 +11,13 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {}
+export const Default: Story = {
+  args: {} as any,
+  render: () => {
+    const onSubmit = (data: FormValuesRecoveryPassword) => {
+      alert(JSON.stringify(data))
+    }
+
+    return <ForgotPassword onSubmit={onSubmit} />
+  },
+}
