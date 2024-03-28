@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import { ToastContainer } from 'react-toastify'
 
 import * as Dialog from '@radix-ui/react-dialog'
 
@@ -25,18 +26,27 @@ export const SuperModal = ({
         </Dialog.Trigger>
       )}
       <Dialog.Portal>
-        <Dialog.Overlay className={c.overlay} />
-        <Dialog.Content className={c.root}>
-          <div className={c.header}>
-            <Dialog.Title className={c.title}>
-              <Typography variant={'h3'}>{title}</Typography>
-            </Dialog.Title>
-            <Dialog.Close className={c.close}>
-              <Icon height={'22px'} iconId={'Cross'} width={'22px'} />
-            </Dialog.Close>
-          </div>
-          <div className={c.content}>{children}</div>
-        </Dialog.Content>
+        <Dialog.Overlay className={c.overlay}>
+          <ToastContainer
+            autoClose={2000}
+            containerId={'modalId'}
+            hideProgressBar
+            pauseOnHover
+            position={'bottom-left'}
+            theme={'dark'}
+          />
+          <Dialog.Content className={c.root}>
+            <div className={c.header}>
+              <Dialog.Title className={c.title}>
+                <Typography variant={'h3'}>{title}</Typography>
+              </Dialog.Title>
+              <Dialog.Close className={c.close}>
+                <Icon height={'22px'} iconId={'Cross'} width={'22px'} />
+              </Dialog.Close>
+            </div>
+            <div className={c.content}>{children}</div>
+          </Dialog.Content>
+        </Dialog.Overlay>
       </Dialog.Portal>
     </Dialog.Root>
   )

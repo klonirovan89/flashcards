@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
 import { Button } from '@/components/ui/button'
 import { ButtonWithIcon } from '@/components/ui/button-with-icon'
@@ -83,8 +84,9 @@ const ProfileAvatar = ({ isEditMode }: AvatarProps) => {
 
   const src = data?.avatar
 
-  const setFile = (file: File) => {
-    setNewImage({ avatar: file })
+  const setFile = async (file: File) => {
+    await setNewImage({ avatar: file })
+    toast.success('Successful download', { containerId: 'appId' })
   }
 
   return (

@@ -1,13 +1,10 @@
+import { PropsWithChildren } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { QueryLoader } from '@/components/ui/loader/qeryLoader'
-import { Typography } from '@/components/ui/typography'
 import { ControlledTextField } from '@/controlled/controlled-text-field/controlled-text-field'
-import { useSignUpMutation } from '@/pages/auth/api/auth-api'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { clsx } from 'clsx'
 import { z } from 'zod'
 
 import s from './sign-up.module.scss'
@@ -23,13 +20,17 @@ const SignUpSchema = z
     path: ['confirmPassword'],
   })
 
-type FormValues = z.infer<typeof SignUpSchema>
-export const SignUp = () => {
+type Props = {
+  className?: string
+  onSubmit: (data: FormValuesSignUp) => void
+} & PropsWithChildren
+export type FormValuesSignUp = z.infer<typeof SignUpSchema>
+export const SignUp = ({ children, className, onSubmit }: Props) => {
   const {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm<FormValues>({
+  } = useForm<FormValuesSignUp>({
     defaultValues: {
       confirmPassword: '',
       email: '',
@@ -38,61 +39,40 @@ export const SignUp = () => {
     },
     resolver: zodResolver(SignUpSchema),
   })
-  const [signUp, { isLoading }] = useSignUpMutation()
-
-  if (isLoading) {
-    return <QueryLoader />
-  }
-  const onSubmit = async (data: FormValues) => {
-    signUp({ email: data.email, password: data.password })
-  }
+  const classes = clsx(s.form, className)
 
   return (
-    <div className={s.root}>
-      <Card>
-        <div className={s.section}>
-          <Typography variant={'h1'}>Sign Up</Typography>
-          <div className={s.form}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className={s.textField}>
-                <ControlledTextField
-                  control={control}
-                  errorMessage={errors.email?.message}
-                  label={'Email'}
-                  name={'email'}
-                />
-              </div>
-              <div className={s.textField}>
-                <ControlledTextField
-                  control={control}
-                  errorMessage={errors.password?.message}
-                  label={'Password'}
-                  name={'password'}
-                  type={'password'}
-                />
-              </div>
-              <div className={s.textField}>
-                <ControlledTextField
-                  control={control}
-                  errorMessage={errors.confirmPassword?.message}
-                  label={'Confirm Password'}
-                  name={'confirmPassword'}
-                  type={'password'}
-                />
-              </div>
-              <Button className={s.button} fullWidth type={'submit'}>
-                Sign Up
-              </Button>
-            </form>
-          </div>
-          <div className={s.typographyStyle}>
-            <Typography variant={'body2'}>Already have an account?</Typography>
-            <Typography as={Link} to={'/login'} variant={'subtitle1'}>
-              Sign In
-            </Typography>
-          </div>
-        </div>
-      </Card>
-    </div>
+    <form className={classes} onSubmit={handleSubmit(onSubmit)}>
+      <div className={s.textField}>
+        <ControlledTextField
+          control={control}
+          errorMessage={errors.email?.message}
+          label={'Email'}
+          name={'email'}
+        />
+      </div>
+      <div className={s.textField}>
+        <ControlledTextField
+          control={control}
+          errorMessage={errors.password?.message}
+          label={'Password'}
+          name={'password'}
+          type={'password'}
+        />
+      </div>
+      <div className={s.textField}>
+        <ControlledTextField
+          control={control}
+          errorMessage={errors.confirmPassword?.message}
+          label={'Confirm Password'}
+          name={'confirmPassword'}
+          type={'password'}
+        />
+      </div>
+      <Button className={s.button} fullWidth type={'submit'}>
+        Sign Up
+      </Button>
+      {children}
+    </form>
   )
 }

@@ -27,7 +27,7 @@
 
   .button {
     box-sizing: border-box;
-    margin-top: 36px;
+    margin-top: 45px;
   }
 }
 
@@ -49,6 +49,8 @@
   flex-direction: column;
   row-gap: 7px;
   align-items: center;
+
+  margin-top: 35px;
 
   span {
     color: var(--color-light-900);

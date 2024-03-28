@@ -7,8 +7,14 @@ import { store } from './services/store'
 export function App() {
   return (
     <Provider store={store}>
+      <ToastContainer
+        autoClose={3000}
+        containerId={'appId'}
+        pauseOnHover
+        position={'bottom-left'}
+        theme={'dark'}
+      />
       <Router />
-      <ToastContainer />
     </Provider>
   )
 }
