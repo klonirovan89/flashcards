@@ -116,7 +116,7 @@ export const Cards = () => {
                   onClick={() => navigate(`/decks/${deck.data?.id}/learn`)}
                   variant={'primary'}
                 >
-                  Learn Cards
+                  <Typography variant={'subtitle2'}>Learn Cards</Typography>
                 </Button>
               )
             )}
