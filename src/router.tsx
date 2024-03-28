@@ -7,14 +7,14 @@ import {
 } from 'react-router-dom'
 
 import { CheckEmail } from '@/components/auth/check-email'
-import { CreateNewPassword } from '@/components/auth/create-new-password'
-import { ForgotPassword } from '@/components/auth/forgot-password'
 import { Learn } from '@/components/auth/learn'
-import { SignUp } from '@/components/auth/sign-up'
 import { Layout } from '@/components/ui/layout/layout'
 import { QueryLoader } from '@/components/ui/loader/qeryLoader'
 import { useMeQuery } from '@/pages/auth/api/auth-api'
+import { CreateNewPasswordPage } from '@/pages/auth/ui/create-new-password'
 import { LoginPage } from '@/pages/auth/ui/login'
+import { ForgotPasswordPage } from '@/pages/auth/ui/password-recovery'
+import { SignUpPage } from '@/pages/auth/ui/sign-up'
 import { Cards } from '@/pages/cards/ui'
 import { Decks } from '@/pages/decks/ui'
 import { MyProfilePage } from '@/pages/profile/profile'
@@ -25,11 +25,11 @@ const publicRoutes: RouteObject[] = [
     path: '/login',
   },
   {
-    element: <ForgotPassword />,
+    element: <ForgotPasswordPage />,
     path: '/recover-password',
   },
   {
-    element: <SignUp />,
+    element: <SignUpPage />,
     path: '/sign-up',
   },
   {
@@ -37,7 +37,7 @@ const publicRoutes: RouteObject[] = [
     path: '/check-email/:email',
   },
   {
-    element: <CreateNewPassword />,
+    element: <CreateNewPasswordPage />,
     path: '/create-new-password/:token',
   },
 ]
