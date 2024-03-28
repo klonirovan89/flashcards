@@ -1,62 +1,54 @@
+import { PropsWithChildren } from 'react'
 import { useForm } from 'react-hook-form'
-import { useParams } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
 import { ControlledTextField } from '@/controlled/controlled-text-field/controlled-text-field'
-import { useResetPasswordMutation } from '@/pages/auth/api/auth-api'
-import { router } from '@/router'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { clsx } from 'clsx'
 import { z } from 'zod'
 
 import s from './create-new-password.module.scss'
 
-export const CreateNewPassword = () => {
-  const loginSchema = z.object({
-    password: z.string().min(3).max(30),
-  })
+type Props = {
+  className?: string
+  onSubmit: (data: FormValuesCreateNewPassword) => void
+} & PropsWithChildren
+const loginSchema = z.object({
+  password: z.string().min(3).max(30),
+})
 
+export type FormValuesCreateNewPassword = z.infer<typeof loginSchema>
+export const CreateNewPassword = ({ children, className, onSubmit }: Props) => {
   const {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm<FormValues>({
+  } = useForm<FormValuesCreateNewPassword>({
     resolver: zodResolver(loginSchema),
   })
 
-  type FormValues = z.infer<typeof loginSchema>
-  const { token } = useParams<{ token: string }>()
-  const [resetPassword] = useResetPasswordMutation()
-  const onSubmit = async (data: FormValues) => {
-    await resetPassword({ password: data.password, token: token ?? '' })
-    await router.navigate('/login')
-  }
+  const classes = clsx(s.form, className)
 
   return (
-    <div className={s.root}>
-      <Card>
-        <div className={s.section}>
-          <Typography variant={'h1'}>Create new password</Typography>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className={s.textField}>
-              <ControlledTextField
-                control={control}
-                errorMessage={errors.password?.message}
-                label={'Password'}
-                name={'password'}
-                type={'password'}
-              />
-            </div>
-            <Typography className={s.typographyStyle} variant={'body2'}>
-              Enter new password and then sign in with it.
-            </Typography>
-            <Button className={s.button} fullWidth type={'submit'}>
-              <Typography variant={'subtitle2'}>Create New Password</Typography>
-            </Button>
-          </form>
-        </div>
-      </Card>
-    </div>
+    <form className={classes} onSubmit={handleSubmit(onSubmit)}>
+      <div className={s.textField}>
+        <ControlledTextField
+          control={control}
+          errorMessage={errors.password?.message}
+          label={'Password'}
+          name={'password'}
+          type={'password'}
+        />
+      </div>
+      <Typography className={s.typographyStyle} variant={'body2'}>
+        Enter new password and then sign in with it.
+      </Typography>
+
+      <Button className={s.button} fullWidth type={'submit'}>
+        <Typography variant={'subtitle2'}>Create New Password</Typography>
+      </Button>
+      {children}
+    </form>
   )
 }
