@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
+import { Avatar } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { ButtonWithIcon } from '@/components/ui/button-with-icon'
 import { Card } from '@/components/ui/card'
@@ -40,7 +41,7 @@ export const EditProfileForm = ({
   return (
     <Card className={c.card}>
       <Typography variant={'h1'}>Personal Information</Typography>
-      <ProfileAvatar isEditMode={editMode} />
+      <ProfileAvatar isEditMode={editMode} userName={me?.name} />
       {!editMode ? (
         <>
           <div className={c.name}>
@@ -78,7 +79,7 @@ export const EditProfileForm = ({
   )
 }
 
-const ProfileAvatar = ({ isEditMode }: AvatarProps) => {
+const ProfileAvatar = ({ isEditMode, userName }: AvatarProps) => {
   const [setNewImage] = useSetMeMutation()
   const { data } = useGetMeQueryState()
 
@@ -91,7 +92,9 @@ const ProfileAvatar = ({ isEditMode }: AvatarProps) => {
 
   return (
     <div className={c.avatar}>
-      <img alt={'No Avatar'} className={c.image} src={src ?? ''} />
+      <div className={c.image}>
+        <Avatar src={src ?? ''} userName={userName} />
+      </div>
       {!isEditMode && <FileUploader className={c.edit} iconId={'edit'} setFile={setFile} />}
     </div>
   )
@@ -100,6 +103,7 @@ const ProfileAvatar = ({ isEditMode }: AvatarProps) => {
 type AvatarProps = {
   avatar?: null | string
   isEditMode?: boolean
+  userName: string | undefined
 }
 
 type FormValues = z.infer<typeof editProfileSchema>

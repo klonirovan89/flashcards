@@ -28,7 +28,7 @@ export const Avatar = (props: PropsType) => {
     return result.join('')
   }
 
-  const abbreviatedName = changeName(userName)
+  const abbreviatedName = changeName(userName || '')
 
   return (
     <RadixAvatar.Root className={s.avatarRoot}>
@@ -41,6 +41,6 @@ export const Avatar = (props: PropsType) => {
 }
 
 type PropsType = {
-  src?: string
-  userName: string
+  src?: string | undefined
+  userName: string | undefined
 }

@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { FileUploaderWithImage } from '@/components/ui/file-uploader-with-image-block'
 import { FormButtons } from '@/components/ui/form-buttons'
 import { Select } from '@/components/ui/select'
+import { Typography } from '@/components/ui/typography'
 import { ControlledTextField } from '@/controlled/controlled-text-field/controlled-text-field'
 import { Card, FormDataCards } from '@/pages/cards/api/cards-types'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -73,11 +74,13 @@ export const CardForm = (props: PropsType) => {
 
   return (
     <div className={c.wrapper}>
+      <Typography className={c.typographyStyle} variant={'body2'}>
+        Choose A Question Format
+      </Typography>
       <form className={c.formWrapper} onSubmit={handleSubmit(onSubmit)}>
         <Select
           fullWidth
           handleSelectChange={value => setSelectValue(value)}
-          label={'Choose A Question Format'}
           options={options}
           selectedValue={selectValue}
         />
