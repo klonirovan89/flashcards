@@ -71,8 +71,6 @@ export const CardForm = (props: PropsType) => {
     changeModalState()
   }
 
-  console.log(deckId)
-
   return (
     <div className={c.wrapper}>
       <form className={c.formWrapper} onSubmit={handleSubmit(onSubmit)}>
@@ -101,7 +99,7 @@ export const CardForm = (props: PropsType) => {
         <div className={c.formRow}>
           <ControlledTextField
             control={control}
-            errorMessage={errors.question?.message}
+            errorMessage={errors.answer?.message}
             label={'Answer'}
             name={'answer'}
           />
