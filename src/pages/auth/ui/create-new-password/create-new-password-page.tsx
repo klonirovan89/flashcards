@@ -6,6 +6,7 @@ import {
   FormValuesCreateNewPassword,
 } from '@/components/auth/create-new-password'
 import { Card } from '@/components/ui/card'
+import { Page } from '@/components/ui/page/page'
 import { Typography } from '@/components/ui/typography'
 import { useResetPasswordMutation } from '@/pages/auth/api/auth-api'
 
@@ -27,13 +28,13 @@ export const CreateNewPasswordPage = () => {
   }
 
   return (
-    <div className={s.root}>
+    <Page>
       <Card>
         <div className={s.section}>
           <Typography variant={'h1'}>Create new password</Typography>
           <CreateNewPassword className={s.form} onSubmit={handleCreateNewPassword} />
         </div>
       </Card>
-    </div>
+    </Page>
   )
 }

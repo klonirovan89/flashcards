@@ -40,7 +40,9 @@ export const EditProfileForm = ({
 
   return (
     <Card className={c.card}>
-      <Typography variant={'h1'}>Personal Information</Typography>
+      <Typography className={c.typographyStyle} variant={'h1'}>
+        Personal Information
+      </Typography>
       <ProfileAvatar isEditMode={editMode} userName={me?.name} />
       {!editMode ? (
         <>

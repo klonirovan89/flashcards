@@ -12,7 +12,7 @@ export const CardRow = (props: PropsType) => {
 
   return (
     <TableComponents.Row key={card.id}>
-      <TableComponents.Cell className={s.cell}>
+      <TableComponents.Cell>
         <div className={s.divNameBody}>
           {card.questionImg ? (
             <img alt={'img'} height={50} src={card.questionImg} width={70} />
@@ -26,7 +26,7 @@ export const CardRow = (props: PropsType) => {
           </Typography>
         </div>
       </TableComponents.Cell>
-      <TableComponents.Cell className={s.cell}>
+      <TableComponents.Cell>
         <div className={s.divNameBody}>
           {card.answerImg ? (
             <img alt={'img'} height={50} src={card.answerImg} width={70} />

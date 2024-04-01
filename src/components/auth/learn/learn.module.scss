@@ -6,12 +6,11 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  width: 1093px;
   padding-bottom: 30px;
 }
 
 .card {
-  width: 420px;
+  max-width: 420px;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,15 +1,10 @@
-.root {
-  display: flex;
-  justify-content: center;
-}
-
 .section {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  width: 357px;
+  max-width: 357px;
 
   svg {
     margin: 19px 0 27px 0;
