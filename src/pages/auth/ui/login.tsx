@@ -8,6 +8,7 @@ import { useLoginMutation } from '@/pages/auth/api/auth-api'
 import { LoginArgs } from '@/pages/auth/api/auth-types'
 
 import s from '@/components/auth/sign-in/sign-in.module.scss'
+import { Page } from '@/components/ui/page/page'
 
 export const LoginPage = () => {
   const [signIn] = useLoginMutation()
@@ -25,7 +26,7 @@ export const LoginPage = () => {
   }
 
   return (
-    <div className={s.root}>
+    <Page>
       <Card>
         <div className={s.section}>
           <Typography variant={'h1'}>Sign In</Typography>
@@ -49,6 +50,6 @@ export const LoginPage = () => {
           </div>
         </div>
       </Card>
-    </div>
+    </Page>
   )
 }

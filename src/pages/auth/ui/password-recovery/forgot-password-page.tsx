@@ -7,6 +7,7 @@ import { usePasswordRecoveryMutation } from '@/pages/auth/api/auth-api'
 import { html } from '@/pages/auth/ui/password-recovery/utils/message-to-email-html'
 
 import s from '@/components/auth/forgot-password/forgot-password.module.scss'
+import { Page } from '@/components/ui/page/page'
 
 export const ForgotPasswordPage = () => {
   const [recoveryPassword] = usePasswordRecoveryMutation()
@@ -20,7 +21,7 @@ export const ForgotPasswordPage = () => {
   }
 
   return (
-    <div className={s.root}>
+    <Page>
       <Card>
         <div className={s.section}>
           <Typography variant={'h1'}>Forgot your password?</Typography>
@@ -33,6 +34,6 @@ export const ForgotPasswordPage = () => {
           </div>
         </div>
       </Card>
-    </div>
+    </Page>
   )
 }

@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Icon } from '@/components/ui/icon/Icon'
+import { Page } from '@/components/ui/page/page'
 import { Typography } from '@/components/ui/typography'
 
 import s from './check-email.module.scss'
@@ -11,7 +12,7 @@ export const CheckEmail = () => {
   const { email } = useParams<{ email: string }>()
 
   return (
-    <div className={s.root}>
+    <Page>
       <Card>
         <div className={s.section}>
           <Typography variant={'h1'}>Check Email</Typography>
@@ -24,6 +25,6 @@ export const CheckEmail = () => {
           </Button>
         </div>
       </Card>
-    </div>
+    </Page>
   )
 }

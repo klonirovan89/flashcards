@@ -4,6 +4,7 @@ import { toast } from 'react-toastify'
 import { FormValuesSignUp, SignUp } from '@/components/auth/sign-up'
 import { Card } from '@/components/ui/card'
 import { QueryLoader } from '@/components/ui/loader/qeryLoader'
+import { Page } from '@/components/ui/page/page'
 import { Typography } from '@/components/ui/typography'
 import { useSignUpMutation } from '@/pages/auth/api/auth-api'
 
@@ -28,7 +29,7 @@ export const SignUpPage = () => {
   }
 
   return (
-    <div className={s.root}>
+    <Page>
       <Card>
         <div className={s.section}>
           <Typography variant={'h1'}>Sign Up</Typography>
@@ -42,6 +43,6 @@ export const SignUpPage = () => {
           </SignUp>
         </div>
       </Card>
-    </div>
+    </Page>
   )
 }

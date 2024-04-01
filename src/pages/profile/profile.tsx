@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { EditProfileArgs, EditProfileForm } from '@/components/auth/edit-profile/edit-profile'
 import { BackButton } from '@/components/ui/back-button'
+import { Page } from '@/components/ui/page/page'
 import { useLogoutMutation, useSetMeMutation } from '@/pages/auth/api/auth-api'
 
 import s from '@/pages/profile/profile.module.scss'
@@ -18,9 +19,9 @@ export const MyProfilePage = () => {
   const [signOut] = useLogoutMutation()
 
   return (
-    <div className={s.wrapper}>
-      <BackButton className={s.backButton} />
-      <div className={s.section}>
+    <Page>
+      <div className={s.wrapper}>
+        <BackButton className={s.backButton} />
         <EditProfileForm
           editMode={editMode}
           logout={signOut}
@@ -28,6 +29,6 @@ export const MyProfilePage = () => {
           setEditMode={setEditMode}
         />
       </div>
-    </div>
+    </Page>
   )
 }

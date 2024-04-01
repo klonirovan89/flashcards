@@ -1,6 +1,7 @@
 import { ComponentPropsWithoutRef, ElementType } from 'react'
 
 import { ButtonProps } from '@/components/ui/button'
+import { clsx } from 'clsx'
 
 import s from './typography.module.scss'
 
@@ -24,7 +25,8 @@ export type TypographyProps<T extends ElementType = 'span'> = {
 export const Typography = <T extends ElementType = 'span'>(
   props: TypographyProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>
 ) => {
-  const { as: Component = 'span', variant, ...rest } = props
+  const { as: Component = 'span', className, variant, ...rest } = props
+  const classNames = clsx(s[variant], className)
 
-  return <Component className={s[variant]} {...rest} />
+  return <Component className={classNames} {...rest} />
 }

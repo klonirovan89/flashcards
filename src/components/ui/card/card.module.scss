@@ -1,9 +1,6 @@
 .card {
-  display: flex;
-  justify-content: center;
-
   max-width: 420px;
-  margin: 30px 12px;
+  margin: 30px auto;
   padding: 36px;
 
   background-color: var(--color-dark-700);

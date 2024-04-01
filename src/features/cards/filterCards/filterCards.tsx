@@ -14,11 +14,11 @@ export const FilterCards = (props: PropsType) => {
   return (
     <div className={s.top}>
       <TextField
+        fullWidth
         onChange={onChangeTextFieldValue}
         placeholder={'Search by question'}
         searchName={searchName}
         type={'search'}
-        fullWidth
       />
     </div>
   )
