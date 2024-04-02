@@ -36,7 +36,7 @@ export const DropDownMenu = (props: PropsType) => {
                 </Button>
               </RadixDropdownMenu.Item>
             ))}
-            <span className={s.arrow}></span>
+            <div className={s.arrow}></div>
           </RadixDropdownMenu.Content>
         </RadixDropdownMenu.Portal>
       </RadixDropdownMenu.Root>
