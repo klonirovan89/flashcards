@@ -21,7 +21,7 @@ export const CardRow = (props: PropsType) => {
               <img alt={'img'} height={50} src={NoPhoto} width={50} />
             </div>
           )}
-          <Typography className={s.typographyStyleBody} variant={'body2'}>
+          <Typography className={s.typographyStyle} variant={'body2'}>
             {card.question}
           </Typography>
         </div>
@@ -35,18 +35,18 @@ export const CardRow = (props: PropsType) => {
               <img alt={'img'} height={50} src={NoPhoto} width={50} />
             </div>
           )}
-          <Typography className={s.typographyStyleBody} variant={'body2'}>
+          <Typography className={s.typographyStyle} variant={'body2'}>
             {card.answer}
           </Typography>
         </div>
       </TableComponents.Cell>
       <TableComponents.Cell className={s.update}>
-        <Typography className={s.typographyStyleBody} variant={'body2'}>
+        <Typography className={s.typographyStyleForUpdateGrade} variant={'body2'}>
           {new Date(card.updated).toLocaleDateString('ru-RU')}
         </Typography>
       </TableComponents.Cell>
       <TableComponents.Cell className={s.grade}>
-        <Typography className={s.typographyStyleBody} variant={'body2'}>
+        <Typography className={s.typographyStyleForUpdateGrade} variant={'body2'}>
           <Rating defaultValue={card.grade} />
         </Typography>
       </TableComponents.Cell>

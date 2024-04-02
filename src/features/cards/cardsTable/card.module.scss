@@ -59,14 +59,25 @@
   }
 }
 
-.typographyStyleBody {
+.typographyStyle,
+.typographyStyleForUpdateGrade {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
 
+.typographyStyle {
+  justify-content: flex-start;
+  width: 150px;
+  max-width: 150px;
+}
+
+.typographyStyleForUpdateGrade{
+  justify-content: center;
+  width: 100%;
+}
+
 .update,
 .grade {
-  min-width: 160px;
+  min-width: 130px;
 }
