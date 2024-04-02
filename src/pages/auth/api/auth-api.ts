@@ -47,7 +47,37 @@ export const authApi = baseApi.injectEndpoints({
       }),
     }),
     setMe: builder.mutation<User, { avatar?: File | null; name?: string }>({
-      invalidatesTags: ['Auth'],
+      // invalidatesTags: ['Auth'],
+      async onQueryStarted(patch, { dispatch, queryFulfilled }) {
+        const patchResult = dispatch(
+          baseApi.util.updateQueryData('me', undefined, draft => {
+            let valueableObject = Object.fromEntries(
+              Object.entries(patch).filter(
+                ([_, value]) =>
+                  !(
+                    value === undefined ||
+                    value === null ||
+                    (typeof value === 'string' && !value.length)
+                  )
+              )
+            )
+
+            if (valueableObject.avatar) {
+              valueableObject = {
+                ...valueableObject,
+                avatar: URL.createObjectURL(valueableObject.avatar),
+              }
+            }
+            Object.assign(draft, valueableObject)
+          })
+        )
+
+        try {
+          await queryFulfilled
+        } catch {
+          patchResult.undo()
+        }
+      },
       query: body => {
         const formData = new FormData()
 
