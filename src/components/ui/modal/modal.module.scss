@@ -1,12 +1,8 @@
 .root {
-  width: 560px;
+  max-width: 560px;
 
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  animation: content-show 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  padding-top: 90px;
+  margin: 0 auto;
 }
 
 .header {
